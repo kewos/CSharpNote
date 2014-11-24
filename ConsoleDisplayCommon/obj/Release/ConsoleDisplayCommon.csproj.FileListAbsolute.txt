@@ -1,0 +1,4 @@
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplayCommon\bin\Release\ConsoleDisplayCommon.dll
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplayCommon\bin\Release\ConsoleDisplayCommon.pdb
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplayCommon\obj\Release\ConsoleDisplayCommon.dll
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplayCommon\obj\Release\ConsoleDisplayCommon.pdb

@@ -1,0 +1,5 @@
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\bin\Debug\運算元操作.exe.config
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\bin\Debug\運算元操作.exe
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\bin\Debug\運算元操作.pdb
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\obj\Debug\運算元操作.exe
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\obj\Debug\運算元操作.pdb

@@ -1,0 +1,8 @@
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisplayPattern\obj\Debug\DisplayPattern.csprojResolveAssemblyReference.cache
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisplayPattern\bin\Debug\DisplayPattern.pdb
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisplayPattern\obj\Debug\DisplayPattern.pdb
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisplayPattern\bin\Debug\DisplayPattern.dll.config
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisplayPattern\bin\Debug\DisplayPattern.dll
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisplayPattern\obj\Debug\DisplayPattern.dll
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisplayPattern\bin\Debug\ConsoleDisplayCommon.dll
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisplayPattern\bin\Debug\ConsoleDisplayCommon.pdb

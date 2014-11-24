@@ -1,0 +1,15 @@
+D:\code\C#Practice\ConsoleApplication11\DisplayPattern\bin\Debug\DisplayPattern.dll.config
+D:\code\C#Practice\ConsoleApplication11\DisplayPattern\bin\Debug\DisplayPattern.dll
+D:\code\C#Practice\ConsoleApplication11\DisplayPattern\bin\Debug\DisplayPattern.pdb
+D:\code\C#Practice\ConsoleApplication11\DisplayPattern\bin\Debug\ConsoleDisplayCommon.dll
+D:\code\C#Practice\ConsoleApplication11\DisplayPattern\bin\Debug\ConsoleDisplayCommon.pdb
+D:\code\C#Practice\ConsoleApplication11\DisplayPattern\obj\Debug\DisplayPattern.dll
+D:\code\C#Practice\ConsoleApplication11\DisplayPattern\obj\Debug\DisplayPattern.pdb
+D:\code\Practice\C#Practice\DisplayPattern\bin\Debug\DisplayPattern.dll.config
+D:\code\Practice\C#Practice\DisplayPattern\bin\Debug\DisplayPattern.dll
+D:\code\Practice\C#Practice\DisplayPattern\bin\Debug\DisplayPattern.pdb
+D:\code\Practice\C#Practice\DisplayPattern\bin\Debug\ConsoleDisplayCommon.dll
+D:\code\Practice\C#Practice\DisplayPattern\bin\Debug\ConsoleDisplayCommon.pdb
+D:\code\Practice\C#Practice\DisplayPattern\obj\Debug\DisplayDesignPattern.csprojResolveAssemblyReference.cache
+D:\code\Practice\C#Practice\DisplayPattern\obj\Debug\DisplayPattern.dll
+D:\code\Practice\C#Practice\DisplayPattern\obj\Debug\DisplayPattern.pdb

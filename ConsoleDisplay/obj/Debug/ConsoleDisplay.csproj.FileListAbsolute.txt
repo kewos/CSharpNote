@@ -1,0 +1,47 @@
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\bin\Debug\ConsoleDisplay.exe.config
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\bin\Debug\ConsoleDisplay.exe
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\bin\Debug\ConsoleDisplay.pdb
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\bin\Debug\DisplayPattern.dll
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\bin\Debug\DisplayPattern.pdb
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\obj\Debug\ConsoleDisplay.csprojResolveAssemblyReference.cache
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\obj\Debug\ConsoleDisplay.exe
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\obj\Debug\ConsoleDisplay.pdb
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\bin\Debug\ConsoleDisplayCommon.dll
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\bin\Debug\ConsoleDisplayCommon.pdb
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\bin\Debug\PraticeDisplay.dll
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\bin\Debug\PraticeDisplay.pdb
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\bin\Debug\DisPlayProjectEuler.dll
+C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\ConsoleDisplay\bin\Debug\DisPlayProjectEuler.pdb
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\bin\Debug\ConsoleDisplay.exe.config
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\bin\Debug\ConsoleDisplay.exe
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\bin\Debug\ConsoleDisplay.pdb
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\bin\Debug\ConsoleDisplayCommon.dll
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\bin\Debug\DisplayPattern.dll
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\bin\Debug\DisPlayProjectEuler.dll
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\bin\Debug\ConsoleDisplayCommon.pdb
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\bin\Debug\DisplayPattern.pdb
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\bin\Debug\DisPlayProjectEuler.pdb
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\obj\Debug\ConsoleDisplay.csprojResolveAssemblyReference.cache
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\obj\Debug\ConsoleDisplay.exe
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\obj\Debug\ConsoleDisplay.pdb
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\bin\Debug\DisplayPratice.dll
+D:\code\C#Practice\ConsoleApplication11\ConsoleDisplay\bin\Debug\DisplayPratice.pdb
+D:\code\C#Practice\ConsoleDisplay\bin\Debug\ConsoleDisplay.exe.config
+D:\code\C#Practice\ConsoleDisplay\obj\Debug\ConsoleDisplay.exe
+D:\code\C#Practice\ConsoleDisplay\obj\Debug\ConsoleDisplay.pdb
+D:\code\Practice\C#Practice\ConsoleDisplay\bin\Debug\ConsoleDisplay.exe.config
+D:\code\Practice\C#Practice\ConsoleDisplay\obj\Debug\ConsoleDisplay.exe
+D:\code\Practice\C#Practice\ConsoleDisplay\obj\Debug\ConsoleDisplay.pdb
+D:\code\Practice\C#Practice\ConsoleDisplay\bin\Debug\ConsoleDisplay.exe
+D:\code\Practice\C#Practice\ConsoleDisplay\bin\Debug\ConsoleDisplay.pdb
+D:\code\Practice\C#Practice\ConsoleDisplay\bin\Debug\ConsoleDisplayCommon.dll
+D:\code\Practice\C#Practice\ConsoleDisplay\bin\Debug\DisplayPattern.dll
+D:\code\Practice\C#Practice\ConsoleDisplay\bin\Debug\DisplayPratice.dll
+D:\code\Practice\C#Practice\ConsoleDisplay\bin\Debug\DisPlayProjectEuler.dll
+D:\code\Practice\C#Practice\ConsoleDisplay\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\code\Practice\C#Practice\ConsoleDisplay\bin\Debug\ConsoleDisplayCommon.pdb
+D:\code\Practice\C#Practice\ConsoleDisplay\bin\Debug\DisplayPattern.pdb
+D:\code\Practice\C#Practice\ConsoleDisplay\bin\Debug\DisplayPratice.pdb
+D:\code\Practice\C#Practice\ConsoleDisplay\bin\Debug\DisPlayProjectEuler.pdb
+D:\code\Practice\C#Practice\ConsoleDisplay\obj\Debug\ConsoleDisplay.csprojResolveAssemblyReference.cache
