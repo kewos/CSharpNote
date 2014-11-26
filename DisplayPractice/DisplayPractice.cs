@@ -1015,5 +1015,44 @@ namespace DisplayPractice
             var result = people.Zip(bands, (p, b) => Tuple.Create(p, b)).ToList();
             result.ForEach(r => Console.WriteLine("{0} favor {1}", r.Item1, r.Item2));
         }
+
+        [DisplayMethod]
+        public void OrWithFlag()
+        {
+            Priority p = Priority.Medium | Priority.High;
+            Console.WriteLine(p.ToString());
+        }
+
+        [Flags]
+        public enum Priority
+        {
+            None = 0,
+            VeryLow = 1,
+            Low = 2,
+            Medium = 4,
+            High = 8,
+            VeryHigh = 16
+        }
+
+        [DisplayMethod]
+        public void XorEncryption()
+        {
+            string msg = "This is a message.";
+            char key1 = '@';
+            StringBuilder sb1 = new StringBuilder();
+            foreach (char c in msg)
+            {
+                sb1.Append((char)(c ^ key1));
+            }
+            Console.WriteLine(sb1.ToString());
+
+            string key2 = "9s/*(W$37";
+            StringBuilder sb2 = new StringBuilder();
+            for (int i = 0; i < msg.Length; i++)
+            {
+                sb2.Append((char)(msg[i] ^ key2[i % key2.Length]));
+            }
+            Console.WriteLine(sb2.ToString());
+        }
     }
 }

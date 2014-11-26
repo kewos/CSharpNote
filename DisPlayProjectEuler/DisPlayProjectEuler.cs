@@ -1978,36 +1978,7 @@ namespace DisPlayProjectEuler
             public int X { get; set; }
             public int Y { get; set; }
         }
-
-        [DisplayMethod(@"http://community.topcoder.com/stat?c=problem_statement&pm=3083")]
-        public void StatementForCubeSum()
-        {
-            Console.WriteLine(CubeSum(2072));
-        }
-
-        public int CubeSum(int N)
-        {
-            int max = (int)Math.Pow(N, (double)(1.0/3));
-            var sets = new Dictionary<string, List<int>>();
-            var cubeList = getCubeList(max);
-            for(var a = 0; a <= max; a++)
-                for (var b = 0; b <= max && cubeList[a] + cubeList[b] <= N; b++)
-                    for (var c = 0; c <= max && cubeList[a] + cubeList[b] + cubeList[c] <= N; c++)
-                        for (var d = 0; d <= max && cubeList[a] + cubeList[b] + cubeList[c] + cubeList[d] <= N; d++)
-                        {
-                            if (cubeList[a] + cubeList[b] + cubeList[c] + cubeList[d] == N)
-                            {
-                                var subset = new List<int> { a, b, c, d };
-                                subset.Sort();
-                                var s = String.Join("", new List<int>(subset).ConvertAll(i => i.ToString()).ToArray());
-                                if (!sets.ContainsKey(s)) 
-                                    sets.Add(s, subset);
-                                
-                            }
-                        }
-            return sets.Count();
-        }
-
+   
         public List<int> getCubeList(int max)
         {
             return Enumerable.Range(0, max + 1).Select(n => n * n * n).ToList();
