@@ -1004,6 +1004,16 @@ namespace DisplayPractice
             sw.Stop();
             Console.WriteLine("Depth: {0} Size: {1} Time: {2}ms",
                               depth, size, sw.ElapsedMilliseconds);
-        } 
+        }
+
+        [DisplayMethod]
+        public void LinqZip()
+        {
+            var bands = new List<string> { "GnR", "PinkFloyd", "Rammstein", "Ozzy Osbourne", "The Verve", "Kasaabian" };
+            var people = new List<string> { "John", "Peter", "Andrew", "Martin" };
+
+            var result = people.Zip(bands, (p, b) => Tuple.Create(p, b)).ToList();
+            result.ForEach(r => Console.WriteLine("{0} favor {1}", r.Item1, r.Item2));
+        }
     }
 }
