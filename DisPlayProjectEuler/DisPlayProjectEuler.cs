@@ -2167,15 +2167,21 @@ namespace DisPlayProjectEuler
             int max = 10000;
             var primes = GetPrimesWithinRange(max).ToList();
             var sumSet = Enumerable.Range(2, max - 1)
-                .Select(number => 
-                    new 
+                .Select(number => new 
                     { 
                         Key = number, 
-                        Value = GetFactor(number).Where(factor => factor < number).Sum() 
+                        Value = GetFactor(number)
+                            .Where(factor => factor < number)
+                            .Sum() 
                     })
                     .ToDictionary(x => x.Key, x => x.Value);
-            var result = sumSet.Where(set => (sumSet.ContainsKey(set.Value) && set.Key == sumSet[set.Value]) ? true : false).ToList();
-            result.ForEach(n => Console.WriteLine("index:{0} sum:{1}", n.Key, n.Value));
+
+            foreach (var element in 
+                sumSet.Where(set => (sumSet.ContainsKey(set.Value) && set.Key == sumSet[set.Value]) ? true : false)
+            )
+            {
+                Console.WriteLine("index:{0} sum:{1}", element.Key, element.Value);
+            }
         }
     }
 }
