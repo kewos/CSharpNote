@@ -140,7 +140,8 @@ namespace DisPlayProjectEuler
             foreach (var factor in Enumerable.Range(1, (int)Math.Floor(Math.Sqrt(number))).Where(x => number % x == 0))
             {
                 factors.Add(factor);
-                if (!factors.Contains(number / factor)) factors.Add(number / factor);
+                if (!factors.Contains(number / factor))
+                    factors.Add(number / factor);
             }
             return factors;
         }
@@ -2158,6 +2159,23 @@ namespace DisPlayProjectEuler
                 sets = temp;
             }
             return sets;
+        }
+
+        [DisplayMethod(@"https://projecteuler.net/problem=21")]
+        public void AmicableNumbers()
+        {
+            int max = 10000;
+            var primes = GetPrimesWithinRange(max).ToList();
+            var sumSet = Enumerable.Range(2, max - 1)
+                .Select(number => 
+                    new 
+                    { 
+                        Key = number, 
+                        Value = GetFactor(number).Where(factor => factor < number).Sum() 
+                    })
+                    .ToDictionary(x => x.Key, x => x.Value);
+            var result = sumSet.Where(set => (sumSet.ContainsKey(set.Value) && set.Key == sumSet[set.Value]) ? true : false).ToList();
+            result.ForEach(n => Console.WriteLine("index:{0} sum:{1}", n.Key, n.Value));
         }
     }
 }
