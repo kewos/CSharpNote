@@ -2183,5 +2183,22 @@ namespace DisPlayProjectEuler
                 Console.WriteLine("index:{0} sum:{1}", element.Key, element.Value);
             }
         }
+
+        [DisplayMethod(@"https://projecteuler.net/problem=37")]
+        public void TruncatablePrimes()
+        {
+            var valid = 3797;
+            var validString = valid.ToString();
+            var group = new List<int>();
+            for (var index = 0; index < validString.Length; index++)
+            {
+                var sub1 = validString.Substring(validString.Length - index - 1, index + 1);
+                var sub2 = validString.Substring(index, validString.Length - index);
+                int value1, value2;
+                if (int.TryParse(sub1, out value1)) group.Add(value1);
+                if (int.TryParse(sub2, out value2)) group.Add(value2);
+            }
+            Console.WriteLine("All Primes{0}", group.All(i => IsPrime(i)));
+        }
     }
 }
