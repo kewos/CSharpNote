@@ -31,8 +31,10 @@ namespace ConsoleDisplayCommon
                 try
                 {
                     ShowOnConsole(items);
-                    AfterTypeIndex(GetIndexOfMethod());
-                    Console.WriteLine("Enter Any Key...");
+                    var input = GetIndexOfMethod();
+                    if (input == -1) break;
+                    AfterTypeIndex(input);
+                    Console.WriteLine("Enter Any Key... Or Enter '-1' Exit The Layer...");
                     Console.ReadLine();
                 }
                 catch (ArgumentException e)
