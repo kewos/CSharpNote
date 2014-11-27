@@ -2203,18 +2203,43 @@ namespace DisPlayProjectEuler
             return result;
         }
 
+        /// <summary>
+        /// binary search
+        /// </summary>
+        /// <param name="search">search list</param>
+        /// <param name="target">search target</param>
+        /// <param name="start">start postion</param>
+        /// <param name="end">end postion</param>
+        /// <returns>IndexPosition</returns>
         public int SearchIndex(List<int> search, int target, int start, int end)
         {
             while (start <= end)
             {
                 var middle = start + (end - start) / 2;
-                if (search[middle] > target)
-                    end = middle - 1;
-                else if (search[middle] < target)
-                    start = middle + 1;
-                else return middle;
+                if (search[middle] > target) end = middle - 1;
+                if (search[middle] < target) start = middle + 1;
+                if (search[middle] == target) return middle;
             }
             return -1;
+        }
+
+        [DisplayMethod(@"https://oj.leetcode.com/problems/Reorder-List/")]
+        public void ReorderList()
+        {
+            var order = Enumerable.Range(0, 11).ToList();
+            ReorderList(order).Dump();
+        }
+
+        public List<int> ReorderList(List<int> order)
+        {
+            var index = 0;
+            while (index < (order.Count() - 1) / 2)
+            {
+                order.Insert(index * 2 + 1, order[order.Count() - 1]);
+                order.RemoveAt(order.Count - 1);
+                index++;
+            }
+            return order;
         }
     }
 }
