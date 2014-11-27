@@ -1017,10 +1017,24 @@ namespace DisplayPractice
         }
 
         [DisplayMethod]
-        public void OrWithFlag()
+        public void EnumFlagOperation()
         {
-            Priority p = Priority.Medium | Priority.High;
-            Console.WriteLine(p.ToString());
+            Priority all = Priority.None;
+            foreach (var p in Enum.GetValues(typeof(Priority)) as Priority[])
+            {
+                all |= p;
+            }
+
+            Console.WriteLine(all.ToString());
+            Console.WriteLine(all.HasFlag(Priority.Medium));
+
+            foreach (var p in Enum.GetValues(typeof(Priority)) as Priority[])
+            {
+                all ^= p;
+            }
+
+            Console.WriteLine(all.ToString());
+            Console.WriteLine(all.HasFlag(Priority.Medium));
         }
 
         [Flags]
