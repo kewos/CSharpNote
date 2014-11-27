@@ -2241,5 +2241,20 @@ namespace DisPlayProjectEuler
             }
             return order;
         }
+
+        [DisplayMethod(@"https://oj.leetcode.com/problems/single-number/")]
+        public void SingleNumber()
+        {
+            //Given an array of integers, every element appears twice except for one. Find that single one.
+            //Note:
+            //Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+            var searchList = new List<int> { 1, 2, 2, 3, 3, 4, 4, 5, 5 };
+            Console.WriteLine(SingleNumber(searchList));
+        }
+
+        public int SingleNumber(List<int> searchList)
+        {
+            return searchList.Skip(1).Aggregate(searchList[0], (a, b) => a ^ b);
+        }
     }
 }
