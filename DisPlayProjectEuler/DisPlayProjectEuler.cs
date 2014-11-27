@@ -2233,9 +2233,9 @@ namespace DisPlayProjectEuler
         public List<int> ReorderList(List<int> order)
         {
             var index = 0;
-            while (index < (order.Count() - 1) / 2)
+            while (index < (order.Count - 1) / 2)
             {
-                order.Insert(index * 2 + 1, order[order.Count() - 1]);
+                order.Insert(index * 2 + 1, order[order.Count - 1]);
                 order.RemoveAt(order.Count - 1);
                 index++;
             }
