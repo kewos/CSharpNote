@@ -634,10 +634,7 @@ namespace DisPlayProjectEuler
             var lastIndex = array.Count() - 1;
             if (array[position] == 0 || position > lastIndex) return default(int);
             if (position == lastIndex) return step;
-            return Enumerable.Range(1, array[position])
-                .Min(n =>
-                    CheckJumpGameMinStep(array, position + n, step + 1)
-                );
+            return Enumerable.Range(1, array[position]).Min(n => CheckJumpGameMinStep(array, position + n, step + 1));
         }
 
         [DisplayMethod]
@@ -2248,13 +2245,91 @@ namespace DisPlayProjectEuler
             //Given an array of integers, every element appears twice except for one. Find that single one.
             //Note:
             //Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
-            var searchList = new List<int> { 1, 2, 2, 3, 3, 4, 4, 5, 5 };
+            var searchList = new List<int> { 1, 2, 2, 3, 1, 6, 3, 4, 4, 5, 5, 5, 5 };
             Console.WriteLine(SingleNumber(searchList));
         }
 
         public int SingleNumber(List<int> searchList)
         {
-            return searchList.Skip(1).Aggregate(searchList[0], (a, b) => a ^ b);
+            return searchList.Aggregate((a, b) => a ^ b);
+        }
+
+        [DisplayMethod(@"https://oj.leetcode.com/problems/word-search/")]
+        public void WordSearch()
+        {
+            var map = new List<List<string>>
+            {
+                new List<string> {"w", "c", "n", "w"},
+                new List<string> {"s", "b", "v", "a"},
+                new List<string> {"x", "n", "f", "n"},
+                new List<string> {"f", "r", "d", "q"},
+            };
+        }
+
+        public void WordSearch(List<List<string>> map, string path)
+        {
+            foreach (var c in path)
+            {
+ 
+            }
+        }
+
+        [DisplayMethod(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list-ii/")]
+        public void RemoveDuplicatesFromSortedListii()
+        {
+            var list = new List<int> { 1, 1, 1, 1, 2, 5, 6, 9, 88, 88, 99, 99, 99, 100 };
+            RemoveDuplicatesFromSortedListii(list).Dump();
+        }
+
+        public List<int> RemoveDuplicatesFromSortedListii(List<int> list)
+        {
+            var i = 1;
+            var state = false;
+            while (i < list.Count)
+            {
+                if (list[i - 1] == list[i])
+                {
+                    list.RemoveAt(i - 1);
+                    state = true;
+                    continue;
+                }
+                if (state)
+                {
+                    list.RemoveAt(i - 1);
+                    state = false;
+                    continue;
+                }
+                i++;
+            }
+            return list;
+        }
+
+        [DisplayMethod(@"https://oj.leetcode.com/problems/permutations/")]
+        public void Permutations()
+        {
+            //Given a collection of numbers, return all possible permutations.
+            //For example,
+            //[1,2,3] have the following permutations:
+            //[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1]
+            var elements = Enumerable.Range(1, 7).ToList();
+            Permutations<int>(elements, elements.Count).DumpMany();
+        }
+
+        public List<List<T>> Permutations<T>(IEnumerable<T> elements, int level, List<T> sub = null)
+        {
+            var subSets = new List<List<T>>();
+            if (level == 0) return new List<List<T>> { sub };
+            if (sub == null) sub = new List<T>();
+            foreach (var element in elements)
+            {
+                if (!sub.Contains(element))
+                {
+                    var tmp = sub.ToList();
+                    tmp.Add(element);
+                    subSets.AddRange(Permutations(elements, level - 1, tmp));
+                }
+            }
+            return subSets;
         }
     }
 }
