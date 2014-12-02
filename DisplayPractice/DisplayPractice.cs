@@ -1068,5 +1068,26 @@ namespace DisplayPractice
             }
             Console.WriteLine(sb2.ToString());
         }
+
+        [DisplayMethod]
+        public void DynamicalCreateGeneric()
+        {
+            var types = new List<Type> { typeof(int), typeof(string), typeof(double), typeof(char), typeof(bool) };
+            var type = typeof(ObjectA<>);
+            foreach (dynamic obj in 
+                types.Select(t => Activator.CreateInstance(type.MakeGenericType(t)))
+            )
+            {
+                obj.SpeakType();
+            }
+        }
+
+        public class ObjectA<T>
+        {
+            public void SpeakType()
+            {
+                Console.WriteLine(typeof(T));
+            }
+        }
     }
 }
