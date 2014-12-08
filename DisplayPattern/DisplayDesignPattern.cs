@@ -206,5 +206,49 @@ namespace DisplayPattern
                 }
             }).Opertaion();
         }
+
+        [DisplayMethod]
+        public void SpecificationPattern()
+        {
+            var bands = new List<Band>
+            {
+                new Band("AC/DC", BandKind.HardCore, Country.Australia),
+                new Band("Rammstein", BandKind.IndustryMetal, Country.Gereman),
+                new Band("PinkFloyd", BandKind.ClassRock, Country.UK),
+                new Band("TheVerve", BandKind.BritPop, Country.UK),
+                new Band("Nirvana", BandKind.Grunge, Country.UK),
+                new Band("Queen", BandKind.ClassRock, Country.UK),
+                new Band("SexPistals", BandKind.Punk, Country.UK),
+            };
+
+            ISpecification<Band> ukExpSpec =
+               new ExpressionSpecification<Band>(band => band.Country == Country.UK);
+            ISpecification<Band> australiaExpSpec =
+               new ExpressionSpecification<Band>(band => band.Country == Country.Australia);
+            ISpecification<Band> germanExpSpec =
+               new ExpressionSpecification<Band>(band => band.Country == Country.Gereman);
+   
+            ISpecification<Band> britPopExpSpec =
+               new ExpressionSpecification<Band>(band => band.BandKind == BandKind.BritPop);
+            ISpecification<Band> classRockExpSpec =
+               new ExpressionSpecification<Band>(band => band.BandKind == BandKind.ClassRock);
+
+            Console.WriteLine("================Search:UK Band");
+            bands.FindAll(band => ukExpSpec.IsSatisfiedBy(band))
+                .ForEach(band => band.Description());
+
+            Console.WriteLine("================Search:Australia Band");
+            bands.FindAll(band => australiaExpSpec.IsSatisfiedBy(band))
+                .ForEach(band => band.Description());
+
+            Console.WriteLine("================Search:Gereman Band");
+            bands.FindAll(band => germanExpSpec.IsSatisfiedBy(band))
+                .ForEach(band => band.Description());
+
+            Console.WriteLine("================Search:UK Or ClassRock");
+            var ukOrClassRockExpSpect = ukExpSpec.Or(classRockExpSpec);
+            bands.FindAll(band => ukOrClassRockExpSpect.IsSatisfiedBy(band))
+                .ForEach(band => band.Description());
+        }
     }
 }
