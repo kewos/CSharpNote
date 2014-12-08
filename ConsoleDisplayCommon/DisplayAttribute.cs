@@ -12,6 +12,7 @@ namespace ConsoleDisplayCommon
     public sealed class DisplayMethodAttribute : Attribute 
     {
         private string reference;
+        private string[] references;
         private string comment;
         private string date;
         private bool display;
@@ -20,6 +21,11 @@ namespace ConsoleDisplayCommon
         private DisplayMethodAttribute(bool display)
         {
             this.display = display;
+        }
+
+        public DisplayMethodAttribute(params string[] references)
+        {
+            this.references = references;
         }
 
         public DisplayMethodAttribute(string reference, bool display = false)

@@ -986,20 +986,24 @@ namespace DisPlayProjectEuler
             //Input: numbers={2, 7, 11, 15}, target=9
             //Output: index1=1, index2=2
 
-            var input = new List<int> { 2, 7, 11, 15 };
+            var input = new List<int> { 2, 7, 2, 11, 15 };
             var target = 9;
-            FindMatchTargetIndex(input, target);
+            FindMatchTargetIndex(input, target).DumpMany();
         }
 
-        public void FindMatchTargetIndex(List<int> numberList, int target)
+        public List<List<int>> FindMatchTargetIndex(List<int> numberList, int target)
         {
-            numberList.ForEach(x =>
+            var sets = new List<List<int>>();
+            var index = 0;
+            var range = 0;
+            while (index + range < numberList.Count)
             {
-                foreach (var y in numberList.Skip(numberList.BinarySearch(x) + 1).Where(y => x != y && target == x + y))
-                {
-                    Console.WriteLine("{0},{1}", numberList.BinarySearch(x), numberList.BinarySearch(y));
-                }
-            });
+                target -= numberList[index + range];
+                if (target == 0) sets.Add(new List<int> { index, index + range });
+                if (target > 0) range++;
+                else target += numberList[index++];
+            }
+            return sets;
         }
 
         [DisplayMethod]
@@ -2312,14 +2316,14 @@ namespace DisPlayProjectEuler
             //[1,2,3] have the following permutations:
             //[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1]
             var elements = Enumerable.Range(1, 7).ToList();
-            Permutations<int>(elements, elements.Count).DumpMany();
+            Permutations(elements, elements.Count).DumpMany();
         }
 
-        public List<List<T>> Permutations<T>(IEnumerable<T> elements, int level, List<T> sub = null)
+        public List<List<int>> Permutations(List<int> elements, int level, List<int> sub = null)
         {
-            var subSets = new List<List<T>>();
-            if (level == 0) return new List<List<T>> { sub };
-            if (sub == null) sub = new List<T>();
+            var subSets = new List<List<int>>();
+            if (level == 0) return new List<List<int>> { sub };
+            if (sub == null) sub = new List<int>();
             foreach (var element in elements)
             {
                 if (!sub.Contains(element))
@@ -2330,6 +2334,79 @@ namespace DisPlayProjectEuler
                 }
             }
             return subSets;
+        }
+
+        [DisplayMethod(@"https://oj.leetcode.com/problems/min-stack/")]
+        public void MinStack()
+        {
+            //Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+            //push(x) -- Push element x onto stack.
+            //pop() -- Removes the element on top of the stack.
+            //top() -- Get the top element.
+            //getMin() -- Retrieve the minimum element in the stack.
+        }
+
+        public class MStack
+        {
+            private int[] elements;
+            private int index = 0;
+
+            public MStack(int size)
+            {
+                elements = new int[size];
+            }
+
+            public int getMin()
+            {
+                var tmp = index;
+                var min = 0;
+                while (tmp >= 0)
+                {
+                    min = Math.Min(min, elements[min--]);
+                }
+                return min;
+            }
+
+            public int Top()
+            {
+                return this.elements[index];
+            }
+
+            public void Push(int obj)
+            {
+                this.elements[index++] = obj;
+            }
+
+            public void Pop(int obj)
+            {
+                this.elements[index--] = 0;
+            }
+        }
+
+        [DisplayMethod(@"https://oj.leetcode.com/problems/find-peak-element/")]
+        public void FindPeakElement()
+        {
+            //A peak element is an element that is greater than its neighbors.
+            //Given an input array where num[i] ≠ num[i+1], find a peak element and return its index.
+            //The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.
+            //You may imagine that num[-1] = num[n] = -∞.
+            //For example, in array [1, 2, 3, 1], 3 is a peak element and your function should return the index number 2.
+
+            List<int> numbers = new List<int> { 1, 2, 3, 0};
+            FindPeakElement(numbers).Dump();
+        }
+
+        public List<int> FindPeakElement(List<int> numbers)
+        {
+            var result = new List<int>();
+            var index = 1;
+            while (index < numbers.Count - 1)
+            {
+                if (numbers[index] > numbers[index - 1] - 1 && numbers[index] > numbers[index + 1])
+                    result.Add(index++);
+                index++;
+            }
+            return result;
         }
     }
 }

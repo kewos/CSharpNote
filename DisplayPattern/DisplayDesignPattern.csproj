@@ -60,6 +60,7 @@
     <Compile Include="DesignPattern\NullObjectPattern.cs" />
     <Compile Include="DesignPattern\ObserverPattern.cs" />
     <Compile Include="DesignPattern\PipelinePattern.cs" />
+    <Compile Include="DesignPattern\SpecificationPattern.cs" />
     <Compile Include="DisplayDesignPattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DesignPattern\StatePattern.cs" />

@@ -207,7 +207,9 @@ namespace DisplayPattern
             }).Opertaion();
         }
 
-        [DisplayMethod]
+        [DisplayMethod(
+            "http://www.codeproject.com/Articles/670115/Specification-pattern-in-Csharp", 
+            "http://en.wikipedia.org/wiki/Specification_pattern#mediaviewer/File:Specification_UML_v2.png")]
         public void SpecificationPattern()
         {
             var bands = new List<Band>
