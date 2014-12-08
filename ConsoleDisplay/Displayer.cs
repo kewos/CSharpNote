@@ -34,7 +34,6 @@ namespace ConsoleDisplayCommon
                     var input = GetIndexOfMethod();
                     if (input == -1) break;
                     AfterTypeIndex(input);
-                    Console.WriteLine("Enter Any Key... Or Enter '-1' Exit The Layer...");
                     Console.ReadLine();
                 }
                 catch (ArgumentException e)
@@ -55,6 +54,7 @@ namespace ConsoleDisplayCommon
         public void ShowOnConsole(System.Collections.IEnumerable items)
         {
             items.Dump();
+            Console.WriteLine("-1.Exit");
             Console.Write("Enter Number:");
         }
 
