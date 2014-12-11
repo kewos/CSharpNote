@@ -2391,7 +2391,7 @@ namespace DisPlayProjectEuler
             //The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.
             //You may imagine that num[-1] = num[n] = -∞.
             //For example, in array [1, 2, 3, 1], 3 is a peak element and your function should return the index number 2.
-
+            //MutiPeak
             List<int> numbers = new List<int> { 1, 2, 3, 0};
             FindPeakElement(numbers).Dump();
         }
@@ -2407,6 +2407,62 @@ namespace DisPlayProjectEuler
                 index++;
             }
             return result;
+        }
+
+        [DisplayMethod(@"https://oj.leetcode.com/problems/word-break/")]
+        public void WordBreak()
+        {
+            //Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+            //For example, given
+            //s = "leetcode",
+            //dict = ["leet", "code"].
+            //Return true because "leetcode" can be segmented as "leet code".
+            var dict = new List<string> {"leet", "code"};
+            var s = "leetcode";
+            Console.WriteLine(WordBreak(dict, s));
+        }
+
+        public bool WordBreak(List<string> dict, string s)
+        {
+            var stringIndex = 0;
+            var dictIndex = 0;
+            while (dictIndex < dict.Count && stringIndex + dict[dictIndex].Length - 1 < s.Length)
+            {
+                if (s.Substring(stringIndex, dict[dictIndex].Length) == dict[dictIndex])
+                {
+                    stringIndex += dict[dictIndex].Length - 1;
+                    dictIndex++;
+                }
+                stringIndex++;
+            }
+            return dictIndex >= dict.Count; 
+        }
+
+        [DisplayMethod(@"https://oj.leetcode.com/problems/longest-consecutive-sequence/")]
+        public void LongestConsecutiveSequence()
+        {
+            //Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+            //For example,
+            //Given [100, 4, 200, 1, 3, 2],
+            //The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.
+            //Your algorithm should run in O(n) complexity.
+            var elements = new List<int> { 100, 4, 200, 1, 3, 2 };
+            Console.WriteLine(LongestConsecutiveSequence(elements));
+        }
+
+        public int LongestConsecutiveSequence(List<int> elements)
+        {
+            var temp = elements.ToDictionary(e => e, e => 1);
+            for (var index = 0; index < elements.Count; index++)
+            {
+                var tmpIndex = elements[index];
+                if (temp[tmpIndex] != 1) break;
+                while (temp.ContainsKey(++tmpIndex))
+                {
+                    temp[tmpIndex] += temp[tmpIndex - 1];
+                }
+            }
+            return temp.Max(t => t.Value);
         }
     }
 }

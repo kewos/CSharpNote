@@ -1073,6 +1073,7 @@ namespace DisplayPractice
         public void DynamicalCreateGeneric()
         {
             var types = new List<Type> { typeof(int), typeof(string), typeof(double), typeof(char), typeof(bool) };
+           
             var type = typeof(ObjectA<>);
             foreach (dynamic obj in 
                 types.Select(t => Activator.CreateInstance(type.MakeGenericType(t)))
@@ -1089,5 +1090,12 @@ namespace DisplayPractice
                 Console.WriteLine(typeof(T));
             }
         }
+
+        [DisplayMethod]
+        public void d()
+        {
+           
+        }
+
     }
 }

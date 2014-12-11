@@ -8,6 +8,9 @@ using System.Runtime.Remoting.Messaging;
 
 namespace ConsoleDisplayCommon
 {
+    /// <summary>
+    /// 不支援泛型方法
+    /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class DisplayMethodAttribute : Attribute 
     {

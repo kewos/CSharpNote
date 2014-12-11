@@ -56,6 +56,7 @@
     <Compile Include="DesignPattern\ChainResponsibilityPattern.cs" />
     <Compile Include="DesignPattern\CommandPattern.cs" />
     <Compile Include="DesignPattern\CompositePattern.cs" />
+    <Compile Include="DesignPattern\GenericSingleton.cs" />
     <Compile Include="DesignPattern\PrototypePattern.cs" />
     <Compile Include="DesignPattern\NullObjectPattern.cs" />
     <Compile Include="DesignPattern\ObserverPattern.cs" />

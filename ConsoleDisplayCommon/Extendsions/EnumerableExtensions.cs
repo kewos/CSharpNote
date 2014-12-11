@@ -8,10 +8,22 @@ namespace ConsoleDisplayCommon
 {
     public static class EnumerableExtensions
     {
-        public static void Dump( this System.Collections.IEnumerable enumerable)
+        public static void Dump(this System.Collections.IEnumerable elements)
         {
             var index = 0;
-            foreach (var element in enumerable) Console.WriteLine("{0}.{1}", index++, element);
+            foreach (var element in elements)
+            {
+                Console.WriteLine("{0}.{1}", index++, element);
+            }
+        }
+
+        public static void Dump<T>(this IEnumerable<T> elements)
+        {
+            var index = 0;
+            foreach (T element in elements)
+            {
+                Console.WriteLine("{0}.{1}", index++, element);
+            }
         }
 
         public static System.Collections.IEnumerable DumpMany(
@@ -23,21 +35,19 @@ namespace ConsoleDisplayCommon
             foreach (var element in enumerable)
             {
                 Console.WriteLine(string.Format("{0}{1}.{2}", new string('-', dumpLevel * 3), index++, element));
-                if (element is System.Collections.IEnumerable) 
+                if (element is System.Collections.IEnumerable)
+                {
                     (element as System.Collections.IEnumerable).DumpMany(dumpLevel + 1);
+                }
             }
             return enumerable;
         }
 
-        public static void Dump<Tkey, TValue>(this Dictionary<Tkey, TValue> dictionary)
-            where TValue : System.Collections.IEnumerable
+        public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
         {
-            foreach (var dic in dictionary) 
+            foreach (T element in enumerable)
             {
-                foreach(var item in dic.Value)
-                {
-                    Console.WriteLine("{0}.{1}", dic.Key, item);
-                }
+                action(element);
             }
         }
     }
