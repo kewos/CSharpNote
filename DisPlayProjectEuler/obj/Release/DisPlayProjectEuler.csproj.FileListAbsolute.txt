@@ -1,7 +1,0 @@
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisPlayProjectEuler\obj\Release\DisPlayProjectEuler.csprojResolveAssemblyReference.cache
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisPlayProjectEuler\bin\Release\DisPlayProjectEuler.dll
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisPlayProjectEuler\bin\Release\DisPlayProjectEuler.pdb
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisPlayProjectEuler\bin\Release\ConsoleDisplayCommon.dll
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisPlayProjectEuler\bin\Release\ConsoleDisplayCommon.pdb
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisPlayProjectEuler\obj\Release\DisPlayProjectEuler.dll
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\DisPlayProjectEuler\obj\Release\DisPlayProjectEuler.pdb

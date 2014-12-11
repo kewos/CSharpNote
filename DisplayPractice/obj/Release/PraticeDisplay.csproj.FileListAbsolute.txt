@@ -1,7 +1,0 @@
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\bin\Release\PraticeDisplay.dll.config
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\bin\Release\PraticeDisplay.dll
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\bin\Release\PraticeDisplay.pdb
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\bin\Release\ConsoleDisplayCommon.dll
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\bin\Release\ConsoleDisplayCommon.pdb
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\obj\Release\PraticeDisplay.dll
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\obj\Release\PraticeDisplay.pdb

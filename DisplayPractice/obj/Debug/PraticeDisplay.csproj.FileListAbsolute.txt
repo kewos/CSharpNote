@@ -1,8 +1,0 @@
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\bin\Debug\ConsoleDisplayCommon.dll
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\bin\Debug\ConsoleDisplayCommon.pdb
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\bin\Debug\PraticeDisplay.dll.config
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\bin\Debug\PraticeDisplay.dll
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\bin\Debug\PraticeDisplay.pdb
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\obj\Debug\PraticeDisplay.csprojResolveAssemblyReference.cache
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\obj\Debug\PraticeDisplay.dll
-C:\Users\kewos\Documents\Visual Studio 2013\Projects\ConsoleApplication11\運算元操作\obj\Debug\PraticeDisplay.pdb
