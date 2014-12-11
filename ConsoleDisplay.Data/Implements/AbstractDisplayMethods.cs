@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using ConsoleDisplay.Data.Contracts;
+using ConsoleDisplay.Common;
 
-namespace ConsoleDisplay.Common
+namespace ConsoleDisplay.Data.Implements
 {
     public abstract class AbstractDisplayMethods : ContextBoundObject, IDisplayMethods
     {

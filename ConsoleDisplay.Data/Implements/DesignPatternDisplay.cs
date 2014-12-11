@@ -10,7 +10,7 @@ using System.Xml.Linq;
 using ConsoleDisplay.Data.SubClass.DesignPattern;
 using ConsoleDisplay.Common;
 
-namespace ConsoleDisplay.Data
+namespace ConsoleDisplay.Data.Implements
 {
     [DisplayClassAttribue]
     public class DesignPatternDisplay : AbstractDisplayMethods

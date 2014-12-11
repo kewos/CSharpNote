@@ -12,7 +12,7 @@ using ConsoleDisplay.Data.SubClass.Practice;
 using System.Net.Sockets;
 
 
-namespace ConsoleDisplay.Data
+namespace ConsoleDisplay.Data.Implements
 {
     [DisplayClassAttribue]
     public class CSharpPracticeDisplay : AbstractDisplayMethods
@@ -1092,10 +1092,28 @@ namespace ConsoleDisplay.Data
         }
 
         [DisplayMethod]
-        public void d()
+        public void OperateDynamicObject()
         {
-           
-        }
+            dynamic dObject =  new System.Dynamic.ExpandoObject();
+            //add Property Changed Event
+            ((System.ComponentModel.INotifyPropertyChanged)dObject).PropertyChanged +=
+                new System.ComponentModel.PropertyChangedEventHandler(
+                    (s, e) =>
+                        Console.WriteLine("Property Changed{0}:", e.PropertyName));
+            //增加Property
+            dObject.Name = "DynamicObject";
+            Console.WriteLine(dObject.Name);
 
+            //透過dictionary 增加Property
+            var dicObject =  dObject as IDictionary<string, object>;
+            dicObject["hello"] = (Action<string>)((msg) => Console.WriteLine(msg));
+            dObject.hello("hello world");
+
+            //巡覽Property
+            foreach (var property in dObject as IDictionary<string, object>)
+            {
+                Console.WriteLine("key:{0} value:{1}", property.Key, property.Value);
+            }
+        }
     }
 }

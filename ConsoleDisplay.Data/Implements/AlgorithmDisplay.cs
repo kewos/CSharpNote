@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ConsoleDisplay.Common;
 
-namespace ConsoleDisplay.Data
+namespace ConsoleDisplay.Data.Implements
 {
     [DisplayClassAttribue]
     public class AlgorithmDisplay : AbstractDisplayMethods
