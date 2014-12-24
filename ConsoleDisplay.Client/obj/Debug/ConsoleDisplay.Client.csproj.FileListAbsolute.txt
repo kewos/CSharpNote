@@ -7,3 +7,5 @@ D:\code\Practice\C#Practice\ConsoleDisplay.Client\bin\Debug\ConsoleDisplay.Data.
 D:\code\Practice\C#Practice\ConsoleDisplay.Client\obj\Debug\ConsoleDisplay.Client.pdb
 D:\code\Practice\C#Practice\ConsoleDisplay.Client\bin\Debug\ConsoleDisplay.Client.exe
 D:\code\Practice\C#Practice\ConsoleDisplay.Client\obj\Debug\ConsoleDisplay.Client.exe
+D:\code\Practice\C#Practice\ConsoleDisplay.Client\bin\Debug\Moq.dll
+D:\code\Practice\C#Practice\ConsoleDisplay.Client\bin\Debug\Moq.xml

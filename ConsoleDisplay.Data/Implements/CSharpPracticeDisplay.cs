@@ -609,14 +609,16 @@ namespace ConsoleDisplay.Data.Implements
 
             var chars = new[] { "a", "b", "c", "d" };
             var csv = chars.Aggregate((a, b) => a + ',' + b);
-            Console.WriteLine(csv); // Output a,b,c,d
+            // Output a,b,c,d
+            Console.WriteLine(csv);
 
             var multipliers = new[] { 10, 20, 30, 40 };
             var multiplied = multipliers.Aggregate(5, (a, b) => 
             { 
                 return a * b; 
             });
-            Console.WriteLine(multiplied); //Output 1200000 ((((5*10)*20)*30)*40)
+            //Output 1200000 ((((5*10)*20)*30)*40)
+            Console.WriteLine(multiplied);
         }
 
         [DisplayMethod]
@@ -1114,6 +1116,99 @@ namespace ConsoleDisplay.Data.Implements
             {
                 Console.WriteLine("key:{0} value:{1}", property.Key, property.Value);
             }
+        }
+
+        [DisplayMethod]
+        public void ProductXml()
+        {
+            var xdoc = new System.Xml.XmlDocument();
+            // 建立根節點物件並加入 XmlDocument 中 (第 0 層)
+            var rootElement = xdoc.CreateElement("objective");
+            xdoc.AppendChild(rootElement);
+            var file = GetFile();
+            var total = file.Count();
+            for (int i = 1, j = 1; i <= total; i++, j++)
+            {
+                //針對跳號
+                if (i > 65 && i < 77
+                    || i > 116 && i < 120)
+                {
+                    j--;
+                    total++;
+                    continue;
+                }
+                var eleChild1 = xdoc.CreateElement("key");
+                var attChild1 = xdoc.CreateAttribute("name");
+                attChild1.Value = file[j - 1];
+                var attChild2 = xdoc.CreateAttribute("value");
+                attChild2.Value = i.ToString();
+                eleChild1.Attributes.Append(attChild1);
+                eleChild1.Attributes.Append(attChild2);
+                rootElement.AppendChild(eleChild1);
+                // 將建立的 XML 節點儲存為檔案
+                xdoc.Save("C:\\Users\\kewos\\Desktop\\test.xml");
+            }
+        }
+
+        public string[] GetFile()
+        {
+            //excel row data
+            string file =@"";
+            return file.Split(null).Where(s => s != "").ToArray();
+        }
+
+        /// <summary>
+        /// type 取得方式
+        /// 1.有instance 透過instance GetType()
+        /// 2.已知type 透過typeof() 取得type
+        /// 3.已知namespace 透過dll取得type
+        /// </summary>
+        [DisplayMethod]
+        public void ReflectionExample()
+        {
+            Action<Caculator> action = (caculator) =>
+            {
+                var stopwatch = new System.Diagnostics.Stopwatch();
+                stopwatch.Start();
+                caculator.Add(10, 10);
+                stopwatch.Stop();
+                Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
+            };
+            var type = typeof(Caculator);
+
+            var caculator1 = Activator.CreateInstance(type) as Caculator;
+            action.Invoke(caculator1);
+
+            dynamic caculator2 = Activator.CreateInstance(type);
+            action.Invoke(caculator2);
+        }
+
+        public class Caculator
+        {
+            public int Add(int i, int j)
+            {
+                return i + j;
+            }
+        }
+
+        [DisplayMethod]
+        public void MoqTest1()
+        {
+            var mock = new Moq.Mock<ICustom>();
+            mock.SetupGet(custom => custom.IsVip).Returns(true);
+            mock.SetupGet(custom => custom.Name).Returns("test");
+            mock.Setup(custom => custom.DoSomething()).Returns("look for ..");
+            var obj = mock.Object;
+            obj.IsVip.ToConsole();
+            obj.Name.ToConsole();
+            obj.DoSomething().ToConsole();
+        }
+
+        public interface ICustom
+        {
+            bool IsVip { get; set; }
+            string Name { get; set; }
+            string DoSomething();
         }
     }
 }

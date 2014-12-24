@@ -6,3 +6,5 @@ D:\code\Practice\C#Practice\ConsoleDisplay.Data\bin\Debug\ConsoleDisplay.Common.
 D:\code\Practice\C#Practice\ConsoleDisplay.Data\obj\Debug\ConsoleDisplay.Data.dll
 D:\code\Practice\C#Practice\ConsoleDisplay.Data\obj\Debug\ConsoleDisplay.Data.pdb
 D:\code\Practice\C#Practice\ConsoleDisplay.Data\obj\Debug\ConsoleDisplay.Data.csprojResolveAssemblyReference.cache
+D:\code\Practice\C#Practice\ConsoleDisplay.Data\bin\Debug\Moq.dll
+D:\code\Practice\C#Practice\ConsoleDisplay.Data\bin\Debug\Moq.xml

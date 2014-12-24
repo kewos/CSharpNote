@@ -2463,5 +2463,105 @@ namespace ConsoleDisplay.Data.Implements
             }
             return temp.Max(t => t.Value);
         }
+
+        [DisplayMethod(@"https://oj.leetcode.com/problems/fraction-to-recurring-decimal/")]
+        public void FractionToRecurringDecimal()
+        {
+            //Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.
+            //If the fractional part is repeating, enclose the repeating part in parentheses.
+            //For example,
+            //Given numerator = 1, denominator = 2, return "0.5".
+            //Given numerator = 2, denominator = 1, return "2".
+            //Given numerator = 2, denominator = 3, return "0.(6)".
+            Console.WriteLine(FractionToRecurringDecimal(1, 2));
+            Console.WriteLine(FractionToRecurringDecimal(2, 1));
+            Console.WriteLine(FractionToRecurringDecimal(2, 3));
+        }
+
+        public string FractionToRecurringDecimal(int numerator, int denominator)
+        {
+            if (numerator == 0)
+            {
+                return "0";
+            }
+
+            var result = new StringBuilder();
+
+            if (numerator < 0 ^ denominator < 0)
+            {
+                result.Append("-");
+            }
+
+            numerator = Math.Abs(numerator);
+            denominator = Math.Abs(denominator);
+
+            result.Append(numerator / denominator);
+            if (numerator % denominator == 0)
+            {
+                return result.ToString();
+            }
+
+            result.Append(".");
+
+            for (var dic = new Dictionary<int, int>(); numerator > 0; numerator %= denominator)
+            {
+                if (dic.ContainsKey(numerator))
+                {
+                    result = result.Insert(dic[numerator], "(");
+                    result.Append(")");
+                    break;
+                }
+                dic.Add(numerator, result.Length);
+                numerator *= 10;
+                result.Append(numerator / denominator);
+            }
+
+            return result.ToString();
+        }
+
+        [DisplayMethod(@"https://oj.leetcode.com/problems/majority-element/")]
+        public void MajorityElement()
+        {
+            //Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+            //You may assume that the array is non-empty and the majority element always exist in the array.
+            var elements = new List<int> { 1, 3, 1, 1, 5, 1, 9, 1, 1, 7, 1 };
+            MajorityElement(elements).ToConsole();
+        }
+
+        public int MajorityElement(List<int> elements)
+        {
+            var dic = new Dictionary<int, int>();
+            elements.ForEach(e =>
+            {
+                if (!dic.ContainsKey(e))
+                {
+                    dic.Add(e, 1);
+                }
+                else
+                {
+                    dic[e]++;
+                }
+            });
+            return dic.Aggregate((a, b) => a.Value > b.Value ? a : b).Key;
+        }
+
+        [DisplayMethod(@"https://oj.leetcode.com/problems/excel-sheet-column-title/")]
+        public void ExcelSheetColumnTitle()
+        {
+            //Given a positive integer, return its corresponding column title as appear in an Excel sheet.
+            ExcelSheetColumnTitle(28).ToConsole();
+        }
+
+        public string ExcelSheetColumnTitle(int number)
+        {
+            var sb = new StringBuilder();
+            while (number > 0) 
+            {
+                sb.Append((char)((number - 1) % 26 + 65));
+                number = (number - 1) / 26;
+            }
+            return sb.ToString();
+        }
+
     }
 }

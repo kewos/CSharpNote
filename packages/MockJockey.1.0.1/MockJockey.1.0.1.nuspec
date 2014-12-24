@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>MockJockey</id>
+    <version>1.0.1</version>
+    <title>MockJockey : Mock Object Framework</title>
+    <authors>thoersch</authors>
+    <owners>thoersch</owners>
+    <projectUrl>http://tylerhoersch.com/mockJockey</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>MockJockey is a framework written in and for Csharp assemblies with the purpose of allowing engineers to unit test their code in a precise, concise, and quick manner. Using mock objects in unit tests, allows your unit tests to be focused by side-stepping any irrelevancies of the test. Commonly thought as a necessity for doing test driven development, a mock framework will give your tests exactly what they need to be--small and fast! And that's what MockJockey provides us.</description>
+    <copyright>2010-2013 Tyler Hoersch</copyright>
+    <tags>MockJockey Mock Objects Framework Mocking Testing</tags>
+  </metadata>
+</package>
