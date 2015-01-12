@@ -66,6 +66,7 @@
     <Compile Include="Implements\DesignPatternDisplay.cs" />
     <Compile Include="Implements\CSharpPracticeDisplay.cs" />
     <Compile Include="Implements\AlgorithmDisplay.cs" />
+    <Compile Include="SubClass\Practice\DeferExcuteCaculator.cs" />
     <Compile Include="SubClass\Practice\RealProxy.cs" />
     <Compile Include="SubClass\Practice\TypeConvert.cs" />
     <Compile Include="SubClass\Practice\YieldPratice.cs" />

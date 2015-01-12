@@ -10,7 +10,7 @@ using System.Xml.Linq;
 using ConsoleDisplay.Common;
 using ConsoleDisplay.Data.SubClass.Practice;
 using System.Net.Sockets;
-
+using System.Linq.Expressions;
 
 namespace ConsoleDisplay.Data.Implements
 {
@@ -573,7 +573,6 @@ namespace ConsoleDisplay.Data.Implements
             }
         }
 
-
         class A
         {
             public string name { get; set; }
@@ -719,8 +718,7 @@ namespace ConsoleDisplay.Data.Implements
             var sw = new System.Diagnostics.Stopwatch();
             sw.Start();
             var testFindAll = numbers.FindAll(number => (number % 2) == 0);
-            sw.Stop();
-            
+            sw.Stop();    
 
             var sw1 = new System.Diagnostics.Stopwatch();
             sw1.Start();
@@ -834,13 +832,17 @@ namespace ConsoleDisplay.Data.Implements
                 Console.WriteLine("Address is accessible");
         }
 
+        /// <summary>
+        /// 透過TcpClient傳入IpAddress Port建立連線
+        /// </summary>
         [DisplayMethod]
         public void TcpPingTest()
         {
             try
             {
-                Int32 port = 8732;
-                TcpClient client = new TcpClient("192.168.11.86", port);
+                Int32 port = 0;
+                string ipAddress = "127.0.0.1";
+                TcpClient client = new TcpClient(ipAddress, port);
                 Byte[] data = System.Text.Encoding.ASCII.GetBytes("test");
 
                 NetworkStream stream = client.GetStream();
@@ -872,6 +874,9 @@ namespace ConsoleDisplay.Data.Implements
             Console.Read();
         }
 
+        /// <summary>
+        /// 效能測試 List And Array
+        /// </summary>
         [DisplayMethod]
         public void PerformanceBetweenListAndArray()
         {
@@ -899,6 +904,9 @@ namespace ConsoleDisplay.Data.Implements
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// 效果測試For and Foreach
+        /// </summary>
         [DisplayMethod]
         public void PerformanceBetweenForAndForeach()
         {
@@ -926,6 +934,9 @@ namespace ConsoleDisplay.Data.Implements
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// 效能測試 Struct and Class
+        /// </summary>
         [DisplayMethod]
         public void PerformanceBetweenStructAndClass()
         {
@@ -933,7 +944,6 @@ namespace ConsoleDisplay.Data.Implements
 
             MyStructure[] objStruct = new MyStructure[MAX];
             MyClass[] objClass = new MyClass[MAX];
-
 
             var sw = new System.Diagnostics.Stopwatch();
             sw.Start();
@@ -967,10 +977,9 @@ namespace ConsoleDisplay.Data.Implements
             public string LastName;
         }
 
-        [DisplayMethod]
+        [DisplayMethod("http://codeblog.jonskeet.uk/category/linq/")]
         public void RunTests()
         {
-            //example from http://codeblog.jonskeet.uk/category/linq/
             int size = 10000000;
             Console.WriteLine("Always true");
             RunTests(size, x => false, true); 
@@ -978,7 +987,7 @@ namespace ConsoleDisplay.Data.Implements
             RunTests(size, x => false && false && false, false); 
         }
 
-        static void RunTests(int size, Func<string, bool> predicate, bool check)
+        private void RunTests(int size, Func<string, bool> predicate, bool check)
         {
             for (int i = 1; i <= 10; i++)
             {
@@ -986,7 +995,7 @@ namespace ConsoleDisplay.Data.Implements
             }
         }
 
-        static void RunTest(int depth, int size, Func<string, bool> predicate, bool check)
+        private void RunTest(int depth, int size, Func<string, bool> predicate, bool check)
         {
             IEnumerable<string> input = Enumerable.Repeat("value", size);
 
@@ -1018,10 +1027,16 @@ namespace ConsoleDisplay.Data.Implements
             result.ForEach(r => Console.WriteLine("{0} favor {1}", r.Item1, r.Item2));
         }
 
+        #region BooleanOperate
+        /// <summary>
+        /// Flag操作
+        /// </summary>
         [DisplayMethod]
         public void EnumFlagOperation()
         {
             Priority all = Priority.None;
+
+            //使用or增加包函選項
             foreach (var p in Enum.GetValues(typeof(Priority)) as Priority[])
             {
                 all |= p;
@@ -1030,6 +1045,7 @@ namespace ConsoleDisplay.Data.Implements
             Console.WriteLine(all.ToString());
             Console.WriteLine(all.HasFlag(Priority.Medium));
 
+            //使用xor去除選項
             foreach (var p in Enum.GetValues(typeof(Priority)) as Priority[])
             {
                 all ^= p;
@@ -1037,6 +1053,46 @@ namespace ConsoleDisplay.Data.Implements
 
             Console.WriteLine(all.ToString());
             Console.WriteLine(all.HasFlag(Priority.Medium));
+        }
+
+        [Flags]
+        //可使用shift來當做value
+        public enum PriorityShift
+        {
+            None = 0,
+            VeryLow = 1 << 0,
+            Low = 1 << 1,
+            Medium = 1 << 2,
+            High = 1 << 3,
+            VeryHigh = 1 << 4
+        }
+
+        //使用16進位來當做value
+        /// <summary>
+        /// 使用16進位來當做value
+        /// 0x0 = 0
+        /// 0x1 = 1 
+        /// 0x2 = 2
+        /// 0x4 = 4
+        /// 0x8 = 8
+        /// 0x10 = 16
+        /// 0x20 = 32
+        /// 0x40 = 64
+        /// 0x80 = 128
+        /// 0x100 = 256
+        /// 0x200 = 512
+        /// 0x400 = 1024
+        /// 0x800 = 2048
+        /// </summary>
+        [Flags]
+        public enum PriorityHexadecimal
+        {
+            None = 0x0,
+            VeryLow = 0x1,
+            Low = 0x2,
+            Medium = 0x4,
+            High = 0x8,
+            VeryHigh = 0x10
         }
 
         [Flags]
@@ -1050,6 +1106,10 @@ namespace ConsoleDisplay.Data.Implements
             VeryHigh = 16
         }
 
+        /// <summary>
+        /// Xor加密
+        /// 解密再針對key做一次xor 操作
+        /// </summary>
         [DisplayMethod]
         public void XorEncryption()
         {
@@ -1070,7 +1130,11 @@ namespace ConsoleDisplay.Data.Implements
             }
             Console.WriteLine(sb2.ToString());
         }
+        #endregion
 
+        /// <summary>
+        /// 動態產生汎形物件
+        /// </summary>
         [DisplayMethod]
         public void DynamicalCreateGeneric()
         {
@@ -1093,6 +1157,9 @@ namespace ConsoleDisplay.Data.Implements
             }
         }
 
+        /// <summary>
+        /// 操作動態物件
+        /// </summary>
         [DisplayMethod]
         public void OperateDynamicObject()
         {
@@ -1121,6 +1188,7 @@ namespace ConsoleDisplay.Data.Implements
         [DisplayMethod]
         public void ProductXml()
         {
+            var address = "";
             var xdoc = new System.Xml.XmlDocument();
             // 建立根節點物件並加入 XmlDocument 中 (第 0 層)
             var rootElement = xdoc.CreateElement("objective");
@@ -1146,7 +1214,7 @@ namespace ConsoleDisplay.Data.Implements
                 eleChild1.Attributes.Append(attChild2);
                 rootElement.AppendChild(eleChild1);
                 // 將建立的 XML 節點儲存為檔案
-                xdoc.Save("C:\\Users\\kewos\\Desktop\\test.xml");
+                xdoc.Save(address);
             }
         }
 
@@ -1209,6 +1277,86 @@ namespace ConsoleDisplay.Data.Implements
             bool IsVip { get; set; }
             string Name { get; set; }
             string DoSomething();
+        }
+
+        [DisplayMethod]
+        public void DeferExcute()
+        {
+            new DeferExcuteCaculator(10).Add(1).Add(1).Add(1).Sub(5).Sub(5).Invoke().ToConsole();
+        }
+
+        
+
+        /// <summary>
+        /// 1.Parameter
+        /// 2.Body
+        /// 3.LamdaExpression
+        /// 4.Compile
+        /// 5.Excute
+        /// </summary>
+        [DisplayMethod]
+        public void ExpressionTree()
+        {   
+            //參數
+            ParameterExpression parameter1 = Expression.Parameter(typeof(int), "x");
+            //主體
+            BinaryExpression multiply = Expression.Multiply(parameter1, parameter1);
+            //LamdaExpression
+            Expression<Func<int, int>> square = Expression.Lambda<Func<int, int>>(
+                multiply, parameter1);
+            //Compile
+            Func<int, int> lambda = square.Compile();
+            //Excute
+            Console.WriteLine(lambda(5));
+
+            Expression<Func<int, int>> square1 = x => x * x;
+            //透過square1取得Expression Body並相加
+            BinaryExpression squareplus2 = Expression.Add(square1.Body,
+                Expression.Constant(3));
+            //LamdaExpression
+            Expression<Func<int, int>> expr = Expression.Lambda<Func<int, int>>(squareplus2,
+                square1.Parameters);
+            //Compile
+            Func<int, int> compile = expr.Compile();
+            //Excute
+            Console.WriteLine(compile(10));
+        }
+
+        [DisplayMethod]
+        public void DynamicFeature()
+        {
+            new DairyItem().Apply();
+        }
+
+        public class AggregateRoot
+        {
+            public void Apply()
+            {
+                dynamic d = this;
+                d.handle();
+            }
+        }
+
+        public class DairyItem : AggregateRoot
+        {
+            public void handle()
+            {
+                "DairyItem handle something".ToConsole();
+            }
+        }
+
+        private const string  SALT = "S9@)#IK9FI09";
+        [DisplayMethod]
+        public void MD5Encryption()
+        {
+            //來源
+            var source = "abcdefg";
+            //產生實體
+            var md5 = System.Security.Cryptography.MD5.Create();
+            //加密
+            var encrypt = md5.ComputeHash(Encoding.Default.GetBytes(source + SALT));
+            //ToString
+            BitConverter.ToString(encrypt).ToConsole();
         }
     }
 }
