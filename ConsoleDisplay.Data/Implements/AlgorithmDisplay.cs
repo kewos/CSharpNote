@@ -2600,7 +2600,7 @@ namespace ConsoleDisplay.Data.Implements
             //Given a list of non negative integers, arrange them such that they form the largest number.
             //For example, given [3, 30, 34, 5, 9], the largest formed number is 9534330.
             //Note: The result may be very large, so you need to return a string instead of an integer.
-            var list = new List<int> { 3, 30, 34, 5, 9, 100};
+            var list = new List<int> {27, 271};
             var comparer = new IntComparer();
             list.Sort(comparer);
             string.Join("", list.ConvertAll<string>(i => i.ToString()).ToArray()).ToConsole();
@@ -2613,14 +2613,26 @@ namespace ConsoleDisplay.Data.Implements
                 var strA = a.ToString();
                 var strB = b.ToString();
                 var minLength = Math.Min(strA.Length, strB.Length);
+                var maxLength = Math.Max(strA.Length, strB.Length);
+                //Compare situation:minLength string literate
                 for (var i = 0; i < minLength; i++)
                 {
                     if (strA[i] > strB[i]) return -1;
                     if (strA[i] < strB[i]) return 1;
                 }
+                var minLengthString = (strA.Length > strB.Length) ? strB : strA;
+                //Compare situation:271:27
+                for (var i = 0; i < minLength && i < (maxLength - minLength); i++)
+                {
+                    if (strA.Length > strB.Length && strA[minLength + i] < strB[i])
+                    return -1;
+                    if (strA.Length < strB.Length && strB[minLength + i] < strA[i])
+                    return 1;
+                }
+                //Compare situation:Length
                 if (strA.Length > strB.Length) return 1;
                 if (strA.Length < strB.Length) return -1;
-
+                
                 return 0;
             }
         } 
