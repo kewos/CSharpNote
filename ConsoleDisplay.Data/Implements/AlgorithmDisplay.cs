@@ -2593,5 +2593,36 @@ namespace ConsoleDisplay.Data.Implements
             }
             return hpList.Max();
         }
+
+        [DisplayMethod(@"https://oj.leetcode.com/problems/largest-number/")]
+        public void LargestNumber()
+        {
+            //Given a list of non negative integers, arrange them such that they form the largest number.
+            //For example, given [3, 30, 34, 5, 9], the largest formed number is 9534330.
+            //Note: The result may be very large, so you need to return a string instead of an integer.
+            var list = new List<int> { 3, 30, 34, 5, 9, 100};
+            var comparer = new IntComparer();
+            list.Sort(comparer);
+            string.Join("", list.ConvertAll<string>(i => i.ToString()).ToArray()).ToConsole();
+        }
+
+        public class IntComparer : IComparer<int>
+        {
+            public int Compare(int a, int b)
+            {
+                var strA = a.ToString();
+                var strB = b.ToString();
+                var minLength = Math.Min(strA.Length, strB.Length);
+                for (var i = 0; i < minLength; i++)
+                {
+                    if (strA[i] > strB[i]) return -1;
+                    if (strA[i] < strB[i]) return 1;
+                }
+                if (strA.Length > strB.Length) return 1;
+                if (strA.Length < strB.Length) return -1;
+
+                return 0;
+            }
+        } 
     }
 }
