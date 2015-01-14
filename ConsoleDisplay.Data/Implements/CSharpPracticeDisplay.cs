@@ -1358,5 +1358,50 @@ namespace ConsoleDisplay.Data.Implements
             //ToString
             BitConverter.ToString(encrypt).ToConsole();
         }
+
+
+        /// <summary>
+        /// HashTableDictionaryPerformanceCompare
+        /// Conclusion:
+        /// Hashtable has less performance than Dictionary because of Boxing and Unboxing.
+        /// </summary>
+        [DisplayMethod]
+        public void HashTableDictionaryPerformanceCompare()
+        {
+            var hashTable = new System.Collections.Hashtable();
+            var dictionary = new Dictionary<int, int>();
+            var excuteTimes = Enumerable.Range(0, 100000);
+            excuteTimes.ForEach(n => 
+            {
+                hashTable.Add(n, n);
+                dictionary.Add(n, n);
+            });
+
+            Action hashTableGetRemoveAction = () =>
+            {
+                excuteTimes.ForEach(n =>
+                    {
+                        if (hashTable.Contains(n))
+                        {
+                            var i = (int)hashTable[n];
+                           // hashTable.Remove(i);
+                        }
+                    });
+            };
+            hashTableGetRemoveAction.CaculateExcuteTime().ToConsole("hashTable:");
+
+            Action dictionaryGetRemoveAction = () =>
+            {
+                excuteTimes.ForEach(n =>
+                {
+                    if (dictionary.ContainsKey(n))
+                    {
+                        int i = dictionary[n];
+                        //dictionary.Remove(i);
+                    }
+                });
+            };
+            dictionaryGetRemoveAction.CaculateExcuteTime().ToConsole("Dictionary:");
+        }
     }
 }
