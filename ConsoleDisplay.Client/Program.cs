@@ -1,5 +1,5 @@
 ﻿using System;
-
+using ConsoleDisplay.Data;
 namespace ConsoleDisplay.Client
 {
     class Program

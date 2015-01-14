@@ -1399,5 +1399,74 @@ namespace ConsoleDisplay.Data.Implements
             };
             dictionaryGetRemoveAction.CaculateExcuteTime().ToConsole("Dictionary:");
         }
+
+        /// <summary>
+        /// 1.Create an Assembly in an Application Domain.AssemblyBuilder will help you in that.
+        /// 2.Create a Module inside the Assembly
+        /// 3.Create a number of Type inside a Module
+        /// 4.Add Properties, Methods, Events etc inside the Type.
+        /// 5.Use ILGenerator to write inside the Properties, Methods etc.
+        /// </summary>
+        [DisplayMethod(@"http://www.codeproject.com/Articles/121568/Dynamic-Type-Using-Reflection-Emit")]
+        public void Emit()
+        {
+            var asmbuilder = GetAssemblyBuilder("MyAssembly");
+            var mbuilder = GetModule(asmbuilder);
+            var tbuilder = GetType(mbuilder, "MyClass");
+            Type[] tparams = { typeof(System.Int32), typeof(System.Int32) };
+            var methodSum = GetMethod(tbuilder, "Sum", typeof(System.Single), tparams);
+
+            //5.Use ILGenerator to write inside the Properties, Methods etc.
+            var generator = methodSum.GetILGenerator();
+            generator.DeclareLocal(typeof(System.Single));
+            generator.Emit(System.Reflection.Emit.OpCodes.Ldarg_1);
+            generator.Emit(System.Reflection.Emit.OpCodes.Ldarg_2);
+            generator.Emit(System.Reflection.Emit.OpCodes.Add_Ovf);
+            generator.Emit(System.Reflection.Emit.OpCodes.Conv_R4);
+            generator.Emit(System.Reflection.Emit.OpCodes.Stloc_0);
+            generator.Emit(System.Reflection.Emit.OpCodes.Ldloc_0);
+            generator.Emit(System.Reflection.Emit.OpCodes.Ret);  
+        }
+        #region emit
+        /// <summary>
+        /// 1.Create an Assembly in an Application Domain.AssemblyBuilder will help you in that.
+        /// </summary>
+        public System.Reflection.Emit.AssemblyBuilder GetAssemblyBuilder(string assembleName)
+        {
+            AssemblyName aname = new AssemblyName(assembleName);
+            AppDomain currentDomain = AppDomain.CurrentDomain; // Thread.GetDomain();
+            return currentDomain.DefineDynamicAssembly(aname, System.Reflection.Emit.AssemblyBuilderAccess.Run);
+        }
+
+        /// <summary>
+        /// 2.Create a Module inside the Assembly
+        /// </summary>
+        public System.Reflection.Emit.ModuleBuilder GetModule(System.Reflection.Emit.AssemblyBuilder asmBuilder)
+        {
+            return asmBuilder.DefineDynamicModule("EmitMethods", "EmitMethods.dll");
+        }
+
+        /// <summary>
+        /// 3.Create a number of Type inside a Module
+        /// </summary>
+        public System.Reflection.Emit.TypeBuilder GetType(System.Reflection.Emit.ModuleBuilder modBuilder, string className)
+        {
+            System.Reflection.Emit.TypeBuilder builder = modBuilder.DefineType(className, TypeAttributes.Public);
+            return builder;
+        }
+
+        /// <summary>
+        /// 4.Add Properties, Methods, Events etc inside the Type.
+        /// </summary>
+        /// <returns></returns>
+        public System.Reflection.Emit.MethodBuilder GetMethod(System.Reflection.Emit.TypeBuilder typBuilder, string methodName,
+                      Type returnType, params Type[] parameterTypes)
+        {
+            var builder = typBuilder.DefineMethod(methodName,
+                              MethodAttributes.Public | MethodAttributes.HideBySig,
+                                     CallingConventions.HasThis, returnType, parameterTypes);
+            return builder;
+        }
+        #endregion emit
     }
 }
