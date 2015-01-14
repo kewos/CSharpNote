@@ -1383,8 +1383,8 @@ namespace ConsoleDisplay.Data.Implements
                     {
                         if (hashTable.Contains(n))
                         {
-                            var i = (int)hashTable[n];
-                           // hashTable.Remove(i);
+                            int i = (int)hashTable[n];
+                            hashTable.Remove(i);
                         }
                     });
             };
@@ -1397,7 +1397,7 @@ namespace ConsoleDisplay.Data.Implements
                     if (dictionary.ContainsKey(n))
                     {
                         int i = dictionary[n];
-                        //dictionary.Remove(i);
+                        dictionary.Remove(i);
                     }
                 });
             };
