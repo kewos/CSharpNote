@@ -1349,13 +1349,9 @@ namespace ConsoleDisplay.Data.Implements
         [DisplayMethod]
         public void MD5Encryption()
         {
-            //來源
             var source = "abcdefg";
-            //產生實體
             var md5 = System.Security.Cryptography.MD5.Create();
-            //加密
             var encrypt = md5.ComputeHash(Encoding.Default.GetBytes(source + SALT));
-            //ToString
             BitConverter.ToString(encrypt).ToConsole();
         }
 
@@ -1370,7 +1366,7 @@ namespace ConsoleDisplay.Data.Implements
         {
             var hashTable = new System.Collections.Hashtable();
             var dictionary = new Dictionary<int, int>();
-            var excuteTimes = Enumerable.Range(0, 100000);
+            var excuteTimes = Enumerable.Range(0, 1000000);
             excuteTimes.ForEach(n => 
             {
                 hashTable.Add(n, n);
