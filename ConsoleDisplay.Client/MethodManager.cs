@@ -5,45 +5,47 @@ using System.Reflection;
 using System.Xml.Linq;
 using ConsoleDisplay.Common;
 using ConsoleDisplay.Data.Implements;
+using ConsoleDisplay.Data.Contracts;
 
 namespace ConsoleDisplay.Client
 {
-    /// <summary>
-    /// 方法管理
-    /// </summary>
-    public class MethodManager
+    public interface IMethodManager
     {
-        private static Lazy<MethodManager> instance = new Lazy<MethodManager>(() => new MethodManager());
-        public static MethodManager Instance { get { return instance.Value; } }
-
-        /// <summary>
-        /// Singleton Pattern
-        /// </summary>
-        private MethodManager() { }
-
         /// <summary>
         /// 呈現方法清單
         /// </summary>
-        /// <param name="project">執行的方案</param>
-        public void Display(AbstractDisplayMethods project)
+        /// <param name="repository">執行的方案</param>
+        void Display(IMethodRepository repository);
+    }
+
+    /// <summary>
+    /// 方法管理
+    /// </summary>
+    public class MethodManager : IMethodManager
+    {
+        private IConsoleDisplayer consoleDisplayer;
+        /// <summary>
+        /// Singleton Pattern
+        /// </summary>
+        public MethodManager(IConsoleDisplayer consoleDisplayer) 
         {
-            var items = project.MethodInfos.Select(method => method.Name);
-            ConsoleDisplayer.Instance.Excute(items, index => Excute(index, project));
+            this.consoleDisplayer = consoleDisplayer;
         }
 
-        /// <summary>
-        /// 執行所選擇的方法
-        /// </summary>
-        /// <param name="index">選擇的方法</param>
-        /// <param name="project">執行的方案</param>
-        private void Excute(int index, AbstractDisplayMethods project)
+        public void Display(IMethodRepository repository)
         {
-            if (index >= project.MethodInfos.Count || index < 0)
+            var items = repository.MethodInfos.Select(method => method.Name);
+            consoleDisplayer.Excute(items, index => Excute(index, repository));
+        }
+
+        private void Excute(int index, IMethodRepository repository)
+        {
+            if (index >= repository.MethodInfos.Count || index < 0)
             {
                 throw new ArgumentException("invalid argument");
             }
 
-            project.MethodInfos[index].Invoke(project, null);
+            repository.MethodInfos[index].Invoke(repository, null);
         }
     }
 }

@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleDisplay.Common;
+using ConsoleDisplay.Data.Contracts;
 
 namespace ConsoleDisplay.Data.Implements
 {
     [DisplayClassAttribue]
-    public class AlgorithmDisplay : AbstractDisplayMethods
+    public class AlgorithmMethodRepository : AbstractMethodRepository, IAlgorithmMethodRepository
     {
         [DisplayMethod]
         public void LargeRepunitFactors()

@@ -46,8 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IDisplayMethods.cs" />
-    <Compile Include="Implements\AbstractDisplayMethods.cs" />
+    <Compile Include="Contracts\IAlgorithmMethodRepository.cs" />
+    <Compile Include="Contracts\ICSharpPracticeMethodRepository.cs" />
+    <Compile Include="Contracts\IDesignPatternMethodRepository.cs" />
+    <Compile Include="Contracts\IMethodRepository.cs" />
+    <Compile Include="Implements\AbstractMethodRepository.cs" />
+    <Compile Include="MethodRepositoryFactory.cs" />
     <Compile Include="SubClass\DesignPattern\AbstractFactoryPattern.cs" />
     <Compile Include="SubClass\DesignPattern\Aop.cs" />
     <Compile Include="SubClass\DesignPattern\AopⅠ.cs" />
@@ -64,8 +68,8 @@
     <Compile Include="SubClass\DesignPattern\StatePattern.cs" />
     <Compile Include="SubClass\DesignPattern\VistorPattern.cs" />
     <Compile Include="Implements\DesignPatternDisplay.cs" />
-    <Compile Include="Implements\CSharpPracticeDisplay.cs" />
-    <Compile Include="Implements\AlgorithmDisplay.cs" />
+    <Compile Include="Implements\CSharpPracticeMethodRepository.cs" />
+    <Compile Include="Implements\AlgorithmMethodRepository.cs" />
     <Compile Include="SubClass\Practice\DeferExcuteCaculator.cs" />
     <Compile Include="SubClass\Practice\RealProxy.cs" />
     <Compile Include="SubClass\Practice\TypeConvert.cs" />

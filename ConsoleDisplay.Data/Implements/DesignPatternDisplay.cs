@@ -9,11 +9,12 @@ using System.Reflection;
 using System.Xml.Linq;
 using ConsoleDisplay.Data.SubClass.DesignPattern;
 using ConsoleDisplay.Common;
+using ConsoleDisplay.Data.Contracts;
 
 namespace ConsoleDisplay.Data.Implements
 {
     [DisplayClassAttribue]
-    public class DesignPatternDisplay : AbstractDisplayMethods
+    public class DesignPatternMethodRepository : AbstractMethodRepository, IDesignPatternMethodRepository
     {
         [DisplayMethod]
         public void CommandPattern()
@@ -36,8 +37,8 @@ namespace ConsoleDisplay.Data.Implements
         public void ObserverPattern()
         {
             ISubject bloger = new Bloger();
-            bloger.Regist(new Man("男生"));
-            bloger.Regist(new Woman("女生"));
+            bloger.Regist(new Man("A"));
+            bloger.Regist(new Woman("B"));
             bloger.NotifyObserver("abc test");
         }
 

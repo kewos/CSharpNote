@@ -11,11 +11,12 @@ using ConsoleDisplay.Common;
 using ConsoleDisplay.Data.SubClass.Practice;
 using System.Net.Sockets;
 using System.Linq.Expressions;
+using ConsoleDisplay.Data.Contracts;
 
 namespace ConsoleDisplay.Data.Implements
 {
     [DisplayClassAttribue]
-    public class CSharpPracticeDisplay : AbstractDisplayMethods
+    public class CSharpPracticeMethodRepository : AbstractMethodRepository, ICSharpPracticeMethodRepository
     {
         
         [DisplayMethod]
@@ -1425,7 +1426,10 @@ namespace ConsoleDisplay.Data.Implements
             generator.Emit(System.Reflection.Emit.OpCodes.Conv_R4);
             generator.Emit(System.Reflection.Emit.OpCodes.Stloc_0);
             generator.Emit(System.Reflection.Emit.OpCodes.Ldloc_0);
-            generator.Emit(System.Reflection.Emit.OpCodes.Ret);  
+            generator.Emit(System.Reflection.Emit.OpCodes.Ret);
+
+            var type = tbuilder.CreateType();
+            var a = type.GetMethod("Sum").Invoke(null, new object[] { 10, 10 });
         }
         #region emit
         /// <summary>

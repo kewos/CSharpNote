@@ -6,24 +6,30 @@ using System.Threading.Tasks;
 
 namespace ConsoleDisplay.Client
 {
-    /// <summary>
-    /// 使用於畫面呈現
-    /// </summary>
-    public class ConsoleDisplayer
+    public interface IConsoleDisplayer
     {
-        private static Lazy<ConsoleDisplayer> instance = new Lazy<ConsoleDisplayer>(() => new ConsoleDisplayer());
-        public static ConsoleDisplayer Instance { get { return instance.Value; } }
-
-        /// <summary>
-        /// Singleton Pattern
-        /// </summary>
-        private ConsoleDisplayer() { }
-
         /// <summary>
         /// 呈現清單並輸入參數
         /// </summary>
         /// <param name="items">物品(方法 Or 類別)</param>
         /// <param name="AfterTypeIndex">輸入參數後執行的動作</param>
+        void Excute(System.Collections.IEnumerable items, Action<int> AfterTypeIndex);
+        /// <summary>
+        /// 呈現畫面
+        /// </summary>
+        /// <param return>輸入的方法參數</param>
+        void ShowOnConsole(System.Collections.IEnumerable items);
+        /// <summary>
+        /// 取得輸入參數
+        /// </summary>
+        /// <param return>輸入的方法參數</param>
+        int GetIndexOfMethod();
+    }
+    /// <summary>
+    /// 使用於畫面呈現
+    /// </summary>
+    public class ConsoleDisplayer : IConsoleDisplayer
+    {
         public void Excute(System.Collections.IEnumerable items, Action<int> AfterTypeIndex)
         {
             while (true)
@@ -47,10 +53,6 @@ namespace ConsoleDisplay.Client
             }
         }
 
-        /// <summary>
-        /// 呈現畫面
-        /// </summary>
-        /// <param return>輸入的方法參數</param>
         public void ShowOnConsole(System.Collections.IEnumerable items)
         {
             items.Dump();
@@ -58,10 +60,6 @@ namespace ConsoleDisplay.Client
             Console.Write("Enter Number:");
         }
 
-        /// <summary>
-        /// 取得輸入參數
-        /// </summary>
-        /// <param return>輸入的方法參數</param>
         public int GetIndexOfMethod()
         {
             return Convert.ToInt32(Console.ReadLine());

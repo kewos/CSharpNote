@@ -5,51 +5,51 @@ using System.Reflection;
 using System.Xml.Linq;
 using ConsoleDisplay.Common;
 using ConsoleDisplay.Data.Implements;
+using ConsoleDisplay.Data.Contracts;
+using ConsoleDisplay.Data;
 
 namespace ConsoleDisplay.Client
 {
-    /// <summary>
-    /// 專案管理
-    /// </summary>
-    public class ProjectManager
+    public interface IProjectManager
     {
-        public List<Type> projects = new List<Type>();
-
-        private static Lazy<ProjectManager> instance = new Lazy<ProjectManager>(() => new ProjectManager());
-        public static ProjectManager Instance { get { return instance.Value; } }
-
-        /// <summary>
-        /// Singleton Pattern
-        /// </summary>
-        private ProjectManager()
-        {
-            projects.Add(typeof(DesignPatternDisplay));
-            projects.Add(typeof(CSharpPracticeDisplay));
-            projects.Add(typeof(AlgorithmDisplay));
-        }
-
         /// <summary>
         /// 呈現專案清單
         /// </summary>
+        void Display();
+    }
+
+    /// <summary>
+    /// 專案管理
+    /// </summary>
+    public class ProjectManager : IProjectManager
+    {
+        private List<Type> MethodRepositories;
+        private IConsoleDisplayer consoleDisplayer;
+        private IMethodManager methodManager;
+
+        public ProjectManager(
+            IMethodRepositoryFactory factory, 
+            IConsoleDisplayer consoleDisplayer, 
+            IMethodManager methodManager)
+        {
+            this.MethodRepositories = factory.MethodRepositoryTypes.Select(n => n.Value).ToList();
+            this.consoleDisplayer = consoleDisplayer;
+            this.methodManager = methodManager;
+        }
+
         public void Display()
         {
-            var items = projects.Select(project => project.Name);
-            ConsoleDisplayer.Instance.Excute(items, index => Excute(index));
+            consoleDisplayer.Excute(MethodRepositories.Select(n => n.Name), index => Excute(index));
         }
 
         /// <summary>
         /// 執行所選擇的專案
         /// </summary>
         /// <param name="index">選擇的專案</param>
-        public void Excute(int index)
+        private void Excute(int index)
         {
-            if (index >= projects.Count || index < 0)
-            {
-                throw new ArgumentException("invalid argument");
-            }
-
-            var project = Activator.CreateInstance(projects[index]) as AbstractDisplayMethods;
-            MethodManager.Instance.Display(project);
+            var project = Activator.CreateInstance(MethodRepositories[index]) as IMethodRepository;
+            methodManager.Display(project);
         }
     }
 }
