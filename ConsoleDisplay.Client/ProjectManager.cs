@@ -23,23 +23,18 @@ namespace ConsoleDisplay.Client
     /// </summary>
     public class ProjectManager : IProjectManager
     {
-        private List<Type> MethodRepositories;
-        private IConsoleDisplayer consoleDisplayer;
+        private List<Type> methodRepositories;
         private IMethodManager methodManager;
 
-        public ProjectManager(
-            IMethodRepositoryFactory factory, 
-            IConsoleDisplayer consoleDisplayer, 
-            IMethodManager methodManager)
+        public ProjectManager(IMethodRepositoryFactory factory, IMethodManager methodManager)
         {
-            this.MethodRepositories = factory.MethodRepositoryTypes.Select(n => n.Value).ToList();
-            this.consoleDisplayer = consoleDisplayer;
+            this.methodRepositories = factory.MethodRepositoryTypes.Select(n => n.Value).ToList();
             this.methodManager = methodManager;
         }
 
         public void Display()
         {
-            consoleDisplayer.Excute(MethodRepositories.Select(n => n.Name), index => Excute(index));
+            methodRepositories.Select(n => n.Name).SelectAndShowOnConsole(index => Excute(index));
         }
 
         /// <summary>
@@ -48,7 +43,7 @@ namespace ConsoleDisplay.Client
         /// <param name="index">選擇的專案</param>
         private void Excute(int index)
         {
-            var project = Activator.CreateInstance(MethodRepositories[index]) as IMethodRepository;
+            var project = Activator.CreateInstance(methodRepositories[index]) as IMethodRepository;
             methodManager.Display(project);
         }
     }

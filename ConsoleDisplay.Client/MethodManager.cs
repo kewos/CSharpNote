@@ -23,19 +23,9 @@ namespace ConsoleDisplay.Client
     /// </summary>
     public class MethodManager : IMethodManager
     {
-        private IConsoleDisplayer consoleDisplayer;
-        /// <summary>
-        /// Singleton Pattern
-        /// </summary>
-        public MethodManager(IConsoleDisplayer consoleDisplayer) 
-        {
-            this.consoleDisplayer = consoleDisplayer;
-        }
-
         public void Display(IMethodRepository repository)
         {
-            var items = repository.MethodInfos.Select(method => method.Name);
-            consoleDisplayer.Excute(items, index => Excute(index, repository));
+            repository.MethodInfos.Select(method => method.Name).SelectAndShowOnConsole(index => Excute(index, repository));
         }
 
         private void Excute(int index, IMethodRepository repository)

@@ -50,5 +50,40 @@ namespace ConsoleDisplay
                 action(element);
             }
         }
+
+        public static void SelectAndShowOnConsole<T>(this IEnumerable<T> items, Action<int> AfterTypeIndex)
+        {
+            while (true)
+            {
+                try
+                {
+                    items.ShowOnConsole<T>();
+                    var input = GetIndexOfMethod();
+                    if (input == -1) break;
+                    AfterTypeIndex(input);
+                    Console.ReadLine();
+                }
+                catch (ArgumentException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("some exception!!");
+                }
+            }
+        }
+
+        private static void ShowOnConsole<T>(this IEnumerable<T> items)
+        {
+            items.Dump();
+            Console.WriteLine("-1.Exit");
+            Console.Write("Enter Number:");
+        }
+
+        private static int GetIndexOfMethod()
+        {
+            return Convert.ToInt32(Console.ReadLine());
+        }
     }
 }
