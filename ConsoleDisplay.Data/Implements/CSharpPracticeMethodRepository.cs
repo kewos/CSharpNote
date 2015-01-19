@@ -1104,7 +1104,8 @@ namespace ConsoleDisplay.Data.Implements
             Low = 2,
             Medium = 4,
             High = 8,
-            VeryHigh = 16
+            VeryHigh = 16,
+            Default = None | VeryLow | Low | Medium
         }
 
         /// <summary>
@@ -1471,6 +1472,6 @@ namespace ConsoleDisplay.Data.Implements
                                      CallingConventions.HasThis, returnType, parameterTypes);
             return builder;
         }
-        #endregion emit
+        #endregion emit 
     }
 }

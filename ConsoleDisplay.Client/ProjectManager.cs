@@ -34,7 +34,10 @@ namespace ConsoleDisplay.Client
 
         public void Display()
         {
-            methodRepositories.Select(n => n.Name).SelectAndShowOnConsole(index => Excute(index));
+            var dontNeedString = "MethodRepository";
+            methodRepositories
+                .Select(n => n.Name.Substring(0, n.Name.Length - dontNeedString.Length))
+                .SelectAndShowOnConsole(index => Excute(index));
         }
 
         /// <summary>

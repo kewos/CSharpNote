@@ -14,7 +14,9 @@ namespace ConsoleDisplay.Client
             container.RegisterType<IMethodRepositoryFactory, MethodRepositoryFactory>();
             container.RegisterType<IProjectManager, ProjectManager>();
             container.RegisterType<IMethodManager, MethodManager>();
-            container.Resolve<IProjectManager>().Display();
+
+            var projectManager = container.Resolve<IProjectManager>();
+            projectManager.Display();
         }
     }
 }

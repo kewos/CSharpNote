@@ -76,6 +76,7 @@ namespace ConsoleDisplay
 
         private static void ShowOnConsole<T>(this IEnumerable<T> items)
         {
+            Console.Clear();
             items.Dump();
             Console.WriteLine("-1.Exit");
             Console.Write("Enter Number:");

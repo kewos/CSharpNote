@@ -48,9 +48,11 @@
   <ItemGroup>
     <Compile Include="Contracts\IAlgorithmMethodRepository.cs" />
     <Compile Include="Contracts\ICSharpPracticeMethodRepository.cs" />
+    <Compile Include="Contracts\IDataStructureMethodRepository.cs" />
     <Compile Include="Contracts\IDesignPatternMethodRepository.cs" />
     <Compile Include="Contracts\IMethodRepository.cs" />
     <Compile Include="Implements\AbstractMethodRepository.cs" />
+    <Compile Include="Implements\DataStructureMethodRepository.cs" />
     <Compile Include="MethodRepositoryFactory.cs" />
     <Compile Include="SubClass\DesignPattern\AbstractFactoryPattern.cs" />
     <Compile Include="SubClass\DesignPattern\Aop.cs" />
@@ -79,6 +81,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SubClass\DataStructure\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
