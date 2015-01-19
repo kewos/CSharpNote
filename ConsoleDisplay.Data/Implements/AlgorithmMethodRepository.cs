@@ -2655,7 +2655,6 @@ namespace ConsoleDisplay.Data.Implements
                         endTime = totalMin;
                         endTask = parameterArray[1];
                     }
-
                     if (firstTime > totalMin)
                     {
                         firstTime = totalMin;
