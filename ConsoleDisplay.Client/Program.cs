@@ -25,18 +25,37 @@ namespace ConsoleDisplay.Client
             ConfigMethodRepository();
         }
 
+        /// <summary>
+        /// 自動註冊有對應的Interface及Type
+        /// </summary>
         private static void ConfigManager()
         {
-            container.RegisterSingle<IProjectManager, ProjectManager>();
-            container.RegisterSingle<IMethodManager, MethodManager>();
+            Assembly.GetExecutingAssembly().GetTypes()
+                .Where(@type => @type.IsClass
+                    && !@type.IsAbstract
+                    && !@type.IsInterface)
+                .ForEach(@type =>
+                    {
+                        var interfaceType = @type.GetInterfaces()
+                            .Where(@interface =>
+                                @interface.Name.Substring(1, @interface.Name.Length - 1) == @type.Name)
+                            .FirstOrDefault();
+                        if (interfaceType != null)
+                        {
+                            container.RegisterSingle(interfaceType, @type);
+                        }
+                    });
         }
 
+        /// <summary>
+        /// RegistAll class of inherit IMethodRepository
+        /// </summary>
         private static void ConfigMethodRepository()
         {
             container.RegisterAll<IMethodRepository>(
                 AppDomain.CurrentDomain
                 .GetAssemblies()
-                .SingleOrDefault(assembly => assembly.GetName().Name == "ConsoleDisplay.Data")
+                .FirstOrDefault(assembly => assembly.GetName().Name == "ConsoleDisplay.Data")
                 .GetTypes()
                 .Where(@type => @type.IsClass
                     && !@type.IsAbstract

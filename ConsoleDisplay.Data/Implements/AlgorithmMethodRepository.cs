@@ -852,15 +852,10 @@ namespace ConsoleDisplay.Data.Implements
 
         public void IsNumberic(string validationString)
         {
-            //一般整數開頭不為0
             var integerRegex1 = @"^[0]$";
-            //一般整數開頭不為0
             var integerRegex = @"^[-]??[1-9]{1}[0-9]+$";
-            //一般浮點結尾不為0
             var floatRegex = @"^[-]??[0-9]+[.]{1}[0-9]+$";
-            //一般浮點結尾不為0 開頭0
             var floatRegex1 = @"^[-]??[0-9]{1}[.]{1}[0-9]+$";
-            //
             var scientificNotation = @"^[-]??[1-9]{1}[0-9]{0,}[e]{1}$";
 
             List<string> regexList = new List<string>

@@ -1473,5 +1473,20 @@ namespace ConsoleDisplay.Data.Implements
             return builder;
         }
         #endregion emit 
+
+        /// <summary>
+        /// Conclusion
+        /// 
+        /// </summary>
+        [DisplayMethod]
+        public void SingleOrDefaultFirstOrDefaultPerformance()
+        {
+            var items = Enumerable.Range(1, 1000);
+            Action FirstOrDefaultPerformance = () => items.Select(n => items.FirstOrDefault(m => n == m)).ToList();
+            Action SingleOrDefaultPerformance = () => items.Select(n => items.SingleOrDefault(m => n == m)).ToList();
+
+            FirstOrDefaultPerformance.CaculateExcuteTime().ToConsole("FirstOrDefaultPerformance:");
+            SingleOrDefaultPerformance.CaculateExcuteTime().ToConsole("SingleOrDefaultPerformance:");
+        }
     }
 }
