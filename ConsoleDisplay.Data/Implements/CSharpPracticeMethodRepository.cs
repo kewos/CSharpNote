@@ -1476,7 +1476,8 @@ namespace ConsoleDisplay.Data.Implements
 
         /// <summary>
         /// Conclusion
-        /// 
+        /// FirstOrDefaule scan until fine first item
+        /// SingleOrDefaultPerformance scan all item if result greater than 2 thow exception
         /// </summary>
         [DisplayMethod]
         public void SingleOrDefaultFirstOrDefaultPerformance()
@@ -1487,6 +1488,10 @@ namespace ConsoleDisplay.Data.Implements
 
             FirstOrDefaultPerformance.CaculateExcuteTime().ToConsole("FirstOrDefaultPerformance:");
             SingleOrDefaultPerformance.CaculateExcuteTime().ToConsole("SingleOrDefaultPerformance:");
+
+            Action SingleOrDefaultThrowException = () => items.Select(n => items.SingleOrDefault(m => n % 2 == 0)).ToList();
+            SingleOrDefaultThrowException.ExcauteAndCatchException().ToConsole("ExceptionMessage:");
+
         }
     }
 }

@@ -12,14 +12,5 @@ namespace ConsoleDisplay
         {
             Console.WriteLine("{1}{0}{2}", obj, prefix, suffix);
         }
-
-        public static int CaculateExcuteTime(this Action action)
-        {
-            var sw = new System.Diagnostics.Stopwatch();
-            sw.Start();
-            if (action != null) action();
-            sw.Stop();
-            return sw.Elapsed.Milliseconds;
-        }
     }
 }

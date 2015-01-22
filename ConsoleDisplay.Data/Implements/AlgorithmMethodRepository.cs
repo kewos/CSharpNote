@@ -889,17 +889,16 @@ namespace ConsoleDisplay.Data.Implements
             {
                 for (int j = i + 1; j < elements.Count; j++)
                 {
-                    if (elements[j] >= elements[i])
+                    if (elements[j] < elements[i]) continue;
+                    if (!(Intervals.Any(interval => interval[0] <= i 
+                        && interval[1] >= j))
+                        && j - i > 1)
                     {
-                        if (!(Intervals.Any(interval => interval[0] <= i && interval[1] >= j))
-                            && j - i > 1)
-                        {
-                            Intervals.Add(new List<int> { i, j });
-                            var min = Math.Min(elements[i], elements[j]);
-                            sum += Enumerable.Range(i + 1, j - i - 1).Sum(index => min - elements[index]);
-                        }
-                        break;
+                        Intervals.Add(new List<int> { i, j });
+                        var min = Math.Min(elements[i], elements[j]);
+                        sum += Enumerable.Range(i + 1, j - i - 1).Sum(index => min - elements[index]);
                     }
+                    break;
                 }
             }
 
