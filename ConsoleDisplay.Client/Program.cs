@@ -21,14 +21,14 @@ namespace ConsoleDisplay.Client
 
         private static void Config()
         {
-            ConfigManager();
-            ConfigMethodRepository();
+            RegisterMappingType();
+            RegistAssemblyAllInterface<IMethodRepository>("ConsoleDisplay.Data");
         }
 
         /// <summary>
-        /// 自動註冊有對應的Interface及Type
+        /// Auto Register Mapping Interface and Type
         /// </summary>
-        private static void ConfigManager()
+        private static void RegisterMappingType()
         {
             Assembly.GetExecutingAssembly().GetTypes()
                 .Where(@type => @type.IsClass
@@ -37,9 +37,8 @@ namespace ConsoleDisplay.Client
                 .ForEach(@type =>
                     {
                         var interfaceType = @type.GetInterfaces()
-                            .Where(@interface =>
-                                @interface.Name.Substring(1, @interface.Name.Length - 1) == @type.Name)
-                            .FirstOrDefault();
+                            .FirstOrDefault(@interface => 
+                                @interface.Name.Substring(1, @interface.Name.Length - 1) == @type.Name);
                         if (interfaceType != null)
                         {
                             container.RegisterSingle(interfaceType, @type);
@@ -50,18 +49,18 @@ namespace ConsoleDisplay.Client
         /// <summary>
         /// RegistAll class of inherit IMethodRepository
         /// </summary>
-        private static void ConfigMethodRepository()
+        private static void RegistAssemblyAllInterface<TInterface>(string assembleName)
         {
-            container.RegisterAll<IMethodRepository>(
+            container.RegisterAll<TInterface>(
                 AppDomain.CurrentDomain
                 .GetAssemblies()
-                .FirstOrDefault(assembly => assembly.GetName().Name == "ConsoleDisplay.Data")
+                .FirstOrDefault(assembly => assembly.GetName().Name == assembleName)
                 .GetTypes()
                 .Where(@type => @type.IsClass
                     && !@type.IsAbstract
                     && !@type.IsInterface
                     && @type.GetInterfaces()
-                        .Any(@interface => @interface == typeof(IMethodRepository)))
+                        .Any(@interface => @interface == typeof(TInterface)))
             );
         }
     }

@@ -43,6 +43,7 @@
     <Compile Include="Attributes\DisplayClassAttribue.cs" />
     <Compile Include="Attributes\DisplayMethodAttribute.cs" />
     <Compile Include="Extendsions\ActionExtensions.cs" />
+    <Compile Include="Extendsions\FuncExtensions.cs" />
     <Compile Include="Extendsions\ObjectExtensions.cs" />
     <Compile Include="Extendsions\EnumerableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

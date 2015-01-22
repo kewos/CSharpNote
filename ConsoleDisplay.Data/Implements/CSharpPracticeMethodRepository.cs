@@ -1493,5 +1493,21 @@ namespace ConsoleDisplay.Data.Implements
             SingleOrDefaultThrowException.ExcauteAndCatchException().ToConsole("ExceptionMessage:");
 
         }
+
+        [DisplayMethod]
+        public void CSharpImplementFunctionProgram()
+        {
+            Func<int, int> SubtractOne = x => x - 1;
+            SubtractOne.Curry()(1).ToConsole();
+
+            Func<int, int, int> Mutiple = (x, y) => x * y;
+            Mutiple.Curry()(8)(8).ToConsole();
+
+            Func<int, int, int, int> SubtractFisrt = (x, y, z) => x - y - z;
+            SubtractFisrt.Curry()(8)(5)(2).ToConsole();
+
+            Func<int, int, int, int, int> Add = (w, x, y, z) => w + x + y + z;
+            Add.Curry()(1)(2)(3)(4).ToConsole();
+        }
     }
 }
