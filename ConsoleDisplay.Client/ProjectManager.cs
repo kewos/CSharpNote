@@ -7,28 +7,21 @@ using ConsoleDisplay.Common;
 using ConsoleDisplay.Data.Implements;
 using ConsoleDisplay.Data.Contracts;
 using ConsoleDisplay.Data;
+using ConsoleDisplay.Client.Contrasts;
 
 namespace ConsoleDisplay.Client
 {
-    public interface IProjectManager
-    {
-        /// <summary>
-        /// 呈現專案清單
-        /// </summary>
-        void Display();
-    }
-
     /// <summary>
     /// 專案管理
     /// </summary>
     public class ProjectManager : IProjectManager
     {
-        private List<Type> methodRepositories;
-        private IMethodManager methodManager;
+        private readonly IEnumerable<IMethodRepository> methodRepositories;
+        private readonly IMethodManager methodManager;
 
-        public ProjectManager(IMethodRepositoryFactory factory, IMethodManager methodManager)
+        public ProjectManager(IEnumerable<IMethodRepository> repositorys, IMethodManager methodManager)
         {
-            this.methodRepositories = factory.MethodRepositoryTypes.Select(n => n.Value).ToList();
+            this.methodRepositories = repositorys;
             this.methodManager = methodManager;
         }
 
@@ -36,7 +29,7 @@ namespace ConsoleDisplay.Client
         {
             var dontNeedString = "MethodRepository";
             methodRepositories
-                .Select(n => n.Name.Substring(0, n.Name.Length - dontNeedString.Length))
+                .Select(n => n.GetType().Name.Substring(0, n.GetType().Name.Length - dontNeedString.Length))
                 .SelectAndShowOnConsole(index => Excute(index));
         }
 
@@ -46,8 +39,7 @@ namespace ConsoleDisplay.Client
         /// <param name="index">選擇的專案</param>
         private void Excute(int index)
         {
-            var project = Activator.CreateInstance(methodRepositories[index]) as IMethodRepository;
-            methodManager.Display(project);
+            methodManager.Display(methodRepositories.Skip(index).FirstOrDefault());
         }
     }
 }
