@@ -4,8 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
 using ConsoleDisplay.Common;
-using ConsoleDisplay.Data.Implements;
-using ConsoleDisplay.Data.Contracts;
+using ConsoleDisplay.Core.Contracts;
 using ConsoleDisplay.Client.Contrasts;
 
 namespace ConsoleDisplay.Client
@@ -26,7 +25,6 @@ namespace ConsoleDisplay.Client
             {
                 throw new ArgumentException("invalid argument");
             }
-
             repository.MethodInfos[index].Invoke(repository, null);
         }
     }

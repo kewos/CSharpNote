@@ -30,8 +30,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ConsoleDisplay.Common">
-      <HintPath>..\ConsoleDisplay.Common\bin\Debug\ConsoleDisplay.Common.dll</HintPath>
+    <Reference Include="ConsoleDisplay.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ConsoleDisplay.Core\bin\Debug\ConsoleDisplay.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleDisplay.Core">
+      <HintPath>..\ConsoleDisplay.Core\bin\Debug\ConsoleDisplay.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleDisplay.Data.AlgorithmMethod">
+      <HintPath>..\ConsoleDisplay.Data.AlgorithmMethod\bin\Debug\ConsoleDisplay.Data.AlgorithmMethod.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleDisplay.Data.CSharpPracticeMethod">
+      <HintPath>..\ConsoleDisplay.Data.CSharpPracticeMethod\bin\Debug\ConsoleDisplay.Data.CSharpPracticeMethod.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleDisplay.Data.DesignPattern">
+      <HintPath>..\ConsoleDisplay.Data.DesignPattern\bin\Debug\ConsoleDisplay.Data.DesignPattern.dll</HintPath>
     </Reference>
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
@@ -51,39 +64,14 @@
     <Compile Include="Contracts\IDataStructureMethodRepository.cs" />
     <Compile Include="Contracts\IDesignPatternMethodRepository.cs" />
     <Compile Include="Contracts\IMethodRepository.cs" />
-    <Compile Include="Implements\AbstractMethodRepository.cs" />
-    <Compile Include="Implements\DataStructureMethodRepository.cs" />
-    <Compile Include="SubClass\DesignPattern\AbstractFactoryPattern.cs" />
-    <Compile Include="SubClass\DesignPattern\Aop.cs" />
-    <Compile Include="SubClass\DesignPattern\AopⅠ.cs" />
-    <Compile Include="SubClass\DesignPattern\BridgePattern.cs" />
-    <Compile Include="SubClass\DesignPattern\ChainResponsibilityPattern.cs" />
-    <Compile Include="SubClass\DesignPattern\CommandPattern.cs" />
-    <Compile Include="SubClass\DesignPattern\CompositePattern.cs" />
-    <Compile Include="SubClass\DesignPattern\GenericSingleton.cs" />
-    <Compile Include="SubClass\DesignPattern\NullObjectPattern.cs" />
-    <Compile Include="SubClass\DesignPattern\ObserverPattern.cs" />
-    <Compile Include="SubClass\DesignPattern\PipelinePattern.cs" />
-    <Compile Include="SubClass\DesignPattern\PrototypePattern.cs" />
-    <Compile Include="SubClass\DesignPattern\SpecificationPattern.cs" />
-    <Compile Include="SubClass\DesignPattern\StatePattern.cs" />
-    <Compile Include="SubClass\DesignPattern\VistorPattern.cs" />
-    <Compile Include="Implements\DesignPatternDisplay.cs" />
-    <Compile Include="Implements\CSharpPracticeMethodRepository.cs" />
-    <Compile Include="Implements\AlgorithmMethodRepository.cs" />
-    <Compile Include="SubClass\Practice\DeferExcuteCaculator.cs" />
-    <Compile Include="SubClass\Practice\RealProxy.cs" />
-    <Compile Include="SubClass\Practice\TypeConvert.cs" />
-    <Compile Include="SubClass\Practice\YieldPratice.cs" />
+    <Compile Include="MethodTypeFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SubClass\DataStructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

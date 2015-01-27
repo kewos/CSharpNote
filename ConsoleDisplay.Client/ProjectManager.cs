@@ -4,8 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
 using ConsoleDisplay.Common;
-using ConsoleDisplay.Data.Implements;
-using ConsoleDisplay.Data.Contracts;
+using ConsoleDisplay.Core.Contracts;
 using ConsoleDisplay.Data;
 using ConsoleDisplay.Client.Contrasts;
 

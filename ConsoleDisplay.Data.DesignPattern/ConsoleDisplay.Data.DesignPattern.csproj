@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E45A6477-A8C9-4970-AAB9-0C803A5CB1BD}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{F1F18CE0-E4D3-4A47-9AA4-05F79E768281}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleDisplay.Client</RootNamespace>
-    <AssemblyName>ConsoleDisplay.Client</AssemblyName>
+    <RootNamespace>ConsoleDisplay.Data.DesignPattern</RootNamespace>
+    <AssemblyName>ConsoleDisplay.Data.DesignPattern</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -29,34 +29,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ConsoleDisplay.Common">
-      <HintPath>..\ConsoleDisplay.Data\bin\Debug\ConsoleDisplay.Common.dll</HintPath>
+      <HintPath>..\ConsoleDisplay.Core\bin\Debug\ConsoleDisplay.Common.dll</HintPath>
     </Reference>
-    <Reference Include="ConsoleDisplay.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="ConsoleDisplay.Core">
       <HintPath>..\ConsoleDisplay.Core\bin\Debug\ConsoleDisplay.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsoleDisplay.Data.AlgorithmMethod">
-      <HintPath>..\ConsoleDisplay.Data.AlgorithmMethod\bin\Debug\ConsoleDisplay.Data.AlgorithmMethod.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsoleDisplay.Data.CSharpPracticeMethod">
-      <HintPath>..\ConsoleDisplay.Data.CSharpPracticeMethod\bin\Debug\ConsoleDisplay.Data.CSharpPracticeMethod.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsoleDisplay.Data.DesignPattern">
-      <HintPath>..\ConsoleDisplay.Data.DesignPattern\bin\Debug\ConsoleDisplay.Data.DesignPattern.dll</HintPath>
-    </Reference>
-    <Reference Include="ConsoleDisplay.Data.DesignPatternMethod">
-      <HintPath>..\ConsoleDisplay.Data.DesignPatternMethod\bin\Debug\ConsoleDisplay.Data.DesignPatternMethod.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleInjector">
-      <HintPath>..\packages\SimpleInjector.2.7.0\lib\net45\SimpleInjector.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleInjector.Diagnostics">
-      <HintPath>..\packages\SimpleInjector.2.7.0\lib\net45\SimpleInjector.Diagnostics.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -67,15 +45,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contrasts\IProjectManager.cs" />
-    <Compile Include="Contrasts\IMethodManager.cs" />
-    <Compile Include="MethodManager.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="ProjectManager.cs" />
+    <Compile Include="DesignPatternDisplay.cs" />
+    <Compile Include="SubClass\AbstractFactoryPattern.cs" />
+    <Compile Include="SubClass\Aop.cs" />
+    <Compile Include="SubClass\AopⅠ.cs" />
+    <Compile Include="SubClass\BridgePattern.cs" />
+    <Compile Include="SubClass\ChainResponsibilityPattern.cs" />
+    <Compile Include="SubClass\CommandPattern.cs" />
+    <Compile Include="SubClass\CompositePattern.cs" />
+    <Compile Include="SubClass\GenericSingleton.cs" />
+    <Compile Include="SubClass\NullObjectPattern.cs" />
+    <Compile Include="SubClass\ObserverPattern.cs" />
+    <Compile Include="SubClass\PipelinePattern.cs" />
+    <Compile Include="SubClass\PrototypePattern.cs" />
+    <Compile Include="SubClass\SpecificationPattern.cs" />
+    <Compile Include="SubClass\StatePattern.cs" />
+    <Compile Include="SubClass\VistorPattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
