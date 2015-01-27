@@ -1,5 +1,0 @@
-D:\code\Practice\C#Practice\ConsoleDisplay.Common\bin\Debug\ConsoleDisplay.Common.dll
-D:\code\Practice\C#Practice\ConsoleDisplay.Common\bin\Debug\ConsoleDisplay.Common.pdb
-D:\code\Practice\C#Practice\ConsoleDisplay.Common\obj\Debug\ConsoleDisplay.Common.dll
-D:\code\Practice\C#Practice\ConsoleDisplay.Common\obj\Debug\ConsoleDisplay.Common.pdb
-D:\code\Practice\C#Practice\ConsoleDisplay.Common\obj\Debug\ConsoleDisplay.Common.csprojResolveAssemblyReference.cache
