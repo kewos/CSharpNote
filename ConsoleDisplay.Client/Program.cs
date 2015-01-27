@@ -9,7 +9,7 @@ using ConsoleDisplay.Core.Contracts;
 using ConsoleDisplay.Client.Contrasts;
 using ConsoleDisplay.Data.AlgorithmMethod;
 using ConsoleDisplay.Data.CSharpPracticeMethod;
-using ConsoleDisplay.Data.DesignPattern;
+using ConsoleDisplay.Data.DesignPatternMethod;
 
 namespace ConsoleDisplay.Client
 {
