@@ -33,7 +33,8 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ConsoleDisplay.Common">
+    <Reference Include="ConsoleDisplay.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ConsoleDisplay.Core\bin\Debug\ConsoleDisplay.Common.dll</HintPath>
     </Reference>
     <Reference Include="ConsoleDisplay.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
