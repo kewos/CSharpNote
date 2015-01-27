@@ -16,7 +16,7 @@ using ConsoleDisplay.Data.CSharpPracticeMethod.SubClass;
 namespace ConsoleDisplay.Data.CSharpPracticeMethod
 {
     [DisplayClassAttribue]
-    public class CSharpPracticeMethodRepository : AbstractMethodRepository, ICSharpPracticeMethodRepository
+    public class CSharpPracticeMethodRepository : AbstractMethodRepository
     {
         
         [DisplayMethod]

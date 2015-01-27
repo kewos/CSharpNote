@@ -15,7 +15,7 @@ using ConsoleDisplay.Core.Implements;
 namespace ConsoleDisplay.Data.DesignPatternMethod
 {
     [DisplayClassAttribue]
-    public class DesignPatternMethodRepository : AbstractMethodRepository, IDesignPatternMethodRepository
+    public class DesignPatternMethodRepository : AbstractMethodRepository
     {
         [DisplayMethod]
         public void CommandPattern()

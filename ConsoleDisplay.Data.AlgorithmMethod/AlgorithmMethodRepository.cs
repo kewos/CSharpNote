@@ -10,7 +10,7 @@ using ConsoleDisplay.Core.Implements;
 namespace ConsoleDisplay.Data.AlgorithmMethod
 {
     [DisplayClassAttribue]
-    public class AlgorithmMethodRepository : AbstractMethodRepository, IAlgorithmMethodRepository
+    public class AlgorithmMethodRepository : AbstractMethodRepository
     {
         [DisplayMethod]
         public void LargeRepunitFactors()
