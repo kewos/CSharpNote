@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.Remoting.Contexts;
 using System.Runtime.Remoting.Messaging;
 
-namespace ConsoleDisplay.Data.DesignPattern.SubClass
+namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
 {
     [MyInterceptor]
         public class TestAop : ContextBoundObject

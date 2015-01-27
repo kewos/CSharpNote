@@ -40,11 +40,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ConsoleDisplay.Core\bin\Debug\ConsoleDisplay.Core.dll</HintPath>
     </Reference>
+    <Reference Include="ConsoleDisplay.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ConsoleDisplay.Data\bin\Debug\ConsoleDisplay.Data.dll</HintPath>
+    </Reference>
     <Reference Include="ConsoleDisplay.Data.AlgorithmMethod">
       <HintPath>..\ConsoleDisplay.Data.AlgorithmMethod\bin\Debug\ConsoleDisplay.Data.AlgorithmMethod.dll</HintPath>
     </Reference>
     <Reference Include="ConsoleDisplay.Data.CSharpPracticeMethod">
       <HintPath>..\ConsoleDisplay.Data.CSharpPracticeMethod\bin\Debug\ConsoleDisplay.Data.CSharpPracticeMethod.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleDisplay.Data.DataStructureMethod">
+      <HintPath>..\ConsoleDisplay.Data.DataStructureMethod\bin\Debug\ConsoleDisplay.Data.DataStructureMethod.dll</HintPath>
     </Reference>
     <Reference Include="ConsoleDisplay.Data.DesignPattern">
       <HintPath>..\ConsoleDisplay.Data.DesignPattern\bin\Debug\ConsoleDisplay.Data.DesignPattern.dll</HintPath>

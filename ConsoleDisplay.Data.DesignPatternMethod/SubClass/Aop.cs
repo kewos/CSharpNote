@@ -7,7 +7,7 @@ using System.Runtime.Remoting.Proxies;
 using System.Runtime.Remoting.Messaging;
 using System.Reflection;
 
-namespace ConsoleDisplay.Data.DesignPattern.SubClass
+namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
 {
     interface IActor
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 
-namespace ConsoleDisplay.Data.DesignPattern.SubClass
+namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
 {
     class BusinessObject
     {

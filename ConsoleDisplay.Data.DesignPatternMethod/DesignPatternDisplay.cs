@@ -7,12 +7,12 @@ using System.CodeDom.Compiler;
 using Microsoft.CSharp;
 using System.Reflection;
 using System.Xml.Linq;
-using ConsoleDisplay.Data.DesignPattern.SubClass;
+using ConsoleDisplay.Data.DesignPatternMethod.SubClass;
 using ConsoleDisplay.Common;
 using ConsoleDisplay.Core.Contracts;
 using ConsoleDisplay.Core.Implements;
 
-namespace ConsoleDisplay.Data.DesignPattern
+namespace ConsoleDisplay.Data.DesignPatternMethod
 {
     [DisplayClassAttribue]
     public class DesignPatternMethodRepository : AbstractMethodRepository, IDesignPatternMethodRepository

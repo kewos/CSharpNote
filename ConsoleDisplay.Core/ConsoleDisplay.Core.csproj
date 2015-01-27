@@ -42,10 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IAlgorithmMethodRepository.cs" />
-    <Compile Include="Contracts\ICSharpPracticeMethodRepository.cs" />
-    <Compile Include="Contracts\IDataStructureMethodRepository.cs" />
-    <Compile Include="Contracts\IDesignPatternMethodRepository.cs" />
     <Compile Include="Contracts\IMethodRepository.cs" />
     <Compile Include="Implements\AbstractMethodRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

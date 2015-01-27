@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleDisplay.Data.DesignPattern.SubClass
+namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
 {
     public abstract class AbstractFactoryPattern
     {

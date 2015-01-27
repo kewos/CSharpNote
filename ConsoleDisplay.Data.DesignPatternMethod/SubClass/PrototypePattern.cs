@@ -5,7 +5,7 @@ using System.Text;
 using System.Collections;
 using System.Threading.Tasks;
 
-namespace ConsoleDisplay.Data.DesignPattern.SubClass
+namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
 {
     // "Prototype"
     abstract class ColorPrototype
