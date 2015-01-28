@@ -8,27 +8,27 @@ namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
 {
     abstract class Visitor
     {
-        public abstract void VisitCoffee(Coffee c);
-        public abstract void VisitMeat(Meat m);
-        public abstract void VisitVegetable(Vegetable v);
+        public abstract void VisitCoffee(Coffee coffee);
+        public abstract void VisitMeat(Meat meet);
+        public abstract void VisitVegetable(Vegetable vegetable);
     }
 
     class ZhangSan : Visitor
     {
-        public override void VisitCoffee(Coffee c)
+        public override void VisitCoffee(Coffee coffee)
         {
-            Console.Write( "{0}: Take a cup of {1}, ",this, c);
-            c.AddMilk();
-            c.AddSugar();
+            Console.Write( "{0}: Take a cup of {1}, ",this, coffee);
+            coffee.AddMilk();
+            coffee.AddSugar();
             Console.WriteLine();
         }
 
-        public override void VisitVegetable(Vegetable v)
+        public override void VisitVegetable(Vegetable vegetable)
         {
-            Console.WriteLine( "{0}: Take some {1}", this, v );
+            Console.WriteLine("{0}: Take some {1}", this, vegetable);
         }
 
-        public override void VisitMeat(Meat m)
+        public override void VisitMeat(Meat meat)
         {
             Console.WriteLine( "I don't want any meat!");
         }
@@ -36,61 +36,61 @@ namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
 
     class LiSi : Visitor
     {
-        public override void VisitCoffee(Coffee c)
+        public override void VisitCoffee(Coffee coffee)
         {
-            Console.Write( "{0}: Take a cup of {1}, ",this, c);
-            c.AddSugar();
+            Console.Write("{0}: Take a cup of {1}, ", this, coffee);
+            coffee.AddSugar();
             Console.WriteLine();
         }
 
-        public override void VisitVegetable(Vegetable v)
+        public override void VisitVegetable(Vegetable vegetable)
         {
-            Console.WriteLine( "{0}: Take some {1}", this, v );
+            Console.WriteLine("{0}: Take some {1}", this, vegetable);
         }
 
-        public override void VisitMeat(Meat m)
+        public override void VisitMeat(Meat meat)
         {
-            Console.WriteLine( "{0}: Take some {1}", this, m );
+            Console.WriteLine("{0}: Take some {1}", this, meat);
         }
     }
 
     abstract class Food
     { 
-        abstract public void Accept( Visitor visitor );
+        abstract public void Accept(Visitor visitor);
     }
 
     class Coffee: Food  
     {
-        override public void Accept( Visitor visitor )
+        override public void Accept(Visitor visitor)
         {
-          visitor.VisitCoffee( this );
+          visitor.VisitCoffee(this);
         }
 
         public void AddSugar()
         {
-           Console.Write("add sugar. ");   
+           Console.Write("add sugar.");   
         }
 
         public void AddMilk()
         {
-           Console.Write("add milk. ");   
+           Console.Write("add milk.");   
         }
     }
 
     class Meat: Food  
     {
-          override public void Accept( Visitor visitor )
+          override public void Accept(Visitor visitor)
           {
-            visitor.VisitMeat( this );
+            visitor.VisitMeat(this);
           }
     }
 
     class Vegetable: Food  
     {
 
-          override public void Accept( Visitor visitor )
+          override public void Accept(Visitor visitor)
           {
-            visitor.VisitVegetable( this );
+            visitor.VisitVegetable(this);
           }
     }
 

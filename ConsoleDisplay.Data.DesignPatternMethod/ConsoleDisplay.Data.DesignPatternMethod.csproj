@@ -62,6 +62,11 @@
     <Compile Include="SubClass\ObserverPattern.cs" />
     <Compile Include="SubClass\PipelinePattern.cs" />
     <Compile Include="SubClass\PrototypePattern.cs" />
+    <Compile Include="SubClass\RepositoryPattern\CachePersonRepository.cs" />
+    <Compile Include="SubClass\RepositoryPattern\PersonRepository.cs" />
+    <Compile Include="SubClass\RepositoryPattern\FakeDbContext.cs" />
+    <Compile Include="SubClass\RepositoryPattern\Person.cs" />
+    <Compile Include="SubClass\RepositoryPattern\IPersonRepository.cs" />
     <Compile Include="SubClass\SpecificationPattern.cs" />
     <Compile Include="SubClass\StatePattern.cs" />
     <Compile Include="SubClass\VistorPattern.cs" />
