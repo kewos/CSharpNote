@@ -2558,21 +2558,21 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             return sb.ToString();
         }
 
-        [DisplayMethod(@"")]
-        public void savep()
+        [DisplayMethod(@"https://oj.leetcode.com/problems/dungeon-game/")]
+        public void DungeonGame()
         {
             Random rm = new Random();
             var maxNum = 3;
             var dungeon =
                 Enumerable.Repeat(0, maxNum).Select(n =>
-                Enumerable.Repeat(0, maxNum).Select(m =>
-                    rm.Next(-10, 3)).ToList())
+                    Enumerable.Repeat(0, maxNum).Select(m =>
+                        rm.Next(-10, 3)).ToList())
                 .ToList();
-            var result = savep(dungeon);
+            var result = DungeonGame(dungeon);
             ((result >= 0) ? 1 : Math.Abs(result) + 1).ToConsole();
         }
 
-        public int savep(List<List<int>> dungeon, int x = 0, int y = 0, int maxHp = 0)
+        public int DungeonGame(List<List<int>> dungeon, int x = 0, int y = 0, int maxHp = 0)
         {
             var currentHp = dungeon[x][y] + maxHp;
             var hpList = new List<int>();
@@ -2580,11 +2580,11 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
                 return maxHp;
             if (x + 1 < dungeon.Count)
             {
-                hpList.Add(Math.Max(savep(dungeon, x + 1, y, currentHp), currentHp));
+                hpList.Add(Math.Max(DungeonGame(dungeon, x + 1, y, currentHp), currentHp));
             }
             if (y + 1 < dungeon[0].Count)
             {
-                hpList.Add(Math.Max(savep(dungeon, x, y + 1, currentHp), currentHp));
+                hpList.Add(Math.Max(DungeonGame(dungeon, x, y + 1, currentHp), currentHp));
             }
             return hpList.Max();
         }
