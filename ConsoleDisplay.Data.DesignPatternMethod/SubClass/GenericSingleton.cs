@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
 {
-    public class GenericSingleton<T> 
-        where T : class, new()
+    public class GenericSingleton<T> where T : class, new()
     {
         private static T instance;
 

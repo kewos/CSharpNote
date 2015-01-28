@@ -9,7 +9,7 @@ namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
     public class CachePersonRepository : IPersonRepository
     {
         private TimeSpan cacheDuration = TimeSpan.FromSeconds(30);
-        private DateTime dataDateTime;
+        private DateTime lastUpdateDateTime;
         private IPersonRepository personRepository;
         private IEnumerable<Person> cacheItems;
 
@@ -25,26 +25,24 @@ namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
         {
             get
             {
-                return (DateTimeOffset.Now - dataDateTime) < cacheDuration;
+                return (DateTimeOffset.Now - lastUpdateDateTime) < cacheDuration;
             }
         }
 
         private void ValidateCache()
         {
-            if (cacheItems == null || !IsCacheValid)
+            if (cacheItems != null || IsCacheValid) return;
+            try
             {
-                try
+                cacheItems = personRepository.GetPeople();
+                lastUpdateDateTime = DateTime.Now;
+            }
+            catch  
+            {
+                cacheItems = new List<Person>()
                 {
-                    cacheItems = personRepository.GetPeople();
-                    dataDateTime = DateTime.Now;
-                }
-                catch  
-                {
-                    cacheItems = new List<Person>()
-                    {
-                        new Person{ FirstName="No Data Available", LastName = "No Data Available"},
-                    };
-                }
+                    new Person{ FirstName="No Data Available", LastName = "No Data Available"},
+                };
             }
         }
 

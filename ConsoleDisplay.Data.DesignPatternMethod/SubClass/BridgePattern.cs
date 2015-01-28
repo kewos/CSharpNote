@@ -60,9 +60,9 @@ namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
         {
             // Add separator lines
             Console.WriteLine();
-            Console.WriteLine( "------------------------" );
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             base.ShowAll();
-            Console.WriteLine( "------------------------" );
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         }
     }
 
