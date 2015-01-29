@@ -66,14 +66,14 @@ namespace ConsoleDisplay.Client
         private static IEnumerable<Type> GetTypeMatchDLL<TInterface>(string path, string matchFileName)
         {
             return System.IO.Directory.GetFiles(path, matchFileName)
-                   .Select(dll => Assembly.LoadFile(dll).GetTypes()
-                        .Where(@type => @type.IsClass
-                            && !@type.IsAbstract
-                            && !@type.IsInterface
-                            && @type.GetInterfaces()
-                                .Any(@interface => @interface == typeof(TInterface)))
-                        .FirstOrDefault()
-                   );
+                       .Select(dll => Assembly.LoadFile(dll).GetTypes()
+                            .Where(@type => @type.IsClass
+                                && !@type.IsAbstract
+                                && !@type.IsInterface
+                                && @type.GetInterfaces()
+                                    .Any(@interface => @interface == typeof(TInterface)))
+                            .FirstOrDefault()
+                       );
         }
     }
 }

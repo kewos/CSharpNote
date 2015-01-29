@@ -1133,26 +1133,6 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
         }
 
         [DisplayMethod]
-        public void SearchMaxMatrix()
-        {
-            //Given a matrix consisting of 0's and 1's, find the maximum size sub-matrix consisting of only 1's.
-            var array = new int[4, 4] { { 0, 1, 1, 0 }, { 0, 1, 1, 0 }, { 0, 1, 1, 0 }, { 0, 1, 1, 0 } };
-            FindMatrix(1, 2, new int[4, 5]);
-            array.Dump();
-        }
-
-        public void FindMatrix(int x, int y, Array array)
-        {
-            Console.WriteLine("l{0}r{1}", array.Length, array.Rank);
-            for (int i = x; i < array.Length; i++)
-            {
-                for (int j = y; j < array.Rank; i++)
-                {
-                }
-            }
-        }
-
-        [DisplayMethod]
         public void Anagrams()
         {
             //https://oj.leetcode.com/problems/anagrams/

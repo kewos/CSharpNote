@@ -8,22 +8,9 @@ namespace ConsoleDisplay
 {
     public static class EnumerableExtensions
     {
-        public static void Dump(this System.Collections.IEnumerable elements)
+        public static void Dump<T>(this IEnumerable<T> elements, int index = 0)
         {
-            var index = 0;
-            foreach (var element in elements)
-            {
-                Console.WriteLine("{0}.{1}", index++, element);
-            }
-        }
-
-        public static void Dump<T>(this IEnumerable<T> elements)
-        {
-            var index = 0;
-            foreach (T element in elements)
-            {
-                Console.WriteLine("{0}.{1}", index++, element);
-            }
+            elements.ForEach(element => Console.WriteLine("{0}.{1}", index++, element));
         }
 
         public static System.Collections.IEnumerable DumpMany(
@@ -43,9 +30,9 @@ namespace ConsoleDisplay
             return enumerable;
         }
 
-        public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
+        public static void ForEach<T>(this IEnumerable<T> elements, Action<T> action)
         {
-            foreach (T element in enumerable)
+            foreach (T element in elements)
             {
                 action(element);
             }
@@ -79,7 +66,7 @@ namespace ConsoleDisplay
             Console.Clear();
             items.Dump();
             Console.WriteLine("-1.Exit");
-            Console.Write("Enter Number:");
+            Console.Write("<Console>:");
         }
 
         private static int GetIndexOfMethod()
