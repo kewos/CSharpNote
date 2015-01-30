@@ -16,7 +16,7 @@ namespace ConsoleDisplay.Core.Implements
             get
             {
                 return this.GetType()
-                        .GetMethods()
+                        .GetMethods(BindingFlags.Public | BindingFlags.Instance)
                         .Where(method => method.GetCustomAttribute(typeof(DisplayMethodAttribute), false) != null)
                         .OrderBy(method => method.Name)
                         .ToList();

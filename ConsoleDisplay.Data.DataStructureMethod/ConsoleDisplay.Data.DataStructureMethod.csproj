@@ -57,6 +57,11 @@
     <Compile Include="SubClass\HashTable\HashTableArray.cs" />
     <Compile Include="SubClass\HashTable\HashTableArrayNode.cs" />
     <Compile Include="SubClass\HashTable\HashTableNodePair.cs" />
+    <Compile Include="SubClass\Sort\ComparisonComparer.cs" />
+    <Compile Include="SubClass\Sort\IComparisonSorter.cs" />
+    <Compile Include="SubClass\Sort\Sort.cs" />
+    <Compile Include="SubClass\Sort\ISort.cs" />
+    <Compile Include="SubClass\Sort\SortOrder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

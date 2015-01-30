@@ -21,7 +21,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(Calulate(10));
         }
 
-        public int Calulate(int length)
+        private int Calulate(int length)
         {
             var number = ConvertToNumberLoop(length);
             var query = GetFactorOfPrimes(number).Take(4);
@@ -33,7 +33,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
         /// </summary>
         /// <param name="number">需判斷數字</param>
         /// <returns>質因數數列</returns>
-        public IEnumerable<int> GetFactorOfPrimes(int number)
+        private IEnumerable<int> GetFactorOfPrimes(int number)
         {
             return Enumerable.Range(2, (int)Math.Sqrt(number) - 1)
                     .AsParallel().AsOrdered()
@@ -44,7 +44,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
                     .Where(x => number % x == 0);
         }
 
-        public int ConvertToNumberLoop(int length)
+        private int ConvertToNumberLoop(int length)
         {
             var sb = new StringBuilder();
             foreach (var n in Enumerable.Repeat("1", length)) sb.Append(n);
@@ -57,7 +57,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(CaculateCoinPartitions(5));
         }
 
-        public int CaculateCoinPartitions(int total)
+        private int CaculateCoinPartitions(int total)
         {
             var sum = 0;
             for (int i = 1; i <= total; i++)
@@ -105,7 +105,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
         /// </summary>
         /// <param name="numbers">需判斷數字</param>
         /// <returns></returns>
-        public bool CheckPerfectSquare(double number)
+        private bool CheckPerfectSquare(double number)
         {
             return (Math.Sqrt(number) % 1) == 0;
         }
@@ -115,7 +115,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
         /// </summary>
         /// <param name="numbers">需平方加總數列</param>
         /// <returns>平方加總</returns>
-        public double GetSequenceSquareSum(List<int> numbers)
+        private double GetSequenceSquareSum(List<int> numbers)
         {
             var obj = new object();
             double sum = 0;
@@ -135,7 +135,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
         /// </summary>
         /// <param name="number">需取得因子數字</param>
         /// <returns>全部因子</returns>
-        public List<int> GetFactor(int number)
+        private List<int> GetFactor(int number)
         {
             List<int> factors = new List<int>();
             foreach (var factor in Enumerable.Range(1, (int)Math.Floor(Math.Sqrt(number))).Where(x => number % x == 0))
@@ -177,7 +177,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
         /// <param name="number1">需判斷數字1</param>
         /// <param name="number2">需判斷數字2</param>
         /// <returns>最大公因數</returns>
-        public int GetGcd(int number1, int number2)
+        private int GetGcd(int number1, int number2)
         {
             var factors1 = GetFactor(number1);
             var factors2 = GetFactor(number2);
@@ -204,7 +204,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
         /// </summary>
         /// <param name="range">範圍</param>
         /// <returns>Primes within 2 and range</returns>
-        public IEnumerable<int> GetPrimesWithinRange(int range)
+        private IEnumerable<int> GetPrimesWithinRange(int range)
         {
             return Enumerable.Range(2, range - 1).Where(x => GetFactor(x).Count == 2);
         }
@@ -222,17 +222,17 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(sum);
         }
 
-        public bool IsReverseNumber(int number)
+        private bool IsReverseNumber(int number)
         {
             return number == GetReverseNumber(number);
         }
 
-        public int GetReverseNumber(int number)
+        private int GetReverseNumber(int number)
         {
             return int.Parse(Reverse(number.ToString()));
         }
 
-        public string Reverse(string s)
+        private string Reverse(string s)
         {
             char[] charArray = s.ToCharArray();
             Array.Reverse(charArray);
@@ -317,7 +317,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(IsPrime(53));
         }
 
-        public bool IsPrime(int number)
+        private bool IsPrime(int number)
         {
             if (number < 1) return false;
             if (number == 2) return true;
@@ -346,7 +346,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(max.Min());
         }
 
-        public int IntArrayToInt(List<int> sortArray)
+        private int IntArrayToInt(List<int> sortArray)
         {
             var sum = 0;
             for (int i = 0; i < sortArray.Count; i++)
@@ -425,7 +425,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(evaluate.First());
         }
 
-        public void Caculate(int x, int y, int postion, List<string> evaluate)
+        private void Caculate(int x, int y, int postion, List<string> evaluate)
         {
             switch (evaluate[postion])
             {
@@ -466,7 +466,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(candies.Aggregate((a, b) => a + b));
         }
 
-        public bool CompareWithNeighbors(List<int> childredRates, List<int> candies, int position)
+        private bool CompareWithNeighbors(List<int> childredRates, List<int> candies, int position)
         {
             if (position == 0)
                 return (checkNeedAdd(childredRates[position], candies[position], childredRates[position + 1], candies[position + 1])
@@ -483,7 +483,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
                     ? true : false;
         }
 
-        public bool checkNeedAdd(int childredRate1, int candy1, int childredRate2, int candy2)
+        private bool checkNeedAdd(int childredRate1, int candy1, int childredRate2, int candy2)
         {
             return (childredRate1 > childredRate2 && candy1 <= candy2) ? true : false;
         }
@@ -514,7 +514,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Translate(start, end, dict, path).ToList().ForEach(n => Console.WriteLine(n));
         }
 
-        public Stack<string> Translate(string start, string end, List<string> dict, Stack<string> path)
+        private Stack<string> Translate(string start, string end, List<string> dict, Stack<string> path)
         {
             if (path.Count == 0) path.Push(start);
             if (checkTranslate(start, end))
@@ -531,7 +531,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             return path;
         }
 
-        public bool checkTranslate(string s1, string s2)
+        private bool checkTranslate(string s1, string s2)
         {
             return s1.ToList().Intersect(s2.ToList()).Count() == 2;
         }
@@ -563,7 +563,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
 
         }
 
-        public bool isMatch(string checkString, string validateString)
+        private bool isMatch(string checkString, string validateString)
         {
             if (!validateString.Contains("*") && !validateString.Contains("?")) return checkString.Equals(validateString);
             var postion = 0;
@@ -603,7 +603,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(CheckJumpGame(testB));
         }
 
-        public bool CheckJumpGame(List<int> array)
+        private bool CheckJumpGame(List<int> array)
         {
             var position = 0;
             var lastIndex = array.Count() - 1;
@@ -630,7 +630,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
 
         }
 
-        public int CheckJumpGameMinStep(List<int> array, int position = 0, int step = 0)
+        private int CheckJumpGameMinStep(List<int> array, int position = 0, int step = 0)
         {
             var lastIndex = array.Count() - 1;
             if (array[position] == 0 || position > lastIndex) return default(int);
@@ -649,7 +649,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(CaculateMaxPointOnALine(points));
         }
 
-        public int CaculateMaxPointOnALine(List<dynamic> points)
+        private int CaculateMaxPointOnALine(List<dynamic> points)
         {
             return points.Max(pointA =>
             {
@@ -659,7 +659,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             });
         }
 
-        public double CaculateSlope(dynamic point1, dynamic point2)
+        private double CaculateSlope(dynamic point1, dynamic point2)
         {
             if (point1.Y == point2.Y && point1.X == point2.X) return 100;
             if (point1.Y == point2.Y) return 0;
@@ -698,7 +698,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Rotate(ref rotateList, 2);
         }
 
-        public void Rotate(ref List<int> list, int k)
+        private void Rotate(ref List<int> list, int k)
         {
             foreach (var n in Enumerable.Range(0, k))
             {
@@ -749,7 +749,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Insert(intSet, newInterval).ForEach(set => Console.WriteLine("[{0},{1}]", set[0], set[1]));
         }
 
-        public List<List<int>> Insert(List<List<int>> intSet, List<int> interval)
+        private List<List<int>> Insert(List<List<int>> intSet, List<int> interval)
         {
             intSet.Add(interval);
             var list = intSet.Where(set => !(interval[0] < set[0] && interval[1] > set[1]));
@@ -769,7 +769,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             TreeToList(GetRootOfTree()).ForEach(n => Console.WriteLine(n));
         }
 
-        public Node GetRootOfTree()
+        private Node GetRootOfTree()
         {
             var root = new Node { Key = 1 };
             var node2 = new Node { Key = 2 };
@@ -786,7 +786,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             return root;
         }
 
-        public List<int> TreeToList(Node head)
+        private List<int> TreeToList(Node head)
         {
             var newList = new List<int>();
 
@@ -800,7 +800,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             return newList;
         }
 
-        public class Node
+        private class Node
         {
             public Node Right { get; set; }
             public Node Left { get; set; }
@@ -816,7 +816,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(GetMinimumDepthOfBinaryTree(GetRootOfTree()));
         }
 
-        public int GetMinimumDepthOfBinaryTree(Node head)
+        private int GetMinimumDepthOfBinaryTree(Node head)
         {
             int leftDepth = 0, rightDepth = 0;
 
@@ -851,7 +851,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             IsNumberic("2e");
         }
 
-        public void IsNumberic(string validationString)
+        private void IsNumberic(string validationString)
         {
             var integerRegex1 = @"^[0]$";
             var integerRegex = @"^[-]??[1-9]{1}[0-9]+$";
@@ -924,7 +924,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             string t = "ABC";
         }
 
-        public string FindMinimumWindow(string s, string t)
+        private string FindMinimumWindow(string s, string t)
         {
             var a = new List<int>();
             for (int i = 0; i < s.Length; i++)
@@ -961,7 +961,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(GetMinValueByTrianglePath(triangle, level, index).Min(n => n.Sum(x => x)));
         }
 
-        public List<List<int>> GetMinValueByTrianglePath(List<List<int>> triangle, int level, int index)
+        private List<List<int>> GetMinValueByTrianglePath(List<List<int>> triangle, int level, int index)
         {
             if (level + 1 >= triangle.Count) return new List<List<int>> { new List<int> { triangle[level][index] } };
             var leftValue = GetMinValueByTrianglePath(triangle, level + 1, index);
@@ -986,7 +986,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             FindMatchTargetIndex(input, target).DumpMany();
         }
 
-        public List<List<int>> FindMatchTargetIndex(List<int> numberList, int target)
+        private List<List<int>> FindMatchTargetIndex(List<int> numberList, int target)
         {
             var sets = new List<List<int>>();
             var index = 0;
@@ -1011,7 +1011,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(GetLengthWithoutRepeat(test));
         }
 
-        public int GetLengthWithoutRepeat(string checkString)
+        private int GetLengthWithoutRepeat(string checkString)
         {
             var stringMax = checkString.Distinct().Count();
             var noRepeatLength = 3;
@@ -1050,7 +1050,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(GetBestTimeToBuyAndSell(price));
         }
 
-        public int GetBestTimeToBuyAndSell(List<int> price)
+        private int GetBestTimeToBuyAndSell(List<int> price)
         {
             if (price.Count() == 0 || price == null || price.Any(p => p < 0)) return 0;
             int min = 0, max = 0;
@@ -1177,7 +1177,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             colors.Dump();
         }
 
-        public void Swap(ref List<int> items, int index1, int index2)
+        private void Swap(ref List<int> items, int index1, int index2)
         {
             var temp = items[index1];
             items[index1] = items[index2];
@@ -1245,7 +1245,8 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             long i = 77801120877;
             Console.WriteLine("{0}:IsPalindromeNumber:{1}", i, IsPalindromeNumber(i));
         }
-        public bool IsPalindromeNumber(long i)
+
+        private bool IsPalindromeNumber(long i)
         {
             if (i > Int64.MaxValue && i < 0) return false;
             var s = i.ToString();
@@ -1265,7 +1266,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine("{0}:IsPalindromeNumber:{1}", i, IsPalindromeNumberII(i));
         }
 
-        public bool IsPalindromeNumberII(long i)
+        private bool IsPalindromeNumberII(long i)
         {
             if (i > Int64.MaxValue && i < 0) return false;
             for (int j = 0; j < (int)((int)(Math.Log10(i) + 1) / 2); j++)
@@ -1290,7 +1291,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(GetLastWordLength("Hello World"));
         }
 
-        public int GetLastWordLength(string s)
+        private int GetLastWordLength(string s)
         {
             int postion = s.Length - 1;
             while (postion >= 0 && s[postion] != ' ')
@@ -1309,7 +1310,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(GetCloseSet(set, -10));
         }
 
-        public int GetCloseSet(List<int> set, int target)
+        private int GetCloseSet(List<int> set, int target)
         {
             int x = 0, y = 1, z = 2;
             int min = set.Max();
@@ -1362,7 +1363,8 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             //return ["255.255.11.135", "255.255.111.35"]. (Order does not matter)
             RestoreIPAddresses("25525511135").Dump();
         }
-        public List<string> RestoreIPAddresses(string ip)
+
+        private List<string> RestoreIPAddresses(string ip)
         {
             List<List<string>> ipSet = new List<List<string>>();
             foreach(var x in Enumerable.Range(1, 3))
@@ -1374,7 +1376,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             return ipSet.Where(n => n.All(x => check(x))).Select(n => string.Join(".", n)).ToList();
         }
 
-        public bool check(string ipNumber)
+        private bool check(string ipNumber)
         {
             if (ipNumber.Length <= 0 || ipNumber.Length > 3) return false;
             var n = Convert.ToInt32(ipNumber);
@@ -1401,7 +1403,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(ClimbingStairs(100));
         }
 
-        public int ClimbingStairs(int distinct)
+        private int ClimbingStairs(int distinct)
         {
             if (distinct < 0) return 0;
             if (distinct <= 2) return distinct;
@@ -1416,7 +1418,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(ClimbingStairs(100));
         }
 
-        public int ClimbingStairsⅠ(int distinct)
+        private int ClimbingStairsⅠ(int distinct)
         {
             if (distinct < 0) return 0;
             if (distinct <= 2) return distinct;
@@ -1436,7 +1438,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             PlusOne(num1, num2).Dump();
         }
 
-        public List<int> PlusOne(List<int> num1, List<int> num2)
+        private List<int> PlusOne(List<int> num1, List<int> num2)
         {
             Stack<int> sum = new Stack<int>();
             var max = Math.Max(num1.Count, num2.Count);
@@ -1465,7 +1467,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             var result = RotateDegree90(matrix);
         }
 
-        public int[,] RotateDegree90(int[,] array)
+        private int[,] RotateDegree90(int[,] array)
         {
             var result = new int[array.GetLength(1), array.GetLength(0)];
             for (int i = 0; i < array.GetLength(0); i++)
@@ -1493,7 +1495,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(SearchA2dMatrix(matrix, target));
         }
 
-        public bool SearchA2dMatrix(int[,] matrix, int target)
+        private bool SearchA2dMatrix(int[,] matrix, int target)
         {
             var end = matrix.GetLength(0) * matrix.GetLength(1);
             var start = matrix.GetLength(1);
@@ -1514,7 +1516,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(ImplementPow(3, 3));
         }
 
-        public double ImplementPow(double x, int y)
+        private double ImplementPow(double x, int y)
         {
             double temp = x;
             if (y == 0) return 1;
@@ -1531,7 +1533,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(DivideTwoIntegers(100, 33));
         }
 
-        public int DivideTwoIntegers(int x, int y)
+        private int DivideTwoIntegers(int x, int y)
         {
             if (x == 0 || y == 0) return 0;
             var state = 1;
@@ -1559,7 +1561,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(SearchInsertPositionⅠ(testArray, 5));
         }
 
-        public int SearchInsertPosition(List<int> array, int target)
+        private int SearchInsertPosition(List<int> array, int target)
         {
             var n = 0;
             while (n < array.Count())
@@ -1570,7 +1572,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             return n;
         }
 
-        public int SearchInsertPositionⅠ(List<int> array, int target)
+        private int SearchInsertPositionⅠ(List<int> array, int target)
         {
             var low = 0;
             var height = array.Count - 1;
@@ -1598,7 +1600,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             GenerateParenthesesⅠ(6).Dump();
         }
 
-        public void GenerateParentheses(List<string> set,int n, string s = "")
+        private void GenerateParentheses(List<string> set, int n, string s = "")
         {
             if (n == 0)
             {
@@ -1610,7 +1612,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             GenerateParentheses(set, n - 1, "(" + s + ")");
         }
 
-        public List<string> GenerateParenthesesⅠ(int n)
+        private List<string> GenerateParenthesesⅠ(int n)
         {
             var set = new List<string> { "()" };
             var tempSet = new List<string>();
@@ -1649,7 +1651,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(MaxDonations(donations4));
         }
 
-        public int MaxDonations(List<int> donations)
+        private int MaxDonations(List<int> donations)
         {
             var max = new Dictionary<int, int>();
             max.Add(0, donations[0]);
@@ -1680,7 +1682,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             //Console.WriteLine(LongestZigZag(zigZagSequence2));
         }
 
-        public int LongestZigZag(List<int> zigZagSequence)
+        private int LongestZigZag(List<int> zigZagSequence)
         {
             int index = 0;
             int max = 1;
@@ -1722,7 +1724,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             PascalsTriangleII(3).Dump();
         }
 
-        public List<int> PascalsTriangleII(int k)
+        private List<int> PascalsTriangleII(int k)
         {
             var space = new List<int> { 1 };
             var index = 0;
@@ -1745,7 +1747,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             PascalsTriangleI(5).DumpMany();
         }
 
-        public List<List<int>> PascalsTriangleI(int k)
+        private List<List<int>> PascalsTriangleI(int k)
         {
             var set = new List<List<int>> { new List<int>{ 1 } };
             for (int i = 1; i <= k; i++)
@@ -1770,7 +1772,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             ArrayListAllSubSet(set).DumpMany();
         }
 
-        public List<List<int>> ArrayListAllSubSet(List<int> set, List<int> subset = null, int index = 0)
+        private List<List<int>> ArrayListAllSubSet(List<int> set, List<int> subset = null, int index = 0)
         {
             if (index >= set.Count) return new List<List<int>> { subset };
             var newset1 = new List<int>();
@@ -1799,7 +1801,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(numberOfRejections(input3));
         }
 
-        public int numberOfRejections(List<int> requests)
+        private int numberOfRejections(List<int> requests)
         {
             if (requests.Count > 50) return -1;
 
@@ -1836,7 +1838,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             array.Dump();
         }
 
-        public void RemoveDuplicatesfromSortedList(List<int> array)
+        private void RemoveDuplicatesfromSortedList(List<int> array)
         {
             var index = 0;
             while (index < array.Count() - 1)
@@ -1858,7 +1860,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             MergeSortedArray(list1, list2).Dump();
         }
 
-        public List<int> MergeSortedArray(List<int> list1, List<int> list2)
+        private List<int> MergeSortedArray(List<int> list1, List<int> list2)
         { 
             int p1 = 0, p2 = 0;
             while (p2 < list2.Count)
@@ -1880,7 +1882,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(MaximumSubarray(array));
         }
 
-        public int MaximumSubarray(List<int> array)
+        private int MaximumSubarray(List<int> array)
         {
             int index1 = 0;
             int index2 = 0;
@@ -1906,7 +1908,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(MaximumSubarrayⅠ(array));
         }
 
-        public int MaximumSubarrayⅠ(List<int> array)
+        private int MaximumSubarrayⅠ(List<int> array)
         {
             int max = array[0], sum = 0;
             for (var i = 0; i < array.Count; i++)
@@ -1932,7 +1934,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             set.DumpMany();
         }
 
-        public void Combinations(int n, int k, int pass, List<int> subset, List<List<int>> set)
+        private void Combinations(int n, int k, int pass, List<int> subset, List<List<int>> set)
         {
             if (k <= 0)
             {
@@ -1948,13 +1950,13 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Combinations(n - 1, k - 1, pass, subSet1, set);
         }
 
-        public class Aspect
+        private class Aspect
         {
             public int X { get; set; }
             public int Y { get; set; }
         }
-   
-        public List<int> getCubeList(int max)
+
+        private List<int> getCubeList(int max)
         {
             return Enumerable.Range(0, max + 1).Select(n => n * n * n).ToList();
         }
@@ -1971,7 +1973,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(RemoveDuplicatesFromSortedArrayⅡ(elements));
         }
 
-        public int RemoveDuplicatesFromSortedArrayⅡ(List<int> elements)
+        private int RemoveDuplicatesFromSortedArrayⅡ(List<int> elements)
         {
             if (elements.Count() <= 2) return elements.Count();
             for (int i = elements.Count - 1; i >= 2; i--)
@@ -1987,7 +1989,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(ImplementSqrt(15));
         }
 
-        public long ImplementSqrt(int x)
+        private long ImplementSqrt(int x)
         {
             long ans = 0;
             long bit = 1l << 16;
@@ -2016,7 +2018,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(DistinctSubsequences(s, t));
         }
 
-        public int DistinctSubsequences(string s, string t)
+        private int DistinctSubsequences(string s, string t)
         {
             var stime = SequenceRepeatTimes(s);
             var ttime = SequenceRepeatTimes(t);
@@ -2034,14 +2036,14 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             return all;
         }
 
-        public int AllGroup(int x, int y)
+        private int AllGroup(int x, int y)
         {
             var i = Enumerable.Range(1, y).Aggregate((a, b) => a * b);
             var j = Enumerable.Range(x - y + 1, y).Aggregate((a, b) => a * b);
             return i / j;
         }
 
-        public List<KeyValuePair<char, int>> SequenceRepeatTimes(string s)
+        private List<KeyValuePair<char, int>> SequenceRepeatTimes(string s)
         {
             var repeat = new List<KeyValuePair<char, int>>();
             for (var i = 0; i < s.Length; i++)
@@ -2064,7 +2066,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(DistinctSubsequencesⅠ(s, t));
         }
 
-        public int DistinctSubsequencesⅠ(string s, string t)
+        private int DistinctSubsequencesⅠ(string s, string t)
         {
             int m = s.Length;
             int n = t.Length;
@@ -2085,7 +2087,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             PermutationSequence(3).DumpMany();
         }
 
-        public List<List<int>> PermutationSequence(int n)
+        private List<List<int>> PermutationSequence(int n)
         {
             var containElement = Enumerable.Range(1, n).ToList();
             List<List<int>> sets = containElement.Select(elements => new List<int> { elements }).ToList();
@@ -2161,7 +2163,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             SearchForARange(search, target).Dump();
         }
 
-        public List<int> SearchForARange(List<int> search, int target)
+        private List<int> SearchForARange(List<int> search, int target)
         {
             var index = SearchIndex(search, target, 0, search.Count - 1);
             var result = new List<int> { index, index };
@@ -2186,7 +2188,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
         /// <param name="start">start postion</param>
         /// <param name="end">end postion</param>
         /// <returns>IndexPosition</returns>
-        public int SearchIndex(List<int> search, int target, int start, int end)
+        private int SearchIndex(List<int> search, int target, int start, int end)
         {
             while (start <= end)
             {
@@ -2205,7 +2207,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             ReorderList(order).Dump();
         }
 
-        public List<int> ReorderList(List<int> order)
+        private List<int> ReorderList(List<int> order)
         {
             var index = 0;
             while (index < (order.Count - 1) / 2)
@@ -2227,7 +2229,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(SingleNumber(searchList));
         }
 
-        public int SingleNumber(List<int> searchList)
+        private int SingleNumber(List<int> searchList)
         {
             return searchList.Aggregate((a, b) => a ^ b);
         }
@@ -2244,7 +2246,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             };
         }
 
-        public void WordSearch(List<List<string>> map, string path)
+        private void WordSearch(List<List<string>> map, string path)
         {
             foreach (var c in path)
             {
@@ -2259,7 +2261,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             RemoveDuplicatesFromSortedListii(list).Dump();
         }
 
-        public List<int> RemoveDuplicatesFromSortedListii(List<int> list)
+        private List<int> RemoveDuplicatesFromSortedListii(List<int> list)
         {
             var i = 1;
             var state = false;
@@ -2293,7 +2295,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Permutations(elements, elements.Count).DumpMany();
         }
 
-        public List<List<int>> Permutations(List<int> elements, int level, List<int> sub = null)
+        private List<List<int>> Permutations(List<int> elements, int level, List<int> sub = null)
         {
             var subSets = new List<List<int>>();
             if (level == 0) return new List<List<int>> { sub };
@@ -2320,7 +2322,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             //getMin() -- Retrieve the minimum element in the stack.
         }
 
-        public class MStack
+        private class MStack
         {
             private int[] elements;
             private int index = 0;
@@ -2370,7 +2372,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             FindPeakElement(numbers).Dump();
         }
 
-        public List<int> FindPeakElement(List<int> numbers)
+        private List<int> FindPeakElement(List<int> numbers)
         {
             var result = new List<int>();
             var index = 1;
@@ -2396,7 +2398,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(WordBreak(dict, s));
         }
 
-        public bool WordBreak(List<string> dict, string s)
+        private bool WordBreak(List<string> dict, string s)
         {
             var stringIndex = 0;
             var dictIndex = 0;
@@ -2424,7 +2426,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(LongestConsecutiveSequence(elements));
         }
 
-        public int LongestConsecutiveSequence(List<int> elements)
+        private int LongestConsecutiveSequence(List<int> elements)
         {
             var temp = elements.ToDictionary(e => e, e => 1);
             for (var index = 0; index < elements.Count; index++)
@@ -2453,7 +2455,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             Console.WriteLine(FractionToRecurringDecimal(2, 3));
         }
 
-        public string FractionToRecurringDecimal(int numerator, int denominator)
+        private string FractionToRecurringDecimal(int numerator, int denominator)
         {
             if (numerator == 0)
             {
@@ -2503,7 +2505,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             MajorityElement(elements).ToConsole();
         }
 
-        public int MajorityElement(List<int> elements)
+        private int MajorityElement(List<int> elements)
         {
             var dic = new Dictionary<int, int>();
             elements.ForEach(e =>
@@ -2527,7 +2529,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             ExcelSheetColumnTitle(28).ToConsole();
         }
 
-        public string ExcelSheetColumnTitle(int number)
+        private string ExcelSheetColumnTitle(int number)
         {
             var sb = new StringBuilder();
             while (number > 0) 
@@ -2552,7 +2554,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             ((result >= 0) ? 1 : Math.Abs(result) + 1).ToConsole();
         }
 
-        public int DungeonGame(List<List<int>> dungeon, int x = 0, int y = 0, int maxHp = 0)
+        private int DungeonGame(List<List<int>> dungeon, int x = 0, int y = 0, int maxHp = 0)
         {
             var currentHp = dungeon[x][y] + maxHp;
             var hpList = new List<int>();
@@ -2581,7 +2583,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             string.Join("", list.ConvertAll<string>(i => i.ToString()).ToArray()).ToConsole();
         }
 
-        public class IntComparer : IComparer<int>
+        private class IntComparer : IComparer<int>
         {
             public int Compare(int a, int b)
             {
@@ -2609,7 +2611,7 @@ namespace ConsoleDisplay.Data.AlgorithmMethod
             GetEnds(tasks).ToConsole();
         }
 
-        public string GetEnds(List<string> parameters)
+        private string GetEnds(List<string> parameters)
         {
             if (parameters.Count <= 0) return "";
             var rule = @"[0-2]{1}[0-9][1][:]{1}[0-5]{1}[0-9][1][ ]{1}[A-Zz-z]+$";

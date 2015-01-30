@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using SimpleInjector;
+using ConsoleDisplay.Common.Extendsions;
 using ConsoleDisplay.Core.Contracts;
 using ConsoleDisplay.Client.Contrasts;
 using ConsoleDisplay.Data.AlgorithmMethod;
@@ -15,65 +16,21 @@ namespace ConsoleDisplay.Client
 {
     class Program
     {
-        private static Container container = new Container();
+        public static Container container = new Container();
+
         static void Main(string[] args)
         {
-            Config();
-            container.GetInstance<IProjectManager>().Display();
+            Config(new Container()).GetInstance<IProjectManager>().Display();
         }
 
-        private static void Config()
+        private static Container Config(Container container)
         {
-            RegisterMappingType();
-            RegistAssemblyAllInterface<IMethodRepository>();
-        }
+            //註冊EntryAssembly有映對的Interface 及 class
+            container.RegisterMappingType();
+            //註冊Location Bin檔底下符合規則的Dll 裡面實作TInterface 的Class
+            container.RegistLocationMatchDLL<IMethodRepository>("*Method.DLL");
 
-        /// <summary>
-        /// Auto Register Mapping Interface and Type
-        /// </summary>
-        private static void RegisterMappingType()
-        {
-            Assembly.GetExecutingAssembly().GetTypes()
-                .Where(@type => @type.IsClass
-                    && !@type.IsAbstract
-                    && !@type.IsInterface)
-                .ForEach(@type =>
-                    {
-                        var interfaceType = @type.GetInterfaces()
-                            .FirstOrDefault(@interface => 
-                                @interface.Name.Substring(1, @interface.Name.Length - 1) == @type.Name);
-                        if (interfaceType != null)
-                        {
-                            container.RegisterSingle(interfaceType, @type);
-                        }
-                    });
-        }
-
-        /// <summary>
-        /// RegistAll class of inherit IMethodRepository
-        /// </summary>
-        private static void RegistAssemblyAllInterface<TInterface>()
-        {
-            var matchFileName = "*Method.DLL";
-            var path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var matchType = GetTypeMatchDLL<TInterface>(path, matchFileName);
-            container.RegisterAll<TInterface>(matchType);
-        }
-
-        /// <summary>
-        /// 透過指定的參考的Dll取得特定Type
-        /// </summary>
-        private static IEnumerable<Type> GetTypeMatchDLL<TInterface>(string path, string matchFileName)
-        {
-            return System.IO.Directory.GetFiles(path, matchFileName)
-                       .Select(dll => Assembly.LoadFile(dll).GetTypes()
-                            .Where(@type => @type.IsClass
-                                && !@type.IsAbstract
-                                && !@type.IsInterface
-                                && @type.GetInterfaces()
-                                    .Any(@interface => @interface == typeof(TInterface)))
-                            .FirstOrDefault()
-                       );
+            return container;
         }
     }
 }

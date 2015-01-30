@@ -20,7 +20,6 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
     {
         
         [DisplayMethod]
-        [System.ComponentModel.Description("練習Lamda")]
         public void LamdaPratice()
         {
             Console.WriteLine("method like jquery");
@@ -42,7 +41,6 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         }
 
         [DisplayMethod]
-        [System.ComponentModel.Description("數字長度")]
         public void CountIntLength()
         {
             //數字長度
@@ -51,7 +49,6 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         }
 
         [DisplayMethod]
-        [System.ComponentModel.Description("And運算")]
         public void AndOperator()
         {
             //&運算
@@ -59,7 +56,6 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         }
 
         [DisplayMethod]
-        [System.ComponentModel.Description("補數")]
         public void InverseNum()
         {
             //~ 可以取數值補數0x00000000 to 0xffffffff
@@ -72,7 +68,6 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         }
 
         [DisplayMethod]
-        [System.ComponentModel.Description("??Operation")]
         public void DoublePuzzleSymbol()
         {
             //?? 如果左邊為空就設定右邊 如果左邊不為空就設定左邊
@@ -81,7 +76,6 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         }
 
         [DisplayMethod]
-        [System.ComponentModel.Description("分字串")]
         public void SplitChar()
         {
             string targetString = "Test#Hello#World#Test";
@@ -94,7 +88,6 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         }
 
         [DisplayMethod]
-        [System.ComponentModel.Description("匯出文字檔")]
         public void ExportTxt()
         {
             string path = @"C:\Users\kewos\Desktop\export.txt";
@@ -109,7 +102,6 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         }
 
         [DisplayMethod]
-        [System.ComponentModel.Description("動態Code")]
         public void DynamicCode()
         {
             string FooInterface = @"
@@ -139,13 +131,12 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             }
         }
 
-        interface IPrint
+        private interface IPrint
         {
             void Print();
         }
 
         [DisplayMethod]
-        [System.ComponentModel.Description("匿名物件")]
         public void PassAnonymousParameter()
         {
             HandleAnonymousParameter(
@@ -179,7 +170,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             );
         }
 
-        public void HandleAnonymousParameter(dynamic anonymousList)
+        private void HandleAnonymousParameter(dynamic anonymousList)
         {
             foreach (dynamic anonymousPerson in anonymousList)
             {
@@ -188,7 +179,6 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         }
 
         [DisplayMethod]
-        [System.ComponentModel.Description("SelectMany範例")]
         public void LinqMutiFrom()
         {
             string[] strs = 
@@ -253,7 +243,6 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         }
 
         [DisplayMethod]
-        [System.ComponentModel.Description("字串切割join")]
         public void StringJoinAndSplit()
         {
             string s = @"safdasd@fw#opfjkdsokjgpoijegrij$jjrgeoe$r";
@@ -262,7 +251,6 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         }
 
         [DisplayMethod]
-        [System.ComponentModel.Description("LinqJoin 範例")]
         public void PracticeLinqJoinGeneration()
         { 
             var employees = new List<dynamic> {
@@ -294,7 +282,6 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         }
 
         [DisplayMethod]
-        [System.ComponentModel.Description("數字長度")]
         public void LinqToXmlPratice()
         {
             XDocument doc = new XDocument(
@@ -403,7 +390,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
 
         }
 
-        class PetOwner
+        private class PetOwner
         {
             public string Name { get; set; }
             public List<String> Pets { get; set; }
@@ -534,7 +521,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             }
         }
 
-        public List<int> Swap(List<int> items, int i, int j)
+        private List<int> Swap(List<int> items, int i, int j)
         {
             var temp = items[i];
             items[i] = items[j];
@@ -574,7 +561,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             }
         }
 
-        class A
+        private class A
         {
             public string name { get; set; }
             public int id { get; set; }
@@ -635,7 +622,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             total.ForEach(num => Console.WriteLine(num));
         }
 
-        public List<int> GetResult(List<int> total, int killStep, ref int leak)
+        private List<int> GetResult(List<int> total, int killStep, ref int leak)
         {
             var tmpLeak = leak;
             leak = killStep - ((total.Count + tmpLeak) % killStep);
@@ -648,7 +635,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             UseParams(1, "aaa", true, new object(), null);
         }
 
-        public void UseParams(params object[] items)
+        private void UseParams(params object[] items)
         {
             foreach (var item in items)
             {
@@ -667,7 +654,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             PassParam(c: true, b: "2", a: 1);
         }
 
-        public void PassParam(int a, string b, bool c)
+        private void PassParam(int a, string b, bool c)
         {
             Console.WriteLine("{0}{1}{2}", a, b, c);
         }
@@ -811,7 +798,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             Console.WriteLine(awaitTask.Result);
         }
 
-        public async Task<string> AwaitTest()
+        private async Task<string> AwaitTest()
         {
             TaskCompletionSource<string> tcs = new TaskCompletionSource<string>();
             await Task.Run(async () =>
@@ -1058,7 +1045,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
 
         [Flags]
         //可使用shift來當做value
-        public enum PriorityShift
+        private enum PriorityShift
         {
             None = 0,
             VeryLow = 1 << 0,
@@ -1086,7 +1073,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         /// 0x800 = 2048
         /// </summary>
         [Flags]
-        public enum PriorityHexadecimal
+        private enum PriorityHexadecimal
         {
             None = 0x0,
             VeryLow = 0x1,
@@ -1097,7 +1084,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         }
 
         [Flags]
-        public enum Priority
+        private enum Priority
         {
             None = 0,
             VeryLow = 1,
@@ -1151,7 +1138,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             }
         }
 
-        public class ObjectA<T>
+        private class ObjectA<T>
         {
             public void SpeakType()
             {
@@ -1220,7 +1207,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             }
         }
 
-        public string[] GetFile()
+        private string[] GetFile()
         {
             //excel row data
             string file =@"";
@@ -1253,7 +1240,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             action.Invoke(caculator2);
         }
 
-        public class Caculator
+        private class Caculator
         {
             public int Add(int i, int j)
             {
@@ -1274,7 +1261,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             //obj.DoSomething().ToConsole();
         }
 
-        public interface ICustom
+        private interface ICustom
         {
             bool IsVip { get; set; }
             string Name { get; set; }
@@ -1330,7 +1317,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             new DairyItem().Apply();
         }
 
-        public class AggregateRoot
+        private class AggregateRoot
         {
             public void Apply()
             {
@@ -1339,7 +1326,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             }
         }
 
-        public class DairyItem : AggregateRoot
+        private class DairyItem : AggregateRoot
         {
             public void handle()
             {
@@ -1436,7 +1423,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         /// <summary>
         /// 1.Create an Assembly in an Application Domain.AssemblyBuilder will help you in that.
         /// </summary>
-        public System.Reflection.Emit.AssemblyBuilder GetAssemblyBuilder(string assembleName)
+        private System.Reflection.Emit.AssemblyBuilder GetAssemblyBuilder(string assembleName)
         {
             AssemblyName aname = new AssemblyName(assembleName);
             AppDomain currentDomain = AppDomain.CurrentDomain; // Thread.GetDomain();
@@ -1446,7 +1433,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         /// <summary>
         /// 2.Create a Module inside the Assembly
         /// </summary>
-        public System.Reflection.Emit.ModuleBuilder GetModule(System.Reflection.Emit.AssemblyBuilder asmBuilder)
+        private System.Reflection.Emit.ModuleBuilder GetModule(System.Reflection.Emit.AssemblyBuilder asmBuilder)
         {
             return asmBuilder.DefineDynamicModule("EmitMethods", "EmitMethods.dll");
         }
@@ -1454,7 +1441,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         /// <summary>
         /// 3.Create a number of Type inside a Module
         /// </summary>
-        public System.Reflection.Emit.TypeBuilder GetType(System.Reflection.Emit.ModuleBuilder modBuilder, string className)
+        private System.Reflection.Emit.TypeBuilder GetType(System.Reflection.Emit.ModuleBuilder modBuilder, string className)
         {
             System.Reflection.Emit.TypeBuilder builder = modBuilder.DefineType(className, TypeAttributes.Public);
             return builder;
@@ -1464,7 +1451,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         /// 4.Add Properties, Methods, Events etc inside the Type.
         /// </summary>
         /// <returns></returns>
-        public System.Reflection.Emit.MethodBuilder GetMethod(System.Reflection.Emit.TypeBuilder typBuilder, string methodName,
+        private System.Reflection.Emit.MethodBuilder GetMethod(System.Reflection.Emit.TypeBuilder typBuilder, string methodName,
                       Type returnType, params Type[] parameterTypes)
         {
             var builder = typBuilder.DefineMethod(methodName,
