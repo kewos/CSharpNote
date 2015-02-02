@@ -39,6 +39,28 @@ namespace ConsoleDisplay
             }
         }
 
+        public static void ForEach<T>(this IEnumerable<T> elements, Action<int, T> action)
+        {
+            var index = 0;
+            foreach (T element in elements)
+            {
+                action(index++, element);
+            }
+        }
+
+        public static bool All<T>(this IEnumerable<T> elements, Func<int, T, bool> func)
+        {
+            var index = 0;
+            foreach(var element in elements)
+            {
+                if (!func(index++, element))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public static void SelectAndShowOnConsole<T>(this IEnumerable<T> items, Action<int> AfterTypeIndex)
         {
             while (true)
