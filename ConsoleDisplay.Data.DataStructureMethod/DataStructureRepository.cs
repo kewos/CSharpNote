@@ -31,17 +31,17 @@ namespace ConsoleDisplay.Data.DataStructureMethod
         public void DequeImplement()
         {
             var deque = new Deque<int>(Enumerable.Range(5, 2)).EnqueueHead(1).EnqueueHead(2).EnqueueTail(3).EnqueueTail(4);
-            var assert  = new List<int> (){ 2, 1, 5, 6, 3, 4 };
+            var assert  = new List<int> { 2, 1, 5, 6, 3, 4 };
             deque.All((index, element) => element == assert[index]).ToConsole("element is { 2, 1, 5, 6, 3, 4 } :");
             
             "\n".ToConsole();
             (deque.DequeueHead() == 2).ToConsole("DequeueHead Get Head 2");
-            var assert1 = new List<int>() { 1, 5, 6, 3, 4 };
+            var assert1 = new List<int> { 1, 5, 6, 3, 4 };
             deque.All((index, element) => element == assert1[index]).ToConsole("element is { 1, 5, 6, 3, 4 } :");
             
             "\n".ToConsole();
             (deque.DequeueTail() == 4).ToConsole("DequeueTail Get Head 4");
-            var assert2 = new List<int>() { 1, 5, 6, 3 };
+            var assert2 = new List<int> { 1, 5, 6, 3 };
             deque.All((index, element) => element == assert2[index]).ToConsole("element is { 1, 5, 6, 3 } :");
         }
     }
