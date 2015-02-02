@@ -10,7 +10,7 @@ namespace ConsoleDisplay
     {
         public static void ToConsole(this object obj, string prefix= "", string suffix = "")
         {
-            Console.WriteLine("{1}{0}{2}", obj, prefix, suffix);
+            Console.WriteLine("{1}{0}{2}", obj ?? "null", prefix, suffix);
         }
     }
 }
