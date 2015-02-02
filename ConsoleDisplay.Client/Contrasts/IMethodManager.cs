@@ -13,6 +13,6 @@ namespace ConsoleDisplay.Client.Contrasts
         /// 呈現方法清單
         /// </summary>
         /// <param name="repository">執行的方案</param>
-        void Display(IMethodRepository repository);
+        void Start(IMethodRepository repository);
     }
 }

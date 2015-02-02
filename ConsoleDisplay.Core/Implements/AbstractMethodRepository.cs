@@ -11,15 +11,22 @@ namespace ConsoleDisplay.Core.Implements
 {
     public abstract class AbstractMethodRepository : ContextBoundObject, IMethodRepository
     {
-        public virtual List<MethodInfo> MethodInfos
+        private IList<MethodInfo> methodInfos;
+
+        public virtual IList<MethodInfo> MethodInfos
         {
             get
             {
-                return this.GetType()
+                if (methodInfos == null)
+                {
+                    methodInfos = this.GetType()
                         .GetMethods(BindingFlags.Public | BindingFlags.Instance)
-                        .Where(method => method.GetCustomAttribute(typeof(DisplayMethodAttribute), false) != null)
+                        //.Where(method => method.GetCustomAttribute(typeof(DisplayMethodAttribute), false) != null)
                         .OrderBy(method => method.Name)
                         .ToList();
+                }
+
+                return methodInfos;
             }
         }
     }

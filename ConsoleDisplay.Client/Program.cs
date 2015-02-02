@@ -16,11 +16,16 @@ namespace ConsoleDisplay.Client
 {
     class Program
     {
-        public static Container container = new Container();
-
         static void Main(string[] args)
+        {       
+            Config().GetInstance<IProjectManager>().Start();
+        }
+
+
+        #region private method
+        private static Container Config()
         {
-            Config(new Container()).GetInstance<IProjectManager>().Display();
+            return Config(new Container());
         }
 
         private static Container Config(Container container)
@@ -32,6 +37,7 @@ namespace ConsoleDisplay.Client
 
             return container;
         }
+        #endregion
     }
 }
 

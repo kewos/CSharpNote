@@ -14,10 +14,9 @@ namespace ConsoleDisplay.Client
     /// </summary>
     public class MethodManager : IMethodManager
     {
-        public void Display(IMethodRepository repository)
+        public void Start(IMethodRepository repository)
         {
             repository.MethodInfos.Select(method => method.Name).SelectAndShowOnConsole(index => Excute(index, repository));
-        
         }
 
         private void Excute(int index, IMethodRepository repository)

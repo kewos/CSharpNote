@@ -9,6 +9,6 @@ namespace ConsoleDisplay.Core.Contracts
 {
     public interface IMethodRepository
     {
-        List<MethodInfo> MethodInfos { get; }
+        IList<MethodInfo> MethodInfos { get; }
     }
 }

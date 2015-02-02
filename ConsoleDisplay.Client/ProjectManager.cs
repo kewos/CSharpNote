@@ -24,7 +24,7 @@ namespace ConsoleDisplay.Client
             this.methodManager = methodManager;
         }
 
-        public void Display()
+        public void Start()
         {
             var dontNeedString = "MethodRepository";
             methodRepositories
@@ -38,7 +38,8 @@ namespace ConsoleDisplay.Client
         /// <param name="index">選擇的專案</param>
         private void Excute(int index)
         {
-            methodManager.Display(methodRepositories.Skip(index).FirstOrDefault());
+            var repository = methodRepositories.Skip(index).FirstOrDefault();
+            methodManager.Start(repository);
         }
     }
 }

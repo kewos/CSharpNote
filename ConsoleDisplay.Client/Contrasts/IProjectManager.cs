@@ -11,6 +11,6 @@ namespace ConsoleDisplay.Client.Contrasts
         /// <summary>
         /// 呈現專案清單
         /// </summary>
-        void Display();
+        void Start();
     }
 }

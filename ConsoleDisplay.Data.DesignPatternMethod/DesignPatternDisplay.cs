@@ -294,5 +294,11 @@ namespace ConsoleDisplay.Data.DesignPatternMethod
             repository.DeletePerson("d");
             repository.GetPeople().ForEach(p => (p.FirstName + p.LastName).ToConsole());
         }
+
+        [DisplayMethod]
+        public void MVCPattern()
+        {
+            //var view = new ConcreteView(new ConcreteController(new ConcreteModel()));
+        }
     }
 }
