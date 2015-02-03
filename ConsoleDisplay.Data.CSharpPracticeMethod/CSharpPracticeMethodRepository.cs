@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.CodeDom.Compiler;
@@ -1231,6 +1232,7 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
                 stopwatch.Stop();
                 Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
             };
+
             var type = typeof(Caculator);
 
             var caculator1 = Activator.CreateInstance(type) as Caculator;
@@ -1285,30 +1287,30 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
         /// </summary>
         [DisplayMethod]
         public void ExpressionTree()
-        {   
-            ////參數
-            //ParameterExpression parameter1 = Expression.Parameter(typeof(int), "x");
-            ////主體
-            //BinaryExpression multiply = Expression.Multiply(parameter1, parameter1);
-            ////LamdaExpression
-            //Expression<Func<int, int>> square = Expression.Lambda<Func<int, int>>(
-            //    multiply, parameter1);
-            ////Compile
-            //Func<int, int> lambda = square.Compile();
-            ////Excute
-            //Console.WriteLine(lambda(5));
+        {
+            //參數
+            ParameterExpression parameter1 = Expression.Parameter(typeof(int), "x");
+            //主體
+            BinaryExpression multiply = Expression.Multiply(parameter1, parameter1);
+            //LamdaExpression
+            Expression<Func<int, int>> square = Expression.Lambda<Func<int, int>>(
+                multiply, parameter1);
+            //Compile
+            Func<int, int> lambda = square.Compile();
+            //Excute
+            Console.WriteLine(lambda(5));
 
-            //Expression<Func<int, int>> square1 = x => x * x;
-            ////透過square1取得Expression Body並相加
-            //BinaryExpression squareplus2 = Expression.Add(square1.Body,
-            //    Expression.Constant(3));
-            ////LamdaExpression
-            //Expression<Func<int, int>> expr = Expression.Lambda<Func<int, int>>(squareplus2,
-            //    square1.Parameters);
-            ////Compile
-            //Func<int, int> compile = expr.Compile();
-            ////Excute
-            //Console.WriteLine(compile(10));
+            Expression<Func<int, int>> square1 = x => x * x;
+            //透過square1取得Expression Body並相加
+            BinaryExpression squareplus2 = Expression.Add(square1.Body,
+                Expression.Constant(3));
+            //LamdaExpression
+            Expression<Func<int, int>> expr = Expression.Lambda<Func<int, int>>(squareplus2,
+                square1.Parameters);
+            //Compile
+            Func<int, int> compile = expr.Compile();
+            //Excute
+            Console.WriteLine(compile(10));
         }
 
         [DisplayMethod]

@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="DataStructureRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubClass\CircularBuffer.cs" />
     <Compile Include="SubClass\HashTable\HashTable.cs" />
     <Compile Include="SubClass\HashTable\HashTableArray.cs" />
     <Compile Include="SubClass\HashTable\HashTableArrayNode.cs" />
