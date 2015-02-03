@@ -13,7 +13,7 @@ namespace ConsoleDisplay.Data.DataStructureMethod
     public class DataStructureMethodRepository : AbstractMethodRepository
     {
         [DisplayMethod]
-        public void HashTableImplement()
+        public void HashTable()
         {
             var hashTable = new HashTable<int, int>();
             var elements = Enumerable.Range(0, 1000);
@@ -28,7 +28,7 @@ namespace ConsoleDisplay.Data.DataStructureMethod
         }
 
         [DisplayMethod]
-        public void CircularQueueImplement()
+        public void CircularQueue()
         {
             var circularQueue = new CircularQueue<int>(3).Enqueue(1).Enqueue(2).Enqueue(3);
             var assert = new List<int> { 1, 2, 3 };
@@ -71,7 +71,7 @@ namespace ConsoleDisplay.Data.DataStructureMethod
         }
 
         [DisplayMethod]
-        public void DequeImplement()
+        public void Deque()
         {
             var deque = new Deque<int>(Enumerable.Range(5, 2)).EnqueueHead(1).EnqueueHead(2).EnqueueTail(3).EnqueueTail(4);
             var assert  = new List<int> { 2, 1, 5, 6, 3, 4 };
@@ -91,7 +91,7 @@ namespace ConsoleDisplay.Data.DataStructureMethod
         }
 
         [DisplayMethod]
-        public void ImplementCircularBuffer()
+        public void CircularBuffer()
         { 
             var circularBuffer = new CircularBuffer<int>(3);
             circularBuffer.Write(Enumerable.Range(0, 3));
@@ -113,6 +113,43 @@ namespace ConsoleDisplay.Data.DataStructureMethod
             (circularBuffer2.Read() == 0).ToConsole("Read is 0:");
             (circularBuffer2.Count() == 2).ToConsole("Count is 2:");
             circularBuffer2.All((index, element) => assert2[index] == element).ToConsole("elements is {1, 2}");
+        }
+
+        [DisplayMethod]
+        public void Buffer()
+        {
+            var buffer = new Buffer<int>(3);
+            buffer.Write(Enumerable.Range(0, 3));
+            var assert = new List<int> { 2, 1, 0 };
+            (buffer.Count() == 3).ToConsole("Count is 3:");
+            buffer.All((index, element) => assert[index] == element).ToConsole("elements is {2, 1, 0}");
+
+            "\n".ToConsole();
+            try
+            {
+                var buffer1 = new Buffer<int>(3);
+                buffer1.Write(Enumerable.Range(0, 4));
+            }
+            catch (Exception e)
+            {
+                (e is InvalidOperationException).ToConsole("ThrowInvalidOperationException:");
+            }
+
+            "\n".ToConsole();
+            try
+            {
+                var buffer2 = new Buffer<int>(3);
+                buffer2.Read();
+            }
+            catch (Exception e)
+            {
+                (e is InvalidOperationException).ToConsole("ThrowInvalidOperationException:");
+            }
+
+            var buffer3 = new Buffer<int>(3);
+            buffer3.Write(Enumerable.Range(0, 1));
+            (buffer3.Read() == 0).ToConsole("Read Item = 0:");
+            (buffer3.Count() == 0).ToConsole("Count = 0:");
         }
     }
 }

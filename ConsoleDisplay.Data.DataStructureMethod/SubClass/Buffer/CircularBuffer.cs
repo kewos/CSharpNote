@@ -10,12 +10,11 @@ namespace ConsoleDisplay.Data.DataStructureMethod.SubClass
     /// <summary>
     /// FIFO
     /// </summary>
-    public class CircularBuffer<T> : IEnumerable<T>, IEnumerable
+    public class CircularBuffer<T> : IBuffer<T>, IEnumerable<T>, IEnumerable
     {
         private T[] buffer;
         private int start;
         private int end;
-        private int size;
 
         #region property
         public int Capacity
@@ -47,11 +46,11 @@ namespace ConsoleDisplay.Data.DataStructureMethod.SubClass
         {
             if (capacity <= 1)
             {
-                throw new ArgumentException("invalid argument!!");
+                throw new ArgumentException("InvalidArgument!!");
             } 
 
             buffer = new T[capacity];
-            start = end = size = 0;
+            start = end = 0;
         }
 
         public void Write(T[] items)
@@ -70,7 +69,6 @@ namespace ConsoleDisplay.Data.DataStructureMethod.SubClass
             }
         }
 
-
         public void Write(T value)
         {
             end = (end + 1) % Capacity;
@@ -83,7 +81,6 @@ namespace ConsoleDisplay.Data.DataStructureMethod.SubClass
             }
         }
 
-        //first in first out
         public T Read()
         {
             T result = buffer[start];
@@ -98,8 +95,8 @@ namespace ConsoleDisplay.Data.DataStructureMethod.SubClass
             for (var index = start; ; index = (index + 1) % Capacity)
             {
                 yield return buffer[index];
-                if (index == end) 
-                    break;
+                if (index == end)
+                    yield break;
             }
         }
         #endregion
