@@ -35,7 +35,7 @@ namespace ConsoleDisplay.Test.Core
         }
          
         [TestMethod]
-        public void MethodInfos_Get_Equal3()
+        public void AbstractMethodRepository_Get_MethodInfos_Count_Equal_3()
         {
             //Arrange
             var repository = new testRepository();
@@ -49,7 +49,7 @@ namespace ConsoleDisplay.Test.Core
         }
 
         [TestMethod]
-        public void MethodInfos_Get_ItemEqual()
+        public void AbstractMethodRepository_Get_MethodInfos_Content_Match()
         {
             //Arrange
             var repository = new testRepository();

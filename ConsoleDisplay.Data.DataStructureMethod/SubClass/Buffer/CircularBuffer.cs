@@ -89,7 +89,7 @@ namespace ConsoleDisplay.Data.DataStructureMethod.SubClass
             return result;
         }
 
-        #region IEnumerator<T> Member
+        #region IEnumerable<T> Member
         public IEnumerator<T> GetEnumerator()
         {
             for (var index = start; ; index = (index + 1) % Capacity)
@@ -101,7 +101,7 @@ namespace ConsoleDisplay.Data.DataStructureMethod.SubClass
         }
         #endregion
 
-        #region IEnumerator Member
+        #region IEnumerable Member
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();

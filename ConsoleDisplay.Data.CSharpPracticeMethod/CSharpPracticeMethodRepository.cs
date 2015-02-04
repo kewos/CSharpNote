@@ -1615,6 +1615,5 @@ namespace ConsoleDisplay.Data.CSharpPracticeMethod
             //handler.Fill(false, true, false);
             //handler.Fill(true, false, false);
         }
-        
     }
 }

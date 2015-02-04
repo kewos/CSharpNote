@@ -17,13 +17,14 @@ namespace ConsoleDisplay.Client
     class Program
     {
         static void Main(string[] args)
-        {       
-            Config().GetInstance<IProjectManager>().Start();
+        {
+            IocContainer.Config().GetInstance<IProjectManager>().Start();
         }
+    }
 
-
-        #region private method
-        private static Container Config()
+    public class IocContainer
+    {
+        public static Container Config()
         {
             return Config(new Container());
         }
@@ -37,7 +38,6 @@ namespace ConsoleDisplay.Client
 
             return container;
         }
-        #endregion
     }
 }
 
