@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ConsoleDisplay.Common.Extendsions;
 
-namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
+namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass.RepositoryPattern
 {
     public class CachePersonRepository : IPersonRepository
     {

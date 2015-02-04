@@ -1,5 +1,5 @@
 ﻿
-namespace ConsoleDisplay.Data.DataStructureMethod.SubClass
+namespace ConsoleDisplay.Data.DataStructureMethod.SubClass.Buffer
 {
     public interface IBuffer<T>
     {

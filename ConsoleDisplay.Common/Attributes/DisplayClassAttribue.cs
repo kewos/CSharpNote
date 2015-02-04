@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Remoting.Contexts;
 using System.Runtime.Remoting.Messaging;
+using ConsoleDisplay.Common.Aops;
 
 namespace ConsoleDisplay.Common.Attributes
 {

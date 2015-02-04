@@ -5,6 +5,7 @@ using ConsoleDisplay.Data.DesignPatternMethod.SubClass;
 using ConsoleDisplay.Common.Attributes;
 using ConsoleDisplay.Core.Implements;
 using ConsoleDisplay.Common.Extendsions;
+using ConsoleDisplay.Data.DesignPatternMethod.SubClass.RepositoryPattern;
 
 namespace ConsoleDisplay.Data.DesignPatternMethod
 {
@@ -287,12 +288,6 @@ namespace ConsoleDisplay.Data.DesignPatternMethod
             //delete item
             repository.DeletePerson("d");
             repository.GetPeople().ForEach(p => (p.FirstName + p.LastName).ToConsole());
-        }
-
-        [DisplayMethod]
-        public void MVCPattern()
-        {
-            //var view = new ConcreteView(new ConcreteController(new ConcreteModel()));
         }
     }
 }

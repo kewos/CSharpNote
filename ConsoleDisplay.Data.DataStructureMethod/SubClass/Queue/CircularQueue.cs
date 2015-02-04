@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ConsoleDisplay.Data.DataStructureMethod.SubClass
+namespace ConsoleDisplay.Data.DataStructureMethod.SubClass.Queue
 {
     public class CircularQueue<T> : ICollection<T>
     {

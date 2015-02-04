@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace ConsoleDisplay.Data.DataStructureMethod.SubClass
+namespace ConsoleDisplay.Data.DataStructureMethod.SubClass.Buffer
 {
     /// <summary>
     /// FIFO

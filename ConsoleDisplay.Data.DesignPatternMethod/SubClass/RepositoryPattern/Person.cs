@@ -1,5 +1,5 @@
 ﻿
-namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
+namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass.RepositoryPattern
 {
     public class Person
     {

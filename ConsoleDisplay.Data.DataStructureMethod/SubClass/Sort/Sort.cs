@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ConsoleDisplay.Data.DataStructureMethod.SubClass
+namespace ConsoleDisplay.Data.DataStructureMethod.SubClass.Sort
 {
     public abstract class  Sorts<T> : ISort<T>
     {

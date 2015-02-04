@@ -1,5 +1,5 @@
 ﻿
-namespace  ConsoleDisplay.Data.DataStructureMethod.SubClass
+namespace  ConsoleDisplay.Data.DataStructureMethod.SubClass.HashTable
 {
     /// <summary>
     /// KeyValuePair

@@ -5,6 +5,9 @@ using ConsoleDisplay.Core.Implements;
 using ConsoleDisplay.Data.DataStructureMethod.SubClass;
 using ConsoleDisplay.Common.Attributes;
 using ConsoleDisplay.Common.Extendsions;
+using ConsoleDisplay.Data.DataStructureMethod.SubClass.Buffer;
+using ConsoleDisplay.Data.DataStructureMethod.SubClass.HashTable;
+using ConsoleDisplay.Data.DataStructureMethod.SubClass.Queue;
 
 namespace ConsoleDisplay.Data.DataStructureMethod
 {

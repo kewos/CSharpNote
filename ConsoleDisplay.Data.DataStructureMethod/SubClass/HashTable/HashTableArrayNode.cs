@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ConsoleDisplay.Data.DataStructureMethod.SubClass
+namespace ConsoleDisplay.Data.DataStructureMethod.SubClass.HashTable
 {
     /// <summary>
     /// LinkedList 當作基底容器管理 HashTableNodePair<TKey, TValue>

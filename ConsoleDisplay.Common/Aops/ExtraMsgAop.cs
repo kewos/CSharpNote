@@ -2,7 +2,7 @@
 using System.Runtime.Remoting.Messaging;
 using ConsoleDisplay.Common.Attributes;
 
-namespace ConsoleDisplay.Common
+namespace ConsoleDisplay.Common.Aops
 {
     public sealed class ExtraMsgHandler : IMessageSink
     {

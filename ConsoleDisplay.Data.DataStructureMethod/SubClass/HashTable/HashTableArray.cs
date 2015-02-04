@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ConsoleDisplay.Data.DataStructureMethod.SubClass
+namespace ConsoleDisplay.Data.DataStructureMethod.SubClass.HashTable
 {
     /// <summary>
     /// Array為基底容器 管理 HashTableArrayNode<TKey, TValue>

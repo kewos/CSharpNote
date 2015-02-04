@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
+namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass.RepositoryPattern
 {
     public class PersonRepository : IPersonRepository
     {

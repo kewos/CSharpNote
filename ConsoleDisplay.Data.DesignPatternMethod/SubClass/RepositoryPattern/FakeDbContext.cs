@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
+namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass.RepositoryPattern
 {
     /// <summary>
     /// 假的DBSet
