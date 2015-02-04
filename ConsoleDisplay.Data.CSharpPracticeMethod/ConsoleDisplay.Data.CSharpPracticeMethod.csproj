@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CSharpPracticeMethodRepository.cs" />
+    <Compile Include="SubClass\LargeObjectHeapHandler.cs" />
     <Compile Include="SubClass\DeferExcuteCaculator.cs" />
     <Compile Include="SubClass\RealProxy.cs" />
     <Compile Include="SubClass\TypeConvert.cs" />
