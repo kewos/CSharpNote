@@ -13,6 +13,7 @@ namespace ConsoleDisplay.Client
     {
         private readonly IEnumerable<IMethodRepository> methodRepositories;
         private readonly IMethodManager methodManager;
+        private const string DontNeedString = "MethodRepository";
 
         public ProjectManager(IEnumerable<IMethodRepository> repositorys, IMethodManager methodManager)
         {
@@ -22,9 +23,8 @@ namespace ConsoleDisplay.Client
 
         public void Start()
         {
-            var dontNeedString = "MethodRepository";
             methodRepositories
-                .Select(n => n.GetType().Name.Substring(0, n.GetType().Name.Length - dontNeedString.Length))
+                .Select(n => n.GetType().Name.Substring(0, n.GetType().Name.Length - DontNeedString.Length))
                 .SelectAndShowOnConsole(index => Excute(index));
         }
 

@@ -18,7 +18,7 @@ namespace ConsoleDisplay.Common.Extendsions
             var index = 0;
             foreach (var element in enumerable)
             {
-                Console.WriteLine(string.Format("{0}{1}.{2}", new string('-', dumpLevel * 3), index++, element));
+                Console.WriteLine("{0}{1}.{2}", new string('-', dumpLevel * 3), index++, element);
                 if (element is System.Collections.IEnumerable)
                 {
                     (element as System.Collections.IEnumerable).DumpMany(dumpLevel + 1);
@@ -29,7 +29,7 @@ namespace ConsoleDisplay.Common.Extendsions
 
         public static void ForEach<T>(this IEnumerable<T> elements, Action<T> action)
         {
-            foreach (T element in elements)
+            foreach (var element in elements)
             {
                 action(element);
             }
@@ -38,7 +38,7 @@ namespace ConsoleDisplay.Common.Extendsions
         public static void ForEach<T>(this IEnumerable<T> elements, Action<int, T> action)
         {
             var index = 0;
-            foreach (T element in elements)
+            foreach (var element in elements)
             {
                 action(index++, element);
             }

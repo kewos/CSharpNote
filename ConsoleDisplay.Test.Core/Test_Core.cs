@@ -1,17 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConsoleDisplay.Common;
-using ConsoleDisplay.Core.Contracts;
 using ConsoleDisplay.Core.Implements;
+using ConsoleDisplay.Common.Attributes;
 
 namespace ConsoleDisplay.Test.Core
 {
-
-
     [TestClass]
     public class Test_AbstractMethodRepository
     {

@@ -11,9 +11,7 @@ namespace ConsoleDisplay.Common.Extendsions
         public static Type GetMatchInterface(this Type @type)
         {
             return @type.GetInterfaces().FirstOrDefault(@interface =>
-            {
-                return @interface.Name.Substring(1, @interface.Name.Length - 1) == @type.Name;
-            });
+                 @interface.Name.Substring(1, @interface.Name.Length - 1) == @type.Name);
         }
     }
 }

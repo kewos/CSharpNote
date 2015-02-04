@@ -11,26 +11,24 @@ namespace ConsoleDisplay.Common.Extendsions
         /// <summary>
         /// 使用TInterface 註冊所有 符合的Dll裡面有實作 TInterface的 Class Type
         /// </summary>
-        public static void RegistLocationMatchDLL<TInterface>(this Container container, string matchPath)
+        public static void RegistLocationMatchDll<TInterface>(this Container container, string matchPath)
         {
             var path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var matchType = GetTypeFromMatchDLL<TInterface>(path, matchPath);
+            var matchType = GetTypeFromMatchDll<TInterface>(path, matchPath);
             container.RegisterAll<TInterface>(matchType);
         }
 
         /// <summary>
         /// 取得符合DLL 實作 TInterface 的 class Type
         /// </summary>
-        private static IEnumerable<Type> GetTypeFromMatchDLL<TInterface>
+        private static IEnumerable<Type> GetTypeFromMatchDll<TInterface>
             (string path, string matchFileName)
         {
             var matchDll = System.IO.Directory.GetFiles(path, matchFileName);
             return matchDll.Select(dll => 
-            {
-                return Assembly.LoadFile(dll)
+                 Assembly.LoadFile(dll)
                     .GetImplementInterfaceClassType<TInterface>()
-                    .FirstOrDefault();
-            });
+                    .FirstOrDefault());
         }
 
         /// <summary>

@@ -8,7 +8,7 @@ namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
         {
             State = new State10();
             Level = -1;
-            Name = "嚕嚕咪";
+            Name = "AAA";
         }
 
         public IState State
@@ -46,7 +46,7 @@ namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
         {
             if (player.Level <= 10)
             {
-                Console.WriteLine("{0} 是個 {1}", player.Name, "新手");
+                Console.WriteLine("{0} LessThan {1}", player.Name, "Level 10");
             }
             else
             {
@@ -62,7 +62,7 @@ namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
         {
             if (player.Level <= 30 && player.Level > 10)
             {
-                Console.WriteLine("{0} 是個 {1}", player.Name, "中手");
+                Console.WriteLine("{0} Between {1}", player.Name, "Level10 And Level30");
             }
             else
             {
@@ -78,7 +78,7 @@ namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
         {
             if (player.Level <= 50 && player.Level > 30)
             {
-                Console.WriteLine("{0} 是個 {1}", player.Name, "高手");
+                Console.WriteLine("{0} Between {1}", player.Name, "Level50 And Level30");
             }
             else
             {
@@ -94,7 +94,7 @@ namespace ConsoleDisplay.Data.DesignPatternMethod.SubClass
         {
             if (player.Level > 50)
             {
-                Console.WriteLine("{0} 是個 {1}", player.Name, "神手");
+                Console.WriteLine("{0} Greater Than {1}", player.Name, "Level50");
             }
         }
     }
