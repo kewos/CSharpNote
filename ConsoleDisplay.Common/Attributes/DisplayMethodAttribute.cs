@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleDisplay.Common
+namespace ConsoleDisplay.Common.Attributes
 {
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class DisplayMethodAttribute : Attribute
     {
         private string reference;
-        private string[] references;
         private string comment;
         private string date;
         private bool display;
@@ -19,11 +14,6 @@ namespace ConsoleDisplay.Common
         private DisplayMethodAttribute(bool display)
         {
             this.display = display;
-        }
-
-        public DisplayMethodAttribute(params string[] references)
-        {
-            this.references = references;
         }
 
         public DisplayMethodAttribute(string reference, bool display = false)

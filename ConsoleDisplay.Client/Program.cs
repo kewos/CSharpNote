@@ -1,16 +1,7 @@
-﻿using System;
-using ConsoleDisplay.Data;
-//using Microsoft.Practices.Unity;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using SimpleInjector;
-using ConsoleDisplay.Common.Extendsions;
+﻿using ConsoleDisplay.Common.Extendsions;
 using ConsoleDisplay.Core.Contracts;
 using ConsoleDisplay.Client.Contrasts;
-using ConsoleDisplay.Data.AlgorithmMethod;
-using ConsoleDisplay.Data.CSharpPracticeMethod;
-using ConsoleDisplay.Data.DesignPatternMethod;
+using SimpleInjector;
 
 namespace ConsoleDisplay.Client
 {

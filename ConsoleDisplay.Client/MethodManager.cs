@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Xml.Linq;
-using ConsoleDisplay.Common;
 using ConsoleDisplay.Core.Contracts;
 using ConsoleDisplay.Client.Contrasts;
+using ConsoleDisplay.Common.Extendsions;
 
 namespace ConsoleDisplay.Client
 {

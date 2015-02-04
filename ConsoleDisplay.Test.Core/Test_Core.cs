@@ -64,6 +64,5 @@ namespace ConsoleDisplay.Test.Core
                 Assert.AreEqual(expect[i], actual[i]);
             }
         }
-
     }
 }

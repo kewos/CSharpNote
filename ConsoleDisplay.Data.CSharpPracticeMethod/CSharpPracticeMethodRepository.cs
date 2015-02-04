@@ -9,10 +9,10 @@ using Microsoft.CSharp;
 using System.Reflection;
 using System.Xml.Linq;
 using System.Net.Sockets;
-using ConsoleDisplay.Common;
-using ConsoleDisplay.Core.Contracts;
 using ConsoleDisplay.Core.Implements;
 using ConsoleDisplay.Data.CSharpPracticeMethod.SubClass;
+using ConsoleDisplay.Common.Attributes;
+using ConsoleDisplay.Common.Extendsions;
 
 namespace ConsoleDisplay.Data.CSharpPracticeMethod
 {

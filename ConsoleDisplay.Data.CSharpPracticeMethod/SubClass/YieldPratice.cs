@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleDisplay.Data.CSharpPracticeMethod.SubClass
 {
     public class ChatPipeLine
     {
-        ChatSomething root = null;
-        ChatSomething curent = null;
+        ChatSomething root;
+        ChatSomething curent;
 
         public void Collect(Boolean hello, Boolean niceToMeetYou)
         {

@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.CodeDom.Compiler;
-using Microsoft.CSharp;
-using System.Reflection;
-using System.Xml.Linq;
 using ConsoleDisplay.Data.DesignPatternMethod.SubClass;
-using ConsoleDisplay.Common;
-using ConsoleDisplay.Core.Contracts;
+using ConsoleDisplay.Common.Attributes;
 using ConsoleDisplay.Core.Implements;
+using ConsoleDisplay.Common.Extendsions;
 
 namespace ConsoleDisplay.Data.DesignPatternMethod
 {

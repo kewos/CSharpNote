@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Reflection;
 using ConsoleDisplay.Core.Contracts;
-using ConsoleDisplay.Common;
+using ConsoleDisplay.Common.Attributes;
 
 namespace ConsoleDisplay.Core.Implements
 {

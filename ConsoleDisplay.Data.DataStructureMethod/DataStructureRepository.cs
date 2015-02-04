@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConsoleDisplay.Common;
-using ConsoleDisplay.Core.Contracts;
 using ConsoleDisplay.Core.Implements;
 using ConsoleDisplay.Data.DataStructureMethod.SubClass;
+using ConsoleDisplay.Common.Attributes;
+using ConsoleDisplay.Common.Extendsions;
 
 namespace ConsoleDisplay.Data.DataStructureMethod
 {

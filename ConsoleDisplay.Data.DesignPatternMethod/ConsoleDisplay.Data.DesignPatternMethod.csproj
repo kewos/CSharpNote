@@ -58,12 +58,6 @@
     <Compile Include="SubClass\CommandPattern.cs" />
     <Compile Include="SubClass\CompositePattern.cs" />
     <Compile Include="SubClass\GenericSingleton.cs" />
-    <Compile Include="SubClass\MVCPattern\Model.cs" />
-    <Compile Include="SubClass\MVCPattern\ConcreteModel.cs" />
-    <Compile Include="SubClass\MVCPattern\View.cs" />
-    <Compile Include="SubClass\MVCPattern\ConcreteView.cs" />
-    <Compile Include="SubClass\MVCPattern\ConcreteController.cs" />
-    <Compile Include="SubClass\MVCPattern\Controller.cs" />
     <Compile Include="SubClass\NullObjectPattern.cs" />
     <Compile Include="SubClass\ObserverPattern.cs" />
     <Compile Include="SubClass\PipelinePattern.cs" />
