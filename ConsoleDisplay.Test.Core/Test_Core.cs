@@ -35,7 +35,7 @@ namespace ConsoleDisplay.Test.Core
             var repository = new testRepository();
 
             //Act
-            var actual = repository.MethodInfos.Count;
+            var actual = repository.Count;
 
             //Assert
             var expect = 3;

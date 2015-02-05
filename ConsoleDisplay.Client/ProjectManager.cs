@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ConsoleDisplay.Common.Extendsions;
 using ConsoleDisplay.Core.Contracts;
@@ -13,20 +14,31 @@ namespace ConsoleDisplay.Client
     {
         private readonly IEnumerable<IMethodRepository> methodRepositories;
         private readonly IMethodManager methodManager;
-        private const string DontNeedString = "MethodRepository";
+        private const string TRIMSTRING = "MethodRepository";
 
-        public ProjectManager(IEnumerable<IMethodRepository> repositorys, IMethodManager methodManager)
+        public ProjectManager(IEnumerable<IMethodRepository> methodRepositories, IMethodManager methodManager)
         {
-            this.methodRepositories = repositorys;
+            this.methodRepositories = methodRepositories;
             this.methodManager = methodManager;
         }
 
         public void Start()
         {
             methodRepositories
-                .Select(n => n.GetType().Name.Substring(0, n.GetType().Name.Length - DontNeedString.Length))
+                .Select(repository => trimString(repository))
                 .SelectAndShowOnConsole(index => Excute(index));
         }
+
+        #region private method
+        /// <summary>
+        /// 取得沒有 TRIMSTRING 的 IMethodRepository TypeName
+        /// </summary>
+        private readonly Func<IMethodRepository, string> trimString = (repository) =>
+        {
+            var typeName = repository.GetType().Name;
+            var stringEnd = typeName.Length - TRIMSTRING.Length;
+            return typeName.Substring(0, stringEnd);
+        };
 
         /// <summary>
         /// 執行所選擇的專案
@@ -37,5 +49,6 @@ namespace ConsoleDisplay.Client
             var repository = methodRepositories.Skip(index).FirstOrDefault();
             methodManager.Start(repository);
         }
+        #endregion private member
     }
 }

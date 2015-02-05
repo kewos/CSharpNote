@@ -11,13 +11,21 @@ namespace ConsoleDisplay.Core.Implements
     {
         private IList<MethodInfo> methodInfos;
 
+        public int Count
+        {
+            get
+            {
+                return methodInfos.Count;
+            }
+        }
+
         public virtual IList<MethodInfo> MethodInfos
         {
             get
             {
                 if (methodInfos == null)
                 {
-                    methodInfos = this.GetType()
+                    methodInfos = GetType()
                         .GetMethods(BindingFlags.Public | BindingFlags.Instance)
                         .Where(method => method.GetCustomAttribute(typeof(DisplayMethodAttribute), false) != null)
                         .OrderBy(method => method.Name)

@@ -16,13 +16,20 @@ namespace ConsoleDisplay.Client
             repository.MethodInfos.Select(method => method.Name).SelectAndShowOnConsole(index => Excute(index, repository));
         }
 
+        #region private method
         private void Excute(int index, IMethodRepository repository)
         {
-            if (index >= repository.MethodInfos.Count || index < 0)
+            ArgumentGuard(index, repository.Count - 1, 0);
+            repository.MethodInfos[index].Invoke(repository, null);
+        }
+
+        private Action<int, int, int> ArgumentGuard = (argument, upperBounded, lowerBounded) =>
+        {
+            if (argument > upperBounded || argument < lowerBounded)
             {
                 throw new ArgumentException("invalid argument");
             }
-            repository.MethodInfos[index].Invoke(repository, null);
-        }
+        };
+        #endregion
     }
 }
