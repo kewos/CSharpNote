@@ -316,10 +316,20 @@ namespace ConsoleDisplay.Data.DesignPatternMethod
         public void FlyweightPattern()
         {
             var factory = new FlyweightButtonFactory();
-
             Enumerable.Range(1, 30)
                 .Select(n => factory.GetFlyweightButton(n % 3))
                 .ForEach(button => button.Draw());
+        }
+
+        [DisplayMethod]
+        public void MediatorPattern()
+        {
+            Func<int, string> convertToString = (number) => ((char)(65 + number)).ToString();
+            var players = Enumerable.Range(0, 5)
+                .Select(n => new GamePlayer(convertToString(n)))
+                .ToList<IGamePlayer>();
+            var mediator = new GamePlayMediator(players);
+            players.ForEach(p => p.Win(mediator));
         }
     }
 }

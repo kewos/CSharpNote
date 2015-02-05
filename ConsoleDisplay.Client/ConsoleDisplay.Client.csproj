@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap.cs" />
     <Compile Include="Contrasts\IProjectManager.cs" />
     <Compile Include="Contrasts\IMethodManager.cs" />
     <Compile Include="MethodManager.cs" />
