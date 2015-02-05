@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using ConsoleDisplay.Data.DesignPatternMethod.SubClass;
 using ConsoleDisplay.Common.Attributes;
 using ConsoleDisplay.Core.Implements;
@@ -270,8 +271,12 @@ namespace ConsoleDisplay.Data.DesignPatternMethod
             repository.GetPeople().ForEach(p => (p.FirstName + p.LastName).ToConsole());
         }
 
+        /// <summary>
+        /// 有70%以上都在讀取
+        /// 讀取 跟 增刪修分開 快取三十秒更新一次
+        /// </summary>
         [DisplayMethod]
-        public void CacheReposiotryPattern()
+        public void CacheMechanism()
         {
             var repository = new CachePersonRepository(new PersonRepository());
             //add item
@@ -288,6 +293,33 @@ namespace ConsoleDisplay.Data.DesignPatternMethod
             //delete item
             repository.DeletePerson("d");
             repository.GetPeople().ForEach(p => (p.FirstName + p.LastName).ToConsole());
+        }
+
+        /// <summary>
+        /// FecadePattern 用於隱藏子系統的細節
+        /// 但子系統會跟Fecade造成耦合
+        /// </summary>
+        [DisplayMethod]
+        public void FecadePattern()
+        {
+            var fecade =  new Fecade();
+            fecade.DoSomeThing();
+        }
+
+        /// <summary>
+        /// Intent:
+        /// The intent of this pattern is to use sharing to support a large number of objects 
+        /// that have part of their internal state in common where the other part of state can 
+        /// vary.
+        /// </summary>
+        [DisplayMethod]
+        public void FlyweightPattern()
+        {
+            var factory = new FlyweightButtonFactory();
+
+            Enumerable.Range(1, 30)
+                .Select(n => factory.GetFlyweightButton(n % 3))
+                .ForEach(button => button.Draw());
         }
     }
 }
