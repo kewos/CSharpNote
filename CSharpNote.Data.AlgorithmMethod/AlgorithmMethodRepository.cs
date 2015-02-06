@@ -2675,6 +2675,25 @@ namespace CSharpNote.Data.AlgorithmMethod
                     }
                     return (count == times);
                 }));
+        } 
+
+        [DisplayMethod()]
+        public void RepeatedDnaSequences()
+        {
+            var dna = "AAAAACCCCCAAAAACCCCCAAAAAGGGTTT";
+            RepeatedDnaSequences(dna, 10).Dump();
+        }
+
+        public List<string> RepeatedDnaSequences(string dna, int letterLong)
+        {
+            //return
+            return Enumerable.Range(0, dna.Length - letterLong)
+                .AsParallel()
+                .Select(index => dna.Substring(index, letterLong))
+                .GroupBy(dnaLetter => dnaLetter)
+                .Where(dnaGroup => dnaGroup.Count() > 1)
+                .Select(dnaGroup => dnaGroup.Key)
+                .ToList();
         }
     }
 }

@@ -2,7 +2,6 @@
 using System.Linq;
 using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Contracts;
-using CSharpNote.Client.Contrasts;
 
 namespace CSharpNote.Client
 {

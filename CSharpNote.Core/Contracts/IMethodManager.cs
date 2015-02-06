@@ -1,6 +1,4 @@
-﻿using CSharpNote.Core.Contracts;
-
-namespace CSharpNote.Client.Contrasts
+﻿namespace CSharpNote.Core.Contracts
 {
     public interface IMethodManager
     {

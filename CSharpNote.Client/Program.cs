@@ -1,4 +1,4 @@
-﻿using CSharpNote.Client.Contrasts;
+﻿using CSharpNote.Core.Contracts;
 
 namespace CSharpNote.Client
 {

@@ -54,6 +54,8 @@
     <Compile Include="SubClass\ChainResponsibilityPattern.cs" />
     <Compile Include="SubClass\CommandPattern.cs" />
     <Compile Include="SubClass\CompositePattern.cs" />
+    <Compile Include="SubClass\DependecyContainer\DependecyInjectionObject.cs" />
+    <Compile Include="SubClass\DependecyContainer\DependecyConainer.cs" />
     <Compile Include="SubClass\FecadePattern.cs" />
     <Compile Include="SubClass\FlyweightPattern.cs" />
     <Compile Include="SubClass\GenericSingleton.cs" />

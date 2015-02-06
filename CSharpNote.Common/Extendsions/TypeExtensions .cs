@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 
 namespace CSharpNote.Common.Extendsions
 {
@@ -12,6 +13,15 @@ namespace CSharpNote.Common.Extendsions
         {
             return @type.GetInterfaces().FirstOrDefault(@interface =>
                  @interface.Name.Substring(1, @interface.Name.Length - 1) == @type.Name);
+        }
+
+        public static ConstructorInfo GetMatchConstructor(this Type @type)
+        {
+            var constructorInfo = @type.GetConstructors()
+                .Where(constructor => constructor.GetParameters().All(p => p.ParameterType.IsInterface && p.ParameterType.Name.StartsWith("I")))
+                .FirstOrDefault();
+            if (constructorInfo == null) throw new Exception();
+            return constructorInfo;
         }
     }
 }

@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IMethodManager.cs" />
     <Compile Include="Contracts\IMethodRepository.cs" />
+    <Compile Include="Contracts\IProjectManager.cs" />
     <Compile Include="Implements\AbstractMethodRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

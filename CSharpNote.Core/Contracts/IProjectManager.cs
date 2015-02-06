@@ -1,5 +1,5 @@
 ﻿
-namespace CSharpNote.Client.Contrasts
+namespace CSharpNote.Core.Contracts
 {
     public interface IProjectManager
     {

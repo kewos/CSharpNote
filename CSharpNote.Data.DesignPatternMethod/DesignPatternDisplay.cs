@@ -6,6 +6,7 @@ using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Implements;
 using CSharpNote.Data.DesignPatternMethod.SubClass;
 using CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
@@ -329,6 +330,30 @@ namespace CSharpNote.Data.DesignPatternMethod
                 .ToList<IGamePlayer>();
             var mediator = new GamePlayMediator(players);
             players.ForEach(p => p.Win(mediator));
+        }
+
+
+        /// <summary>
+        /// 強大的Pattern 於程式初使時建立BootStraper
+        /// 讓物件都依賴DependencyInjectorContainer
+        /// 之後物件的設計都可以減少耦合度
+        /// 並且依賴注入的物件都可以借由繼承Interface的方式來產生假物件
+        /// 達到可測式的程式碼的目標
+        /// </summary>
+        [DisplayMethod]
+        public void DependencyInjectionPattern()
+        {
+            var container = new DependecyConainer();
+            container.RegistType<IInstanceA, InstanceA>();
+            container.RegistSingleton<IInstanceB, InstanceB>();
+            container.RegistType<IDependencyInjectorA, DependencyInjectorA>();
+            container.RegistType<IDependencyInjectorB, DependencyInjectorB>();
+
+            "==============================================>InstanceB".ToConsole();
+            Enumerable.Range(0, 5).ForEach(n => container.Resolve<IInstanceA>().Do());
+
+            "==============================================>InstanceB".ToConsole();
+            Enumerable.Range(0, 5).ForEach(n => container.Resolve<IInstanceB>().Do());
         }
     }
 }
