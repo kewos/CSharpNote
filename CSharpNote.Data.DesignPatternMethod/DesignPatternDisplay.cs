@@ -334,9 +334,9 @@ namespace CSharpNote.Data.DesignPatternMethod
 
 
         /// <summary>
-        /// 強大的Pattern 於程式初使時建立BootStraper
+        /// 強大的Pattern 於程式初始時建立BootStraper
         /// 讓物件都依賴DependencyInjectorContainer
-        /// 之後物件的設計都可以減少耦合度
+        /// 之後物件的設計都用依賴注入的方式減少耦合度
         /// 並且依賴注入的物件都可以借由繼承Interface的方式來產生假物件
         /// 達到可測式的程式碼的目標
         /// </summary>
@@ -349,7 +349,7 @@ namespace CSharpNote.Data.DesignPatternMethod
             container.RegistType<IDependencyInjectorA, DependencyInjectorA>();
             container.RegistType<IDependencyInjectorB, DependencyInjectorB>();
 
-            "==============================================>InstanceB".ToConsole();
+            "==============================================>InstanceA".ToConsole();
             Enumerable.Range(0, 5).ForEach(n => container.Resolve<IInstanceA>().Do());
 
             "==============================================>InstanceB".ToConsole();
