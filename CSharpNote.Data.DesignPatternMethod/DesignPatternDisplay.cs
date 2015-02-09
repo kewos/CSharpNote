@@ -83,24 +83,6 @@ namespace CSharpNote.Data.DesignPatternMethod
         }
 
         [DisplayMethod]
-        public void ChainResponsibilityPattern()
-        {
-            Chain chainA = new ChainA();
-            Chain chainB = new ChainB();
-            Chain chainC = new ChainC();
-            Chain chainD = new ChainD();
-
-            chainA.setUpChain(chainB);
-            chainB.setUpChain(chainC);
-            chainC.setUpChain(chainD);
-
-            chainA.RequestChain(1);
-            chainA.RequestChain(3);
-            chainA.RequestChain(5);
-            chainA.RequestChain(10);
-        }
-
-        [DisplayMethod]
         public void PipelinePattern()
         {
             //IWorkLine workLine = new WorkLine(new Factory());
@@ -354,6 +336,22 @@ namespace CSharpNote.Data.DesignPatternMethod
 
             "==============================================>InstanceB".ToConsole();
             Enumerable.Range(0, 5).ForEach(n => container.Resolve<IInstanceB>().Do());
+        }
+
+
+        /// <summary>
+        /// 結合TemplatePattern的hook 可充份模組化HandlerClass
+        /// </summary>
+        [DisplayMethod]
+        public void ChainResponsibilityPattern()
+        {
+            var handler = new HandlerA();
+            var handlerCommand = new HandlerCommand(typeof(HandlerD));
+            handler.Execute(handlerCommand);
+
+            var handler1 = new HandlerA();
+            var handlerCommand1 = new HandlerCommand(typeof(int));
+            handler1.Execute(handlerCommand1);
         }
     }
 }

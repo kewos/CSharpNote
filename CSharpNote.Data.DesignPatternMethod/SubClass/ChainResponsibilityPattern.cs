@@ -1,77 +1,118 @@
 ﻿using System;
+using CSharpNote.Common.Extendsions;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass
 {
-    public abstract class Chain
+    public interface IHandlerCommand
     {
-        protected Chain upChain;
-
-        public void setUpChain(Chain chain)
-        {
-            this.upChain = chain;
-        }
-
-        abstract public void RequestChain(int lv);
+        Type CommandType { get; set; }
     }
 
-    public class ChainA : Chain
+    public class HandlerCommand : IHandlerCommand
     {
-        public override void RequestChain(int lv)
+        private Type commandType;
+        public Type CommandType
         {
-            if (lv >= 1 && lv < 3)
-            {
-                Console.WriteLine("you are level A");
-            }
+            get { return commandType; }
+            set { commandType = value; }
+        }
+
+        public HandlerCommand(Type commandType)
+        {
+            CommandType = commandType;
+        }
+    }
+
+    public interface IHandler
+    {
+        void Execute(IHandlerCommand handlerCommand);
+    }
+
+    public abstract class AbstractHandler : IHandler
+    {
+        private readonly IHandler nextHandler;
+
+        protected AbstractHandler(IHandler handler)
+        {
+            nextHandler = handler;
+        }
+
+        public void Execute(IHandlerCommand handlerCommand)
+        {
+            if (handlerCommand == null) 
+                throw new ArgumentNullException("IHandlerCommandIsNull");
+
+            if ((handlerCommand.CommandType == GetType()))
+                 DoSometing();
             else
-            {
-                upChain.RequestChain(lv);
-            }
+                 NextProcess(handlerCommand);
         }
-    }
 
-    public class ChainB : Chain
-    {
-        public override void RequestChain(int lv)
+        private void NextProcess(IHandlerCommand handlerCommand)
         {
-            if (lv >= 3 && lv < 5)
-            {
-                Console.WriteLine("you are level B");
-            }
+            if (hasNextProcess) 
+                nextHandler.Execute(handlerCommand);
             else
-            {
-                upChain.RequestChain(lv);
-            }
+                "NoFindMatchHandler".ToConsole();
         }
-    }
 
-    public class ChainC : Chain
-    {
-        public override void RequestChain(int lv)
+        private bool hasNextProcess 
         {
-            if (lv >= 5 && lv < 7)
-            {
-                Console.WriteLine("you are level A");
-            }
-            else
-            {
-                upChain.RequestChain(lv);
-            }
+            get { return (nextHandler != null); }
         }
+
+        protected abstract void DoSometing();
     }
 
-    public class ChainD : Chain
+    public class HandlerA : AbstractHandler
     {
-        public override void RequestChain(int lv)
+        public HandlerA()
+            : base(new HandlerB())
         {
-            if (lv >= 7)
-            {
-                Console.WriteLine("you are level D");
-            }
-            else
-            {
-                upChain.RequestChain(lv);
-            }
+        }
+
+        protected override void DoSometing()
+        {
+            "Execute HandlerA".ToConsole();
         }
     }
 
+    public class HandlerB : AbstractHandler
+    {
+        public HandlerB()
+            : base(new HandlerC())
+        {
+        }
+
+        protected override void DoSometing()
+        {
+            "Execute HandlerB".ToConsole();
+        }
+    }
+
+    public class HandlerC : AbstractHandler
+    {
+        public HandlerC()
+            : base(new HandlerD())
+        {
+        }
+
+        protected override void DoSometing()
+        {
+            "Execute HandlerC".ToConsole();
+        }
+    }
+
+    public class HandlerD : AbstractHandler
+    {
+        public HandlerD()
+            :base(null)
+        {
+        }
+
+        protected override void DoSometing()
+        {
+            "Execute HandlerD".ToConsole();
+        }
+    }
 }
