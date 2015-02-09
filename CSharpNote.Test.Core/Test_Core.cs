@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
-using ConsoleDisplay.Core.Implements;
-using ConsoleDisplay.Common.Attributes;
+using CSharpNote.Core.Implements;
+using CSharpNote.Common.Attributes;
 
 namespace CSharpNote.Test.Core
 {
@@ -35,7 +35,7 @@ namespace CSharpNote.Test.Core
             var repository = new testRepository();
 
             //Act
-            var actual = repository.Count;
+            var actual = repository;
 
             //Assert
             var expect = 3;

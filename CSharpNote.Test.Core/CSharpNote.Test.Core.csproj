@@ -41,6 +41,12 @@
     <Reference Include="ConsoleDisplay.Core">
       <HintPath>D:\code\Practice\C#Practice\ConsoleDisplay.Core\bin\Debug\ConsoleDisplay.Core.dll</HintPath>
     </Reference>
+    <Reference Include="CSharpNote.Common">
+      <HintPath>..\CSharpNote.Core\bin\Debug\CSharpNote.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharpNote.Core">
+      <HintPath>..\CSharpNote.Core\bin\Debug\CSharpNote.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>

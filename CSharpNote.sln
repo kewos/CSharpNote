@@ -55,6 +55,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Test", "0.Test", "{7A686CFC-BDC1-4E6B-8D76-9D95143CC075}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Test.Core", "CSharpNote.Test.Core\CSharpNote.Test.Core.csproj", "{44DAC2F7-C969-4785-A716-1FBCCFB36510}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CC38E905-4CAF-4100-8125-8E6410F44CF2} = {CC38E905-4CAF-4100-8125-8E6410F44CF2}
+		{66DD1B22-5C83-4193-9976-F6EC1F605712} = {66DD1B22-5C83-4193-9976-F6EC1F605712}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
