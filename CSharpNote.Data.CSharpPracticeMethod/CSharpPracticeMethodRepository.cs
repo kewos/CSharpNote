@@ -91,7 +91,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         [DisplayMethod]
         public void ExportTxt()
         {
-            string path = @"C:\Users\kewos\Desktop\export.txt";
+            string path = @"";
             if (!System.IO.File.Exists(path))
                 using (System.IO.File.Create(path)) { }
 
@@ -1587,6 +1587,70 @@ namespace CSharpNote.Data.CSharpPracticeMethod
 
             getNamePerformanceCheck.CaculateExcuteTime().ToConsole("GetNamePerformance:");
             toStringPerformanceCheck.CaculateExcuteTime().ToConsole("ToStringPerformanceCheck:");
+        }
+
+        /// <summary>
+        /// 有指定型別快一點點
+        /// </summary>
+        [DisplayMethod]
+        public void TypeDeclarePerormance()
+        {
+            var times = 10000000;
+            var executeTimes = Enumerable.Range(0, times);
+
+            Action typeVar = () =>
+            {
+                executeTimes.ForEach(n =>
+                {
+                    var a = n;
+                });
+            };
+
+            Action typeDeclare = () =>
+            {
+                executeTimes.ForEach(n =>
+                {
+                    int a = n;
+                });
+            };
+
+            typeVar.CaculateExcuteTime().ToConsole("typeVar:");
+            typeDeclare.CaculateExcuteTime().ToConsole("typeDeclare:");
+        }
+
+        /// <summary>
+        /// AssignDirectly is better than AssignByProperty
+        /// </summary>
+        [DisplayMethod]
+        public void AssignByPropertyVsAssignDirectlyPerformance()
+        {
+            var times = 10000000;
+            var executeTimes = Enumerable.Range(0, times);
+            var testClass = new AssignByPropertyVsAssignDirectlyPerformanceTest();
+            Action AssignByProperty = () =>
+            {
+                executeTimes.ForEach(n =>
+                {
+                    testClass.AssignByProperty = n;
+                });
+            };
+
+            Action AssignDirectly = () =>
+            {
+                executeTimes.ForEach(n =>
+                {
+                    testClass.TestAssignDirectly = n;
+                });
+            };
+
+            AssignByProperty.CaculateExcuteTime().ToConsole("AssignByProperty:");
+            AssignDirectly.CaculateExcuteTime().ToConsole("AssignDirectly:");
+        }
+
+        public class AssignByPropertyVsAssignDirectlyPerformanceTest
+        {
+            public int TestAssignDirectly;
+            public int AssignByProperty { get; set; }
         }
     }
 }
