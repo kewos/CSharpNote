@@ -50,10 +50,10 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass
 
         private void NextProcess(IHandlerCommand handlerCommand)
         {
-            if (hasNextProcess) 
-                nextHandler.Execute(handlerCommand);
-            else
-                "NoFindMatchHandler".ToConsole();
+            if (!hasNextProcess) 
+                throw new ArgumentNullException("NoFindMatchHandler");
+
+            nextHandler.Execute(handlerCommand);
         }
 
         private bool hasNextProcess 

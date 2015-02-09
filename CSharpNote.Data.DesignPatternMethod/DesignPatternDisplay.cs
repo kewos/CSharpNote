@@ -348,10 +348,6 @@ namespace CSharpNote.Data.DesignPatternMethod
             var handler = new HandlerA();
             var handlerCommand = new HandlerCommand(typeof(HandlerD));
             handler.Execute(handlerCommand);
-
-            var handler1 = new HandlerA();
-            var handlerCommand1 = new HandlerCommand(typeof(int));
-            handler1.Execute(handlerCommand1);
         }
     }
 }
