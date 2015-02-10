@@ -61,7 +61,15 @@
     <Compile Include="SubClass\GenericSingleton.cs" />
     <Compile Include="SubClass\MediatorPattern.cs" />
     <Compile Include="SubClass\NullObjectPattern.cs" />
-    <Compile Include="SubClass\ObserverPattern.cs" />
+    <Compile Include="SubClass\ObserverPattern\IPcObserver.cs" />
+    <Compile Include="SubClass\ObserverPattern\ISmartPhoneObserver.cs" />
+    <Compile Include="SubClass\ObserverPattern\IWebsiteObservable.cs" />
+    <Compile Include="SubClass\ObserverPattern\ObservableBase.cs" />
+    <Compile Include="SubClass\ObserverPattern\ObserverBase.cs" />
+    <Compile Include="SubClass\ObserverPattern\PcObserver.cs" />
+    <Compile Include="SubClass\ObserverPattern\Rss.cs" />
+    <Compile Include="SubClass\ObserverPattern\SmartPhoneObserver.cs" />
+    <Compile Include="SubClass\ObserverPattern\WebSiteObservable.cs" />
     <Compile Include="SubClass\PipelinePattern.cs" />
     <Compile Include="SubClass\PrototypePattern.cs" />
     <Compile Include="SubClass\RepositoryPattern\CachePersonRepository.cs" />

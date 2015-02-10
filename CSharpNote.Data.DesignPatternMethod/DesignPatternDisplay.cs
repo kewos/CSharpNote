@@ -7,6 +7,7 @@ using CSharpNote.Core.Implements;
 using CSharpNote.Data.DesignPatternMethod.SubClass;
 using CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer;
+using CSharpNote.Data.DesignPatternMethod.SubClass.ObserverPattern;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
@@ -33,10 +34,10 @@ namespace CSharpNote.Data.DesignPatternMethod
         [DisplayMethod]
         public void ObserverPattern()
         {
-            ISubject bloger = new Bloger();
-            bloger.Regist(new Man("A"));
-            bloger.Regist(new Woman("B"));
-            bloger.NotifyObserver("abc test");
+            var website = new WebSiteObservable();
+            var clients = new List<IObserver<Rss>> {new PcObserver(), new SmartPhoneObserver()};
+            clients.ForEach(client => website.Subscribe(client));
+            website.Notify(new Rss{Message = "Hello"});
         }
 
         [DisplayMethod]
