@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Implements;
@@ -19,18 +20,13 @@ namespace CSharpNote.Data.DesignPatternMethod
         [DisplayMethod]
         public void CommandPattern()
         {
-            // Create receiver, command, and invoker 
             Receiver receiver = new Receiver(20, 10);
             Invoker invoker = new Invoker();
 
-            // Set and execute command 
             invoker.SetCommand(new AddCommond(receiver));
             invoker.SetCommand(new SubtractCommond(receiver));
             invoker.SetCommand(new MultiplicateCommond(receiver));
             invoker.ExecuteCommand();
-
-            // Wait for user 
-            Console.Read();
         }
 
         [DisplayMethod]
@@ -66,14 +62,12 @@ namespace CSharpNote.Data.DesignPatternMethod
         [DisplayMethod]
         public void NullObjectPattern()
         {
-            PeopleRespository p = new PeopleRespository();
-            Console.WriteLine(p.Find("123").Speak);
-            Console.WriteLine(p.Find("1").Speak);
-            Console.WriteLine(p.Find("2").Speak);
-            Console.WriteLine(p.Find("3").Speak);
-            Console.WriteLine(p.Find("4").Speak);
-
-            Console.ReadLine();
+            var elements = new List<ObjectBase> {new ObjectA(), new ObjectB(), new ObjectC()};
+            var repository = new ObjectRespository(elements);
+            repository.Find("ObjectA").GetTypeName.ToConsole();
+            repository.Find("ObjectB").GetTypeName.ToConsole();
+            repository.Find("ObjectC").GetTypeName.ToConsole();
+            repository.Find("ObjectD").GetTypeName.ToConsole();
         }
 
         [DisplayMethod]

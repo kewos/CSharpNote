@@ -79,7 +79,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass
     {
         // Fields
         private ArrayList customers = new ArrayList();
-        private int current = 0;
+        private int current;
 
         // Constructors
         public CustomersDataObject()

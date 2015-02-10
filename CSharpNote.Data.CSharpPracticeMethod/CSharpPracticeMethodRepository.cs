@@ -1472,14 +1472,14 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         public void SingleOrDefaultFirstOrDefaultPerformance()
         {
             var items = Enumerable.Range(1, 1000);
-            Action FirstOrDefaultPerformance = () => items.Select(n => items.FirstOrDefault(m => n == m)).ToList();
-            Action SingleOrDefaultPerformance = () => items.Select(n => items.SingleOrDefault(m => n == m)).ToList();
+            Action firstOrDefaultPerformance = () => items.Select(n => items.FirstOrDefault(m => n == m)).ToList();
+            Action singleOrDefaultPerformance = () => items.Select(n => items.SingleOrDefault(m => n == m)).ToList();
 
-            FirstOrDefaultPerformance.CaculateExcuteTime().ToConsole("FirstOrDefaultPerformance:");
-            SingleOrDefaultPerformance.CaculateExcuteTime().ToConsole("SingleOrDefaultPerformance:");
+            firstOrDefaultPerformance.CaculateExcuteTime().ToConsole("FirstOrDefaultPerformance:");
+            singleOrDefaultPerformance.CaculateExcuteTime().ToConsole("SingleOrDefaultPerformance:");
 
-            Action SingleOrDefaultThrowException = () => items.Select(n => items.SingleOrDefault(m => n % 2 == 0)).ToList();
-            SingleOrDefaultThrowException.ExcauteAndCatchException().ToConsole("ExceptionMessage:");
+            Action singleOrDefaultThrowException = () => items.Select(n => items.SingleOrDefault(m => n % 2 == 0)).ToList();
+            singleOrDefaultThrowException.ExcauteAndCatchException().ToConsole("ExceptionMessage:");
 
         }
 
@@ -1547,7 +1547,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         public void TheDangersOfTheLargeObjectHeap()
         {
             var  handler = new LargeObjectHeapHandler();
-            //handler.Fill(true, true, false);
+            handler.Fill(true, true, false);
             //handler.Fill(true, true, true);
             //handler.Fill(false, true, false);
             //handler.Fill(true, false, false);
@@ -1651,6 +1651,11 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         {
             public int TestAssignDirectly;
             public int AssignByProperty { get; set; }
+        }
+
+        [DisplayMethod]
+        public void TEST()
+        {
         }
     }
 }

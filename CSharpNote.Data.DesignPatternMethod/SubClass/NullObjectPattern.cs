@@ -2,48 +2,45 @@
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass
 {
-    public class PeopleBase
+    public abstract class ObjectBase
     {
-        public virtual string Name { get { return null; } }
-        public virtual string Speak { get { return null; } }
-        public static NullPeople Null { get { return new NullPeople(); } }
+        public virtual string GetTypeName { get { return GetType().Name; } }
+        public static NullObject Null { get { return new NullObject(); } }
 
-        public class NullPeople : PeopleBase
+        public class NullObject : ObjectBase
         {
-            public override string Name { get { return ""; } }
-            public override string Speak { get { return ""; } }
         }
     }
 
-    public class OldPeople : PeopleBase
+    public class ObjectA : ObjectBase
     {
-        public override string Name { get { return "OldPeople"; } }
-        public override string Speak { get { return "OldPeople"; } }
     }
 
-    public class YoungPeople : PeopleBase
+    public class ObjectB : ObjectBase
     {
-        public override string Name { get { return "YoungPeople"; } }
-        public override string Speak { get { return "YoungPeople"; } }
     }
 
-    public class PeopleRespository
+    public class ObjectC : ObjectBase
     {
-        public Dictionary<string, PeopleBase> allPeople = new Dictionary<string, PeopleBase>();
+    }
 
-        public PeopleRespository()
+    public class ObjectRespository
+    {
+        public Dictionary<string, ObjectBase> dictionary;
+
+        public ObjectRespository(List<ObjectBase> elements)
         {
-            allPeople.Add("1", new OldPeople());
-            allPeople.Add("2", new OldPeople());
-            allPeople.Add("3", new OldPeople());
-            allPeople.Add("4", new YoungPeople());
+            if (dictionary == null)
+            {
+                dictionary = new Dictionary<string, ObjectBase>();
+            }
+
+            elements.ForEach(element => dictionary.Add(element.GetTypeName, element));
         }
 
-        public PeopleBase Find(string name)
+        public ObjectBase Find(string typeName)
         {
-            if (!allPeople.ContainsKey(name))
-                return PeopleBase.Null;
-            return allPeople[name];
+            return (dictionary.ContainsKey(typeName)) ? dictionary[typeName] : ObjectBase.Null;
         }
     }
 }
