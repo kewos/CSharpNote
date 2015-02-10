@@ -36,8 +36,13 @@ namespace CSharpNote.Data.DesignPatternMethod
         {
             var website = new WebSiteObservable();
             var clients = new List<IObserver<Rss>> {new PcObserver(), new SmartPhoneObserver()};
-            clients.ForEach(client => website.Subscribe(client));
-            website.Notify(new Rss{Message = "Hello"});
+            clients.ForEach(client =>
+            {
+                using (website.Subscribe(client))
+                {
+                    website.Notify(new Rss { Message = "Hello" });
+                }
+            });
         }
 
         [DisplayMethod]
@@ -48,8 +53,8 @@ namespace CSharpNote.Data.DesignPatternMethod
             b.Attach(new Vegetable());
             b.Attach(new Meat());
 
-            ZhangSan z = new ZhangSan();
-            LiSi l = new LiSi();
+            VistorA z = new VistorA();
+            VistorB l = new VistorB();
 
             b.Accept(z);
             Console.WriteLine("----------------------");

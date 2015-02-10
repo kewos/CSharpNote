@@ -1,113 +1,120 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass
 {
-    abstract class Visitor
+    public interface IVisitor
     {
-        public abstract void VisitCoffee(Coffee coffee);
-        public abstract void VisitMeat(Meat meet);
-        public abstract void VisitVegetable(Vegetable vegetable);
+        void VisitCoffee(Coffee coffee);
+        void VisitMeat(Meat meet);
+        void VisitVegetable(Vegetable vegetable);
     }
 
-    class ZhangSan : Visitor
+    public class VistorA : IVisitor
     {
-        public override void VisitCoffee(Coffee coffee)
+        public void VisitCoffee(Coffee coffee)
         {
-            Console.Write( "{0}: Take a cup of {1}, ",this, coffee);
+            Console.Write("{0}: Take a cup of {1}, ", GetType().Name, coffee.GetType().Name);
             coffee.AddMilk();
             coffee.AddSugar();
             Console.WriteLine();
         }
 
-        public override void VisitVegetable(Vegetable vegetable)
+        public void VisitVegetable(Vegetable vegetable)
         {
-            Console.WriteLine("{0}: Take some {1}", this, vegetable);
+            Console.WriteLine("{0}: Take some {1}", GetType().Name, vegetable.GetType().Name);
         }
 
-        public override void VisitMeat(Meat meat)
+        public void VisitMeat(Meat meat)
         {
             Console.WriteLine( "I don't want any meat!");
         }
     }
 
-    class LiSi : Visitor
+    public class VistorB : IVisitor
     {
-        public override void VisitCoffee(Coffee coffee)
+        public void VisitCoffee(Coffee coffee)
         {
-            Console.Write("{0}: Take a cup of {1}, ", this, coffee);
+            Console.Write("{0}: Take a cup of {1}, ", GetType().Name, coffee.GetType().Name);
             coffee.AddSugar();
             Console.WriteLine();
         }
 
-        public override void VisitVegetable(Vegetable vegetable)
+        public void VisitVegetable(Vegetable vegetable)
         {
-            Console.WriteLine("{0}: Take some {1}", this, vegetable);
+            Console.WriteLine("{0}: Take some {1}", GetType().Name, vegetable.GetType().Name);
         }
 
-        public override void VisitMeat(Meat meat)
+        public void VisitMeat(Meat meat)
         {
-            Console.WriteLine("{0}: Take some {1}", this, meat);
+            Console.WriteLine("{0}: Take some {1}", GetType().Name, meat.GetType().Name);
         }
     }
 
-    abstract class Food
+    public interface IFood
     { 
-        abstract public void Accept(Visitor visitor);
+        void Accept(IVisitor visitor);
     }
 
-    class Coffee: Food  
+    public class Coffee : IFood  
     {
-        override public void Accept(Visitor visitor)
+        public void Accept(IVisitor visitor)
         {
-          visitor.VisitCoffee(this);
+            visitor.VisitCoffee(this);
         }
 
         public void AddSugar()
         {
-           Console.Write("add sugar.");   
+            Console.Write("add sugar.");   
         }
 
         public void AddMilk()
         {
-           Console.Write("add milk.");   
+            Console.Write("add milk.");   
         }
     }
 
-    class Meat: Food  
+    public class Meat : IFood  
     {
-          override public void Accept(Visitor visitor)
-          {
+        public void Accept(IVisitor visitor)
+        {
             visitor.VisitMeat(this);
-          }
+        }
     }
 
-    class Vegetable: Food  
+    public class Vegetable : IFood  
     {
-
-          override public void Accept(Visitor visitor)
-          {
+        public void Accept(IVisitor visitor)
+        {
             visitor.VisitVegetable(this);
-          }
+        }
     }
 
-    class BuffetDinner
+    public class BuffetDinner
     {
-        private System.Collections.ArrayList elements = new System.Collections.ArrayList();
+        private readonly IList<IFood> elements;
 
-        public void Attach(Food element)
+        public BuffetDinner()
+        {
+            elements = new List<IFood>();
+        }
+
+        public void Attach(IFood element)
         {
             elements.Add(element);
         }
 
-        public void Detach(Food element)
+        public void Detach(IFood element)
         {
             elements.Remove(element);
         }
 
-        public void Accept(Visitor visitor)
+        public void Accept(IVisitor visitor)
         {
-            foreach (Food f in elements)
-                f.Accept(visitor);
+            foreach (IFood food in elements)
+            {
+                food.Accept(visitor);
+            }
         }
     }
 }
