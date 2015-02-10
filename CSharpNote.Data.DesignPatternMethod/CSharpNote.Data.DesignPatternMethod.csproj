@@ -57,7 +57,9 @@
     <Compile Include="SubClass\DependecyContainer\DependecyInjectionObject.cs" />
     <Compile Include="SubClass\DependecyContainer\DependecyConainer.cs" />
     <Compile Include="SubClass\FecadePattern.cs" />
-    <Compile Include="SubClass\FlyweightPattern.cs" />
+    <Compile Include="SubClass\FlyweightPattern\FlyweightButton.cs" />
+    <Compile Include="SubClass\FlyweightPattern\FlyweightButtonFactory.cs" />
+    <Compile Include="SubClass\FlyweightPattern\IButton.cs" />
     <Compile Include="SubClass\GenericSingleton.cs" />
     <Compile Include="SubClass\MediatorPattern.cs" />
     <Compile Include="SubClass\NullObjectPattern.cs" />

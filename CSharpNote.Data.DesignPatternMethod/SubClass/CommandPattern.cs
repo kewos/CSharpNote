@@ -3,12 +3,10 @@ using System.Collections.Generic;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass
 {
-    // "Command" 
     public abstract class Command
     {
         protected Receiver receiver;
 
-        // Constructor 
         public Command(Receiver receiver)
         {
             this.receiver = receiver;
@@ -17,7 +15,6 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass
         public abstract void Execute();
     }
 
-    // "ConcreteCommand" 
     public class AddCommond : Command
     {
         public AddCommond(Receiver receiver) :
@@ -57,7 +54,6 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass
         }
     }
 
-    // "Receiver" 
     public class Receiver
     {
         public int X { get; private set; }
@@ -70,7 +66,6 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass
         }
     }
 
-    // "Invoker" 
     public class Invoker
     {
         private List<Command> commands;

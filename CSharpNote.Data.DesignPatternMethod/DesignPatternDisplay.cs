@@ -7,6 +7,7 @@ using CSharpNote.Core.Implements;
 using CSharpNote.Data.DesignPatternMethod.SubClass;
 using CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer;
+using CSharpNote.Data.DesignPatternMethod.SubClass.FlyweightPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ObserverPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.PrototypePattern;
 
