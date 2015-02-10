@@ -1,22 +1,24 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass
 {
-    // "Prototype"
-    abstract class ColorPrototype
+    public interface IColorPrototype<T>
     {
-        // Methods
-        public abstract ColorPrototype Clone();
+        T Clone();
     }
 
-    // "ConcretePrototype"
-    class Color : ColorPrototype
+    public interface IColor : IColorPrototype<IColor>
     {
-        // Fields
-        private int red, green, blue;
+        void Display();
+    }
 
-        // Constructors
+    public class Color : IColor
+    {
+        private readonly int red;
+        private readonly int green;
+        private readonly int blue;
+
         public Color(int red, int green, int blue)
         {
             this.red = red;
@@ -24,31 +26,41 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass
             this.blue = blue;
         }
 
-        // Methods
-        public override ColorPrototype Clone()
+        public IColor Clone()
         {
-            // Creates a 'shallow copy'
-            return (ColorPrototype)this.MemberwiseClone();
+            return MemberwiseClone() as IColor;
         }
 
         public void Display()
         {
-            Console.WriteLine("RGB values are: {0},{1},{2}",
-              red, green, blue);
+            Console.WriteLine("R:{0} G:{1} B:{2}", red, green, blue);
         }
     }
 
-    // Prototype manager
-    class ColorManager
+    public interface IColorManager
     {
-        // Fields
-        Hashtable colors = new Hashtable();
+        IColor this[string name] { get; set; }
+    }
 
-        // Indexers
-        public ColorPrototype this[string name]
+    public class ColorManager : IColorManager
+    {
+        private readonly Dictionary<string, IColor> colors;
+
+        public ColorManager()
         {
-            get { return (ColorPrototype)colors[name]; }
-            set { colors.Add(name, value); }
+            colors = new Dictionary<string,IColor>();
+        }
+
+        public IColor this[string name]
+        {
+            get
+            {
+                return colors[name];
+            }
+            set
+            {
+                colors.Add(name, value);
+            }
         }
     }
 }

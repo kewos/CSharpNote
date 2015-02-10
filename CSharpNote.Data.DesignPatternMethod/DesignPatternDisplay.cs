@@ -48,17 +48,17 @@ namespace CSharpNote.Data.DesignPatternMethod
         [DisplayMethod]
         public void VistorPattern()
         {
-            BuffetDinner b = new BuffetDinner();
-            b.Attach(new Coffee());
-            b.Attach(new Vegetable());
-            b.Attach(new Meat());
+            BuffetDinner buffetDinner = new BuffetDinner();
+            buffetDinner.Attach(new Coffee());
+            buffetDinner.Attach(new Vegetable());
+            buffetDinner.Attach(new Meat());
 
-            VistorA z = new VistorA();
-            VistorB l = new VistorB();
+            VistorA vistorA = new VistorA();
+            VistorB vistorB = new VistorB();
 
-            b.Accept(z);
+            buffetDinner.Accept(vistorA);
             Console.WriteLine("----------------------");
-            b.Accept(l);
+            buffetDinner.Accept(vistorB);
         }
 
         [DisplayMethod]
@@ -129,33 +129,25 @@ namespace CSharpNote.Data.DesignPatternMethod
             Console.WriteLine(new Actor("adabcbc").Name);
         }
 
+        /// <summary>
+        /// 實作IClone透過複製來產生實體
+        /// </summary>
         [DisplayMethod]
         public void PrototypePattern()
         {
             ColorManager colormanager = new ColorManager();
 
-            // Initialize with standard colors
             colormanager["red"] = new Color(255, 0, 0);
             colormanager["green"] = new Color(0, 255, 0);
             colormanager["blue"] = new Color(0, 0, 255);
 
-            // User adds personalized colors
-            colormanager["angry"] = new Color(255, 54, 0);
-            colormanager["peace"] = new Color(128, 211, 128);
-            colormanager["flame"] = new Color(211, 34, 20);
+            colormanager["red"].Display();
+            colormanager["green"].Display();
+            colormanager["blue"].Display();
 
-            // User uses selected colors
-            string colorName = "red";
-            Color c1 = (Color)colormanager[colorName].Clone();
-            c1.Display();
-
-            colorName = "peace";
-            Color c2 = (Color)colormanager[colorName].Clone();
-            c2.Display();
-
-            colorName = "flame";
-            Color c3 = (Color)colormanager[colorName].Clone();
-            c3.Display();
+            colormanager["red"].Clone().Display();
+            colormanager["green"].Clone().Display();
+            colormanager["blue"].Clone().Display();
         }
 
         [DisplayMethod]
