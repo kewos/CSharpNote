@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass
 {
     public interface IColorPrototype<T>
     {
         T Clone();
+        T DeepClone();
     }
 
     public interface IColor : IColorPrototype<IColor>
@@ -13,6 +16,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass
         void Display();
     }
 
+    [Serializable]
     public class Color : IColor
     {
         private readonly int red;
@@ -29,6 +33,11 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass
         public IColor Clone()
         {
             return MemberwiseClone() as IColor;
+        }
+
+        public IColor DeepClone()
+        {
+            return DeepClone();
         }
 
         public void Display()

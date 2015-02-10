@@ -144,38 +144,34 @@ namespace CSharpNote.Data.DesignPatternMethod
             colormanager["red"].Display();
             colormanager["green"].Display();
             colormanager["blue"].Display();
-
-            colormanager["red"].Clone().Display();
-            colormanager["green"].Clone().Display();
-            colormanager["blue"].Clone().Display();
         }
 
         [DisplayMethod]
         public void CompositePattern()
         {
-            (new Manager()
+            (new Manager
             {
-                supervisors = new List<IStuff>()
+                supervisors = new List<IStuff>
                 {
-                    new Supervisor()
+                    new Supervisor
                     {
-                        workers = new List<IStuff>()
+                        workers = new List<IStuff>
                         {
                             new Worker(),
                             new Worker(),
                             new Worker()
                         }
                     },
-                    new Supervisor()
+                    new Supervisor
                     {
-                        workers = new List<IStuff>()
+                        workers = new List<IStuff>
                         {
                             new Worker(),
                         }
                     },
-                    new Supervisor()
+                    new Supervisor
                     {
-                        workers = new List<IStuff>()
+                        workers = new List<IStuff>
                         {
                             new Worker(),
                             new Worker()

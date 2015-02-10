@@ -50,6 +50,7 @@
     <Compile Include="Attributes\DisplayMethodAttribute.cs" />
     <Compile Include="Extendsions\ActionExtensions.cs" />
     <Compile Include="Extendsions\AssemblyExtensions.cs" />
+    <Compile Include="Extendsions\GenericsExtensions.cs" />
     <Compile Include="Extendsions\TypeExtensions .cs" />
     <Compile Include="Extendsions\SimpleInjectionExtensions.cs" />
     <Compile Include="Extendsions\FuncExtensions.cs" />
