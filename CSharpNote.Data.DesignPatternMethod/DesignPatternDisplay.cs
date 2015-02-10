@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Implements;
@@ -73,15 +72,8 @@ namespace CSharpNote.Data.DesignPatternMethod
         [DisplayMethod]
         public void StatetPattern()
         {
-            Player player = new Player();
-            player.Level = 10;
-            player.DoWork();
-            player.Level = 20;
-            player.DoWork();
-            player.Level = 40;
-            player.DoWork();
-            player.Level = 90;
-            player.DoWork();
+            var context = new Context(new StateA());
+            Enumerable.Range(0, 10).ForEach(n => context.Execute());
         }
 
         [DisplayMethod]

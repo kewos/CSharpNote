@@ -1,101 +1,67 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
+using CSharpNote.Common.Extendsions;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass
 {
-    class Player
+    public class Context
     {
-        public Player()
+        private IState state;
+
+        public Context(IState state)
         {
-            State = new State10();
-            Level = -1;
-            Name = "AAA";
+            this.state = state;
         }
 
-        public IState State
+        public void SetState(IState state)
         {
-            get;
-            set;
+            this.state = state;
         }
 
-        public String Name
+        public void Execute()
         {
-            get;
-            set;
-        }
-
-        public int Level
-        {
-            get;
-            set;
-        }
-
-        public void DoWork()
-        {
-            State.Show(this);
+            state.Handle(this);
         }
     }
 
-    interface IState
+    public interface IState
     {
-        void Show(Player player);
+        void Handle(Context context);
     }
 
-    class State10 : IState
+    public class StateA : IState
     {
-        public void Show(Player player)
+        public void Handle(Context context)
         {
-            if (player.Level <= 10)
-            {
-                Console.WriteLine("{0} LessThan {1}", player.Name, "Level 10");
-            }
-            else
-            {
-                player.State = new State30();
-                player.DoWork();
-            }
+            GetType().Name.ToConsole("Run");
+            context.SetState(new StateB());
         }
     }
 
-    class State30 : IState
+    public class StateB : IState
     {
-        public void Show(Player player)
+        public void Handle(Context context)
         {
-            if (player.Level <= 30 && player.Level > 10)
-            {
-                Console.WriteLine("{0} Between {1}", player.Name, "Level10 And Level30");
-            }
-            else
-            {
-                player.State = new State50();
-                player.DoWork();
-            }
+            GetType().Name.ToConsole("Run");
+            context.SetState(new StateC());
         }
     }
 
-    class State50 : IState
+    public class StateC : IState
     {
-        public void Show(Player player)
+        public void Handle(Context context)
         {
-            if (player.Level <= 50 && player.Level > 30)
-            {
-                Console.WriteLine("{0} Between {1}", player.Name, "Level50 And Level30");
-            }
-            else
-            {
-                player.State = new State99();
-                player.DoWork();
-            }
+            GetType().Name.ToConsole("Run");
+            context.SetState(new StateD());
         }
     }
 
-    class State99 : IState
+    public class StateD : IState
     {
-        public void Show(Player player)
+        public void Handle(Context context)
         {
-            if (player.Level > 50)
-            {
-                Console.WriteLine("{0} Greater Than {1}", player.Name, "Level50");
-            }
+            GetType().Name.ToConsole("Run");
+            context.SetState(new StateA());
         }
     }
 }

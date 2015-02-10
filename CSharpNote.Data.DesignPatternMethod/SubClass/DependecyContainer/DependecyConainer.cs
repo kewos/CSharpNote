@@ -17,6 +17,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer
         /// 容器保存Func達到LazyExcution
         /// </summary>
         private readonly Dictionary<Type, Func<object>> container;
+
         /// <summary>
         /// 容器保存Singleton物件
         /// </summary>
@@ -40,7 +41,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer
         /// 註冊可選LifeCycle
         /// </summary>
         public void RegistType<TInterface, TType>(LifeCycle lifeCycle = LifeCycle.Transient) 
-            where TType : TInterface
+            where TType : class, TInterface
         {
             switch (lifeCycle)
             {
@@ -57,7 +58,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer
         /// 註冊LifeCycle.Singleton
         /// </summary>
         public void RegistSingleton<TInterface, TType>() 
-            where TType : TInterface
+            where TType : class, TInterface
         {
             var @interface = typeof(TInterface);
             var @type = typeof (TType);
@@ -82,7 +83,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer
         /// 註冊LifeCycle.Transient
         /// </summary>
         public void Regist<TInterface, TType>()
-            where TType : TInterface
+            where TType : class, TInterface
         {
 
             var @type = typeof (TType);
