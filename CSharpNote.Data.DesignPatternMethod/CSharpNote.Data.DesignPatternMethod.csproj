@@ -71,7 +71,11 @@
     <Compile Include="SubClass\ObserverPattern\SmartPhoneObserver.cs" />
     <Compile Include="SubClass\ObserverPattern\WebSiteObservable.cs" />
     <Compile Include="SubClass\PipelinePattern.cs" />
-    <Compile Include="SubClass\PrototypePattern.cs" />
+    <Compile Include="SubClass\PrototypePattern\Color.cs" />
+    <Compile Include="SubClass\PrototypePattern\ColorManager.cs" />
+    <Compile Include="SubClass\PrototypePattern\IColor.cs" />
+    <Compile Include="SubClass\PrototypePattern\IColorManager.cs" />
+    <Compile Include="SubClass\PrototypePattern\IPrototype.cs" />
     <Compile Include="SubClass\RepositoryPattern\CachePersonRepository.cs" />
     <Compile Include="SubClass\RepositoryPattern\PersonRepository.cs" />
     <Compile Include="SubClass\RepositoryPattern\FakeDbContext.cs" />
