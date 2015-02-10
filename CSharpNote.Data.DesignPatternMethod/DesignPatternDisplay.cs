@@ -10,6 +10,7 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer;
 using CSharpNote.Data.DesignPatternMethod.SubClass.FlyweightPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ObserverPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.PrototypePattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.SpecificationPattern;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {

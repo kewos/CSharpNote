@@ -83,7 +83,13 @@
     <Compile Include="SubClass\RepositoryPattern\FakeDbContext.cs" />
     <Compile Include="SubClass\RepositoryPattern\Person.cs" />
     <Compile Include="SubClass\RepositoryPattern\IPersonRepository.cs" />
-    <Compile Include="SubClass\SpecificationPattern.cs" />
+    <Compile Include="SubClass\SpecificationPattern\AndSpecification.cs" />
+    <Compile Include="SubClass\SpecificationPattern\Band.cs" />
+    <Compile Include="SubClass\SpecificationPattern\CompositeSpecification.cs" />
+    <Compile Include="SubClass\SpecificationPattern\ExpressionSpecification.cs" />
+    <Compile Include="SubClass\SpecificationPattern\ISpecification.cs" />
+    <Compile Include="SubClass\SpecificationPattern\NotSpecification.cs" />
+    <Compile Include="SubClass\SpecificationPattern\OrSpecification.cs" />
     <Compile Include="SubClass\StatePattern.cs" />
     <Compile Include="SubClass\VistorPattern.cs" />
   </ItemGroup>
