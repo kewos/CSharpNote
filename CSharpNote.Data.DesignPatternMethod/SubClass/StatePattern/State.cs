@@ -1,40 +1,7 @@
-﻿using System;
-using System.Security.Cryptography.X509Certificates;
-using CSharpNote.Common.Extendsions;
+﻿using CSharpNote.Common.Extendsions;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass
+namespace CSharpNote.Data.DesignPatternMethod.SubClass.StatePattern
 {
-    public interface IContext
-    {
-        void SetState(IState state);
-        void Execute();
-    }
-
-    public class Context : IContext
-    {
-        private IState state;
-
-        public Context(IState state)
-        {
-            this.state = state;
-        }
-
-        public void SetState(IState state)
-        {
-            this.state = state;
-        }
-
-        public void Execute()
-        {
-            state.Handle(this);
-        }
-    }
-
-    public interface IState
-    {
-        void Handle(Context context);
-    }
-
     public class StateA : IState
     {
         public void Handle(Context context)

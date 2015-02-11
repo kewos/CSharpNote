@@ -5,12 +5,17 @@ using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Implements;
 using CSharpNote.Data.DesignPatternMethod.SubClass;
+using CSharpNote.Data.DesignPatternMethod.SubClass.ChainResponsibilityPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.CompositePattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer;
 using CSharpNote.Data.DesignPatternMethod.SubClass.FlyweightPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.MediatorPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ObserverPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.PrototypePattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.SpecificationPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.StatePattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.VistorPattern;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
@@ -147,7 +152,17 @@ namespace CSharpNote.Data.DesignPatternMethod
                     new Leaf()
                 }),
                 new CompositeB(),
-                new CompositeB()
+                new CompositeB(new List<IComponent>
+                {
+                    new CompositeA(),
+                    new CompositeA(),
+                    new CompositeA(new List<IComponent>
+                    {
+                        new Leaf(),
+                        new Leaf(),
+                        new Leaf()
+                    })
+                })
             }).Execute();
         }
 

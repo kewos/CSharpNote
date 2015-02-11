@@ -51,9 +51,18 @@
     <Compile Include="SubClass\Aop.cs" />
     <Compile Include="SubClass\AopⅠ.cs" />
     <Compile Include="SubClass\BridgePattern.cs" />
-    <Compile Include="SubClass\ChainResponsibilityPattern.cs" />
+    <Compile Include="SubClass\ChainResponsibilityPattern\AbstractHandler.cs" />
+    <Compile Include="SubClass\ChainResponsibilityPattern\Handler.cs" />
+    <Compile Include="SubClass\ChainResponsibilityPattern\HandlerCommand.cs" />
+    <Compile Include="SubClass\ChainResponsibilityPattern\IHandler.cs" />
+    <Compile Include="SubClass\ChainResponsibilityPattern\IHandlerCommand.cs" />
     <Compile Include="SubClass\CommandPattern.cs" />
-    <Compile Include="SubClass\CompositePattern.cs" />
+    <Compile Include="SubClass\CompositePattern\CompositeA.cs" />
+    <Compile Include="SubClass\CompositePattern\CompositeB.cs" />
+    <Compile Include="SubClass\CompositePattern\CompositeBase.cs" />
+    <Compile Include="SubClass\CompositePattern\IComponent.cs" />
+    <Compile Include="SubClass\CompositePattern\IComposite.cs" />
+    <Compile Include="SubClass\CompositePattern\Leaf.cs" />
     <Compile Include="SubClass\DependecyContainer\DependecyInjectionObject.cs" />
     <Compile Include="SubClass\DependecyContainer\DependecyConainer.cs" />
     <Compile Include="SubClass\FecadePattern.cs" />
@@ -61,7 +70,10 @@
     <Compile Include="SubClass\FlyweightPattern\FlyweightButtonFactory.cs" />
     <Compile Include="SubClass\FlyweightPattern\IButton.cs" />
     <Compile Include="SubClass\GenericSingleton.cs" />
-    <Compile Include="SubClass\MediatorPattern.cs" />
+    <Compile Include="SubClass\MediatorPattern\GamePlayer.cs" />
+    <Compile Include="SubClass\MediatorPattern\GamePlayMediator.cs" />
+    <Compile Include="SubClass\MediatorPattern\IGamePlayer.cs" />
+    <Compile Include="SubClass\MediatorPattern\IGamePlayMediator.cs" />
     <Compile Include="SubClass\NullObjectPattern.cs" />
     <Compile Include="SubClass\ObserverPattern\IPcObserver.cs" />
     <Compile Include="SubClass\ObserverPattern\ISmartPhoneObserver.cs" />
@@ -90,8 +102,15 @@
     <Compile Include="SubClass\SpecificationPattern\ISpecification.cs" />
     <Compile Include="SubClass\SpecificationPattern\NotSpecification.cs" />
     <Compile Include="SubClass\SpecificationPattern\OrSpecification.cs" />
-    <Compile Include="SubClass\StatePattern.cs" />
-    <Compile Include="SubClass\VistorPattern.cs" />
+    <Compile Include="SubClass\StatePattern\Context.cs" />
+    <Compile Include="SubClass\StatePattern\IContext.cs" />
+    <Compile Include="SubClass\StatePattern\IState.cs" />
+    <Compile Include="SubClass\StatePattern\State.cs" />
+    <Compile Include="SubClass\VistorPattern\BuffetDinner.cs" />
+    <Compile Include="SubClass\VistorPattern\Food.cs" />
+    <Compile Include="SubClass\VistorPattern\IFood.cs" />
+    <Compile Include="SubClass\VistorPattern\IVisitor.cs" />
+    <Compile Include="SubClass\VistorPattern\Vistor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
