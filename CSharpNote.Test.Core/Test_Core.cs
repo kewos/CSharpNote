@@ -9,20 +9,20 @@ namespace CSharpNote.Test.Core
     [TestClass]
     public class Test_AbstractMethodRepository
     {
-        [DisplayClassAttribue]
+        [MarkedRepositoryAttribue]
         public class testRepository : AbstractMethodRepository
         {
-            [DisplayMethod]
+            [MarkedItem]
             public void test1()
             {
             }
 
-            [DisplayMethod]
+            [MarkedItem]
             public void test2()
             {
             }
 
-            [DisplayMethod]
+            [MarkedItem]
             public void test3()
             {
             }

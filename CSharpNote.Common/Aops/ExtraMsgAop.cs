@@ -18,7 +18,7 @@ namespace CSharpNote.Common.Aops
         public IMessage SyncProcessMessage(IMessage msg)
         {
             IMethodCallMessage methodCallMsg = msg as IMethodCallMessage;
-            var info = Attribute.GetCustomAttribute(methodCallMsg.MethodBase, typeof(DisplayMethodAttribute)) as DisplayMethodAttribute;
+            var info = Attribute.GetCustomAttribute(methodCallMsg.MethodBase, typeof(MarkedItemAttribute)) as MarkedItemAttribute;
             if (methodCallMsg == null || info == null) return nextSink.SyncProcessMessage(msg);
             return DisplayExtraMsg(msg, info);
         }
@@ -29,7 +29,7 @@ namespace CSharpNote.Common.Aops
         }
         #endregion
 
-        private IMessage DisplayExtraMsg(IMessage msg, DisplayMethodAttribute info)
+        private IMessage DisplayExtraMsg(IMessage msg, MarkedItemAttribute info)
         {
             Console.Clear();
             ShowMethodInfomation(info);
@@ -42,7 +42,7 @@ namespace CSharpNote.Common.Aops
             return resultMsg;
         }
 
-        private void ShowMethodInfomation(DisplayMethodAttribute info)
+        private void ShowMethodInfomation(MarkedItemAttribute info)
         {
             if (!info.Display) return;
             if (info.Reference != null) Console.WriteLine(info.Reference);

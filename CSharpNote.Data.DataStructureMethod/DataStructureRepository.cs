@@ -10,9 +10,10 @@ using CSharpNote.Data.DataStructureMethod.SubClass.Queue;
 
 namespace CSharpNote.Data.DataStructureMethod
 {
+    [MarkedRepositoryAttribue]
     public class DataStructureMethodRepository : AbstractMethodRepository
     {
-        [DisplayMethod]
+        [MarkedItem]
         public void HashTable()
         {
             var hashTable = new HashTable<int, int>();
@@ -27,7 +28,7 @@ namespace CSharpNote.Data.DataStructureMethod
             (hashTable.Count == 0).ToConsole("Remove 1000 Items, Count is 0:");
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void CircularQueue()
         {
             var circularQueue = new CircularQueue<int>(3).Enqueue(1).Enqueue(2).Enqueue(3);
@@ -70,7 +71,7 @@ namespace CSharpNote.Data.DataStructureMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void Deque()
         {
             var deque = new Deque<int>(Enumerable.Range(5, 2)).EnqueueHead(1).EnqueueHead(2).EnqueueTail(3).EnqueueTail(4);
@@ -90,7 +91,7 @@ namespace CSharpNote.Data.DataStructureMethod
             deque2.All((index, element) => element == assert2[index]).ToConsole("elements is { 1, 5, 6, 3 } :");
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void CircularBuffer()
         { 
             var circularBuffer = new CircularBuffer<int>(3);
@@ -115,7 +116,7 @@ namespace CSharpNote.Data.DataStructureMethod
             circularBuffer2.All((index, element) => assert2[index] == element).ToConsole("elements is {1, 2}");
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void Buffer()
         {
             var buffer = new Buffer<int>(3);

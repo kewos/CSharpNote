@@ -27,7 +27,7 @@ namespace CSharpNote.Core.Implements
                 {
                     methodInfos = GetType()
                         .GetMethods(BindingFlags.Public | BindingFlags.Instance)
-                        .Where(method => method.GetCustomAttribute(typeof(DisplayMethodAttribute), false) != null)
+                        .Where(method => method.GetCustomAttribute(typeof(MarkedItemAttribute), false) != null)
                         .OrderBy(method => method.Name)
                         .ToList();
                 }

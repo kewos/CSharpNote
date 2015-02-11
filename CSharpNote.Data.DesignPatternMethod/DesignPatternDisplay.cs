@@ -24,10 +24,10 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.ProxyPattern;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
-    [DisplayClassAttribue]
+    [MarkedRepositoryAttribue]
     public class DesignPatternMethodRepository : AbstractMethodRepository
     {
-        [DisplayMethod]
+        [MarkedItem]
         public void CommandPattern()
         {
             Receiver receiver = new Receiver(20, 10);
@@ -39,7 +39,7 @@ namespace CSharpNote.Data.DesignPatternMethod
             invoker.ExecuteCommand();
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void ObserverPattern()
         {
             var website = new WebSiteObservable();
@@ -53,7 +53,7 @@ namespace CSharpNote.Data.DesignPatternMethod
             });
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void VistorPattern()
         {
             BuffetDinner buffetDinner = new BuffetDinner();
@@ -69,7 +69,7 @@ namespace CSharpNote.Data.DesignPatternMethod
             buffetDinner.Accept(vistorB);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void NullObjectPattern()
         {
             var elements = new List<ObjectBase> {new ObjectA(), new ObjectB(), new ObjectC()};
@@ -80,21 +80,21 @@ namespace CSharpNote.Data.DesignPatternMethod
             repository.Find("ObjectD").GetTypeName.ToConsole();
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void StatetPattern()
         {
             var context = new Context(new StateA());
             Enumerable.Range(0, 10).ForEach(n => context.Execute());
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void PipelinePattern()
         {
             //IWorkLine workLine = new WorkLine(new Factory());
             //workLine.Execute();
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void BridgePattern()
         {
             // Create RefinedAbstraction
@@ -115,7 +115,7 @@ namespace CSharpNote.Data.DesignPatternMethod
             customers.ShowAll();
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void AspectOrientProgram()
         {
             AOP.Registry.Join(
@@ -131,7 +131,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         /// <summary>
         /// 實作IClone透過複製來產生實體
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void PrototypePattern()
         {
             ColorManager colormanager = new ColorManager();
@@ -145,7 +145,7 @@ namespace CSharpNote.Data.DesignPatternMethod
             colormanager["blue"].Display();
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void CompositePattern()
         {
             new CompositeA(new List<SubClass.CompositePattern.IComponent>
@@ -171,7 +171,7 @@ namespace CSharpNote.Data.DesignPatternMethod
             }).Execute();
         }
 
-        [DisplayMethod(
+        [MarkedItem(
             "http://www.codeproject.com/Articles/670115/Specification-pattern-in-Csharp", 
             "http://en.wikipedia.org/wiki/Specification_pattern#mediaviewer/File:Specification_UML_v2.png")]
         public void SpecificationPattern()
@@ -217,7 +217,7 @@ namespace CSharpNote.Data.DesignPatternMethod
                 .ForEach(band => band.Description());
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void ReposiotryPattern()
         {
             var repository = new PersonRepository();
@@ -242,7 +242,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         /// 有70%以上都在讀取
         /// 讀取 跟 增刪修分開 快取三十秒更新一次
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void CacheMechanism()
         {
             var repository = new CachePersonRepository(new PersonRepository());
@@ -266,7 +266,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         /// FecadePattern 用於隱藏子系統的細節
         /// 但子系統會跟Fecade造成耦合
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void FecadePattern()
         {
             var fecade =  new Fecade();
@@ -281,7 +281,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         /// that have part of their internal state in common where the other part of state can 
         /// vary.
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void FlyweightPattern()
         {
             var factory = new FlyweightButtonFactory();
@@ -290,7 +290,7 @@ namespace CSharpNote.Data.DesignPatternMethod
                 .ForEach(button => button.Draw());
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void MediatorPattern()
         {
             Func<int, string> convertToString = (number) => ((char)(65 + number)).ToString();
@@ -309,7 +309,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         /// 並且依賴注入的物件都可以借由繼承Interface的方式來產生假物件
         /// 達到可測式的程式碼的目標
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void DependencyInjectionPattern()
         {
             var container = new DependecyConainer();
@@ -329,7 +329,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         /// <summary>
         /// 結合TemplatePattern的hook 可充份模組化HandlerClass
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void ChainResponsibilityPattern()
         {
             var handler = new HandlerA();
@@ -340,7 +340,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         /// <summary>
         /// convert the interface of a class into another interface
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void AdapterPattern()
         {
             new List<IAnimal>
@@ -354,7 +354,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         /// <summary>
         /// 著重於動態擴充方法功能
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void DecoratorPattern()
         {
             new DecoratorB(new DecoratorA(new ConcreteComponentA())).Operation().ToConsole();
@@ -363,7 +363,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         /// <summary>
         /// ProxyServer一開始就指定指向哪個RealServer
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void ProxyPattern()
         {
             new ProxyServer().DoAction().ToConsole();

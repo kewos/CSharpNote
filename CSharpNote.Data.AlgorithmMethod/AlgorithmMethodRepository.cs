@@ -9,10 +9,10 @@ using CSharpNote.Core.Implements;
 
 namespace CSharpNote.Data.AlgorithmMethod
 {
-    [DisplayClassAttribue]
+    [MarkedRepositoryAttribue]
     public class AlgorithmMethodRepository : AbstractMethodRepository
     {
-        [DisplayMethod]
+        [MarkedItem]
         public void LargeRepunitFactors()
         {
             //A number consisting entirely of ones is called a repunit. We shall define R(k) to be a repunit of length k.
@@ -51,7 +51,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return int.Parse(sb.ToString());
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void CoinPartitions()
         {
             Console.WriteLine(CaculateCoinPartitions(5));
@@ -76,7 +76,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return sum;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void DivisorSquareSum()
         {
             //Problem 211
@@ -147,7 +147,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return factors;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void GCDSequence()
         {
             //Problem 443
@@ -184,7 +184,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return factors1.Intersect(factors2).Max();
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void CountingNumbersWithatLeastFourDistinctPrimeFactorsLessThan100()
         {
             //It can be verified that there are 23 positive integers less than 1000 that are divisible by at least four distinct primes less than 100.
@@ -209,7 +209,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return Enumerable.Range(2, range - 1).Where(x => GetFactor(x).Count == 2);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void HowManyReversibleNumbersAreThereBelowOneBillion()
         {
             var sum = 0;
@@ -239,7 +239,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return new string(charArray);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void CountingFractions72()
         {
             //Consider the fraction, n/d, where n and d are positive integers. If n<d and HCF(n,d)=1, it is called a reduced proper fraction.
@@ -270,7 +270,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             Console.WriteLine("{0}:{1}", sum, sw.ElapsedMilliseconds);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void ConsecutivePrimeSum50()
         {
             //The prime 41, can be written as the sum of six consecutive primes:
@@ -294,7 +294,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void PrimePermutations49()
         {
             //The arithmetic sequence, 1487, 4817, 8147, in which each of the terms increases by 3330, is unusual in two ways: (i) each of the three terms are prime, and, (ii) each of the 4-digit numbers are permutations of one another.
@@ -324,7 +324,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return GetPrimesWithinRange(number).Contains(number);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void FindMinimumInRotatedSortedArray()
         {
             //Suppose a sorted array is rotated at some pivot unknown to you beforehand.
@@ -357,7 +357,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return sum;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void GivenAnInputStringReverseTheStringWordByWord()
         {
             //https://oj.leetcode.com/problems/reverse-words-in-a-string/
@@ -371,7 +371,7 @@ namespace CSharpNote.Data.AlgorithmMethod
 
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void FindTheContiguousSubarrayWithinAnArray()
         {
             //https://oj.leetcode.com/problems/maximum-product-subarray/
@@ -398,7 +398,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             Console.WriteLine(sb.ToString());
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void EvaluateReversePolishNotation()
         {
             //https://oj.leetcode.com/problems/evaluate-reverse-polish-notation/
@@ -442,7 +442,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             evaluate.Remove(evaluate[postion - 2]);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void Candy()
         {
             //https://oj.leetcode.com/problems/candy/
@@ -488,7 +488,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return (childredRate1 > childredRate2 && candy1 <= candy2) ? true : false;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void WordLadder()
         {
             //https://oj.leetcode.com/problems/word-ladder/
@@ -536,7 +536,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return s1.ToList().Intersect(s2.ToList()).Count() == 2;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void WildcardMatching()
         {
             //https://oj.leetcode.com/problems/wildcard-matching/
@@ -587,7 +587,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return postion <= bondary;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void JumpGame()
         {
             //https://oj.leetcode.com/problems/jump-game/
@@ -615,7 +615,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return (position == lastIndex) ? true : false;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void JumpGameII()
         {
             //https://oj.leetcode.com/problems/jump-game-ii/
@@ -638,7 +638,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return Enumerable.Range(1, array[position]).Min(n => CheckJumpGameMinStep(array, position + n, step + 1));
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void MaxPointsOnALine()
         {
             //https://oj.leetcode.com/problems/jump-game-ii/
@@ -667,7 +667,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return (double)((point1.X - point2.X) / (point1.Y - point2.Y));
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void SingleNumberII()
         {
             //https://oj.leetcode.com/problems/single-number-ii/
@@ -684,7 +684,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             Console.WriteLine(ones);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void RotateList()
         {
             //https://oj.leetcode.com/problems/rotate-list/
@@ -707,7 +707,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void AddTwoNumbers()
         {
             //https://oj.leetcode.com/problems/add-two-numbers/
@@ -732,7 +732,7 @@ namespace CSharpNote.Data.AlgorithmMethod
         
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void InsertInterval()
         {
             //https://oj.leetcode.com/problems/insert-interval/
@@ -761,7 +761,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return need;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void FlattenBinaryTreetoLinkedList()
         {
             //https://oj.leetcode.com/problems/flatten-binary-tree-to-linked-list/
@@ -807,7 +807,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             public int Key { get; set; }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void MinimumDepthOfBinaryTree()
         {
             //https://oj.leetcode.com/problems/minimum-depth-of-binary-tree/
@@ -832,7 +832,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return 1 + Math.Min(leftDepth, rightDepth);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void ValidNumber()
         {
             //https://oj.leetcode.com/problems/valid-number/
@@ -876,7 +876,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             Console.WriteLine("{0}:{1}", validationString, state);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void TrappingRainWater()
         {
             //https://oj.leetcode.com/problems/trapping-rain-water/
@@ -907,7 +907,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             Intervals.ForEach(n => Console.WriteLine("[{0},{1}]", n[0], n[1]));
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void MinimumWindowSubstring()
         {
             //https://oj.leetcode.com/problems/minimum-window-substring/ 
@@ -939,7 +939,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return null;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void Triangle()
         {
             //https://oj.leetcode.com/problems/triangle/
@@ -971,7 +971,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return leftValue;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void TwoSum()
         {
             //https://oj.leetcode.com/problems/two-sum/
@@ -1001,7 +1001,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return sets;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void LongestSubstringWithoutRepeatingCharacters()
         {
             //https://oj.leetcode.com/problems/longest-substring-without-repeating-characters/
@@ -1040,7 +1040,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return noRepeatLength;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void BestTimetoBuyandSellStock()
         {
             //https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock/
@@ -1062,7 +1062,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return price[max] - price[min];
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void BestTimetoBuyandSellStockII()
         {
             //https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
@@ -1079,7 +1079,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             Console.WriteLine(totalProfit);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void BestTimetoBuyandSellStockIII()
         {
             //https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
@@ -1110,7 +1110,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             Console.WriteLine(maxProfitOfTwoTransaction);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void UniquePaths()
         {
             //https://oj.leetcode.com/problems/unique-paths/
@@ -1132,7 +1132,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             Console.WriteLine(res);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void Anagrams()
         {
             //https://oj.leetcode.com/problems/anagrams/
@@ -1149,7 +1149,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             }).Dump();
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/sort-colors/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/sort-colors/")]
         public void SortColors()
         {
             //Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red, white and blue.
@@ -1184,7 +1184,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             items[index2] = temp;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/sort-colors/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/sort-colors/")]
         public void SortColorsII()
         {
             //Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red, white and blue.
@@ -1219,7 +1219,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             colors.Dump();
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/longest-common-prefix/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/longest-common-prefix/")]
         public void LongestCommonPrefix()
         {
             //Write a function to find the longest common prefix string amongst an array of strings.
@@ -1237,7 +1237,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             Console.WriteLine(max);
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/longest-common-prefix/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/longest-common-prefix/")]
         public void PalindromeNumber()
         {
             //Determine whether an integer is a palindrome. Do this without extra space.
@@ -1257,7 +1257,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return true;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/longest-common-prefix/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/longest-common-prefix/")]
         public void PalindromeNumberII()
         {
             //Determine whether an integer is a palindrome. Do this without extra space.
@@ -1278,7 +1278,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return true;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/longest-common-prefix/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/longest-common-prefix/")]
         public void LengthofLastWord()
         {
             //Determine whether an integer is a palindrome. Do this without extra space.
@@ -1299,7 +1299,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return s.Length - 1 - postion;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/3sum-closest/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/3sum-closest/")]
         public void Sum3Closest()
         {
             //Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
@@ -1335,7 +1335,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return min;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/largest-rectangle-in-histogram/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/largest-rectangle-in-histogram/")]
         public void LargestRectangleinHistogram ()
         {
             //Given n non-negative integers representing the histogram's bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.
@@ -1354,7 +1354,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             Console.WriteLine(max);
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/restore-ip-addresses/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/restore-ip-addresses/")]
         public void RestoreIPAddresses()
         {
             //Given a string containing only digits, restore it by returning all possible valid IP address combinations.
@@ -1383,7 +1383,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return n > 0 && n <= 255;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/first-missing-positive/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/first-missing-positive/")]
         public void FirstMissingPositive ()
         {
             //Given an unsorted integer array, find the first missing positive integer.
@@ -1395,7 +1395,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             Console.WriteLine(Enumerable.Range(set.Min(), set.Max()).Where(n => !set.Contains(n)).First());
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/climbing-stairs/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/climbing-stairs/")]
         public void ClimbingStairs()
         {   
             //You are climbing a stair case. It takes n steps to reach to the top.
@@ -1410,7 +1410,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return ClimbingStairs(distinct - 2) + ClimbingStairs(distinct - 1);
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/climbing-stairs/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/climbing-stairs/")]
         public void ClimbingStairsⅠ()
         {
             //You are climbing a stair case. It takes n steps to reach to the top.
@@ -1428,7 +1428,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return set.Last();
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/plus-one/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/plus-one/")]
         public void PlusOne()
         {
             //Given a non-negative number represented as an array of digits, plus one to the number.
@@ -1456,7 +1456,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return sum.ToList();
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/rotate-image/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/rotate-image/")]
         public void RotateImage()
         {
             //You are given an n x n 2D matrix representing an image.
@@ -1478,7 +1478,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return result;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/search-a-2d-matrix/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/search-a-2d-matrix/")]
         public void SearchA2dMatrix()
         {
             //Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
@@ -1510,7 +1510,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return true;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/search-a-2d-matrix/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/search-a-2d-matrix/")]
         public void ImplementPow()
         {
             Console.WriteLine(ImplementPow(3, 3));
@@ -1526,7 +1526,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return x * temp * temp;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/divide-two-integers/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/divide-two-integers/")]
         public void DivideTwoIntegers()
         {
             //Divide two integers without using multiplication, division and mod operator.
@@ -1547,7 +1547,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return sum * state;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/search-insert-position/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/search-insert-position/")]
         public void SearchInsertPosition()
         {
             //Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
@@ -1590,7 +1590,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return low;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/generate-parentheses/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/generate-parentheses/")]
         public void GenerateParentheses()
         {
             //Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
@@ -1631,7 +1631,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return set;
         }
 
-        [DisplayMethod(@"http://community.topcoder.com/tc?module=ProblemDetail&rd=5009&pm=2402")]
+        [MarkedItem(@"http://community.topcoder.com/tc?module=ProblemDetail&rd=5009&pm=2402")]
         public void BadNeighbors()
         {
             var donations = new List<int>{ 10, 3, 2, 5, 7, 8};
@@ -1671,7 +1671,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return max.Max(m => m.Value);
         }
 
-        [DisplayMethod(@"http://community.topcoder.com/tc?module=ProblemDetail&rd=4493&pm=1259")]
+        [MarkedItem(@"http://community.topcoder.com/tc?module=ProblemDetail&rd=4493&pm=1259")]
         public void ZigZag()
         {
             //var zigZagSequence = new List<int> { 1, 7, 4, 9, 2, 5 };
@@ -1713,7 +1713,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return max;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/pascals-triangle-ii/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/pascals-triangle-ii/")]
         public void PascalsTriangleII()
         {
             //Given an index k, return the kth row of the Pascal's triangle.
@@ -1740,7 +1740,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return space;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/pascals-triangle/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/pascals-triangle/")]
         public void PascalsTriangleI()
         {
             //Given numRows, generate the first numRows of Pascal's triangle.
@@ -1765,7 +1765,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return set;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void ArrayListAllSubSet()
         {
             List<int> set = new List<int> { 1, 5, 9 , 100, 4, 99, 88};
@@ -1790,7 +1790,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return result1;
         }
 
-        [DisplayMethod(@"http://community.topcoder.com/stat?c=problem_statement&pm=7558")]
+        [MarkedItem(@"http://community.topcoder.com/stat?c=problem_statement&pm=7558")]
         public void AdvertisingAgency()
         {
             var input1 = new List<int> { 1, 2, 3 };
@@ -1826,7 +1826,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return reject;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list/")]
         public void RemoveDuplicatesfromSortedList()
         {
             //Given a sorted linked list, delete all duplicates such that each element appear only once.
@@ -1849,7 +1849,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/merge-sorted-array/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/merge-sorted-array/")]
         public void MergeSortedArray()
         {
             //Given two sorted integer arrays A and B, merge B into A as one sorted array.
@@ -1872,7 +1872,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return list1;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/maximum-subarray/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/maximum-subarray/")]
         public void MaximumSubarray ()
         {
             //Find the contiguous subarray within an array (containing at least one number) which has the largest sum.
@@ -1901,7 +1901,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return max;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/maximum-subarray/", true)]
+        [MarkedItem(@"https://oj.leetcode.com/problems/maximum-subarray/", true)]
         public void MaximumSubarrayⅠ()
         {
             var array = new List<int> { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
@@ -1920,7 +1920,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return max;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/combinations/", true)]
+        [MarkedItem(@"https://oj.leetcode.com/problems/combinations/", true)]
         public void Combinations()
         {
             //given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
@@ -1961,7 +1961,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return Enumerable.Range(0, max + 1).Select(n => n * n * n).ToList();
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-array-ii/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-array-ii/")]
         public void RemoveDuplicatesFromSortedArrayⅡ()
         {
             //Follow up for "Remove Duplicates":
@@ -1981,7 +1981,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return elements.Count();
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/sqrtx/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/sqrtx/")]
         public void ImplementSqrt()
         {
             //Implement int sqrt(int x).
@@ -2005,7 +2005,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return (long)ans;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/distinct-subsequences/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/distinct-subsequences/")]
         public void DistinctSubsequences()
         {
             //Given a string S and a string T, count the number of distinct subsequences of T in S.
@@ -2058,7 +2058,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return repeat;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/discuss/2143/any-better-solution-that-takes-less-than-space-while-in-time")]
+        [MarkedItem(@"https://oj.leetcode.com/discuss/2143/any-better-solution-that-takes-less-than-space-while-in-time")]
         public void DistinctSubsequencesⅠ()
         {
             var s = "aaa";
@@ -2081,7 +2081,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return path[n];
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/permutation-sequence/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/permutation-sequence/")]
         public void PermutationSequence()
         {
             PermutationSequence(3).DumpMany();
@@ -2109,7 +2109,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return sets;
         }
 
-        [DisplayMethod(@"https://projecteuler.net/problem=21")]
+        [MarkedItem(@"https://projecteuler.net/problem=21")]
         public void AmicableNumbers()
         {
             int max = 10000;
@@ -2132,7 +2132,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
         }
 
-        [DisplayMethod(@"https://projecteuler.net/problem=37")]
+        [MarkedItem(@"https://projecteuler.net/problem=37")]
         public void TruncatablePrimes()
         {
             var valid = 3797;
@@ -2149,7 +2149,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             Console.WriteLine("All Primes{0}", group.All(i => IsPrime(i)));
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/search-for-a-range/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/search-for-a-range/")]
         public void SearchForARange()
         {
             //Given a sorted array of integers, find the starting and ending position of a given target value.
@@ -2200,7 +2200,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return -1;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/Reorder-List/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/Reorder-List/")]
         public void ReorderList()
         {
             var order = Enumerable.Range(0, 11).ToList();
@@ -2219,7 +2219,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return order;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/single-number/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/single-number/")]
         public void SingleNumber()
         {
             //Given an array of integers, every element appears twice except for one. Find that single one.
@@ -2234,7 +2234,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return searchList.Aggregate((a, b) => a ^ b);
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/word-search/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/word-search/")]
         public void WordSearch()
         {
             var map = new List<List<string>>
@@ -2254,7 +2254,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list-ii/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list-ii/")]
         public void RemoveDuplicatesFromSortedListii()
         {
             var list = new List<int> { 1, 1, 1, 1, 2, 5, 6, 9, 88, 88, 99, 99, 99, 100 };
@@ -2284,7 +2284,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return list;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/permutations/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/permutations/")]
         public void Permutations()
         {
             //Given a collection of numbers, return all possible permutations.
@@ -2312,7 +2312,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return subSets;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/min-stack/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/min-stack/")]
         public void MinStack()
         {
             //Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
@@ -2359,7 +2359,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/find-peak-element/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/find-peak-element/")]
         public void FindPeakElement()
         {
             //A peak element is an element that is greater than its neighbors.
@@ -2385,7 +2385,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return result;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/word-break/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/word-break/")]
         public void WordBreak()
         {
             //Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
@@ -2414,7 +2414,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return dictIndex >= dict.Count; 
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/longest-consecutive-sequence/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/longest-consecutive-sequence/")]
         public void LongestConsecutiveSequence()
         {
             //Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
@@ -2441,7 +2441,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return temp.Max(t => t.Value);
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/fraction-to-recurring-decimal/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/fraction-to-recurring-decimal/")]
         public void FractionToRecurringDecimal()
         {
             //Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.
@@ -2496,7 +2496,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return result.ToString();
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/majority-element/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/majority-element/")]
         public void MajorityElement()
         {
             //Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
@@ -2522,7 +2522,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return dic.Aggregate((a, b) => a.Value > b.Value ? a : b).Key;
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/excel-sheet-column-title/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/excel-sheet-column-title/")]
         public void ExcelSheetColumnTitle()
         {
             //Given a positive integer, return its corresponding column title as appear in an Excel sheet.
@@ -2540,7 +2540,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return sb.ToString();
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/dungeon-game/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/dungeon-game/")]
         public void DungeonGame()
         {
             Random rm = new Random();
@@ -2571,7 +2571,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return hpList.Max();
         }
 
-        [DisplayMethod(@"https://oj.leetcode.com/problems/largest-number/")]
+        [MarkedItem(@"https://oj.leetcode.com/problems/largest-number/")]
         public void LargestNumber()
         {
             //Given a list of non negative integers, arrange them such that they form the largest number.
@@ -2604,7 +2604,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
         }
 
-        [DisplayMethod(@"http://community.topcoder.com/stat?c=problem_statement&pm=4637")]
+        [MarkedItem(@"http://community.topcoder.com/stat?c=problem_statement&pm=4637")]
         public void DayPlanner()
         {
             var tasks = new List<string> { "01:22 A", "01:22 B", "23:22 C" };
@@ -2641,7 +2641,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             return string.Format("{0}-{1}", firstTask, endTask);
         }
 
-        [DisplayMethod(@"https://projecteuler.net/problem=185")]
+        [MarkedItem(@"https://projecteuler.net/problem=185")]
         public void NumberMind()
         {
             var dictionary = new Dictionary<int, int>
@@ -2677,7 +2677,7 @@ namespace CSharpNote.Data.AlgorithmMethod
                 }));
         } 
 
-        [DisplayMethod()]
+        [MarkedItem()]
         public void RepeatedDnaSequences()
         {
             var dna = "AAAAACCCCCAAAAACCCCCAAAAAGGGTTT";

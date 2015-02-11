@@ -16,11 +16,11 @@ using Microsoft.CSharp;
 
 namespace CSharpNote.Data.CSharpPracticeMethod
 {
-    [DisplayClassAttribue]
+    [MarkedRepositoryAttribue]
     public class CSharpPracticeMethodRepository : AbstractMethodRepository
     {
         
-        [DisplayMethod]
+        [MarkedItem]
         public void LamdaPratice()
         {
             Console.WriteLine("method like jquery");
@@ -41,7 +41,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             };
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void CountIntLength()
         {
             //數字長度
@@ -49,14 +49,14 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine("int i = 165446546 長度為{0}", Convert.ToString(i).Count());
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void AndOperator()
         {
             //&運算
             Console.WriteLine("&運算 0x00001111 & 0x11110000 = 0x{0:x8}", 0x00001111 & 0x11110000);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void InverseNum()
         {
             //~ 可以取數值補數0x00000000 to 0xffffffff
@@ -68,7 +68,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void DoublePuzzleSymbol()
         {
             //?? 如果左邊為空就設定右邊 如果左邊不為空就設定左邊
@@ -76,7 +76,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine("string s = null ?? test\ns = {0}", s);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void SplitChar()
         {
             string targetString = "Test#Hello#World#Test";
@@ -88,7 +88,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void ExportTxt()
         {
             string path = @"";
@@ -102,7 +102,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void DynamicCode()
         {
             string FooInterface = @"
@@ -137,7 +137,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             void Print();
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void PassAnonymousParameter()
         {
             HandleAnonymousParameter(
@@ -179,7 +179,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void LinqMutiFrom()
         {
             string[] strs = 
@@ -201,7 +201,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         [System.ComponentModel.Description("All 範例")]
         public void PracticeLinqAllMethod()
         { 
@@ -243,7 +243,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void StringJoinAndSplit()
         {
             string s = @"safdasd@fw#opfjkdsokjgpoijegrij$jjrgeoe$r";
@@ -251,7 +251,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine(string.Join("~~~~", ss));
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void PracticeLinqJoinGeneration()
         { 
             var employees = new List<dynamic> {
@@ -282,7 +282,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
 
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void LinqToXmlPratice()
         {
             XDocument doc = new XDocument(
@@ -304,7 +304,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void LinqGroup()
         { 
             var employees = new List<dynamic> {
@@ -329,7 +329,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void ParallelForeach()
         {
             object obj = new object();
@@ -360,7 +360,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 });
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void LinqSelectMany()
         {
             PetOwner[] petOwners = 
@@ -397,7 +397,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             public List<String> Pets { get; set; }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void LinqAllVsAny()
         {
             string[] words = { "believe", "relief", "receipt", "field" };
@@ -416,7 +416,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine("CheckByAll and CheckByAnd have same state : {0}", (CheckByAll == CheckByAnd));
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void CalculatePrimesWithParallelForeach()
         {
             int maxNumber = 500000;
@@ -434,7 +434,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void CalculatePrimesWithLinq()
         {
             int maxNumber = 500000;
@@ -451,7 +451,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void CalculatePrimesWithParallelLinq()
         {
             int maxNumber = 10000;
@@ -473,7 +473,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void PLinqReSourceCompete()
         {
             int counter1 = 0;
@@ -493,7 +493,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine("without locked resource times:{0}", counter2);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void StringToUnicode()
         {
             var number = 100;
@@ -506,7 +506,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine("長度4 十六進制:{0}", number.ToString("X4"));
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void FisherYatesShuffle()
         {
             Random r = new Random();
@@ -530,7 +530,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             return items;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void LinqGroupBy()
         {
             List<dynamic> students = new List<dynamic> { 
@@ -568,7 +568,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             public int id { get; set; }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void TestLet()
         {
             List<A> As = new List<A>();
@@ -588,7 +588,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void LinqAggregate()
         {
             //get all element sum
@@ -609,7 +609,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine(multiplied);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void LastPosition()
         {
             int leak = 0;
@@ -630,7 +630,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             return total.Where(num => (total.FindIndex(index => index == num) + tmpLeak + 1) % killStep != 0).ToList();
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void TestParams()
         {
             UseParams(1, "aaa", true, new object(), null);
@@ -648,7 +648,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void PassParamWithParamName()
         {
             PassParam(a: 1, b: "2", c: true);
@@ -660,7 +660,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine("{0}{1}{2}", a, b, c);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void Stack()
         {
 
@@ -697,7 +697,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine("outerSum = {0}, should be 49995000", outerSum);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void CompareFindAllWithWhere()
         {
             //find is better than where when collection is list 
@@ -717,7 +717,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine("where{0}, findall{1}", sw.ElapsedMilliseconds, sw1.ElapsedMilliseconds);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void YieldPratice()
         {
             ChatPipeLine pipe = new ChatPipeLine();
@@ -728,7 +728,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             pipe.ReleaseAll();
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void ExplicitImplicitMethod()
         {
             //隱含轉換
@@ -748,7 +748,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.Read();
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void RealProxy()
         {
             var baby = LoggingProxy.Wrap(new Baby());
@@ -764,7 +764,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void AwaitPratice()
         {
             Console.WriteLine("start");
@@ -792,7 +792,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             return await tcs.Task;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void AwaitPratice2()
         {
             var awaitTask = AwaitTest();
@@ -811,7 +811,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             return await tcs.Task;
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void PingReply()
         {
             System.Net.NetworkInformation.Ping x = new System.Net.NetworkInformation.Ping();
@@ -824,7 +824,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// <summary>
         /// 透過TcpClient傳入IpAddress Port建立連線
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void TcpPingTest()
         {
             try
@@ -866,7 +866,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// <summary>
         /// 效能測試 List And Array
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void PerformanceBetweenListAndArray()
         {
             List<int> list = new List<int>();
@@ -896,7 +896,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// <summary>
         /// 效果測試For and Foreach
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void PerformanceBetweenForAndForeach()
         {
             List<int> Count = new List<int>();
@@ -926,7 +926,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// <summary>
         /// 效能測試 Struct and Class
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void PerformanceBetweenStructAndClass()
         {
             const int MAX = 10000;
@@ -966,7 +966,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             public string LastName;
         }
 
-        [DisplayMethod("http://codeblog.jonskeet.uk/category/linq/")]
+        [MarkedItem("http://codeblog.jonskeet.uk/category/linq/")]
         public void RunTests()
         {
             int size = 10000000;
@@ -1006,7 +1006,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                               depth, size, sw.ElapsedMilliseconds);
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void LinqZip()
         {
             var bands = new List<string> { "GnR", "PinkFloyd", "Rammstein", "Ozzy Osbourne", "The Verve", "Kasaabian" };
@@ -1020,7 +1020,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// <summary>
         /// Flag操作
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void EnumFlagOperation()
         {
             Priority all = Priority.None;
@@ -1100,7 +1100,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// Xor加密
         /// 解密再針對key做一次xor 操作
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void XorEncryption()
         {
             string msg = "This is a message.";
@@ -1125,7 +1125,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// <summary>
         /// 動態產生汎形物件
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void DynamicalCreateGeneric()
         {
             var types = new List<Type> { typeof(int), typeof(string), typeof(double), typeof(char), typeof(bool) };
@@ -1150,7 +1150,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// <summary>
         /// 操作動態物件
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void OperateDynamicObject()
         {
             dynamic dObject =  new System.Dynamic.ExpandoObject();
@@ -1175,7 +1175,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void ProductXml()
         {
             var address = "";
@@ -1221,7 +1221,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// 2.已知type 透過typeof() 取得type
         /// 3.已知namespace 透過dll取得type
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void ReflectionExample()
         {
             Action<Caculator> action = (caculator) =>
@@ -1250,7 +1250,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void MoqTest1()
         {
             //var mock = new Moq.Mock<ICustom>();
@@ -1270,7 +1270,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             string DoSomething();
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void DeferExcute()
         {
             new DeferExcuteCaculator(10).Add(1).Add(1).Add(1).Sub(5).Sub(5).Invoke().ToConsole();
@@ -1285,7 +1285,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// 4.Compile
         /// 5.Excute
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void ExpressionTree()
         {
             //參數
@@ -1313,7 +1313,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine(compile(10));
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void DynamicFeature()
         {
             new DairyItem().Apply();
@@ -1337,7 +1337,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         }
 
         private const string  SALT = "S9@)#IK9FI09";
-        [DisplayMethod]
+        [MarkedItem]
         public void MD5Encryption()
         {
             var source = "abcdefg";
@@ -1352,7 +1352,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// Conclusion:
         /// Hashtable has less performance than Dictionary because of Boxing and Unboxing.
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void HashTableDictionaryPerformanceCompare()
         {
             var hashTable = new System.Collections.Hashtable();
@@ -1398,7 +1398,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// 4.Add Properties, Methods, Events etc inside the Type.
         /// 5.Use ILGenerator to write inside the Properties, Methods etc.
         /// </summary>
-        [DisplayMethod(@"http://www.codeproject.com/Articles/121568/Dynamic-Type-Using-Reflection-Emit")]
+        [MarkedItem(@"http://www.codeproject.com/Articles/121568/Dynamic-Type-Using-Reflection-Emit")]
         public void Emit()
         {
             var asmbuilder = GetAssemblyBuilder("MyAssembly");
@@ -1468,7 +1468,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// FirstOrDefaule scan until fine first item
         /// SingleOrDefaultPerformance scan all item if result greater than 2 thow exception
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void SingleOrDefaultFirstOrDefaultPerformance()
         {
             var items = Enumerable.Range(1, 1000);
@@ -1483,7 +1483,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
 
         }
 
-        [DisplayMethod]
+        [MarkedItem]
         public void ImplementCurry()
         {
             Func<int, int> SubtractOne = x => x - 1;
@@ -1505,7 +1505,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// 2.value type default value is 0, struct is value type each item all default value
         /// 3.nullable return nullable<T>
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void DefaultValue()
         {
             //refenece type
@@ -1543,7 +1543,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// 85k|    |85k|      |85k <- allocation 16mb + 2 throw MemoryOutException
         /// 
         /// </summary>
-        [DisplayMethod("https://www.simple-talk.com/dotnet/.net-framework/the-dangers-of-the-large-object-heap/")]
+        [MarkedItem("https://www.simple-talk.com/dotnet/.net-framework/the-dangers-of-the-large-object-heap/")]
         public void TheDangersOfTheLargeObjectHeap()
         {
             var  handler = new LargeObjectHeapHandler();
@@ -1564,7 +1564,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// Performance of GetstringAction:94ms
         /// Performance of EnumGetNameAction:46ms
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void EnumToStringAndEnumGetNamePerformance()
         {
             var times = 100000;
@@ -1592,7 +1592,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// <summary>
         /// 有指定型別快一點點
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void TypeDeclarePerormance()
         {
             var times = 10000000;
@@ -1621,7 +1621,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// <summary>
         /// AssignDirectly is better than AssignByProperty
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void AssignByPropertyVsAssignDirectlyPerformance()
         {
             var times = 10000000;
@@ -1657,7 +1657,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         /// Conclusion
         /// 外層次數少速度快
         /// </summary>
-        [DisplayMethod]
+        [MarkedItem]
         public void ForPerformance()
         {
             Action ForPerformanceCheck1 = () =>

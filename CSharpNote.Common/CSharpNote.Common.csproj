@@ -46,8 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aops\ExtraMsgAop.cs" />
-    <Compile Include="Attributes\DisplayClassAttribue.cs" />
-    <Compile Include="Attributes\DisplayMethodAttribute.cs" />
+    <Compile Include="Attributes\MarkedRepositoryAttribue.cs" />
+    <Compile Include="Attributes\MarkedItemAttribute.cs" />
     <Compile Include="Extendsions\ActionExtensions.cs" />
     <Compile Include="Extendsions\AssemblyExtensions.cs" />
     <Compile Include="Extendsions\GenericsExtensions.cs" />
