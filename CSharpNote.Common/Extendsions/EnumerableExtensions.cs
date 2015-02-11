@@ -43,8 +43,7 @@ namespace CSharpNote.Common.Extendsions
             elements.ForEach(element => Console.WriteLine("{0}.{1}", index++, element));
         }
 
-        public static IEnumerable DumpMany(this IEnumerable enumerable, int dumpLevel = 0
-        )
+        public static IEnumerable DumpMany(this IEnumerable enumerable, int dumpLevel = 0)
         {
             var index = 0;
             foreach (var element in enumerable)

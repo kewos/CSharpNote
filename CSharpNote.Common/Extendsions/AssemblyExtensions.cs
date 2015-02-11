@@ -10,8 +10,7 @@ namespace CSharpNote.Common.Extendsions
         /// <summary>
         /// 取得 assembly底下有實作interface的type
         /// </summary>
-        public static IEnumerable<Type> GetImplementInterfaceClassType<TInterface>
-            (this Assembly assembly)
+        public static IEnumerable<Type> GetImplementInterfaceClassType<TInterface>(this Assembly assembly)
         {
             return assembly
                 .GetClassType()

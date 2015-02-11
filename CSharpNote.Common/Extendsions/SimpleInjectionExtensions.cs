@@ -21,9 +21,10 @@ namespace CSharpNote.Common.Extendsions
         /// <summary>
         /// 取得符合DLL 實作 TInterface 的 class Type
         /// </summary>
-        private static IEnumerable<Type> GetTypeFromMatchDll<TInterface>
-            (string path, string matchFileName)
+        private static IEnumerable<Type> GetTypeFromMatchDll<TInterface>(string path, string matchFileName)
         {
+            if (path.Length == 0 || matchFileName.Length == 0) throw new ArgumentException("InvalidArgument");
+
             var matchDll = System.IO.Directory.GetFiles(path, matchFileName);
             return matchDll.Select(dll => 
                  Assembly.LoadFile(dll)

@@ -18,9 +18,12 @@ namespace CSharpNote.Common.Extendsions
         public static ConstructorInfo GetMatchConstructor(this Type @type)
         {
             var constructorInfo = @type.GetConstructors()
-                .Where(constructor => constructor.GetParameters().All(p => p.ParameterType.IsInterface && p.ParameterType.Name.StartsWith("I")))
+                .Where(constructor =>
+                    constructor.GetParameters()
+                    .All(p => p.ParameterType.IsInterface 
+                        && p.ParameterType.Name.StartsWith("I")))
                 .FirstOrDefault();
-            if (constructorInfo == null) throw new Exception();
+            if (constructorInfo == null) throw new NullReferenceException("NoMatchConstructor");
             return constructorInfo;
         }
     }
