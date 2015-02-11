@@ -13,10 +13,11 @@ namespace CSharpNote.Common.Extendsions
         public static IEnumerable<Type> GetImplementInterfaceClassType<TInterface>
             (this Assembly assembly)
         {
-            return assembly.GetClassType().Where(@type =>
-            {
-                return @type.GetInterfaces().Any(@interface => @interface == typeof(TInterface));
-            });
+            return assembly
+                .GetClassType()
+                .Where(@type =>
+                    @type.GetInterfaces()
+                        .Any(@interface => @interface == typeof(TInterface)));
         }
 
         /// <summary>
@@ -24,10 +25,11 @@ namespace CSharpNote.Common.Extendsions
         /// </summary>
         public static IEnumerable<Type> GetClassType(this Assembly assembly)
         {
-            return assembly.GetTypes().Where(@type => 
-            {
-                return (@type.IsClass && !@type.IsAbstract && !@type.IsInterface);
-            });
+            return assembly
+                .GetTypes()
+                .Where(@type => @type.IsClass 
+                    && !@type.IsAbstract
+                    && !@type.IsInterface);
         }
     }
 }

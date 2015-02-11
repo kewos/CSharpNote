@@ -1653,9 +1653,37 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             public int AssignByProperty { get; set; }
         }
 
+        /// <summary>
+        /// Conclusion
+        /// 外層次數少速度快
+        /// </summary>
         [DisplayMethod]
-        public void TEST()
+        public void ForPerformance()
         {
+            Action ForPerformanceCheck1 = () =>
+            {
+                Enumerable.Range(0, 10000).ForEach(n =>
+                {
+                    Enumerable.Range(0, 100).ForEach(m =>
+                    {
+                        var a = m * n;
+                    });
+                });
+            };
+
+            Action ForPerformanceCheck2 = () =>
+            {
+                Enumerable.Range(0, 100).ForEach(n =>
+                {
+                    Enumerable.Range(0, 10000).ForEach(m =>
+                    {
+                        var a = m * n;
+                    });
+                });
+            };
+
+            ForPerformanceCheck1.CaculateExcuteTime().ToConsole("ForPerformanceCheck1:");
+            ForPerformanceCheck2.CaculateExcuteTime().ToConsole("ForPerformanceCheck2:");
         }
     }
 }
