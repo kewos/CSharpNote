@@ -138,36 +138,17 @@ namespace CSharpNote.Data.DesignPatternMethod
         [DisplayMethod]
         public void CompositePattern()
         {
-            (new Manager
+            new CompositeA(new List<IComponent>
             {
-                supervisors = new List<IStuff>
+                new CompositeB(new List<IComponent>
                 {
-                    new Supervisor
-                    {
-                        workers = new List<IStuff>
-                        {
-                            new Worker(),
-                            new Worker(),
-                            new Worker()
-                        }
-                    },
-                    new Supervisor
-                    {
-                        workers = new List<IStuff>
-                        {
-                            new Worker(),
-                        }
-                    },
-                    new Supervisor
-                    {
-                        workers = new List<IStuff>
-                        {
-                            new Worker(),
-                            new Worker()
-                        }
-                    }
-                }
-            }).Opertaion();
+                    new Leaf(),
+                    new Leaf(),
+                    new Leaf()
+                }),
+                new CompositeB(),
+                new CompositeB()
+            }).Execute();
         }
 
         [DisplayMethod(

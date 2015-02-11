@@ -4,7 +4,13 @@ using CSharpNote.Common.Extendsions;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass
 {
-    public class Context
+    public interface IContext
+    {
+        void SetState(IState state);
+        void Execute();
+    }
+
+    public class Context : IContext
     {
         private IState state;
 

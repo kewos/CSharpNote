@@ -1,40 +1,88 @@
 ﻿using System;
 using System.Collections.Generic;
+using CSharpNote.Common.Extendsions;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass
 {
-    public interface IStuff
+    public interface IComponent
     {
-        void Opertaion();
+        void Execute(int depth);
     }
 
-    public class Manager : IStuff
+    public interface IComposite<T> : IComponent
     {
-        public List<IStuff> supervisors = new List<IStuff>();
+        void Add(T component);
+        void Remove(T component);
+    }
 
-        public void Opertaion()
+    public abstract class CompositeBase<T> : IComposite<T>
+    {
+        protected readonly IList<T> elements; 
+
+        public CompositeBase()
         {
-            Console.WriteLine("Im Manager");
-            supervisors.ForEach(supervisor => supervisor.Opertaion());
+            elements = new List<T>();
+        }
+
+        public CompositeBase(IList<T> elements)
+        {
+            this.elements = elements;
+        }
+
+        public void Add(T component)
+        {
+            elements.Add(component);
+        }
+
+        public void Remove(T component)
+        {
+            elements.Remove(component);
+        }
+
+        public abstract void Execute(int depth);
+    }
+
+    public class CompositeA : CompositeBase<IComponent>
+    {
+        public CompositeA(IList<IComponent> elements)
+            : base(elements)
+        {
+        }
+
+        public CompositeA()
+        {
+        }
+
+        public override void Execute(int depth = 0)
+        {
+            GetType().Name.ToConsole(new string('-', depth++));
+            elements.ForEach(element => element.Execute(depth));
         }
     }
 
-    public class Supervisor : IStuff
+    public class CompositeB : CompositeBase<IComponent>
     {
-        public List<IStuff> workers = new List<IStuff>();
-
-        public void Opertaion()
+        public CompositeB(IList<IComponent> elements)
+            : base(elements)
         {
-            Console.WriteLine("---Im Supervisor");
-            workers.ForEach(worker => worker.Opertaion());
+        }
+
+        public CompositeB()
+        {
+        }
+
+        public override void Execute(int depth = 0)
+        {
+            GetType().Name.ToConsole(new string('-', depth++));
+            elements.ForEach(element => element.Execute(depth));
         }
     }
 
-    public class Worker : IStuff
+    public class Leaf : IComponent
     {
-        public void Opertaion()
+        public void Execute(int depth = 0)
         {
-            Console.WriteLine("------Im Worker");
+            GetType().Name.ToConsole(new string('-', depth));
         }
     }
 }
