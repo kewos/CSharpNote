@@ -16,6 +16,11 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.PrototypePattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.SpecificationPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.StatePattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.VistorPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.AdapterPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.DecoratorPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.FecadePattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.NullObjectPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.ProxyPattern;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
@@ -143,20 +148,20 @@ namespace CSharpNote.Data.DesignPatternMethod
         [DisplayMethod]
         public void CompositePattern()
         {
-            new CompositeA(new List<IComponent>
+            new CompositeA(new List<SubClass.CompositePattern.IComponent>
             {
-                new CompositeB(new List<IComponent>
+                new CompositeB(new List<SubClass.CompositePattern.IComponent>
                 {
                     new Leaf(),
                     new Leaf(),
                     new Leaf()
                 }),
                 new CompositeB(),
-                new CompositeB(new List<IComponent>
+                new CompositeB(new List<SubClass.CompositePattern.IComponent>
                 {
                     new CompositeA(),
                     new CompositeA(),
-                    new CompositeA(new List<IComponent>
+                    new CompositeA(new List<SubClass.CompositePattern.IComponent>
                     {
                         new Leaf(),
                         new Leaf(),
@@ -233,6 +238,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         }
 
         /// <summary>
+        /// DecoratorPattern
         /// 有70%以上都在讀取
         /// 讀取 跟 增刪修分開 快取三十秒更新一次
         /// </summary>
@@ -264,7 +270,9 @@ namespace CSharpNote.Data.DesignPatternMethod
         public void FecadePattern()
         {
             var fecade =  new Fecade();
-            fecade.DoSomeThing();
+            fecade.MethodA().ToConsole();
+            fecade.MethodB().ToConsole();
+            fecade.MethodC().ToConsole();
         }
 
         /// <summary>
@@ -327,6 +335,38 @@ namespace CSharpNote.Data.DesignPatternMethod
             var handler = new HandlerA();
             var handlerCommand = new HandlerCommand(typeof(HandlerD));
             handler.Execute(handlerCommand);
+        }
+
+        /// <summary>
+        /// convert the interface of a class into another interface
+        /// </summary>
+        [DisplayMethod]
+        public void AdapterPattern()
+        {
+            new List<IAnimal>
+            {
+                new DogAdaptor(new Robot()),
+                new CatAdaptor(new Robot()),
+                new Monkey()
+            }.ForEach(animal => animal.Run());
+        }
+
+        /// <summary>
+        /// 著重於動態擴充方法功能
+        /// </summary>
+        [DisplayMethod]
+        public void DecoratorPattern()
+        {
+            new DecoratorB(new DecoratorA(new ConcreteComponentA())).Operation().ToConsole();
+        }
+
+        /// <summary>
+        /// ProxyServer一開始就指定指向哪個RealServer
+        /// </summary>
+        [DisplayMethod]
+        public void ProxyPattern()
+        {
+            new ProxyServer().DoAction().ToConsole();
         }
     }
 }

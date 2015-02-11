@@ -28,7 +28,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.ObserverPattern
             observers.ForEach(observer => observer.OnNext(obj));
         }
 
-        private class Unsubscribe : IDisposable
+        public class Unsubscribe : IDisposable
         {
             private readonly Action unsubscribe;
 

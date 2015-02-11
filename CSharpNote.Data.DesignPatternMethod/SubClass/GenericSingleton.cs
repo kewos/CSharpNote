@@ -1,18 +1,20 @@
 ﻿
 namespace CSharpNote.Data.DesignPatternMethod.SubClass
 {
-    public class GenericSingleton<T> where T : class, new()
+    public class SingletonObject<T> where T : class, new()
     {
         private static T instance;
 
-        private GenericSingleton()
+        private SingletonObject()
         {
         }
 
         public static T Instance()
         {
-            if (instance == (T)null) 
+            if (instance == (T)null)
+            {
                 instance = new T();
+            }
             return instance;
         }
     }

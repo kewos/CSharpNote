@@ -1,29 +1,7 @@
 ﻿using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass
+namespace CSharpNote.Data.DesignPatternMethod.SubClass.NullObjectPattern
 {
-    public abstract class ObjectBase
-    {
-        public virtual string GetTypeName { get { return GetType().Name; } }
-        public static NullObject Null { get { return new NullObject(); } }
-
-        public class NullObject : ObjectBase
-        {
-        }
-    }
-
-    public class ObjectA : ObjectBase
-    {
-    }
-
-    public class ObjectB : ObjectBase
-    {
-    }
-
-    public class ObjectC : ObjectBase
-    {
-    }
-
     public class ObjectRespository
     {
         public Dictionary<string, ObjectBase> dictionary;
