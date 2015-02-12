@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using CSharpNote.Core.Contracts;
 using CSharpNote.Common.Attributes;
 
@@ -10,16 +12,46 @@ namespace CSharpNote.Core.Implements
     public abstract class AbstractMethodRepository : ContextBoundObject, IMethodRepository
     {
         private IList<MethodInfo> methodInfos;
+        private const string TRIMSTRING = "MethodRepository";
 
+        #region IMethodRepository member
         public int Count
         {
             get
             {
-                return methodInfos.Count;
+                return MethodInfos.Count;
             }
         }
 
-        public virtual IList<MethodInfo> MethodInfos
+        public MethodInfo this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= Count)
+                {
+                    throw new IndexOutOfRangeException("IndexOutOfRangeException");
+                }
+
+                return MethodInfos[index];
+            }
+        }
+
+        public IEnumerable<string> GetMethodNames()
+        {
+            return MethodInfos.Select(methodInfo => methodInfo.Name);
+        }
+
+        public string RepositoryName
+        {
+            get
+            {
+                return TrimString(GetType().Name);
+            }
+        }
+        #endregion
+
+        #region private member
+        private IList<MethodInfo> MethodInfos
         {
             get
             {
@@ -31,9 +63,16 @@ namespace CSharpNote.Core.Implements
                         .OrderBy(method => method.Name)
                         .ToList();
                 }
-
                 return methodInfos;
             }
         }
+
+        private string TrimString(string str)
+        {
+            var stringStart = 0;
+            var stringEnd = str.Length - TRIMSTRING.Length;
+            return str.Substring(stringStart, stringEnd);
+        }
+        #endregion
     }
 }

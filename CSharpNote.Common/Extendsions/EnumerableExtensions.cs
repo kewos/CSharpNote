@@ -64,18 +64,14 @@ namespace CSharpNote.Common.Extendsions
                 try
                 {
                     items.ShowOnConsole();
-                    var input = GetIndexOfMethod();
+                    var input = GetInputIndex();
                     if (input == -1) break;
                     AfterTypeIndex(input);
                     Console.ReadLine();
                 }
-                catch (ArgumentException e)
-                {
-                    Console.WriteLine(e.Message);
-                }
                 catch (Exception e)
                 {
-                    Console.WriteLine("some exception!!");
+                    Console.WriteLine(e.Message);
                 }
             }
         }
@@ -88,9 +84,13 @@ namespace CSharpNote.Common.Extendsions
             Console.Write("<Console>:");
         }
 
-        private static int GetIndexOfMethod()
+        private static int GetInputIndex()
         {
-            return Convert.ToInt32(Console.ReadLine());
+            var input = Console.ReadLine();
+            int value;
+            if (!int.TryParse(input, out value))
+                throw new Exception("CantConvertToInteger");
+            return value;
         }
     }
 }

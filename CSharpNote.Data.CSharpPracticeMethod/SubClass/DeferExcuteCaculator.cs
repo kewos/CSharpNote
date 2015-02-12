@@ -30,7 +30,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod.SubClass
         public int Invoke()
         {
             var result = value;
-            commands.ForEach(command => { result = command.Key(result, command.Value); });
+            commands.ForEach(command => result = command.Key(result, command.Value));
             return result;
         }
     }

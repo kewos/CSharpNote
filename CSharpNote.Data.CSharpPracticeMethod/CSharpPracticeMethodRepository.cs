@@ -1685,5 +1685,43 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             ForPerformanceCheck1.CaculateExcuteTime().ToConsole("ForPerformanceCheck1:");
             ForPerformanceCheck2.CaculateExcuteTime().ToConsole("ForPerformanceCheck2:");
         }
+
+        /// <summary>
+        /// lockThis 是一種不安全的方式 除非Class是Instance
+        /// </summary>
+        [MarkedItem]
+        public void ChecklockThis()
+        {
+            Action check1 = () =>
+            {
+                Enumerable.Range(0, 5).ForEach(n =>
+                {
+                    new System.Threading.Thread(() => new TestPrinter().Execute()).Start();
+                });
+            };
+
+            Action check2 = () =>
+            {
+                var testItem = new TestPrinter();
+                Enumerable.Range(0, 5).ForEach(n =>
+                {
+                    new System.Threading.Thread(() => testItem.Execute()).Start();
+                });
+            };
+        }
+
+        public class TestPrinter
+        {
+            public void Execute()
+            {
+                lock (this)
+                {
+                    for (int i = 0; i < 20; i++)
+                    {
+                        Console.WriteLine("{0}-{1}" ,System.Threading.Thread.CurrentThread.ManagedThreadId, i);
+                    }
+                }
+            }
+        }
     }
 }
