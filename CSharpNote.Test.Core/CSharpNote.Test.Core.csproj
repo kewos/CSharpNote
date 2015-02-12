@@ -58,6 +58,9 @@
   <ItemGroup>
     <Compile Include="Test_AbstractMethodRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test_ActionExtension.cs" />
+    <Compile Include="Test_TypeExtension.cs" />
+    <Compile Include="Test_EnumerableExtensions.cs" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

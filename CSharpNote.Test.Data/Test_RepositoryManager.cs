@@ -33,7 +33,7 @@ namespace CSharpNote.Test.Data
         }
 
         [TestMethod]
-        public void RepositoryManager_Get_Repository_Names()
+        public void GetRepositoryNames_Get_ReturnRepositoryNames()
         {
             //Arrange
             var repositoryManager = TestRepositoryManager;
@@ -43,14 +43,14 @@ namespace CSharpNote.Test.Data
 
             //Assert
             var expect = new List<string> {"test", "test", "test"};
-            for (var i = 0; i < actual.Count; i++)
+            for (var i = 0; i < expect.Count; i++)
             {
                 Assert.AreEqual(expect[i], actual[i]);
             }
         }
 
         [TestMethod]
-        public void RepositoryManager_Get_Repository_By_Indexer()
+        public void Indexer_Get_ReturnRepository()
         {
             //Arrange
             var repositoryManager = TestRepositoryManager;
@@ -60,14 +60,14 @@ namespace CSharpNote.Test.Data
 
             //Assert
             var expect = new List<string> { "test", "test", "test" };
-            for (var i = 0; i < actual.Count; i++)
+            for (var i = 0; i < expect.Count; i++)
             {
                 Assert.AreEqual(expect[i], actual[i]);
             }
         }
 
         [TestMethod]
-        public void RepositoryManager_Check_Index_Lower_Bounded()
+        public void Indexer_CheckLowerBounded_ThrowException()
         {
             //Arrange
             var repositoryManager = TestRepositoryManager;
@@ -89,7 +89,7 @@ namespace CSharpNote.Test.Data
         }
 
         [TestMethod]
-        public void RepositoryManager_Check_Index_Upper_Bounded()
+        public void Indexer_CheckUpperBounded_ThrowException()
         {
             //Arrange
             var repositoryManager = TestRepositoryManager;

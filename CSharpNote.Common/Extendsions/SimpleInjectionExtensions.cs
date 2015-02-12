@@ -19,20 +19,6 @@ namespace CSharpNote.Common.Extendsions
         }
 
         /// <summary>
-        /// 取得符合DLL 實作 TInterface 的 class Type
-        /// </summary>
-        private static IEnumerable<Type> GetTypeFromMatchDll<TInterface>(string path, string matchFileName)
-        {
-            if (path.Length == 0 || matchFileName.Length == 0) throw new ArgumentException("InvalidArgument");
-
-            var matchDll = System.IO.Directory.GetFiles(path, matchFileName);
-            return matchDll.Select(dll => 
-                 Assembly.LoadFile(dll)
-                    .GetImplementInterfaceClassType<TInterface>()
-                    .FirstOrDefault());
-        }
-
-        /// <summary>
         /// 把有對應的interface 跟 class 綁在一起
         /// </summary>
         public static void RegisterEntryAssemblyMappingType(this Container container)
@@ -50,5 +36,24 @@ namespace CSharpNote.Common.Extendsions
                    }
                });
         }
+
+        #region private member
+        /// <summary>
+        /// 取得符合DLL 實作 TInterface 的 class Type
+        /// </summary>
+        private static IEnumerable<Type> GetTypeFromMatchDll<TInterface>(string path, string matchFileName)
+        {
+            if (path.Length == 0 || matchFileName.Length == 0)
+            {
+                throw new ArgumentException("InvalidArgument");
+            }
+
+            var matchDll = System.IO.Directory.GetFiles(path, matchFileName);
+            return matchDll.Select(dll =>
+                 Assembly.LoadFile(dll)
+                    .GetImplementInterfaceClassType<TInterface>()
+                    .FirstOrDefault());
+        }
+        #endregion
     }
 }

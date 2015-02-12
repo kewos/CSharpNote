@@ -16,10 +16,10 @@ namespace CSharpNote.Client
         {
             //註冊EntryAssembly有映對的InterfaceClass
             container.RegisterEntryAssemblyMappingType();
-            //註冊RepositoryManager
-            container.Register<IRepositoryManager, RepositoryManager>();
             //註冊Location Bin檔底下符合規則的Dll 裡面實作IMethodRepository的Class
             container.RegistLocationMatchDll<IMethodRepository>("*Method.DLL");
+            //註冊RepositoryManager
+            container.Register<IRepositoryManager, RepositoryManager>();
 
             return container;
         }

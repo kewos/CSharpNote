@@ -6,6 +6,7 @@ namespace CSharpNote.Common.Extendsions
 {
     public static class EnumerableExtensions
     {
+        //
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> elements, Func<T, T> func)
         {
             if (func == null)
