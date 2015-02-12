@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Data.RepositoryM
 		{66DD1B22-5C83-4193-9976-F6EC1F605712} = {66DD1B22-5C83-4193-9976-F6EC1F605712}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Test.Data", "CSharpNote.Test.Data\CSharpNote.Test.Data.csproj", "{0A224D02-7437-4558-9DE5-B63C918769CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -167,6 +169,16 @@ Global
 		{5819D7A4-D71C-4758-ADB2-83C2F61F2BF1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5819D7A4-D71C-4758-ADB2-83C2F61F2BF1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5819D7A4-D71C-4758-ADB2-83C2F61F2BF1}.Release|Win32.ActiveCfg = Release|Any CPU
+		{0A224D02-7437-4558-9DE5-B63C918769CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A224D02-7437-4558-9DE5-B63C918769CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A224D02-7437-4558-9DE5-B63C918769CD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0A224D02-7437-4558-9DE5-B63C918769CD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0A224D02-7437-4558-9DE5-B63C918769CD}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{0A224D02-7437-4558-9DE5-B63C918769CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A224D02-7437-4558-9DE5-B63C918769CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A224D02-7437-4558-9DE5-B63C918769CD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0A224D02-7437-4558-9DE5-B63C918769CD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0A224D02-7437-4558-9DE5-B63C918769CD}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -181,5 +193,6 @@ Global
 		{5819D7A4-D71C-4758-ADB2-83C2F61F2BF1} = {3961EEA2-1DB5-4D3B-9E75-DE7FA62C6DE1}
 		{66DD1B22-5C83-4193-9976-F6EC1F605712} = {EDCF83AA-CB58-4242-8567-0B7BA551B1C6}
 		{44DAC2F7-C969-4785-A716-1FBCCFB36510} = {7A686CFC-BDC1-4E6B-8D76-9D95143CC075}
+		{0A224D02-7437-4558-9DE5-B63C918769CD} = {7A686CFC-BDC1-4E6B-8D76-9D95143CC075}
 	EndGlobalSection
 EndGlobal

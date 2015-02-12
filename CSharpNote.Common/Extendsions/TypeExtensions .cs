@@ -23,7 +23,12 @@ namespace CSharpNote.Common.Extendsions
                     .All(p => p.ParameterType.IsInterface 
                         && p.ParameterType.Name.StartsWith("I")))
                 .FirstOrDefault();
-            if (constructorInfo == null) throw new NullReferenceException("NoMatchConstructor");
+
+            if (constructorInfo == null)
+            {
+                throw new NullReferenceException("NoMatchConstructor");
+            }
+
             return constructorInfo;
         }
     }

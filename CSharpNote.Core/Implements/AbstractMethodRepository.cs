@@ -63,6 +63,7 @@ namespace CSharpNote.Core.Implements
                         .OrderBy(method => method.Name)
                         .ToList();
                 }
+
                 return methodInfos;
             }
         }

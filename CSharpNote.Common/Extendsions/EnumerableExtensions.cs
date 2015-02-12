@@ -8,33 +8,58 @@ namespace CSharpNote.Common.Extendsions
     {
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> elements, Func<T, T> func)
         {
-            if (func == null) throw new ArgumentException("FuncIsNull");
+            if (func == null)
+            {
+                throw new ArgumentException("FuncIsNull");
+            }
+
             foreach (var element in elements)
+            {
                 yield return func(element);
+            }
         }
 
         public static void ForEach<T>(this IEnumerable<T> elements, Action<T> action)
         {
-            if (action == null) throw new ArgumentException("ActionIsNull");
+            if (action == null)
+            {
+                throw new ArgumentException("ActionIsNull");
+            }
+
             foreach (var element in elements)
+            {
                 action(element);
+            }
         }
 
         public static void ForEach<T>(this IEnumerable<T> elements, Action<int, T> action)
         {
-            if (action == null) throw new ArgumentException("ActionIsNull");
+            if (action == null)
+            {
+                throw new ArgumentException("ActionIsNull");
+            }
+
             var index = 0;
             foreach (var element in elements)
+            {
                 action(index++, element);
+            }
         }
 
         public static bool All<T>(this IEnumerable<T> elements, Func<int, T, bool> func)
         {
-            if (func == null) throw new ArgumentException("FuncIsNull");
+            if (func == null)
+            {
+                throw new ArgumentException("FuncIsNull");
+            }
+
             var index = 0;
-            foreach(var element in elements)
+            foreach (var element in elements)
+            {
                 if (!func(index++, element))
                     return false;
+            }
+
             return true;
         }
 
@@ -87,9 +112,13 @@ namespace CSharpNote.Common.Extendsions
         private static int GetInputIndex()
         {
             var input = Console.ReadLine();
+
             int value;
             if (!int.TryParse(input, out value))
+            {
                 throw new Exception("CantConvertToInteger");
+            }
+
             return value;
         }
     }

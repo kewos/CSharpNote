@@ -35,7 +35,7 @@ namespace CSharpNote.Common.Extendsions
         /// <summary>
         /// 把有對應的interface 跟 class 綁在一起
         /// </summary>
-        public static void RegisterMappingType(this Container container)
+        public static void RegisterEntryAssemblyMappingType(this Container container)
         {
             Assembly.GetEntryAssembly().GetClassType()
                .ForEach(@type =>
