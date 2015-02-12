@@ -16,6 +16,6 @@ namespace CSharpNote.Core.Contracts
         /// <summary>
         /// 取得Repository 透過 Index
         /// </summary>
-        IMethodRepository GetRepositoryByIndex(int index);
+        IMethodRepository this[int index] { get; }
     }
 }

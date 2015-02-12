@@ -30,8 +30,7 @@ namespace CSharpNote.Client
         #region private method
         private void Excute(int index)
         {
-            var repository = methodRepositories.GetRepositoryByIndex(index);
-            methodManager.Start(repository);
+            methodManager.Start(methodRepositories[index]);
         }
         #endregion private member
     }
