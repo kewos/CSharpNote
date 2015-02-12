@@ -6,9 +6,14 @@ namespace CSharpNote.Common.Extendsions
     {
         public static int CaculateExcuteTime(this Action action)
         {
+            if (action == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             var sw = new System.Diagnostics.Stopwatch();
             sw.Start();
-            if (action != null) action();
+            action();
             sw.Stop();
             return sw.Elapsed.Milliseconds;
         }

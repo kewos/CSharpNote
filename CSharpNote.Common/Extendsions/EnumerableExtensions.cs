@@ -58,7 +58,9 @@ namespace CSharpNote.Common.Extendsions
             foreach (var element in elements)
             {
                 if (!func(index++, element))
+                {
                     return false;
+                }
             }
 
             return true;

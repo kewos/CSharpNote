@@ -2,7 +2,7 @@
 using CSharpNote.Common.Extendsions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CSharpNote.Test.Core
+namespace CSharpNote.Test.Common
 {
     [TestClass]
     public class Test_TypeExtensions

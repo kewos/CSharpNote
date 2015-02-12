@@ -10,11 +10,11 @@ namespace CSharpNote.Test.Data
     [TestClass]
     public class Test_RepositoryManager
     {
-        public class testMethodRepository : AbstractMethodRepository
+        private class testMethodRepository : AbstractMethodRepository
         {
         }
 
-        public IEnumerable<testMethodRepository> GetRepositories
+        private IEnumerable<testMethodRepository> GetRepositories
         {
             get
             {
@@ -24,7 +24,7 @@ namespace CSharpNote.Test.Data
             }
         }
 
-        public RepositoryManager TestRepositoryManager
+        private RepositoryManager TestRepositoryManager
         {
             get
             {

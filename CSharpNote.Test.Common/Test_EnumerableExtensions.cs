@@ -4,7 +4,7 @@ using System.Linq;
 using CSharpNote.Common.Extendsions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CSharpNote.Test.Core
+namespace CSharpNote.Test.Common
 {
     [TestClass]
     public class Test_EnumerableExtensions
@@ -108,8 +108,7 @@ namespace CSharpNote.Test.Core
             var actual = elements.All((index, n) => n == checkElements[index]);
 
             //Assert
-            var expect = true;
-            Assert.AreEqual(expect, actual);
+            Assert.IsTrue(actual);
         }
 
         [TestMethod]
@@ -123,8 +122,7 @@ namespace CSharpNote.Test.Core
             var actual = elements.All((index, n) => n == checkElements[index]);
 
             //Assert
-            var expect = false;
-            Assert.AreEqual(expect, actual);
+            Assert.IsFalse(actual);
         }
     }
 }

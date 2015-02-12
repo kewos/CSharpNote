@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{44DAC2F7-C969-4785-A716-1FBCCFB36510}</ProjectGuid>
+    <ProjectGuid>{45486CE8-261E-4AFE-8314-BBAE60F3AC6D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleDisplay.Test.Core</RootNamespace>
-    <AssemblyName>ConsoleDisplay.Test.Core</AssemblyName>
+    <RootNamespace>CSharpNote.Test.Common</RootNamespace>
+    <AssemblyName>CSharpNote.Test.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,10 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CSharpNote.Common">
-      <HintPath>..\CSharpNote.Core\bin\Debug\CSharpNote.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="CSharpNote.Core">
-      <HintPath>..\CSharpNote.Core\bin\Debug\CSharpNote.Core.dll</HintPath>
+      <HintPath>..\CSharpNote.Common\bin\Debug\CSharpNote.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
@@ -56,7 +53,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Test_AbstractMethodRepository.cs" />
+    <Compile Include="Test_ActionExtension.cs" />
+    <Compile Include="Test_EnumerableExtensions.cs" />
+    <Compile Include="Test_ObjectExtension.cs" />
+    <Compile Include="Test_TypeExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Choose>

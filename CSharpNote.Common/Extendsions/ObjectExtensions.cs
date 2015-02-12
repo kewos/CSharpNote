@@ -4,9 +4,11 @@ namespace CSharpNote.Common.Extendsions
 {
     public static class ObjectExtensions
     {
-        public static void ToConsole(this object obj, string prefix= "", string suffix = "")
+        public static string ToConsole(this object obj, string prefix= "", string suffix = "")
         {
-            Console.WriteLine("{1}{0}{2}", obj ?? "null", prefix, suffix);
+            var str = string.Format("{1}{0}{2}", obj ?? "null", prefix, suffix);
+            Console.WriteLine(str);
+            return str;
         }
     }
 }
