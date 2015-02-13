@@ -1701,7 +1701,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                     .ToList();
 
                 threads.ForEach(thread => thread.Start());
-                SpinWait.SpinUntil(() => !threads.Any(thread => thread.IsAlive), 500);
+                SpinWait.SpinUntil(() => !threads.Any(thread => thread.IsAlive), 100);
             };
 
             Action check2 = () =>
@@ -1713,7 +1713,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                     .ToList();
 
                 threads.ForEach(thread => thread.Start());
-                SpinWait.SpinUntil(() => !threads.Any(thread => thread.IsAlive), 500);
+                SpinWait.SpinUntil(() => !threads.Any(thread => thread.IsAlive), 100);
             };
 
             check1.CaculateExcuteTime().ToConsole("Check1 ExcuteTime:");
