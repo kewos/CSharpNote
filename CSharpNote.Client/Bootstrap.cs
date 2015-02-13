@@ -21,6 +21,8 @@ namespace CSharpNote.Client
             //註冊RepositoryManager
             container.Register<IRepositoryManager, RepositoryManager>();
 
+            container.Verify();
+
             return container;
         }
     }

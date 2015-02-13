@@ -68,9 +68,13 @@ namespace CSharpNote.Core.Implements
 
         private string TrimString(string str)
         {
-            var stringStart = 0;
-            var stringEnd = str.Length - TRIMSTRING.Length;
-            return str.Substring(stringStart, stringEnd);
+            if (!str.EndsWith(TRIMSTRING))
+            {
+                throw new ArgumentException("InvalidString");
+            }
+            var Start = 0;
+            var End = str.Length - TRIMSTRING.Length;
+            return str.Substring(Start, End);
         }
         #endregion
     }
