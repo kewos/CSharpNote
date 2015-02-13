@@ -1,4 +1,5 @@
-﻿using CSharpNote.Common.Extendsions;
+﻿using System;
+using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Contracts;
 
 namespace CSharpNote.Client
@@ -7,6 +8,11 @@ namespace CSharpNote.Client
     {
         public void Start(IMethodRepository repository)
         {
+            if (repository == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             repository.GetMethodNames()
                 .SelectAndShowOnConsole(index => Excute(index, repository));
         }

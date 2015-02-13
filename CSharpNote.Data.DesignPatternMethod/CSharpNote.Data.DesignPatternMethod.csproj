@@ -113,6 +113,8 @@
     <Compile Include="SubClass\RepositoryPattern\FakeDbContext.cs" />
     <Compile Include="SubClass\RepositoryPattern\Person.cs" />
     <Compile Include="SubClass\RepositoryPattern\IPersonRepository.cs" />
+    <Compile Include="SubClass\ServiceLocatorPattern\Service.cs" />
+    <Compile Include="SubClass\ServiceLocatorPattern\ServiceLocator.cs" />
     <Compile Include="SubClass\SpecificationPattern\AndSpecification.cs" />
     <Compile Include="SubClass\SpecificationPattern\Band.cs" />
     <Compile Include="SubClass\SpecificationPattern\CompositeSpecification.cs" />

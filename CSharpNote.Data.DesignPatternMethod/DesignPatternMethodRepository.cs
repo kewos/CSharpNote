@@ -21,6 +21,7 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.DecoratorPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.FecadePattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.NullObjectPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ProxyPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.ServiceLocatorPattern;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
@@ -87,6 +88,9 @@ namespace CSharpNote.Data.DesignPatternMethod
             Enumerable.Range(0, 10).ForEach(n => context.Execute());
         }
 
+        /// <summary>
+        /// 模組化subclass
+        /// </summary>
         [MarkedItem]
         public void PipelinePattern()
         {
@@ -94,6 +98,9 @@ namespace CSharpNote.Data.DesignPatternMethod
             //workLine.Execute();
         }
 
+        /// <summary>
+        /// 合成代替繼承
+        /// </summary>
         [MarkedItem]
         public void BridgePattern()
         {
@@ -115,6 +122,11 @@ namespace CSharpNote.Data.DesignPatternMethod
             customers.ShowAll();
         }
 
+        /// <summary>
+        /// 觀注點切入的設計方式
+        /// 常用於input validation, log等功能
+        /// 可讓程式更符合close open 的設計原則
+        /// </summary>
         [MarkedItem]
         public void AspectOrientProgram()
         {
@@ -367,6 +379,25 @@ namespace CSharpNote.Data.DesignPatternMethod
         public void ProxyPattern()
         {
             new ProxyServer().DoAction().ToConsole();
+        }
+
+        /// <summary>
+        /// 游歷於各系統邊界的Pattern
+        /// 優點:減少耦合 
+        /// 缺點:static難追蹤 難unit test
+        /// </summary>
+        [MarkedItem]
+        public void ServiceLocatorPattern()
+        {
+            var serviceLocator = ServiceLocator.Instance;
+            serviceLocator.RegistService<IService1>(new Service1());
+            serviceLocator.RegistService<IService2>(new Service2());
+
+            var service1 = ServiceLocator.Instance.GetService<IService1>();
+            var service2 = ServiceLocator.Instance.GetService<IService2>();
+
+            service1.GetName().ToConsole();
+            service2.GetName().ToConsole();
         }
     }
 }

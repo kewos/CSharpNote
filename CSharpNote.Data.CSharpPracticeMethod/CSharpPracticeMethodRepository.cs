@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using CSharpNote.Common.Attributes;
@@ -1687,39 +1688,48 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         }
 
         /// <summary>
-        /// lockThis 是一種不安全的方式 除非Class是Instance
+        /// lockThis 是一種不安全的方式 除非Class是唯一
         /// </summary>
         [MarkedItem]
         public void ChecklockThis()
         {
             Action check1 = () =>
             {
-                Enumerable.Range(0, 5).ForEach(n =>
-                {
-                    new System.Threading.Thread(() => new TestPrinter().Execute()).Start();
-                });
+                var threads = Enumerable.Range(0, 5)
+                    .Select(n => 
+                        new Thread(() => new TestLockThis().Execute()))
+                    .ToList();
+
+                threads.ForEach(thread => thread.Start());
+                SpinWait.SpinUntil(() => !threads.Any(thread => thread.IsAlive), 500);
             };
 
             Action check2 = () =>
             {
-                var testItem = new TestPrinter();
-                Enumerable.Range(0, 5).ForEach(n =>
-                {
-                    new System.Threading.Thread(() => testItem.Execute()).Start();
-                });
+                var testItem = new TestLockThis();
+                var threads = Enumerable.Range(0, 5)
+                    .Select(n => 
+                        new Thread(() => testItem.Execute()))
+                    .ToList();
+
+                threads.ForEach(thread => thread.Start());
+                SpinWait.SpinUntil(() => !threads.Any(thread => thread.IsAlive), 500);
             };
+
+            check1.CaculateExcuteTime().ToConsole("Check1 ExcuteTime:");
+            check2.CaculateExcuteTime().ToConsole("Check2 ExcuteTime:");
         }
 
-        public class TestPrinter
+        private class TestLockThis
         {
             public void Execute()
             {
                 lock (this)
                 {
-                    for (int i = 0; i < 20; i++)
-                    {
-                        Console.WriteLine("{0}-{1}" ,System.Threading.Thread.CurrentThread.ManagedThreadId, i);
-                    }
+                    Enumerable.Range(1, 20)
+                        .ForEach(n => 
+                            Console.WriteLine("ThreadId:{0}-{1}", Thread.CurrentThread.ManagedThreadId, n));
+                    
                 }
             }
         }
