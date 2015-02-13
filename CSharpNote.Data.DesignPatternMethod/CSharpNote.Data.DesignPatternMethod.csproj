@@ -82,7 +82,6 @@
     <Compile Include="SubClass\FlyweightPattern\FlyweightButton.cs" />
     <Compile Include="SubClass\FlyweightPattern\FlyweightButtonFactory.cs" />
     <Compile Include="SubClass\FlyweightPattern\IButton.cs" />
-    <Compile Include="SubClass\GenericSingleton.cs" />
     <Compile Include="SubClass\MediatorPattern\GamePlayer.cs" />
     <Compile Include="SubClass\MediatorPattern\GamePlayMediator.cs" />
     <Compile Include="SubClass\MediatorPattern\IGamePlayer.cs" />
@@ -115,6 +114,9 @@
     <Compile Include="SubClass\RepositoryPattern\IPersonRepository.cs" />
     <Compile Include="SubClass\ServiceLocatorPattern\Service.cs" />
     <Compile Include="SubClass\ServiceLocatorPattern\ServiceLocator.cs" />
+    <Compile Include="SubClass\SingletonPattern\SingletonA.cs" />
+    <Compile Include="SubClass\SingletonPattern\SingletonB.cs" />
+    <Compile Include="SubClass\SingletonPattern\SingletonC.cs" />
     <Compile Include="SubClass\SpecificationPattern\AndSpecification.cs" />
     <Compile Include="SubClass\SpecificationPattern\Band.cs" />
     <Compile Include="SubClass\SpecificationPattern\CompositeSpecification.cs" />

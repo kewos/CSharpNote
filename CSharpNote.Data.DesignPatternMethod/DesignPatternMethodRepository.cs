@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Implements;
@@ -22,6 +23,7 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.FecadePattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.NullObjectPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ProxyPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ServiceLocatorPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.SingletonPattern;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
@@ -49,7 +51,7 @@ namespace CSharpNote.Data.DesignPatternMethod
             {
                 using (website.Subscribe(client))
                 {
-                    website.Notify(new Rss { Message = "Hello" });
+                    website.Notify(new Rss {Message = "Hello"});
                 }
             });
         }
@@ -106,7 +108,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         {
             // Create RefinedAbstraction
             CustomersBusinessObject customers =
-              new CustomersBusinessObject(" Chicago ");
+                new CustomersBusinessObject(" Chicago ");
 
             // Set ConcreteImplementor
             customers.DataObject = new CustomersDataObject();
@@ -131,10 +133,10 @@ namespace CSharpNote.Data.DesignPatternMethod
         public void AspectOrientProgram()
         {
             AOP.Registry.Join(
-                    typeof(Actor).GetConstructors().First(), 
-                    typeof(Concern).GetConstructors().First()
+                typeof (Actor).GetConstructors().First(),
+                typeof (Concern).GetConstructors().First()
                 );
-            var actor = (IActor)AOP.Factory.Create<Actor>("");
+            var actor = (IActor) AOP.Factory.Create<Actor>("");
 
             Console.WriteLine(actor.Name);
             Console.WriteLine(new Actor("adabcbc").Name);
@@ -184,7 +186,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         }
 
         [MarkedItem(
-            "http://www.codeproject.com/Articles/670115/Specification-pattern-in-Csharp", 
+            "http://www.codeproject.com/Articles/670115/Specification-pattern-in-Csharp",
             "http://en.wikipedia.org/wiki/Specification_pattern#mediaviewer/File:Specification_UML_v2.png")]
         public void SpecificationPattern()
         {
@@ -200,16 +202,16 @@ namespace CSharpNote.Data.DesignPatternMethod
             };
 
             ISpecification<Band> ukExpSpec =
-               new ExpressionSpecification<Band>(band => band.Country == Country.UK);
+                new ExpressionSpecification<Band>(band => band.Country == Country.UK);
             ISpecification<Band> australiaExpSpec =
-               new ExpressionSpecification<Band>(band => band.Country == Country.Australia);
+                new ExpressionSpecification<Band>(band => band.Country == Country.Australia);
             ISpecification<Band> germanExpSpec =
-               new ExpressionSpecification<Band>(band => band.Country == Country.Gereman);
-   
+                new ExpressionSpecification<Band>(band => band.Country == Country.Gereman);
+
             ISpecification<Band> britPopExpSpec =
-               new ExpressionSpecification<Band>(band => band.BandKind == BandKind.BritPop);
+                new ExpressionSpecification<Band>(band => band.BandKind == BandKind.BritPop);
             ISpecification<Band> classRockExpSpec =
-               new ExpressionSpecification<Band>(band => band.BandKind == BandKind.ClassRock);
+                new ExpressionSpecification<Band>(band => band.BandKind == BandKind.ClassRock);
 
             Console.WriteLine("================Search:UK Band");
             bands.FindAll(band => ukExpSpec.IsSatisfiedBy(band))
@@ -235,14 +237,14 @@ namespace CSharpNote.Data.DesignPatternMethod
             var repository = new PersonRepository();
 
             //add item
-            repository.AddPerson(new Person { FirstName = "a", LastName = "a" });
-            repository.AddPerson(new Person { FirstName = "b", LastName = "b" });
-            repository.AddPerson(new Person { FirstName = "c", LastName = "c" });
-            repository.AddPerson(new Person { FirstName = "d", LastName = "d" });
+            repository.AddPerson(new Person {FirstName = "a", LastName = "a"});
+            repository.AddPerson(new Person {FirstName = "b", LastName = "b"});
+            repository.AddPerson(new Person {FirstName = "c", LastName = "c"});
+            repository.AddPerson(new Person {FirstName = "d", LastName = "d"});
             repository.GetPeople().ForEach(p => (p.FirstName + p.LastName).ToConsole());
 
             //update item
-            repository.UpdatePerson("a", new Person { FirstName = "newa", LastName = "newa" });
+            repository.UpdatePerson("a", new Person {FirstName = "newa", LastName = "newa"});
 
             //delete item
             repository.DeletePerson("d");
@@ -259,14 +261,14 @@ namespace CSharpNote.Data.DesignPatternMethod
         {
             var repository = new CachePersonRepository(new PersonRepository());
             //add item
-            repository.AddPerson(new Person { FirstName = "a", LastName = "a" });
-            repository.AddPerson(new Person { FirstName = "b", LastName = "b" });
-            repository.AddPerson(new Person { FirstName = "c", LastName = "c" });
-            repository.AddPerson(new Person { FirstName = "d", LastName = "d" });
+            repository.AddPerson(new Person {FirstName = "a", LastName = "a"});
+            repository.AddPerson(new Person {FirstName = "b", LastName = "b"});
+            repository.AddPerson(new Person {FirstName = "c", LastName = "c"});
+            repository.AddPerson(new Person {FirstName = "d", LastName = "d"});
             repository.GetPeople().ForEach(p => (p.FirstName + p.LastName).ToConsole());
             "============================================================".ToConsole();
             //update item
-            repository.UpdatePerson("a", new Person { FirstName = "newa", LastName = "newa" });
+            repository.UpdatePerson("a", new Person {FirstName = "newa", LastName = "newa"});
             repository.GetPeople().ForEach(p => (p.FirstName + p.LastName).ToConsole());
             "============================================================".ToConsole();
             //delete item
@@ -281,7 +283,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         [MarkedItem]
         public void FecadePattern()
         {
-            var fecade =  new Fecade();
+            var fecade = new Fecade();
             fecade.MethodA().ToConsole();
             fecade.MethodB().ToConsole();
             fecade.MethodC().ToConsole();
@@ -298,14 +300,14 @@ namespace CSharpNote.Data.DesignPatternMethod
         {
             var factory = new FlyweightButtonFactory();
             Enumerable.Range(1, 30)
-                .Select(n => factory.GetFlyweightButton(n % 3))
+                .Select(n => factory.GetFlyweightButton(n%3))
                 .ForEach(button => button.Draw());
         }
 
         [MarkedItem]
         public void MediatorPattern()
         {
-            Func<int, string> convertToString = (number) => ((char)(65 + number)).ToString();
+            Func<int, string> convertToString = (number) => ((char) (65 + number)).ToString();
             var players = Enumerable.Range(0, 5)
                 .Select(n => new GamePlayer(convertToString(n)))
                 .ToList<IGamePlayer>();
@@ -345,7 +347,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         public void ChainResponsibilityPattern()
         {
             var handler = new HandlerA();
-            var handlerCommand = new HandlerCommand(typeof(HandlerD));
+            var handlerCommand = new HandlerCommand(typeof (HandlerD));
             handler.Execute(handlerCommand);
         }
 
@@ -399,5 +401,60 @@ namespace CSharpNote.Data.DesignPatternMethod
             service1.GetName().ToConsole();
             service2.GetName().ToConsole();
         }
+
+        /// <summary>
+        /// 於單執行緒三種都產生單一實體
+        /// </summary>
+        [MarkedItem]
+        public void SingletonPattern()
+        {
+            Action<string, Func<int>> check = (msg, func) =>
+            {
+                var hashcode = func();
+                var list = Enumerable.Range(0, 1000)
+                    .Select(n =>
+                        func());
+                list.All(n => n == hashcode).ToConsole(msg);
+                list.Count().ToConsole();
+            };
+
+            check("CheckSingletonA", () => SingletonA.Instance().GetHashCode());
+            check("CheckSingletonB", () => SingletonB.Instance().GetHashCode());
+            check("CheckSingletonC", () => SingletonC.Instance().GetHashCode());
+        }
+
+        /// <summary>
+        /// 於多執行緒的情況SingletonB SingletonC有可能產生多個實體
+        /// </summary>
+        [MarkedItem]
+        public void SingletonPatternAtMutiThread()
+        {
+            Action<string, Func<int>> mutiThreadCheck = (msg, func) =>
+            {
+                var hashcode = func();
+                var list = new List<int>();
+                var threads = Enumerable.Range(0, 50)
+                    .Select(n =>
+                    {
+                        return new Thread(() =>
+                        {
+                            Enumerable.Range(0, 20).ForEach(m =>
+                            {
+                                list.Add(func());
+                            });
+                        });
+                    }).ToList();
+                threads.ForEach(thread => thread.Start());
+                SpinWait.SpinUntil(() => !threads.Any(thread => thread.IsAlive), 100);
+                list.All(n => n == hashcode).ToConsole(msg);
+                list.Count.ToConsole();
+            };
+
+            mutiThreadCheck.Invoke("SingletonACheck:", () => SingletonA.Instance().GetHashCode());
+            mutiThreadCheck.Invoke("SingletonBCheck:", () => SingletonB.Instance().GetHashCode());
+            mutiThreadCheck.Invoke("SingletonCCheck:", () => SingletonC.Instance().GetHashCode());
+        }
     }
 }
+
+                      

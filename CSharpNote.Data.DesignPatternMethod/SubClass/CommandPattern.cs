@@ -68,11 +68,15 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass
 
     public class Invoker
     {
-        private List<Command> commands;
+        private readonly List<Command> commands;
+
+        public Invoker()
+        {
+            commands = new List<Command>();
+        }
 
         public void SetCommand(Command command)
         {
-            if (commands == null) commands = new List<Command>();
             commands.Add(command);
         }
 
