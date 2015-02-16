@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CSharpNote.Test.Lib.Extension;
 using CSharpNote.Core.Implements;
 using CSharpNote.Data.RepositoryManager;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -69,45 +70,23 @@ namespace CSharpNote.Test.Data
         [TestMethod]
         public void Indexer_CheckLowerBounded_ThrowException()
         {
-            //Arrange
-            var repositoryManager = TestRepositoryManager;
+            Action action = () =>
+            {
+                var methodInfo = TestRepositoryManager[-1];
+            };
 
-            //Act
-            try
-            {
-                var repository = repositoryManager[-1];
-                Assert.Fail("ExceptionMustBeThrown");
-            }
-            //Assert
-            catch (ArgumentException e)
-            {
-            }
-            catch (Exception e)
-            {
-                Assert.Fail("IncorrectException");
-            }
+            action.AssertHandleException<ArgumentException>();
         }
 
         [TestMethod]
         public void Indexer_CheckUpperBounded_ThrowException()
         {
-            //Arrange
-            var repositoryManager = TestRepositoryManager;
+            Action action = () =>
+            {
+                var methodInfo = TestRepositoryManager[3];
+            };
 
-            //Act
-            try
-            {
-                var repository = repositoryManager[3];
-                Assert.Fail("ExceptionMustBeThrown");
-            }
-            //Assert
-            catch (ArgumentException e)
-            {
-            }
-            catch (Exception e)
-            {
-                Assert.Fail("IncorrectException");
-            }
+            action.AssertHandleException<ArgumentException>();
         }
     }
 }

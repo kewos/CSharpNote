@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using CSharpNote.Core.Contracts;
 using CSharpNote.Common.Attributes;
+using CSharpNote.Common.Extendsions;
 
 namespace CSharpNote.Core.Implements
 {
@@ -25,10 +26,7 @@ namespace CSharpNote.Core.Implements
         {
             get
             {
-                if (index < 0 || index >= Count)
-                {
-                    throw new IndexOutOfRangeException("IndexOutOfRangeException");
-                }
+                index.AssertBetweenRange(0, Count - 1);
 
                 return MethodInfos[index];
             }
@@ -68,10 +66,8 @@ namespace CSharpNote.Core.Implements
 
         private string TrimString(string str)
         {
-            if (!str.EndsWith(TRIMSTRING))
-            {
-                throw new ArgumentException("InvalidString");
-            }
+            str.AssertEndWith(TRIMSTRING);
+
             var Start = 0;
             var End = str.Length - TRIMSTRING.Length;
             return str.Substring(Start, End);

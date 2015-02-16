@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Core.Implements;
 using CSharpNote.Common.Attributes;
+using CSharpNote.Test.Lib.Extension;
 
 namespace CSharpNote.Test.Core
 {
@@ -137,45 +138,24 @@ namespace CSharpNote.Test.Core
         [TestMethod]
         public void Indexer_CheckUpperBounded_ThrowIndexOutOfRangeException()
         {
-            //Arrange
-            var repository = TestMethodRepository;
+            Action action = () =>
+            {
+                var methodInfo = TestMethodRepository[3];
+            };
 
-            //Act
-            try
-            {
-                var methodInfo = repository[3];
-                Assert.Fail("ExceptionMustBeThrown");
-            }
-            //Assert
-            catch (IndexOutOfRangeException e)
-            {
-            }
-            catch (Exception e)
-            {
-                Assert.Fail("IncorrectException");
-            }
+            action.AssertHandleException<ArgumentException>();
         }
 
         [TestMethod]
         public void Indexer_CheckLowerBounded_ThrowIndexOutOfRangeException()
         {
-            //Arrange
-            var repository = TestMethodRepository;
 
-            //Act
-            try
+            Action action = () =>
             {
-                var methodInfo = repository[-1];
-                Assert.Fail("ExceptionMustBeThrown");
-            }
-            //Assert
-            catch (IndexOutOfRangeException e)
-            {
-            }
-            catch (Exception e)
-            {
-                Assert.Fail("IncorrectException");
-            }
+                var methodInfo = TestMethodRepository[-1];
+            };
+
+            action.AssertHandleException<ArgumentException>();
         }
     }
 }

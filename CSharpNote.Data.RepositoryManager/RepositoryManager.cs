@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Contracts;
 
 namespace CSharpNote.Data.RepositoryManager
@@ -18,6 +19,15 @@ namespace CSharpNote.Data.RepositoryManager
         #endregion
 
         #region IRepositoryManager member
+
+        public int Count
+        {
+            get
+            {
+                return methodRepositories.Count;
+            }
+        }
+
         public IEnumerable<string> GetRepositoryNames()
         {
             return methodRepositories.Select(repository => repository.RepositoryName);
@@ -27,10 +37,7 @@ namespace CSharpNote.Data.RepositoryManager
         {
             get
             {
-                if (index < 0 || index >= methodRepositories.Count)
-                {
-                    throw new ArgumentException();
-                }
+                index.AssertBetweenRange(0, Count - 1);
 
                 return methodRepositories[index];
             }

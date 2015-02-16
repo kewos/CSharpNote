@@ -11,10 +11,8 @@ namespace CSharpNote.Client
 
         public ProjectManager(IRepositoryManager methodRepositories, IMethodManager methodManager)
         {
-            if (methodManager == null || methodRepositories == null)
-            {
-                throw new ArgumentNullException("ArgumentNullException");
-            }
+            methodManager.AssertNotNull();
+            methodManager.AssertNotNull();
 
             this.methodRepositories = methodRepositories;
             this.methodManager = methodManager;

@@ -41,6 +41,9 @@
     <Reference Include="CSharpNote.Core">
       <HintPath>..\CSharpNote.Core\bin\Debug\CSharpNote.Core.dll</HintPath>
     </Reference>
+    <Reference Include="CSharpNote.Test.Lib">
+      <HintPath>..\CSharpNote.Test.Lib\bin\Debug\CSharpNote.Test.Lib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>

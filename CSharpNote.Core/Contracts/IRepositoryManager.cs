@@ -9,6 +9,11 @@ namespace CSharpNote.Core.Contracts
     public interface IRepositoryManager
     {
         /// <summary>
+        /// Repository數量
+        /// </summary>
+        int Count { get; }
+
+        /// <summary>
         /// 取得RepositoryNames
         /// </summary>
         IEnumerable<string> GetRepositoryNames();
