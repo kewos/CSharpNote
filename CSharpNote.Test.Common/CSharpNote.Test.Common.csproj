@@ -38,6 +38,9 @@
     <Reference Include="CSharpNote.Common">
       <HintPath>..\CSharpNote.Common\bin\Debug\CSharpNote.Common.dll</HintPath>
     </Reference>
+    <Reference Include="CSharpNote.Test.Lib">
+      <HintPath>..\CSharpNote.Test.Lib\bin\Debug\CSharpNote.Test.Lib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -53,6 +56,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Test_ParameterGuardExtensions.cs" />
     <Compile Include="Test_ActionExtension.cs" />
     <Compile Include="Test_EnumerableExtensions.cs" />
     <Compile Include="Test_ObjectExtension.cs" />

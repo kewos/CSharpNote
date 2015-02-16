@@ -79,7 +79,7 @@ namespace CSharpNote.Test.Data
                 Assert.Fail("ExceptionMustBeThrown");
             }
             //Assert
-            catch (IndexOutOfRangeException e)
+            catch (ArgumentException e)
             {
             }
             catch (Exception e)
@@ -101,7 +101,7 @@ namespace CSharpNote.Test.Data
                 Assert.Fail("ExceptionMustBeThrown");
             }
             //Assert
-            catch (IndexOutOfRangeException e)
+            catch (ArgumentException e)
             {
             }
             catch (Exception e)

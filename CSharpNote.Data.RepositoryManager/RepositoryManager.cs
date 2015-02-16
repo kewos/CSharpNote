@@ -29,7 +29,7 @@ namespace CSharpNote.Data.RepositoryManager
             {
                 if (index < 0 || index >= methodRepositories.Count)
                 {
-                    throw new IndexOutOfRangeException();
+                    throw new ArgumentException();
                 }
 
                 return methodRepositories[index];
