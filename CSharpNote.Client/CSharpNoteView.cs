@@ -7,17 +7,17 @@ namespace CSharpNote.Client
 {
     public class CSharpNoteView : ICSharpNoteView
     {
-        public void SelectAndShowOnConsole<T>(IEnumerable<T> items, Action<int> AfterTypeIndex)
+        public void SelectAndShowOnConsole<T>(IEnumerable<T> menu, Action<int> AfterAction)
         {
             while (true)
             {
                 try
                 {
-                    ShowOnConsole(items);
-                    var input = GetInputIndex();
-                    if (input == -1) break;
-                    AfterTypeIndex(input);
-                    Console.ReadLine();
+                    var input = ShowOnConsoleAndGetIndex(menu);
+
+                    if (input == -1) 
+                        break;
+                    AfterAction(input);
                 }
                 catch (Exception e)
                 {
@@ -26,12 +26,13 @@ namespace CSharpNote.Client
             }
         }
 
-        private void ShowOnConsole<T>(IEnumerable<T> items)
+        private int ShowOnConsoleAndGetIndex<T>(IEnumerable<T> menu)
         {
             Console.Clear();
-            items.Dump();
+            menu.Dump();
             Console.WriteLine("-1.Exit");
             Console.Write("<Console>:");
+            return GetInputIndex();
         }
 
         private static int GetInputIndex()

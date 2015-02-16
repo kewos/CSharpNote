@@ -5,6 +5,6 @@ namespace CSharpNote.Core.Contracts
 {
     public interface ICSharpNoteView
     {
-        void SelectAndShowOnConsole<T>(IEnumerable<T> items, Action<int> AfterTypeIndex);
+        void SelectAndShowOnConsole<T>(IEnumerable<T> menu, Action<int> AfterAction);
     }
 }

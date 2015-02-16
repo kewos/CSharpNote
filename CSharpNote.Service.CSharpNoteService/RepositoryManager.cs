@@ -17,7 +17,6 @@ namespace CSharpNote.Service.CSharpNoteService
         #endregion
 
         #region IRepositoryManager member
-
         public int Count
         {
             get
