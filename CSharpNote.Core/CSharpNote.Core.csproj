@@ -42,10 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IMethodManager.cs" />
     <Compile Include="Contracts\IMethodRepository.cs" />
-    <Compile Include="Contracts\IProjectManager.cs" />
-    <Compile Include="Contracts\IRepositoryManager.cs" />
+    <Compile Include="Contracts\ICSharpNotePresenter.cs" />
+    <Compile Include="Contracts\ICSharperNoteService.cs" />
+    <Compile Include="Contracts\ICSharpNoteView.cs" />
     <Compile Include="Implements\AbstractMethodRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

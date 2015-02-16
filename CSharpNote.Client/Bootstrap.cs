@@ -1,6 +1,6 @@
 ﻿using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Contracts;
-using CSharpNote.Data.RepositoryManager;
+using CSharpNote.Service.CSharpNoteService;
 using SimpleInjector;
 
 namespace CSharpNote.Client
@@ -19,7 +19,7 @@ namespace CSharpNote.Client
             //註冊Location Bin檔底下符合規則的Dll 裡面實作IMethodRepository的Class
             container.RegistLocationMatchDll<IMethodRepository>("*Method.DLL");
             //註冊RepositoryManager
-            container.Register<IRepositoryManager, RepositoryManager>();
+            container.Register<ICSharperNoteService, CSharperNoteService>();
 
             container.Verify();
 

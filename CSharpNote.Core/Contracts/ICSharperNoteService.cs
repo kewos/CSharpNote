@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CSharpNote.Core.Contracts
 {
-    public interface IRepositoryManager
+    public interface ICSharperNoteService
     {
         /// <summary>
         /// Repository數量

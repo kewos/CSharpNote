@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Contracts;
 
-namespace CSharpNote.Data.RepositoryManager
+namespace CSharpNote.Service.CSharpNoteService
 {
-    public class RepositoryManager : IRepositoryManager
+    public class CSharperNoteService : ICSharperNoteService
     {
         private readonly IList<IMethodRepository> methodRepositories;
 
         #region constructor
-        public RepositoryManager(IEnumerable<IMethodRepository> methodRepositories)
+        public CSharperNoteService(IEnumerable<IMethodRepository> methodRepositories)
         {
             this.methodRepositories = methodRepositories.ToList();
         }

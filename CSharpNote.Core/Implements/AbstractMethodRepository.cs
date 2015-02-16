@@ -67,7 +67,6 @@ namespace CSharpNote.Core.Implements
         private string TrimString(string str)
         {
             str.AssertEndWith(TRIMSTRING);
-
             var Start = 0;
             var End = str.Length - TRIMSTRING.Length;
             return str.Substring(Start, End);

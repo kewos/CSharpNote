@@ -1,7 +1,7 @@
 ﻿
 namespace CSharpNote.Core.Contracts
 {
-    public interface IProjectManager
+    public interface ICSharpNotePresenter
     {
         /// <summary>
         /// 執行
