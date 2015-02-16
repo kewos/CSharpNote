@@ -8,13 +8,9 @@ namespace CSharpNote.Client
     {
         public void Start(IMethodRepository repository)
         {
-            repository.AssertNotNull();
-            //if (repository == null)
-            //{
-            //    throw new ArgumentNullException();
-            //}
-
-            repository.GetMethodNames()
+            repository
+                .AssertNotNull()
+                .GetMethodNames()
                 .SelectAndShowOnConsole(index => Excute(index, repository));
         }
 

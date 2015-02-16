@@ -11,18 +11,13 @@ namespace CSharpNote.Client
 
         public ProjectManager(IRepositoryManager methodRepositories, IMethodManager methodManager)
         {
-            methodManager.AssertNotNull();
-            methodManager.AssertNotNull();
-
-            this.methodRepositories = methodRepositories;
-            this.methodManager = methodManager;
+            this.methodRepositories = methodRepositories.AssertNotNull();
+            this.methodManager = methodManager.AssertNotNull();
         }
 
         public void Start()
         {
-            methodRepositories
-                .GetRepositoryNames()
-                .SelectAndShowOnConsole(index => Excute(index));
+            methodRepositories.GetRepositoryNames().SelectAndShowOnConsole(index => Excute(index));
         }
 
         #region private method
