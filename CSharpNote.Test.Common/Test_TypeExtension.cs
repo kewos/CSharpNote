@@ -43,7 +43,7 @@ namespace CSharpNote.Test.Common
             var actual = type.GetMatchConstructor();
 
             //Assert
-            var expect = type.GetConstructors().FirstOrDefault();
+            var expect = type.GetConstructors().First();
             Assert.AreEqual(expect, actual);
         }
     }

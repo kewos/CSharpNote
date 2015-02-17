@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Common.Extendsions;
+using CSharpNote.Test.Lib.Extension;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSharpNote.Test.Common
@@ -20,32 +21,14 @@ namespace CSharpNote.Test.Common
 
             //Assert
             var expect = new List<int> {2, 3, 4, 5, 6};
-            for (var i = 0; i < expect.Count; i++)
-            {
-                Assert.AreEqual(expect[i], actual[i]);
-            }
+            Assert.IsTrue(actual.SequenceEqual(expect));
         }
 
         [TestMethod]
         public void ForEach_InputNullFunc_ThrowArgumentException()
         {
-            //Arrange
-            var elements = Enumerable.Range(1, 5);
-
-            //Act
-            try
-            {
-                var actual = elements.ForEach((Func<int, int>)null).ToList();
-                Assert.Fail("ExceptionMustBeThrown");
-            }
-            //Assert
-            catch (ArgumentException e)
-            {
-            }
-            catch (Exception e)
-            {
-                Assert.Fail("IncorrectException");
-            }
+            Action action = () => Enumerable.Range(1, 5).ForEach((Func<int, int>)null).ToList();
+            action.AssertHandleException<ArgumentException>();
         }
 
         [TestMethod]
@@ -63,10 +46,7 @@ namespace CSharpNote.Test.Common
 
             //Assert
             var expect = new List<int> {1, 2, 3, 4, 5};
-            for (var i = 0; i < expect.Count; i++)
-            {
-                Assert.AreEqual(expect[i], actual[i]);
-            }
+            Assert.IsTrue(actual.SequenceEqual(expect));
         }
 
         [TestMethod]
@@ -91,10 +71,7 @@ namespace CSharpNote.Test.Common
                 {3, 4},
                 {4, 5},
             };
-            for (var i = 0; i < expect.Count; i++)
-            {
-                Assert.AreEqual(expect[i], actual[i]);
-            }
+            Assert.IsTrue(actual.SequenceEqual(expect));
         }
 
         [TestMethod]

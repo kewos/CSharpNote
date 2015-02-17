@@ -43,10 +43,8 @@ namespace CSharpNote.Common.Extendsions
         /// </summary>
         private static IEnumerable<Type> GetTypeFromMatchDll<TInterface>(string path, string matchFileName)
         {
-            if (path.Length == 0 || matchFileName.Length == 0)
-            {
-                throw new ArgumentException("InvalidArgument");
-            }
+            path.AssertNotEmpty();
+            matchFileName.AssertNotEmpty();
 
             var matchDll = System.IO.Directory.GetFiles(path, matchFileName);
             return matchDll.Select(dll =>

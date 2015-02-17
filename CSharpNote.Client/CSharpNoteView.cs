@@ -18,6 +18,7 @@ namespace CSharpNote.Client
                     if (input == -1) 
                         break;
                     AfterAction(input);
+
                     Console.ReadLine();
                 }
                 catch (Exception e)

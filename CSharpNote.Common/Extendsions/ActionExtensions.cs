@@ -6,10 +6,7 @@ namespace CSharpNote.Common.Extendsions
     {
         public static int CaculateExcuteTime(this Action action)
         {
-            if (action == null)
-            {
-                throw new ArgumentNullException();
-            }
+            action.AssertNotNull();
 
             var sw = new System.Diagnostics.Stopwatch();
             sw.Start();

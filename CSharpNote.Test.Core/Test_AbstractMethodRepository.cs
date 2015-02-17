@@ -54,23 +54,12 @@ namespace CSharpNote.Test.Core
         [TestMethod]
         public void RepositoryName_InvalidRepositoryName_ThrowArgumentException()
         {
-            //Arrange
-            var repository = TestMethodRepositories;
+            Action action = () =>
+            {
+                var name = TestMethodRepositories.RepositoryName;
+            };
 
-            //Act
-            try
-            {
-                var name = repository.RepositoryName;
-                Assert.Fail("ExceptionMustBeThrown");
-            }
-            //Assert
-            catch (ArgumentException e)
-            {
-            }
-            catch (Exception e)
-            {
-                Assert.Fail("IncorrectException");
-            }
+            action.AssertHandleException<ArgumentException>();
         }
 
         [TestMethod]
@@ -112,10 +101,7 @@ namespace CSharpNote.Test.Core
 
             //Assert
             var expect = new List<string> { "test1", "test2", "test3" };
-            for (var i = 0; i < expect.Count; i++)
-            {
-                Assert.AreEqual(expect[i], actual[i]);
-            }
+            Assert.IsTrue(actual.SequenceEqual(expect));
         }
 
         [TestMethod]
@@ -129,10 +115,7 @@ namespace CSharpNote.Test.Core
 
             //Assert
             var expect = new List<string> { "test1", "test2", "test3" };
-            for (var i = 0; i < expect.Count; i++)
-            {
-                Assert.AreEqual(expect[i], actual[i]);
-            }
+            Assert.IsTrue(actual.SequenceEqual(expect));
         }
 
         [TestMethod]

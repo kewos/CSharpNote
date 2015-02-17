@@ -2,7 +2,7 @@
 
 namespace CSharpNote.Common.Extendsions
 {
-    public static class FuncExtensions
+    public static class CurryExtensions
     {
         public static Func<TInput1, TOutput>
             Curry<TInput1, TOutput>

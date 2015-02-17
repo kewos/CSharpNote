@@ -23,6 +23,7 @@ namespace CSharpNote.Client
         private void ShowRepository()
         {
             var resource = cSharperNoteService.GetRepositoryNames();
+
             cSharpNoteView.SelectAndShowOnConsole(resource, index => InvokeRepository(index));
         }
 
@@ -34,6 +35,7 @@ namespace CSharpNote.Client
         private void ShowMethodInfo(IMethodRepository repository)
         {
             var resource = repository.AssertNotNull().GetMethodNames();
+
             cSharpNoteView.SelectAndShowOnConsole(resource, index => InvokeMethodInfo(index, repository));
         }
 

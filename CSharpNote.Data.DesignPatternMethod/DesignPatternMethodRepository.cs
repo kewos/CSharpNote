@@ -267,10 +267,12 @@ namespace CSharpNote.Data.DesignPatternMethod
             repository.AddPerson(new Person {FirstName = "d", LastName = "d"});
             repository.GetPeople().ForEach(p => (p.FirstName + p.LastName).ToConsole());
             "============================================================".ToConsole();
+            
             //update item
             repository.UpdatePerson("a", new Person {FirstName = "newa", LastName = "newa"});
             repository.GetPeople().ForEach(p => (p.FirstName + p.LastName).ToConsole());
             "============================================================".ToConsole();
+            
             //delete item
             repository.DeletePerson("d");
             repository.GetPeople().ForEach(p => (p.FirstName + p.LastName).ToConsole());
