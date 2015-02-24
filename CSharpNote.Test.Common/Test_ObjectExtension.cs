@@ -16,7 +16,7 @@ namespace CSharpNote.Test.Common
             var actual = str.ToConsole("test", "test");
 
             //Assert
-            var expect = "testtesttest";
+            var expect = "test test test";
             Assert.AreEqual(expect, actual);
         }
     }

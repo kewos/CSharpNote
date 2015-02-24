@@ -457,24 +457,22 @@ namespace CSharpNote.Data.DesignPatternMethod
         [MarkedItem]
         public void ObjectPoolPattern()
         {
-            Enumerable.Range(1, 10).Select(n =>
+            var resouce = Enumerable.Range(1, 10).Select(n =>
             {
                 var obj = Pool.GetObject();
                 obj.TempData = n.ToString();
                 return obj;
-            })
-            .ForEach(element =>
+            });
+
+            var elements1 = resouce.ToList();
+            elements1.ForEach(element =>
             {
                 Console.WriteLine("HashCode:{0} TempData:{1}", element.GetHashCode(), element.TempData);
                 Pool.ReleaseObject(element);
             });
 
-            Enumerable.Range(1, 10).Select(n =>
-            {
-                var obj = Pool.GetObject();
-                obj.TempData = n.ToString();
-                return obj;
-            }).ForEach(element =>
+            var elements2 = resouce.ToList();
+            elements2.ForEach(element =>
             {
                 Console.WriteLine("HashCode:{0} TempData:{1}", element.GetHashCode(), element.TempData);
             });
