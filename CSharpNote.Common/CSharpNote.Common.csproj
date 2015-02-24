@@ -49,6 +49,7 @@
     <Compile Include="Attributes\MarkedRepositoryAttribue.cs" />
     <Compile Include="Attributes\MarkedItemAttribute.cs" />
     <Compile Include="Extendsions\ActionExtensions.cs" />
+    <Compile Include="Extendsions\UtilityExtensions.cs" />
     <Compile Include="Extendsions\ParameterGuardExtensions.cs" />
     <Compile Include="Extendsions\AssemblyExtensions.cs" />
     <Compile Include="Extendsions\GenericsExtensions.cs" />

@@ -2325,7 +2325,7 @@ namespace CSharpNote.Data.AlgorithmMethod
         private class MStack
         {
             private int[] elements;
-            private int index = 0;
+            private int index;
 
             public MStack(int size)
             {
@@ -2580,7 +2580,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             var list = new List<int> { 3, 30, 34, 5, 9 ,49, 491};
             var comparer = new IntComparer();
             list.Sort(comparer);
-            string.Join("", list.ConvertAll<string>(i => i.ToString()).ToArray()).ToConsole();
+            string.Join("", list.ConvertAll(i => i.ToString()).ToArray()).ToConsole();
         }
 
         private class IntComparer : IComparer<int>
@@ -2653,7 +2653,7 @@ namespace CSharpNote.Data.AlgorithmMethod
                 {51545, 2},
                 {12531, 1}
             };
-            //NumberMind(5, dictionary).ToConsole();
+            NumberMind(5, dictionary).ToConsole();
         }
 
         private int NumberMind(int digit, Dictionary<int, int> dictionary)
@@ -2677,7 +2677,7 @@ namespace CSharpNote.Data.AlgorithmMethod
                 }));
         } 
 
-        [MarkedItem()]
+        [MarkedItem]
         public void RepeatedDnaSequences()
         {
             var dna = "AAAAACCCCCAAAAACCCCCAAAAAGGGTTT";
@@ -2782,9 +2782,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             {
                 for (var step = moveDistance; step > 0; step--)
                 {
-                    array[indexFromMoveDistance + step - 1] ^= array[indexFromMoveDistance + step];
-                    array[indexFromMoveDistance + step] ^= array[indexFromMoveDistance + step - 1];
-                    array[indexFromMoveDistance + step - 1] ^= array[indexFromMoveDistance + step];
+                    UtilityExtensions.Swap(ref array[indexFromMoveDistance + step - 1], ref array[indexFromMoveDistance + step]);
                 }
             }
 
