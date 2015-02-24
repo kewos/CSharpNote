@@ -18,6 +18,7 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.SpecificationPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.StatePattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.VistorPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.AdapterPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.BridgePattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.DecoratorPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.FecadePattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.NullObjectPattern;
@@ -102,27 +103,19 @@ namespace CSharpNote.Data.DesignPatternMethod
         }
 
         /// <summary>
-        /// 合成代替繼承
+        /// 合成代替繼承 減少藕合
         /// </summary>
         [MarkedItem]
         public void BridgePattern()
         {
-            // Create RefinedAbstraction
-            CustomersBusinessObject customers =
-                new CustomersBusinessObject(" Chicago ");
-
-            // Set ConcreteImplementor
-            customers.DataObject = new CustomersDataObject();
-
-            // Exercise the bridge
-            customers.Show();
-            customers.Next();
-            customers.Show();
-            customers.Next();
-            customers.Show();
-            customers.New("Henry Velasquez");
-
-            customers.ShowAll();
+            var elements = new List<IBridgeShape>
+            {
+                new CircleBridgeShape(new RedBridgeColor()),
+                new CircleBridgeShape(new YellowBridgeColor()),
+                new TriangleBridgeShape(new RedBridgeColor()),
+                new TriangleBridgeShape(new YellowBridgeColor()),
+            };
+            elements.ForEach(element => element.Display());
         }
 
         /// <summary>

@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aops\ExtraMsgAop.cs" />
     <Compile Include="Attributes\MarkedRepositoryAttribue.cs" />
     <Compile Include="Attributes\MarkedItemAttribute.cs" />
     <Compile Include="Extendsions\ActionExtensions.cs" />

@@ -57,7 +57,11 @@
     <Compile Include="SubClass\AdapterPattern\Robot.cs" />
     <Compile Include="SubClass\Aop.cs" />
     <Compile Include="SubClass\AopⅠ.cs" />
-    <Compile Include="SubClass\BridgePattern.cs" />
+    <Compile Include="SubClass\BridgePattern\AbstractBridgeShape.cs" />
+    <Compile Include="SubClass\BridgePattern\BridegeColorInstance.cs" />
+    <Compile Include="SubClass\BridgePattern\BridgeShapeInstance.cs" />
+    <Compile Include="SubClass\BridgePattern\IBridgeColor.cs" />
+    <Compile Include="SubClass\BridgePattern\IBridgeShape.cs" />
     <Compile Include="SubClass\ChainResponsibilityPattern\AbstractHandler.cs" />
     <Compile Include="SubClass\ChainResponsibilityPattern\Handler.cs" />
     <Compile Include="SubClass\ChainResponsibilityPattern\HandlerCommand.cs" />

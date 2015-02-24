@@ -15,8 +15,8 @@ namespace CSharpNote.Client
                 {
                     var input = ShowOnConsoleAndGetIndex(menu);
 
-                    if (input == -1) 
-                        break;
+                    if (input == -1) break;
+
                     AfterAction(input);
 
                     Console.ReadLine();
