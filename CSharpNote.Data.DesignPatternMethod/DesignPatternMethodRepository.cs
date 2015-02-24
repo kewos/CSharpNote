@@ -24,6 +24,7 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.NullObjectPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ProxyPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ServiceLocatorPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.SingletonPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.ObjectPoolPattern;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
@@ -455,6 +456,35 @@ namespace CSharpNote.Data.DesignPatternMethod
             mutiThreadCheck.Invoke("SingletonACheck:", () => SingletonA.Instance().GetHashCode());
             mutiThreadCheck.Invoke("SingletonBCheck:", () => SingletonB.Instance().GetHashCode());
             mutiThreadCheck.Invoke("SingletonCCheck:", () => SingletonC.Instance().GetHashCode());
+        }
+
+        /// <summary>
+        /// 釋放物件時回到物件池提供再使用
+        /// </summary>
+        [MarkedItem]
+        public void ObjectPoolPattern()
+        {
+            Enumerable.Range(1, 10).Select(n =>
+            {
+                var obj = Pool.GetObject();
+                obj.TempData = n.ToString();
+                return obj;
+            })
+            .ForEach(element =>
+            {
+                Console.WriteLine("HashCode:{0} TempData:{1}", element.GetHashCode(), element.TempData);
+                Pool.ReleaseObject(element);
+            });
+
+            Enumerable.Range(1, 10).Select(n =>
+            {
+                var obj = Pool.GetObject();
+                obj.TempData = n.ToString();
+                return obj;
+            }).ForEach(element =>
+            {
+                Console.WriteLine("HashCode:{0} TempData:{1}", element.GetHashCode(), element.TempData);
+            });
         }
     }
 }

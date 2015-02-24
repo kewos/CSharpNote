@@ -89,6 +89,8 @@
     <Compile Include="SubClass\NullObjectPattern\Object.cs" />
     <Compile Include="SubClass\NullObjectPattern\ObjectBase.cs" />
     <Compile Include="SubClass\NullObjectPattern\ObjectRespository.cs" />
+    <Compile Include="SubClass\ObjectPoolPattern\Pool.cs" />
+    <Compile Include="SubClass\ObjectPoolPattern\PooledObject.cs" />
     <Compile Include="SubClass\ObserverPattern\IPcObserver.cs" />
     <Compile Include="SubClass\ObserverPattern\ISmartPhoneObserver.cs" />
     <Compile Include="SubClass\ObserverPattern\IWebsiteObservable.cs" />
