@@ -2695,5 +2695,100 @@ namespace CSharpNote.Data.AlgorithmMethod
                 .Select(dnaGroup => dnaGroup.Key)
                 .ToList();
         }
+
+        [MarkedItem("https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/")]
+        public void BestTimeToBuyAndSellStockIV()
+        {
+            var random = new Random();
+            var elements = Enumerable.Range(1, 10).Select(n => random.Next(1, 100)).ToList();
+            BestTimeToBuyAndSellStock(elements).ToConsole("BestProfit:");
+        }
+
+        public int BestTimeToBuyAndSellStock(IList<int> elements)
+        {
+            var profit = 0;
+            var buyPrice = 0;
+
+            for (var i = 0; i < elements.Count - 1; i++)
+            {
+                if (buyPrice == 0 && elements[i] < elements[i + 1])
+                {
+                    profit -= elements[i];
+                    buyPrice = elements[i];
+                    continue;
+                }
+
+                if (buyPrice != 0 && elements[i] > elements[i + 1])
+                {
+                    profit += elements[i];
+                    buyPrice = 0;
+                }
+            }
+
+            return buyPrice == 0 ? profit : profit + elements.Last();
+        }
+
+        [MarkedItem("https://oj.leetcode.com/problems/rotate-array/")]
+        public void RotateArray()
+        {
+            var elements = Enumerable.Range(1, 7).ToArray();
+            RotateArrayⅠ(elements, 3).Dump();
+            "=======================".ToConsole();
+            RotateArrayⅡ(elements, 3).Dump();
+            "=======================".ToConsole();
+            RotateArrayⅢ(elements, 3).Dump();
+        }
+
+        private int[] RotateArrayⅠ(int[] array, int position)
+        {
+            if (position < 0) throw new Exception("invalid paramater positon");
+
+            var length = array.Length;
+            position = position % length + 1;
+
+            if (position == 0) return array;
+
+            var newArray = new int[length];
+
+            for (var i = 0; i < length; i++)
+            {
+                newArray[i] = array[(position + i) % length];
+            }
+
+            return newArray;
+        }
+
+        private int[] RotateArrayⅡ(int[] array, int position)
+        {
+            if (position < 0) throw new Exception("invalid paramater positon");
+
+            var length = array.Length;
+
+            if (position == 0) return array;
+
+            return Enumerable.Range(1, length).Select(n => array[(n + position) % length]).ToArray();
+        }
+
+        private int[] RotateArrayⅢ(int[] array, int position)
+        {
+            if (position < 0) throw new Exception("invalid paramater positon");
+
+            var length = array.Length;
+            var moveDistance = length - (position % length);
+
+            if (position == 0) return array;
+
+            for (var indexFromMoveDistance = 0; indexFromMoveDistance < length - moveDistance; indexFromMoveDistance++)
+            {
+                for (var step = moveDistance; step > 0; step--)
+                {
+                    array[indexFromMoveDistance + step - 1] ^= array[indexFromMoveDistance + step];
+                    array[indexFromMoveDistance + step] ^= array[indexFromMoveDistance + step - 1];
+                    array[indexFromMoveDistance + step - 1] ^= array[indexFromMoveDistance + step];
+                }
+            }
+
+            return array;
+        }
     }
 }
