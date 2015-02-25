@@ -8,7 +8,7 @@ namespace CSharpNote.Common.Extendsions
     {
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> elements, Func<T, T> func)
         {
-            func.AssertNotNull();
+            func.ValidationNotNull();
 
             foreach (var element in elements)
             {
@@ -18,7 +18,7 @@ namespace CSharpNote.Common.Extendsions
 
         public static void ForEach<T>(this IEnumerable<T> elements, Action<T> action)
         {
-            action.AssertNotNull();
+            action.ValidationNotNull();
 
             foreach (var element in elements)
             {
@@ -28,7 +28,7 @@ namespace CSharpNote.Common.Extendsions
 
         public static void ForEach<T>(this IEnumerable<T> elements, Action<int, T> action)
         {
-            action.AssertNotNull();
+            action.ValidationNotNull();
 
             var index = 0;
             foreach (var element in elements)
@@ -39,7 +39,7 @@ namespace CSharpNote.Common.Extendsions
 
         public static bool All<T>(this IEnumerable<T> elements, Func<int, T, bool> func)
         {
-            func.AssertNotNull();
+            func.ValidationNotNull();
 
             var index = 0;
             foreach (var element in elements)

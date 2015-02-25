@@ -26,7 +26,7 @@ namespace CSharpNote.Core.Implements
         {
             get
             {
-                index.AssertBetweenRange(0, Count - 1);
+                index.ValidationBetweenRange(0, Count - 1);
 
                 return MethodInfos[index];
             }
@@ -66,7 +66,7 @@ namespace CSharpNote.Core.Implements
 
         private string TrimString(string str)
         {
-            str.AssertEndWith(TRIMSTRING);
+            str.ValidationEndWith(TRIMSTRING);
 
             var start = 0;
             var end = str.Length - TRIMSTRING.Length;

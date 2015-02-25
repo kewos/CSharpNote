@@ -42,7 +42,7 @@ namespace CSharpNote.Test.Service
             //Act
             var actual = repositoryManager.GetRepositoryNames().ToList();
 
-            //Assert
+            //Validation
             var expect = new List<string> {"test", "test", "test"};
             for (var i = 0; i < expect.Count; i++)
             {
@@ -59,7 +59,7 @@ namespace CSharpNote.Test.Service
             //Act
             var actual = Enumerable.Range(0, 3).Select(n => repositoryManager[n].RepositoryName).ToList();
 
-            //Assert
+            //Validation
             var expect = new List<string> { "test", "test", "test" };
             for (var i = 0; i < expect.Count; i++)
             {

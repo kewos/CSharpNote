@@ -28,7 +28,7 @@ namespace CSharpNote.Test.Common
             //Act
             var actual = type.GetMatchInterface();
 
-            //Assert
+            //Validation
             var expect = typeof(ITestObject);
             Assert.AreEqual(expect, actual);
         }
@@ -42,7 +42,7 @@ namespace CSharpNote.Test.Common
             //Act
             var actual = type.GetMatchConstructor();
 
-            //Assert
+            //Validation
             var expect = type.GetConstructors().First();
             Assert.AreEqual(expect, actual);
         }

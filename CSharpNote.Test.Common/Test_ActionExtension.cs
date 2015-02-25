@@ -19,7 +19,7 @@ namespace CSharpNote.Test.Common
             //Act
             var actual = action.ExcauteAndCatchException();
 
-            //Assert
+            //Validation
             var expect = "Exception:TestException";
             Assert.AreEqual(actual, expect);
         }
@@ -36,7 +36,7 @@ namespace CSharpNote.Test.Common
                 var actual = action.CaculateExcuteTime();
                 Assert.Fail("ExceptionMustBeThrown");
             }
-            //Assert
+            //Validation
             catch (ArgumentNullException e)
             {
             }
@@ -56,7 +56,7 @@ namespace CSharpNote.Test.Common
             //Act
             action.ExcauteAndCatchException();
 
-            //Assert
+            //Validation
             var expect = 1;
             Assert.AreEqual(actual, expect);
         }

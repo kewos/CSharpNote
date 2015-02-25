@@ -10,8 +10,8 @@ namespace CSharpNote.Client
 
         public CSharpNotePresenter(ICSharpNoteView cSharpNoteView, ICSharperNoteService cSharperNoteService)
         {
-            this.cSharpNoteView = cSharpNoteView.AssertNotNull();
-            this.cSharperNoteService = cSharperNoteService.AssertNotNull();
+            this.cSharpNoteView = cSharpNoteView.ValidationNotNull();
+            this.cSharperNoteService = cSharperNoteService.ValidationNotNull();
         }
 
         public void Start()
@@ -34,7 +34,7 @@ namespace CSharpNote.Client
 
         private void ShowMethodInfo(IMethodRepository repository)
         {
-            var resource = repository.AssertNotNull().GetMethodNames();
+            var resource = repository.ValidationNotNull().GetMethodNames();
 
             cSharpNoteView.SelectAndShowOnConsole(resource, index => InvokeMethodInfo(index, repository));
         }

@@ -34,7 +34,7 @@ namespace CSharpNote.Service.CSharpNoteService
         {
             get
             {
-                index.AssertBetweenRange(0, Count - 1);
+                index.ValidationBetweenRange(0, Count - 1);
 
                 return methodRepositories[index];
             }

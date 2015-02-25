@@ -56,7 +56,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Test_ParameterGuardExtensions.cs" />
+    <Compile Include="Test_ValidationExtensions.cs" />
     <Compile Include="Test_ActionExtension.cs" />
     <Compile Include="Test_EnumerableExtensions.cs" />
     <Compile Include="Test_ObjectExtension.cs" />

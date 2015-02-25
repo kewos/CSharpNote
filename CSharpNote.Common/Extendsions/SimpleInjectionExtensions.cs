@@ -43,14 +43,15 @@ namespace CSharpNote.Common.Extendsions
         /// </summary>
         private static IEnumerable<Type> GetTypeFromMatchDll<TInterface>(string path, string matchFileName)
         {
-            path.AssertNotEmpty();
-            matchFileName.AssertNotEmpty();
+            path.ValidationNotEmpty();
+            matchFileName.ValidationNotEmpty();
 
             var matchDll = System.IO.Directory.GetFiles(path, matchFileName);
+
             return matchDll.Select(dll =>
-                 Assembly.LoadFile(dll)
-                    .GetImplementInterfaceClassType<TInterface>()
-                    .FirstOrDefault());
+                Assembly.LoadFile(dll)
+                .GetImplementInterfaceClassType<TInterface>()
+                .FirstOrDefault());
         }
         #endregion
     }

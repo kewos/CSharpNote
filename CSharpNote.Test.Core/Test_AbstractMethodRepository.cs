@@ -71,7 +71,7 @@ namespace CSharpNote.Test.Core
             //Act
             var actual = repository.RepositoryName;
 
-            //Assert
+            //Validation
             var expect = "test";
             Assert.AreEqual(expect, actual);
         }
@@ -85,7 +85,7 @@ namespace CSharpNote.Test.Core
             //Act
             var actual = repository.Count;
 
-            //Assert
+            //Validation
             var expect = 3;
             Assert.AreEqual(expect, actual);
         }
@@ -99,7 +99,7 @@ namespace CSharpNote.Test.Core
             //Act
             var actual = Enumerable.Range(0, 3).Select(n => repository[n].Name).ToList();
 
-            //Assert
+            //Validation
             var expect = new List<string> { "test1", "test2", "test3" };
             Assert.IsTrue(actual.SequenceEqual(expect));
         }
@@ -113,7 +113,7 @@ namespace CSharpNote.Test.Core
             //Act
             var actual = repository.GetMethodNames().ToList();
 
-            //Assert
+            //Validation
             var expect = new List<string> { "test1", "test2", "test3" };
             Assert.IsTrue(actual.SequenceEqual(expect));
         }

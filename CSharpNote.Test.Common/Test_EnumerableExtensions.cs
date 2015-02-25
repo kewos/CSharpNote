@@ -19,7 +19,7 @@ namespace CSharpNote.Test.Common
             //Act
             var actual = elements.ForEach(n => n + 1).ToList();
 
-            //Assert
+            //Validation
             var expect = new List<int> {2, 3, 4, 5, 6};
             Assert.IsTrue(actual.SequenceEqual(expect));
         }
@@ -44,7 +44,7 @@ namespace CSharpNote.Test.Common
                 actual.Add(n);
             });
 
-            //Assert
+            //Validation
             var expect = new List<int> {1, 2, 3, 4, 5};
             Assert.IsTrue(actual.SequenceEqual(expect));
         }
@@ -62,7 +62,7 @@ namespace CSharpNote.Test.Common
                 actual.Add(index, n);
             });
 
-            //Assert
+            //Validation
             var expect = new Dictionary<int, int>
             {
                 {0, 1},
@@ -84,7 +84,7 @@ namespace CSharpNote.Test.Common
             var checkElements = Enumerable.Range(1, 5).ToList();
             var actual = elements.All((index, n) => n == checkElements[index]);
 
-            //Assert
+            //Validation
             Assert.IsTrue(actual);
         }
 
@@ -98,7 +98,7 @@ namespace CSharpNote.Test.Common
             var checkElements = Enumerable.Range(0, 5).ToList();
             var actual = elements.All((index, n) => n == checkElements[index]);
 
-            //Assert
+            //Validation
             Assert.IsFalse(actual);
         }
     }

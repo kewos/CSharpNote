@@ -21,7 +21,7 @@ namespace CSharpNote.Common.Extendsions
                 .Where(constructor => constructor.GetParameters()
                     .All(p => p.ParameterType.IsInterface && p.ParameterType.Name.StartsWith("I")))
                 .FirstOrDefault()
-                .AssertNotNull();
+                .ValidationNotNull();
         }
     }
 }
