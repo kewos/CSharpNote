@@ -19,6 +19,7 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.StatePattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.VistorPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.AdapterPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.BridgePattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.CommandPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.DecoratorPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.FecadePattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.NullObjectPattern;

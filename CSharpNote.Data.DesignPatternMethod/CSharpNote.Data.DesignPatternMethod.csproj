@@ -67,7 +67,9 @@
     <Compile Include="SubClass\ChainResponsibilityPattern\HandlerCommand.cs" />
     <Compile Include="SubClass\ChainResponsibilityPattern\IHandler.cs" />
     <Compile Include="SubClass\ChainResponsibilityPattern\IHandlerCommand.cs" />
-    <Compile Include="SubClass\CommandPattern.cs" />
+    <Compile Include="SubClass\CommandPattern\Command.cs" />
+    <Compile Include="SubClass\CommandPattern\Invoker.cs" />
+    <Compile Include="SubClass\CommandPattern\Receiver.cs" />
     <Compile Include="SubClass\CompositePattern\CompositeA.cs" />
     <Compile Include="SubClass\CompositePattern\CompositeB.cs" />
     <Compile Include="SubClass\CompositePattern\CompositeBase.cs" />

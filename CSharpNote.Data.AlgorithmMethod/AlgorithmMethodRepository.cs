@@ -68,7 +68,7 @@ namespace CSharpNote.Data.AlgorithmMethod
                     sum += CaculateCoinPartitions(leak);
                     continue;
                 }
-                else if (leak == 0)
+                if (leak == 0)
                 {
                     return sum++;
                 }
@@ -469,18 +469,12 @@ namespace CSharpNote.Data.AlgorithmMethod
         private bool CompareWithNeighbors(List<int> childredRates, List<int> candies, int position)
         {
             if (position == 0)
-                return (checkNeedAdd(childredRates[position], candies[position], childredRates[position + 1], candies[position + 1])
-                    || checkNeedAdd(childredRates[position], candies[position], childredRates[childredRates.Count - 1], candies[childredRates.Count - 1]))
-                    ? true : false;
+                return (checkNeedAdd(childredRates[position], candies[position], childredRates[position + 1], candies[position + 1]) || checkNeedAdd(childredRates[position], candies[position], childredRates[childredRates.Count - 1], candies[childredRates.Count - 1]));
+            
             if (position >= childredRates.Count - 1)
-            {
-                return (checkNeedAdd(childredRates[position], candies[position], childredRates[position - 1], candies[position - 1])
-                    || checkNeedAdd(childredRates[position], candies[position], childredRates[0], candies[0]))
-                    ? true : false;
-            }
-            return (checkNeedAdd(childredRates[position], candies[position], childredRates[position - 1], candies[position - 1])
-                    || checkNeedAdd(childredRates[position], candies[position], childredRates[position + 1], candies[position + 1]))
-                    ? true : false;
+                return checkNeedAdd(childredRates[position], candies[position], childredRates[position - 1], candies[position - 1]) || checkNeedAdd(childredRates[position], candies[position], childredRates[0], candies[0]);
+            
+            return checkNeedAdd(childredRates[position], candies[position], childredRates[position - 1], candies[position - 1]) || checkNeedAdd(childredRates[position], candies[position], childredRates[position + 1], candies[position + 1]);
         }
 
         private bool checkNeedAdd(int childredRate1, int candy1, int childredRate2, int candy2)
@@ -725,8 +719,8 @@ namespace CSharpNote.Data.AlgorithmMethod
                 int x = 0, y = 0;
                 if (index <= n1.Count - 1) x = n1[index];
                 if (index <= n2.Count - 1) y = n2[index];
-                count.Add((int)((x + y) % 10) + temp);
-                temp = (int)((x + y) / 10);
+                count.Add((x + y) % 10 + temp);
+                temp = (x + y) / 10;
             }
             count.Add(temp);
         
@@ -1250,7 +1244,7 @@ namespace CSharpNote.Data.AlgorithmMethod
         {
             if (i > Int64.MaxValue && i < 0) return false;
             var s = i.ToString();
-            for (int j = 0; j < (int)(s.Length / 2); j++)
+            for (int j = 0; j < s.Length / 2; j++)
             {
                 if (s[j] != s[s.Length - 1 - j]) return false;
             }
@@ -1464,7 +1458,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             //Follow up:
             //Could you do this in-place?
             int[,] matrix = new int[5, 5] { { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 } };
-            var result = RotateDegree90(matrix);
+            RotateDegree90(matrix);
         }
 
         private int[,] RotateDegree90(int[,] array)
@@ -1501,8 +1495,8 @@ namespace CSharpNote.Data.AlgorithmMethod
             var start = matrix.GetLength(1);
             while (start != end)
             {
-                var x = (int)(start / matrix.GetLength(1));
-                var y = (int)(start % matrix.GetLength(0));
+                var x = start / matrix.GetLength(1);
+                var y = start % matrix.GetLength(0);
                 if (matrix[x, y] - target <= matrix[x - 1, y]) 
                     return false;
                 start++;

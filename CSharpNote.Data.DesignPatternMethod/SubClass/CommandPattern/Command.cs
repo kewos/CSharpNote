@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass
+namespace CSharpNote.Data.DesignPatternMethod.SubClass.CommandPattern
 {
     public abstract class Command
     {
@@ -51,38 +50,6 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass
         public override void Execute()
         {
             Console.WriteLine("X * Y = {0}", receiver.X * receiver.Y);
-        }
-    }
-
-    public class Receiver
-    {
-        public int X { get; private set; }
-        public int Y { get; private set; }
-
-        public Receiver(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
-    }
-
-    public class Invoker
-    {
-        private readonly List<Command> commands;
-
-        public Invoker()
-        {
-            commands = new List<Command>();
-        }
-
-        public void SetCommand(Command command)
-        {
-            commands.Add(command);
-        }
-
-        public void ExecuteCommand()
-        {
-            commands.ForEach(command => command.Execute());
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.Reflection.Emit;
+using CSharpNote.Common.Extendsions;
 
 namespace CSharpNote.Common.Helper
 {
@@ -8,6 +9,11 @@ namespace CSharpNote.Common.Helper
 
     /// <summary>
     /// 快速執行幫手
+    /// 透過DynamicMethod 跳過CompileTime 加快方法執行速度
+    ///                compile time |
+    ///                     |       | static
+    ///                     v       | 
+    ///       dynamic|   run time   |    
     /// referenece : http://www.codeproject.com/Articles/14593/A-General-Fast-Method-Invoker
     /// </summary>
     public class FastInvokeHelper
@@ -15,14 +21,10 @@ namespace CSharpNote.Common.Helper
         /// <summary>
         /// 建立方法快速封裝
         /// </summary>
-        /// <param name="methodInfo"></param>
-        /// <returns></returns>
         public static InvokeHelper Create(MethodInfo methodInfo)
         {
-            if (methodInfo.DeclaringType == null)
-            {
-                throw new InvalidOperationException("methodInfo的类型为空。");
-            }
+            methodInfo.DeclaringType.ValidationNotNull();
+
             DynamicMethod dynamicMethod = new DynamicMethod(string.Empty,
                 typeof(object),
                 new[] { typeof(object), typeof(object[]) },
@@ -30,6 +32,7 @@ namespace CSharpNote.Common.Helper
             ILGenerator il = dynamicMethod.GetILGenerator();
             ParameterInfo[] ps = methodInfo.GetParameters();
             Type[] paramTypes = new Type[ps.Length];
+            //解析parameterType
             for (int i = 0; i < paramTypes.Length; i++)
             {
                 if (ps[i].ParameterType.IsByRef)
@@ -43,6 +46,7 @@ namespace CSharpNote.Common.Helper
             }
             LocalBuilder[] locals = new LocalBuilder[paramTypes.Length];
 
+            //宣告指定型別的區域變數
             for (int i = 0; i < paramTypes.Length; i++)
             {
                 locals[i] = il.DeclareLocal(paramTypes[i], true);
