@@ -1742,8 +1742,8 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         [MarkedItem]
         public void TestFastInvokerPerformance()
         {
-            Type t = typeof(TestFastInvoker);
-            MethodInfo methodInfo = t.GetMethod("Multy");
+            Type type = typeof(TestFastInvoker);
+            MethodInfo methodInfo = type.GetMethod("Multiply");
             var testObj = new TestFastInvoker();
             object[] param = { 3, 3 };
 
@@ -1768,7 +1768,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             {
                 for (int i = 0; i < 1000000; i++)
                 {
-                    testObj.Multy(3, 3);
+                    testObj.Multiply(3, 3);
                 }
             };
 
@@ -1779,7 +1779,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
 
         public class TestFastInvoker
         {
-            public int Multy(int x, int y)
+            public int Multiply(int x, int y)
             {
                 return x * y;
             }
