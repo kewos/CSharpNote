@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Sockets;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extendsions;
+using CSharpNote.Common.Helper;
 using CSharpNote.Core.Implements;
 using CSharpNote.Data.CSharpPracticeMethod.SubClass;
 using Microsoft.CSharp;
@@ -1731,6 +1733,55 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                             Console.WriteLine("ThreadId:{0}-{1}", Thread.CurrentThread.ManagedThreadId, n));
                     
                 }
+            }
+        }
+
+        /// <summary>
+        /// lockThis 是一種不安全的方式 除非Class是唯一
+        /// </summary>
+        [MarkedItem]
+        public void TestFastInvokerPerformance()
+        {
+            Type t = typeof(TestFastInvoker);
+            MethodInfo methodInfo = t.GetMethod("Multy");
+            var testObj = new TestFastInvoker();
+            object[] param = { 3, 3 };
+
+            Action reflectorAction = () =>
+            {
+                for (int i = 0; i < 1000000; i++)
+                {
+                    methodInfo.Invoke(testObj, param);
+                }
+            };
+
+            Action fastInvokerAction = () =>
+            {
+                var fastInvoker = FastInvokeHelper.Create(methodInfo);
+                for (int i = 0; i < 1000000; i++)
+                {
+                    fastInvoker(testObj, param);
+                }
+            };
+
+            Action newAction = () =>
+            {
+                for (int i = 0; i < 1000000; i++)
+                {
+                    testObj.Multy(3, 3);
+                }
+            };
+
+            reflectorAction.CaculateExcuteTime().ToConsole("reflectorAction:");
+            fastInvokerAction.CaculateExcuteTime().ToConsole("fastInvokerAction");
+            newAction.CaculateExcuteTime().ToConsole("newAction");
+        }
+
+        public class TestFastInvoker
+        {
+            public int Multy(int x, int y)
+            {
+                return x * y;
             }
         }
     }

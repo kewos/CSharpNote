@@ -120,6 +120,7 @@
     <Compile Include="SubClass\RepositoryPattern\IPersonRepository.cs" />
     <Compile Include="SubClass\ServiceLocatorPattern\Service.cs" />
     <Compile Include="SubClass\ServiceLocatorPattern\ServiceLocator.cs" />
+    <Compile Include="SubClass\SingletonPattern\GenericsSinglton.cs" />
     <Compile Include="SubClass\SingletonPattern\SingletonA.cs" />
     <Compile Include="SubClass\SingletonPattern\SingletonB.cs" />
     <Compile Include="SubClass\SingletonPattern\SingletonC.cs" />
