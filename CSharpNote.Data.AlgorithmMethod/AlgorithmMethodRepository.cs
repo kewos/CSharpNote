@@ -2792,26 +2792,26 @@ namespace CSharpNote.Data.AlgorithmMethod
         [MarkedItem("https://oj.leetcode.com/problems/palindrome-partitioning-ii/")]
         public void PalindromePartitioningII()
         {
-            PalindromePartitioningII("aaabaaac").Dump();
+            PalindromePartitioningII("aaabaaacc").Dump();
         }
 
-        public List<string> PalindromePartitioningII(string element)
+        public List<string> PalindromePartitioningII(string @string)
         {
             var result = new List<string>();
             var index = 0;
 
-            while (index < element.Length)
+            while (index < @string.Length)
             {
                 var tempindex = 0;
                 var tempString = string.Empty;
 
-                for (var subStringLength = 1; index + subStringLength <= element.Length; subStringLength++)
+                for (var subStringLength = 1; index + subStringLength <= @string.Length; subStringLength++)
                 {
-                    var temp = element.Substring(index, subStringLength);
-                    if (IsPalindrome(temp))
+                    var tempValue = @string.Substring(index, subStringLength);
+                    if (tempValue.IsPalindrome())
                     {
                         tempindex = index + subStringLength;
-                        tempString = temp;
+                        tempString = tempValue;
                     }
                 }
 
@@ -2820,21 +2820,6 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
             
             return result;
-        }
-
-        public bool IsPalindrome(string s)
-        {
-            var mid = s.Length / 2;
-
-            for (var i = 0; i < mid; i++)
-            {
-                if (s[i] != s[s.Length - i - 1])
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
     }
 }
