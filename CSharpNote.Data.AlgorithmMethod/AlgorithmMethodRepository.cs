@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -462,7 +463,7 @@ namespace CSharpNote.Data.AlgorithmMethod
                     candies[n]++;
                 }
                 return state;
-            })) ;
+            }))
             Console.WriteLine(candies.Aggregate((a, b) => a + b));
         }
 
@@ -2680,14 +2681,19 @@ namespace CSharpNote.Data.AlgorithmMethod
 
         public List<string> RepeatedDnaSequences(string dna, int letterLong)
         {
-            //return
-            return Enumerable.Range(0, dna.Length - letterLong)
-                .AsParallel()
-                .Select(index => dna.Substring(index, letterLong))
-                .GroupBy(dnaLetter => dnaLetter)
-                .Where(dnaGroup => dnaGroup.Count() > 1)
-                .Select(dnaGroup => dnaGroup.Key)
-                .ToList();
+            IDictionary<string, int> dictionary = new Dictionary<string, int>();
+            for(var index = 0; index < dna.Length - letterLong; index++)
+            {
+                var str = dna.Substring(index, letterLong);
+                if (dictionary.ContainsKey(str))
+                {
+                    dictionary[str]++;
+                    continue;
+                }
+                dictionary.Add(str, 1);
+            }
+
+            return dictionary.Where(d => d.Value >= 2).Select(d => d.Key).ToList();
         }
 
         [MarkedItem("https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/")]
@@ -2781,6 +2787,54 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
 
             return array;
+        }
+
+        [MarkedItem("https://oj.leetcode.com/problems/palindrome-partitioning-ii/")]
+        public void PalindromePartitioningII()
+        {
+            PalindromePartitioningII("aaabaaac").Dump();
+        }
+
+        public List<string> PalindromePartitioningII(string element)
+        {
+            var result = new List<string>();
+            var index = 0;
+
+            while (index < element.Length)
+            {
+                var tempindex = 0;
+                var tempString = string.Empty;
+
+                for (var subStringLength = 1; index + subStringLength <= element.Length; subStringLength++)
+                {
+                    var temp = element.Substring(index, subStringLength);
+                    if (IsPalindrome(temp))
+                    {
+                        tempindex = index + subStringLength;
+                        tempString = temp;
+                    }
+                }
+
+                result.Add(tempString);
+                index = tempindex;
+            }
+            
+            return result;
+        }
+
+        public bool IsPalindrome(string s)
+        {
+            var mid = s.Length / 2;
+
+            for (var i = 0; i < mid; i++)
+            {
+                if (s[i] != s[s.Length - i - 1])
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
