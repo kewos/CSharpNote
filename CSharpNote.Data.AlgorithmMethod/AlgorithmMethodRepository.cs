@@ -2,6 +2,7 @@
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using CSharpNote.Common.Attributes;
@@ -2820,6 +2821,47 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
             
             return result;
+        }
+
+        [MarkedItem("https://oj.leetcode.com/problems/interleaving-string/")]
+        public void InterleavingString()
+        {
+            var s1 = "aadb";
+            var s2 = "acca";
+            var s3 = "acaadbca";
+            InterleavingString(s1, s2, s3).ToConsole();
+        }
+
+        public bool InterleavingString(string s1, string s2, string s3)
+        {
+            if (s1.Length + s2.Length != s3.Length)
+            {
+                return false;
+            }
+
+            if (s3.Length == 0)
+            {
+                return true;
+            }
+
+            bool state = false;
+
+            if (s1.Length > 0 && s1[0] == s3[0])
+            {
+                state = InterleavingString(s1.Substring(1, s1.Length - 1), s2, s3.Substring(1, s3.Length - 1));
+            }
+
+            if (state)
+            {
+                return state;
+            }
+
+            if (s2.Length > 0 && s2[0] == s3[0])
+            {
+                state = InterleavingString(s1, s2.Substring(1, s2.Length - 1), s3.Substring(1, s3.Length - 1));
+            }
+
+            return state;
         }
     }
 }
