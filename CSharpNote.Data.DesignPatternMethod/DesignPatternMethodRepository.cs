@@ -6,6 +6,7 @@ using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Implements;
 using CSharpNote.Data.DesignPatternMethod.SubClass;
+using CSharpNote.Data.DesignPatternMethod.SubClass.AbstractFactoryPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ChainResponsibilityPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.CompositePattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern;
@@ -284,6 +285,22 @@ namespace CSharpNote.Data.DesignPatternMethod
             fecade.MethodA().ToConsole();
             fecade.MethodB().ToConsole();
             fecade.MethodC().ToConsole();
+        }
+
+        /// <summary>
+        /// 隱藏建立細節減少耦合
+        /// </summary>
+        [MarkedItem]
+        public void AbstractFactoryPattern()
+        {
+            var windowsFactory = new WindowsFactory();
+            var unixFactory = new UnixFactory();
+
+            windowsFactory.CreateProductA().Display();
+            windowsFactory.CreateProductB().Display();
+
+            unixFactory.CreateProductA().Display();
+            unixFactory.CreateProductB().Display();
         }
 
         /// <summary>

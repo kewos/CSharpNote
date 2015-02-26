@@ -47,7 +47,11 @@
   <ItemGroup>
     <Compile Include="DesignPatternMethodRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubClass\AbstractFactoryPattern.cs" />
+    <Compile Include="SubClass\AbstractFactoryPattern\AbstractFactory.cs" />
+    <Compile Include="SubClass\AbstractFactoryPattern\AbstractProductA.cs" />
+    <Compile Include="SubClass\AbstractFactoryPattern\AbstractProductB.cs" />
+    <Compile Include="SubClass\AbstractFactoryPattern\UnixFactory.cs" />
+    <Compile Include="SubClass\AbstractFactoryPattern\WindowsFactory.cs" />
     <Compile Include="SubClass\AdapterPattern\AnimalAdaptorBase.cs" />
     <Compile Include="SubClass\AdapterPattern\CatAdaptor.cs" />
     <Compile Include="SubClass\AdapterPattern\DogAdaptor.cs" />
@@ -143,6 +147,7 @@
     <Compile Include="SubClass\VistorPattern\IVisitor.cs" />
     <Compile Include="SubClass\VistorPattern\Vistor.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
