@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -1784,5 +1785,26 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 return x * y;
             }
         }
+
+        [MarkedItem]
+        public void TestFieldOffset()
+        {
+            var item = new TestFieldOffsetObject();
+            item.a = 1;
+            item.b.ToConsole();
+            item.b = 2;
+            item.a.ToConsole();
+        }
+
+        [StructLayout(LayoutKind.Explicit)]
+        public class TestFieldOffsetObject
+        {
+            [FieldOffset(0)] 
+            public int a;
+
+            [FieldOffset(0)]
+            public int b;
+        }
+
     }
 }

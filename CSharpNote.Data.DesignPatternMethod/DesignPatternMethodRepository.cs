@@ -397,7 +397,7 @@ namespace CSharpNote.Data.DesignPatternMethod
             new ProxyServer().DoAction().ToConsole();
         }
 
-        /// <summary>
+        /// <summary> 
         /// 游歷於各系統邊界的Pattern
         /// 優點:減少耦合 
         /// 缺點:static難追蹤 難unit test
