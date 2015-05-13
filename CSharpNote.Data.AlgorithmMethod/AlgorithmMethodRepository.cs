@@ -2838,7 +2838,6 @@ namespace CSharpNote.Data.AlgorithmMethod
             {
                 return false;
             }
-
             if (s3.Length == 0)
             {
                 return true;
@@ -2850,12 +2849,10 @@ namespace CSharpNote.Data.AlgorithmMethod
             {
                 state = InterleavingString(s1.Substring(1, s1.Length - 1), s2, s3.Substring(1, s3.Length - 1));
             }
-
             if (state)
             {
                 return state;
             }
-
             if (s2.Length > 0 && s2[0] == s3[0])
             {
                 state = InterleavingString(s1, s2.Substring(1, s2.Length - 1), s3.Substring(1, s3.Length - 1));
@@ -2903,6 +2900,32 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
 
             return candy.Sum();
+        }
+
+        [MarkedItem("https://leetcode.com/problems/minimum-size-subarray-sum/")]
+        public void MinimumSizeSubarraySum()
+        {
+            var elements = new int[] { 2, 3, 1, 2, 4, 3 };
+            var solution = 7;
+            MinimumSizeSubarraySum(solution, elements).ToConsole();
+        }
+
+        public int MinimumSizeSubarraySum(int solution, int[] elements)
+        {
+            var gap = 0;
+            var length = elements.Length;
+
+            while (++gap <= length)
+            {
+                var tail = length - gap + 1;
+                var subArray = Enumerable.Range(0, tail)
+                    .Select(start => elements.SubArray<int>(start, gap));
+
+                if (subArray.Any(array => array.Sum() >= solution))
+                    return gap;
+            }
+
+            return 0;
         }
     }
 }

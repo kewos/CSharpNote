@@ -48,6 +48,7 @@
     <Compile Include="Attributes\MarkedRepositoryAttribue.cs" />
     <Compile Include="Attributes\MarkedItemAttribute.cs" />
     <Compile Include="Extendsions\ActionExtensions.cs" />
+    <Compile Include="Extendsions\ArrayExtensions.cs" />
     <Compile Include="Extendsions\StringExtensions.cs" />
     <Compile Include="Helper\FastInvokeHandler.cs" />
     <Compile Include="Extendsions\UtilityExtensions.cs" />
