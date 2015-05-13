@@ -2863,5 +2863,46 @@ namespace CSharpNote.Data.AlgorithmMethod
 
             return state;
         }
+
+        [MarkedItem("https://leetcode.com/problems/candy/")]
+        public void Candy2()
+        {
+            var ratings = new int[] { 2, 1, 9, 2, 3, 34, 1 };
+            Candy2(ratings).ToConsole();
+        }
+
+        public int Candy2(int[] ratings)
+        {
+            if (!ratings.Any()) 
+                return 0;
+
+            var candy = Enumerable.Repeat(1, ratings.Length).ToList();
+            var peak = 0;
+
+            for (var index = 0; index < ratings.Length - 1; index++)
+            {
+                if (ratings[index] < ratings[index + 1])
+                {
+                    candy[index + 1] = candy[index] + 1;
+                    peak = index + 1;
+                    continue;
+                }
+                if (ratings[index] > ratings[index + 1]
+                    && candy[index] <= candy[index + 1])
+                {
+                    for (var addIndex = peak; addIndex <= index; addIndex++)
+                        candy[addIndex]++;
+                    continue;
+                }
+                if (ratings[index] == ratings[index + 1])
+                {
+                    var max = Math.Max(candy[index], candy[index + 1]);
+                    candy[index] = max;
+                    candy[index + 1] = max;
+                }
+            }
+
+            return candy.Sum();
+        }
     }
 }
