@@ -85,7 +85,6 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer
         public void Regist<TInterface, TType>()
             where TType : class, TInterface
         {
-
             var @type = typeof (TType);
             var @interface = typeof(TInterface);
 

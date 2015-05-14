@@ -5,7 +5,7 @@ using SimpleInjector;
 
 namespace CSharpNote.Client
 {
-    public class BootStrap
+    public class Bootstrap
     {
         public static Container Config()
         {

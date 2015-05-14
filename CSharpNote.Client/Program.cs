@@ -6,7 +6,7 @@ namespace CSharpNote.Client
     {
         static void Main(string[] args)
         {
-            BootStrap.Config().GetInstance<ICSharpNotePresenter>().Start();
+            Bootstrap.Config().GetInstance<ICSharpNotePresenter>().Start();
         }
     }
 }

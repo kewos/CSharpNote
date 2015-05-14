@@ -2927,5 +2927,30 @@ namespace CSharpNote.Data.AlgorithmMethod
 
             return 0;
         }
+
+        [MarkedItem("https://leetcode.com/problems/happy-number/")]
+        public void HappyNumber()
+        {
+            HappyNumber(82).ToConsole();
+        }
+
+        public bool HappyNumber(int number)
+        {
+            if (number <= 0) 
+                return false;
+            if (number == 1) 
+                return true;
+
+            var sum = 0;
+
+            while (number != 0)
+            {
+                var digit = number % 10;
+                sum += digit * digit;
+                number /= 10;
+            }
+
+            return sum > 1 ? HappyNumber(sum) : sum == 1;
+        }
     }
 }
