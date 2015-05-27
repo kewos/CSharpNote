@@ -28,7 +28,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.ServiceLocatorPattern
 
         public void RegistService<TInterface>(TInterface obj)
         {
-            var typeName = typeof (TInterface).ToString();
+            var typeName = typeof(TInterface).ToString();
 
             if (!dictionary.ContainsKey(typeName))
             {

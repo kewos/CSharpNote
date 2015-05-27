@@ -3,6 +3,7 @@
     public class ProxyServer : IServer
     {
         private readonly IServer server;
+
         public ProxyServer()
         {
             server = new RealServer();

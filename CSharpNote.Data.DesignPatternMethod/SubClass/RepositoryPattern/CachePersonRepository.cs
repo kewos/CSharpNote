@@ -40,7 +40,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern
             {
                 cacheItems = new List<Person>()
                 {
-                    new Person{ FirstName="No Data Available", LastName = "No Data Available"},
+                    new Person { FirstName="No Data Available", LastName = "No Data Available"},
                 };
             }
         }
