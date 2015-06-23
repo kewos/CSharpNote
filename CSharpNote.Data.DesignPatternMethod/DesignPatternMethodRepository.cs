@@ -495,6 +495,14 @@ namespace CSharpNote.Data.DesignPatternMethod
                 Console.WriteLine("HashCode:{0} TempData:{1}", element.GetHashCode(), element.TempData);
             });
         }
+
+        /// <summary>
+        /// 流體
+        /// </summary>
+        [MarkedItem]
+        public void BuilderPattern()
+        {
+        }
     }
 }
 

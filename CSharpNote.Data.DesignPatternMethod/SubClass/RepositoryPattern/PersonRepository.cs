@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CSharpNote.Common.Utility.DB;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern
 {

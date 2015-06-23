@@ -657,9 +657,19 @@ namespace CSharpNote.Data.AlgorithmMethod
 
         private double CaculateSlope(dynamic point1, dynamic point2)
         {
-            if (point1.Y == point2.Y && point1.X == point2.X) return 100;
-            if (point1.Y == point2.Y) return 0;
-            if (point1.X == point2.X) return 1;
+            if (point1.Y == point2.Y && point1.X == point2.X)
+            {
+                return 100;
+            }
+            if (point1.Y == point2.Y)
+            {
+                return 0;
+            }
+            if (point1.X == point2.X)
+            {
+                return 1;
+            }
+
             return (double)((point1.X - point2.X) / (point1.Y - point2.Y));
         }
 
@@ -725,8 +735,55 @@ namespace CSharpNote.Data.AlgorithmMethod
                 temp = (x + y) / 10;
             }
             count.Add(temp);
-        
         }
+
+        [MarkedItem]
+        public void AddTwoNumbersⅡ()
+        {
+            var list1 = new ListNode(2).Next(new ListNode(4)).Next(new ListNode(3));
+            var list2 = new ListNode(5).Next(new ListNode(6)).Next(new ListNode(4));
+        }
+
+        public class ListNode 
+        {
+            public int val;
+            public ListNode next;
+            public ListNode(int x) { val = x; }
+
+            public ListNode Next(ListNode next)
+            {
+                this.next = next;
+                return next;
+            }
+        }
+ 
+        
+        public ListNode AddTwoNumbersⅡ(ListNode l1, ListNode l2)
+        {
+            if (l1 == null || l2 == null)
+            {
+                return null;
+            }
+            var tmpNum = l1.val + l2.val;
+            ListNode head = new ListNode(tmpNum % 10);
+            ListNode tmp = head;
+
+            while (l1.next != null && l2.next != null)
+            {
+                tmpNum = l1.val + l2.val + (tmpNum / 10);
+                tmp.next = new ListNode(tmpNum % 10);
+                tmp = tmp.next;
+
+                l1 = l1.next;
+                l2 = l2.next;
+            }
+            if (tmpNum / 10 != 0)
+            {
+                tmp.next = new ListNode(tmpNum / 10);
+            }
+            return head;
+        }
+        
 
         [MarkedItem]
         public void InsertInterval()
@@ -1418,7 +1475,7 @@ namespace CSharpNote.Data.AlgorithmMethod
         {
             if (distinct < 0) return 0;
             if (distinct <= 2) return distinct;
-            List<int> set = new List<int> { 1, 2 };
+            var set = new List<int> { 1, 2 };
             for (int i = 2; i < distinct; i++)
                 set.Add(set[i - 2] + set[i - 1]);
             return set.Last();
@@ -2504,7 +2561,7 @@ namespace CSharpNote.Data.AlgorithmMethod
         private int MajorityElement(List<int> elements)
         {
             var dic = new Dictionary<int, int>();
-            elements.ForEach(e =>
+            foreach (var e in elements)
             {
                 if (!dic.ContainsKey(e))
                 {
@@ -2514,7 +2571,7 @@ namespace CSharpNote.Data.AlgorithmMethod
                 {
                     dic[e]++;
                 }
-            });
+            }
             return dic.Aggregate((a, b) => a.Value > b.Value ? a : b).Key;
         }
 
@@ -2612,12 +2669,12 @@ namespace CSharpNote.Data.AlgorithmMethod
             if (parameters.Count <= 0) return "";
             var rule = @"[0-2]{1}[0-9][1][:]{1}[0-5]{1}[0-9][1][ ]{1}[A-Zz-z]+$";
             var regex = new System.Text.RegularExpressions.Regex(rule);
-            if (!parameters.Any(p => regex.IsMatch(p))) return "";
+            if (!parameters.Any(p => regex.IsMatch(p))) return string.Empty;
 
             var firstTime = int.MaxValue;
-            var firstTask = "";
+            var firstTask = string.Empty;
             var endTime = int.MinValue;
-            var endTask = "";
+            var endTask = string.Empty;
             parameters.ForEach(p =>
                 {
                     var parameterArray = p.Split(' ');
@@ -2718,7 +2775,6 @@ namespace CSharpNote.Data.AlgorithmMethod
                     buyPrice = elements[i];
                     continue;
                 }
-
                 if (buyPrice != 0 && elements[i] > elements[i + 1])
                 {
                     profit += elements[i];
@@ -2951,6 +3007,19 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
 
             return sum > 1 ? HappyNumber(sum) : sum == 1;
+        }
+
+        [MarkedItem]
+        public void T()
+        {
+            var nums = new int[] { 1, 1, 2, 2, 10, 10, 3, 3, 4, 4, 0 };
+
+            for (var i = 1; i < nums.Count(); i++)
+            {
+                nums[i] ^= nums[i - 1];
+            }
+
+            nums.Last().ToConsole();
         }
     }
 }

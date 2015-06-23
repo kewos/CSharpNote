@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Remoting.Contexts;
 using System.Runtime.Remoting.Messaging;
+using CSharpNote.Common.Utility;
 
 namespace CSharpNote.Common.Attributes
 {
@@ -52,21 +53,31 @@ namespace CSharpNote.Common.Attributes
         {
             Console.Clear();
             ShowMethodInfomation(info);
-            var sw = new System.Diagnostics.Stopwatch();
-            sw.Start();
-            Console.WriteLine("==================start->>");
-            IMessage resultMsg = nextSink.SyncProcessMessage(msg);
-            sw.Stop();
-            Console.WriteLine("==================stop->> excution time:{0}ms", sw.Elapsed.Milliseconds);
-            return resultMsg;
+            using (new TimeMeasurer())
+            {
+                IMessage resultMsg = nextSink.SyncProcessMessage(msg);
+                return resultMsg;
+            }
         }
 
         private void ShowMethodInfomation(MarkedItemAttribute info)
         {
-            if (!info.Display) return;
-            if (info.Reference != null) Console.WriteLine(info.Reference);
-            if (info.Date != null) Console.WriteLine(info.Date);
-            if (info.Comment != null) Console.WriteLine(info.Comment);
+            if (!info.Display)
+            {
+                return;
+            }
+            if (info.Reference != null)
+            {
+                Console.WriteLine(info.Reference);
+            }
+            if (info.Date != null)
+            {
+                Console.WriteLine(info.Date);
+            }
+            if (info.Comment != null)
+            {
+                Console.WriteLine(info.Comment);
+            }
         }
         #endregion
     }

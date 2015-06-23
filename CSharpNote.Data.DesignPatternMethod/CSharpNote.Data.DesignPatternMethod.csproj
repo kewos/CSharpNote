@@ -80,6 +80,14 @@
     <Compile Include="SubClass\CompositePattern\IComponent.cs" />
     <Compile Include="SubClass\CompositePattern\IComposite.cs" />
     <Compile Include="SubClass\CompositePattern\Leaf.cs" />
+    <Compile Include="SubClass\CQRSPattern\EventHandler .cs" />
+    <Compile Include="SubClass\CQRSPattern\Event.cs" />
+    <Compile Include="SubClass\CQRSPattern\Command.cs" />
+    <Compile Include="SubClass\CQRSPattern\EventBus.cs" />
+    <Compile Include="SubClass\CQRSPattern\CommandBus.cs" />
+    <Compile Include="SubClass\CQRSPattern\CommandHandler.cs" />
+    <Compile Include="SubClass\CQRSPattern\Message.cs" />
+    <Compile Include="SubClass\CQRSPattern\Service.cs" />
     <Compile Include="SubClass\DecoratorPattern\AbstractDecorator.cs" />
     <Compile Include="SubClass\DecoratorPattern\ConcreteComponent.cs" />
     <Compile Include="SubClass\DecoratorPattern\Decorator.cs" />
@@ -121,7 +129,6 @@
     <Compile Include="SubClass\ProxyPattern\RealServer.cs" />
     <Compile Include="SubClass\RepositoryPattern\CachePersonRepository.cs" />
     <Compile Include="SubClass\RepositoryPattern\PersonRepository.cs" />
-    <Compile Include="SubClass\RepositoryPattern\FakeDbContext.cs" />
     <Compile Include="SubClass\RepositoryPattern\Person.cs" />
     <Compile Include="SubClass\RepositoryPattern\IPersonRepository.cs" />
     <Compile Include="SubClass\ServiceLocatorPattern\Service.cs" />

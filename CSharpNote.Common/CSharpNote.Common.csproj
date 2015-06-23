@@ -51,6 +51,7 @@
     <Compile Include="Extendsions\ArrayExtensions.cs" />
     <Compile Include="Extendsions\DictionaryExtensions.cs" />
     <Compile Include="Extendsions\StringExtensions.cs" />
+    <Compile Include="Utility\DB\FakeDbContext.cs" />
     <Compile Include="Helper\FastInvokeHandler.cs" />
     <Compile Include="Extendsions\UtilityExtensions.cs" />
     <Compile Include="Extendsions\ValidationExtensions.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Extendsions\ObjectExtensions.cs" />
     <Compile Include="Extendsions\EnumerableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\TimeMeasurer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

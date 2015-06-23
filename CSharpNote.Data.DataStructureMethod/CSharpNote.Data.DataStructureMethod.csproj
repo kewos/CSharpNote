@@ -57,6 +57,7 @@
     <Compile Include="SubClass\HashTable\HashTableArray.cs" />
     <Compile Include="SubClass\HashTable\HashTableArrayNode.cs" />
     <Compile Include="SubClass\HashTable\HashTableNodePair.cs" />
+    <Compile Include="SubClass\ORM\Class1.cs" />
     <Compile Include="SubClass\Queue\CircularQueue.cs" />
     <Compile Include="SubClass\Queue\Deque.cs" />
     <Compile Include="SubClass\Sort\ComparisonComparer.cs" />

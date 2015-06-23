@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CSharpNote.Common.Extendsions
 {
@@ -70,6 +71,13 @@ namespace CSharpNote.Common.Extendsions
                 }
             }
             return enumerable;
+        }
+
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> elements)
+        {
+            var random = new Random();
+
+            return elements.OrderBy(element => random.Next() % 100);
         }
     }
 }

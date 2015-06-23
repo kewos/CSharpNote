@@ -1806,5 +1806,83 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             public int b;
         }
 
+        [MarkedItem]
+        public void LinqSelectMany2()
+        {
+            var customers = new List<dynamic>
+            {
+                new { Id = 1, Name = "A"},
+                new { Id = 2, Name = "B"},
+                new { Id = 3, Name = "C"}
+            };
+
+            var orders = new List<dynamic>
+            {
+                new { Id = 1, CustomerId = 1, Description = "Order 1"},
+                new { Id = 2, CustomerId = 1, Description = "Order 2"},
+                new { Id = 3, CustomerId = 1, Description = "Order 3"},
+                new { Id = 4, CustomerId = 1, Description = "Order 4"},
+                new { Id = 5, CustomerId = 2, Description = "Order 5"},
+                new { Id = 6, CustomerId = 2, Description = "Order 6"},
+                new { Id = 7, CustomerId = 3, Description = "Order 7"},
+                new { Id = 8, CustomerId = 3, Description = "Order 8"},
+                new { Id = 9, CustomerId = 4, Description = "Order 9"}
+            }; 
+            
+            var customerOrders2 = customers
+                .SelectMany(c =>
+                    orders.Where(o => o.CustomerId == c.Id),
+                    (c, o) => 
+                        new 
+                        { 
+                            CustomerId = c.Id,
+                            Name = c.Name,
+                            OrderDescription = o.Description
+                        });
+            customerOrders2.DumpMany();
+        }
+
+        [MarkedItem]
+        public void ShuffleItem()
+        {
+            Enumerable.Range(1, 10).Shuffle().Dump();
+        }
+
+        [MarkedItem]
+        public void Closure1()
+        {
+            var bar = Foo(1);
+            bar(10).ToConsole();
+            bar(10).ToConsole();
+            bar(10).ToConsole();
+        }
+
+        public Func<int, int> Foo(int x)
+        {
+            var temp = 3;
+            return (Func<int, int>)((y) =>
+            {
+                return x + y + ++temp;
+            });
+        }
+
+        [MarkedItem]
+        public void Closure2()
+        {
+            Func<int, int> test = (Func<int, int>)((x) =>
+            {
+                test = (Func<int, int>)((y) =>
+                {
+                    return x + y;
+                });
+
+                return x;
+            });
+
+            Enumerable.Range(1, 10).ForEach(x =>
+            {
+                test(x).ToConsole();
+            });
+        }
     }
 }
