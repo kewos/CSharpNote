@@ -14,8 +14,10 @@ using System.Xml.Linq;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extendsions;
 using CSharpNote.Common.Helper;
+using CSharpNote.Common.Utility;
 using CSharpNote.Core.Implements;
 using CSharpNote.Data.CSharpPracticeMethod.SubClass;
+
 using Microsoft.CSharp;
 
 namespace CSharpNote.Data.CSharpPracticeMethod
@@ -1883,6 +1885,164 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             {
                 test(x).ToConsole();
             });
+        }
+
+        /// <summary>
+        /// 編譯後ILCode
+        /// Action1 ((((((((((i + 1) + 1) + 1) + 1) + 1) + 1) + 1) + 1) + 1) + 1)
+        /// Action2 i + 10
+        /// </summary>
+        [MarkedItem]
+        public void PerformanceVariable()
+        {
+            #region Action1
+            using (var tm = new TimeMeasurer())
+            {
+                tm.Message = "Action1";
+
+                foreach (var i in Enumerable.Range(1, 10000000))
+                {
+                    var j = i + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1;
+                }
+            } 
+            #endregion
+
+            #region Action2
+            using (var tm = new TimeMeasurer())
+            {
+                tm.Message = "Action2";
+
+                foreach (var i in Enumerable.Range(1, 10000000))
+                {
+                    var j = i + (Int32)(1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1);
+                }
+            } 
+            #endregion
+        }
+
+        /// <summary>
+        /// IsNullOrEmpty > string.empty > ""
+        /// </summary>
+        [MarkedItem]
+        public void PerformaceStringNull()
+        {
+            #region Action1
+            using (var tm = new TimeMeasurer())
+            {
+                tm.Message = "1. ''";
+
+                foreach (var i in Enumerable.Range(1, 10000000))
+                {
+                    string s = null;
+                    if (s == "")
+                    {
+                    }
+                }
+            } 
+            #endregion
+
+            #region Action2
+            using (var tm = new TimeMeasurer())
+            {
+                tm.Message = "2.string.Empty";
+
+                foreach (var i in Enumerable.Range(1, 10000000))
+                {
+                    string s = null;
+                    if (s == string.Empty)
+                    {
+                    }
+                }
+            } 
+            #endregion
+
+            #region Action3
+            using (var tm = new TimeMeasurer())
+            {
+                tm.Message = "3.IsNullOrEmpty";
+
+                foreach (var i in Enumerable.Range(1, 10000000))
+                {
+                    string s = null;
+                    if (string.IsNullOrEmpty(s))
+                    {
+                    }
+                }
+            } 
+            #endregion
+        }
+
+        /// <summary>
+        /// 1.速度最差
+        /// 2.數量多時最快
+        /// 3.速度中等code簡潔 差concat一點
+        /// 4.速度中等code簡潔
+        /// </summary>
+        [MarkedItem]
+        public void PerformanceStringAdd()
+        {
+            var elements = Enumerable.Range(65, 26).Select(n => (char)n);
+
+            #region Action1
+            using (var tm = new TimeMeasurer())
+            {
+                tm.Message = "1. + operator";
+
+                var chars = elements.ToList();
+                foreach (var i in Enumerable.Range(1, 100000))
+                {
+                    var s = string.Empty;
+                    foreach (var c in chars)
+                    {
+                        s += c;
+                    }
+                }
+            } 
+            #endregion
+
+            #region Action2
+            using (var tm = new TimeMeasurer())
+            {
+                tm.Message = "2. String StringBuilder";
+
+                var chars = elements.ToList();
+                foreach (var i in Enumerable.Range(1, 100000))
+                {
+                    var sb = new StringBuilder();
+                    foreach (var c in chars)
+                    {
+                        sb.Append(c);
+                    }
+                    var s = sb.ToString();
+                }
+            } 
+            #endregion
+
+            #region Action3
+            using (var tm = new TimeMeasurer())
+            {
+                tm.Message = "3. String Join";
+
+                var chars = elements.ToList();
+                foreach (var i in Enumerable.Range(1, 100000))
+                {
+                    var s = string.Join("", chars);
+                }
+            } 
+            #endregion
+
+            #region Action4
+            using (var tm = new TimeMeasurer())
+            {
+                tm.Message = "4. String Concat";
+
+                var chars = elements.ToList();
+                foreach (var i in Enumerable.Range(1, 100000))
+                {
+                    var s = string.Concat(chars);
+                }
+            } 
+            #endregion
         }
     }
 }

@@ -28,6 +28,7 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.ProxyPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ServiceLocatorPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.SingletonPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ObjectPoolPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.StretagyPattern;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
@@ -314,7 +315,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         {
             var factory = new FlyweightButtonFactory();
             Enumerable.Range(1, 30)
-                .Select(n => factory.GetFlyweightButton(n%3))
+                .Select(n => factory.GetFlyweightButton(n % 3))
                 .ForEach(button => button.Draw());
         }
 
@@ -399,7 +400,6 @@ namespace CSharpNote.Data.DesignPatternMethod
 
         /// <summary> 
         /// 游歷於各系統邊界的Pattern
-        /// 優點:減少耦合 
         /// 缺點:static難追蹤 難unit test
         /// </summary>
         [MarkedItem]
@@ -497,11 +497,16 @@ namespace CSharpNote.Data.DesignPatternMethod
         }
 
         /// <summary>
-        /// 流體
+        /// 根據不同狀態改變執行策略
         /// </summary>
         [MarkedItem]
-        public void BuilderPattern()
+        public void StrategyPattern()
         {
+            var strategy  = new Strategy();
+            foreach (var status in Enumerable.Range(1, 3).Select(index => string.Format("Strategy00{0}", index)))
+            {
+                Console.WriteLine(strategy[status].Invoke());
+            }
         }
     }
 }

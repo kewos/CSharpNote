@@ -7,8 +7,19 @@ using System.Threading.Tasks;
 
 namespace CSharpNote.Common.Utility
 {
+    /// <summary>
+    /// 於Constructor start StopWatch
+    /// 於Dispose stop StopWatch
+    /// 
+    /// 使用方式
+    /// Using(var tm = new TimeMeasurer())
+    /// {
+    ///     tm.Message = "xxx";
+    /// }
+    /// </summary>
     public class TimeMeasurer : IDisposable
     {
+        #region Constructor
         public TimeMeasurer()
             : this(new Stopwatch())
         { 
@@ -17,34 +28,32 @@ namespace CSharpNote.Common.Utility
         public TimeMeasurer(Stopwatch stopWatch)
         {
             this.StopWatch = stopWatch;
-            Start();
-        }
 
-        private Stopwatch StopWatch { get; set; }
-
-        private void Start()
-        {
             if (StopWatch == null)
             {
                 return;
             }
+
             StopWatch.Start();
-            Console.WriteLine("==================Start->>");
         }
+        #endregion
 
-        private void Stop()
-        {
-            if (StopWatch == null)
-            {
-                return;
-            }
-            StopWatch.Stop();
-            Console.WriteLine("==================Stop->> excution time:{0}ms", StopWatch.Elapsed.Milliseconds);
-        }
+        #region Property
+        private Stopwatch StopWatch { get; set; }
+        public string Message { get; set; } 
+        #endregion
 
+        #region IDisposable Member
         public void Dispose()
         {
-            Stop();
-        }
+            if (StopWatch == null)
+            {
+                return;
+            }
+
+            var result = string.Format("{0} excution time:{1}ms", Message, StopWatch.Elapsed.Milliseconds);
+            Console.WriteLine(result.Trim());
+        } 
+        #endregion
     }
 }

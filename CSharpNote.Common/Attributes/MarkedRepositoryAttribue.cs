@@ -5,6 +5,9 @@ using CSharpNote.Common.Utility;
 
 namespace CSharpNote.Common.Attributes
 {
+    /// <summary>
+    /// 實作Aop
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public sealed class MarkedRepositoryAttribue : ContextAttribute, IContributeObjectSink
     {

@@ -3021,5 +3021,51 @@ namespace CSharpNote.Data.AlgorithmMethod
 
             nums.Last().ToConsole();
         }
+
+        [MarkedItem]
+        public void FindKthLargest()
+        {
+
+            var nums = Enumerable.Range(1, 1).Shuffle().ToArray();
+            var k = 1;
+            FindKthLargest(nums, k).ToConsole();
+        }
+
+        public int FindKthLargest(int[] nums, int k)
+        {
+            return nums.OrderByDescending(x => x).Skip(k - 1).First();
+        }
+
+        [MarkedItem]
+        public void LengthOfLongestSubstring()
+        {
+            LengthOfLongestSubstring("ac").ToConsole();
+        }
+
+        public int LengthOfLongestSubstring(string s)
+        {
+            if (s == string.Empty)
+            {
+                return 0;
+            }
+            if (s.Length == 1)
+            {
+                return 1;
+            }
+
+            var index = 0;
+            var max = int.MinValue;
+            for (int i = 0; i < s.Length; i++)
+            {
+                var sub = s.Substring(index, i - index);
+                if (sub.Contains(s[i]))
+                {
+                    index += sub.IndexOf(s[i]) + 1;
+                }
+
+                max = Math.Max(max, i - index + 1);
+            }
+            return max;
+        }
     }
 }
