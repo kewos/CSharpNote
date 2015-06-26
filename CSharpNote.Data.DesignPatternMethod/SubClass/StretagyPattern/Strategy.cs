@@ -10,18 +10,21 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.StretagyPattern
 {
     public class Strategy
     {
-        private Dictionary<string, Func<int>> strategies;
+        private readonly Dictionary<string, Func<int>> strategies;
 
         public Strategy()
         {
             //透過反射可符合close open principle
-            strategies = this.GetType().GetMethods
+            strategies = GetType().GetMethods
                 (
                     BindingFlags.NonPublic 
                     | BindingFlags.Instance 
                     | BindingFlags.DeclaredOnly
                 )
-                .Where(method => !method.GetGenericArguments().Any() 
+                .Where(method =>
+                    //Arguments Null
+                    !method.GetGenericArguments().Any()
+                    //Return Int
                     && method.ReturnType == typeof(int))
                 .ToDictionary(
                     method => method.Name,

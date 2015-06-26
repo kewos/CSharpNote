@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CSharpNote.Common.Extendsions
@@ -8,12 +9,24 @@ namespace CSharpNote.Common.Extendsions
         public static T DeepClone<T>(this T obj)
             where T : class
         {
-            using (MemoryStream stream = new MemoryStream())
+            using (var stream = new MemoryStream())
             {
                 var formatter = new BinaryFormatter();
                 formatter.Serialize(stream, obj);
                 stream.Position = 0;
                 return formatter.Deserialize(stream) as dynamic;
+            }
+        }
+
+        public static void While<TItem>(this TItem item, Predicate<TItem> predicate, params Action<TItem>[] actions)
+            where TItem : class
+        {
+            while (predicate(item))
+            {
+                foreach (var action in actions)
+                {
+                    action(item);
+                }
             }
         }
     }

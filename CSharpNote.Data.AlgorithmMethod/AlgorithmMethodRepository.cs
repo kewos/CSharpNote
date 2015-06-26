@@ -1099,20 +1099,32 @@ namespace CSharpNote.Data.AlgorithmMethod
             //https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock/
             //Say you have an array for which the ith element is the price of a given stock on day i.
             //If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.
-            List<int> price = new List<int> { 10, 5, 8, 9, 9, 4, 2, 6, 7 };
+            List<int> price = new List<int> { 2, 1 };
             Console.WriteLine(GetBestTimeToBuyAndSell(price));
         }
 
-        private int GetBestTimeToBuyAndSell(List<int> price)
+        private int GetBestTimeToBuyAndSell(List<int> prices)
         {
-            if (price.Count() == 0 || price == null || price.Any(p => p < 0)) return 0;
-            int min = 0, max = 0;
-            for (int i = 0; i < price.Count(); i++)
+            if (prices == null
+                || prices.Count() == 0 
+                || prices.Any(p => p < 0))
+                return 0;
+
+            var min = new List<int> { 0 };
+            var maxBenifit = 0;
+            for (int index = 1; index < prices.Count(); index++)
             {
-                if (price[i] < price[min]) min = i;
-                if (price[i] > price[max]) max = i;
+                if (prices[index] > prices[index - 1])
+                {
+                    maxBenifit = Math.Max(maxBenifit, min.Max(n => prices[index] - prices[n]));
+                    continue;
+                }
+                if (prices[index] < prices[index - 1])
+                {
+                    min.Add(index);
+                }
             }
-            return price[max] - price[min];
+            return maxBenifit;
         }
 
         [MarkedItem]
@@ -1123,11 +1135,11 @@ namespace CSharpNote.Data.AlgorithmMethod
             //Design an algorithm to find the maximum profit. You may complete as many transactions as you like 
             //(ie, buy one and sell one share of the stock multiple times). However, 
             //you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
-            List<int> price = new List<int> { 10, 5, 8, 1, 5, 3, 9, 4, 2, 6, 7 };
+            List<int> prices = new List<int> { 10, 5, 8, 1, 5, 3, 9, 4, 2, 6, 7 };
             int totalProfit = 0;
-            for (int i = 0; i < price.Count() - 1; i++)
+            for (int i = 0; i < prices.Count() - 1; i++)
             {
-                if (price[i + 1] > price[i]) totalProfit += price[i + 1] - price[i];
+                if (prices[i + 1] > prices[i]) totalProfit += prices[i + 1] - prices[i];
             }
             Console.WriteLine(totalProfit);
         }
@@ -1140,23 +1152,23 @@ namespace CSharpNote.Data.AlgorithmMethod
             //Design an algorithm to find the maximum profit. You may complete at most two transactions.
             //Note:
             //You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
-            List<int> price = new List<int> { 10, 5, 8, 1, 5, 3, 9, 4, 2, 6, 5 };
+            List<int> prices = new List<int> { 10, 5, 8, 1, 5, 3, 9, 4, 2, 6, 5 };
             List<List<int>> set = new List<List<int>>();
             var p = 0;
-            for (int i = 0; i < price.Count() - 1; i++)
+            for (int i = 0; i < prices.Count() - 1; i++)
             {
-                if (price[i + 1] < price[i])
+                if (prices[i + 1] < prices[i])
                 {
                     if (i != p) set.Add(new List<int> { p, i });
                     p = i + 1;
                 }
-                if (i == price.Count() - 2)
+                if (i == prices.Count() - 2)
                 {
                     if (i != p) set.Add(new List<int> { p, i + 1 });
                 }
             }
             var maxProfitOfTwoTransaction =
-                set.Select(n => price[n[1]] - price[n[0]])
+                set.Select(n => prices[n[1]] - prices[n[0]])
                 .OrderByDescending(n => n)
                 .Take(2)
                 .Sum();
@@ -1181,7 +1193,6 @@ namespace CSharpNote.Data.AlgorithmMethod
                 var goRight = allStep - goDown;
                 res = res * (goRight + step) / step;
             }
-
             Console.WriteLine(res);
         }
 
@@ -1191,15 +1202,15 @@ namespace CSharpNote.Data.AlgorithmMethod
             //https://oj.leetcode.com/problems/anagrams/
             //Given an array of strings, return all groups of strings that are anagrams.
             //Note: All inputs will be in lower-case.
-            List<string> anagrams = new List<string> { "dog", "god", "cab", "bac", "zdz", "aac"};
-            anagrams.Where(n =>
+            List<string> strs = new List<string> { "dog", "god", "cab", "bac", "zdz", "aac"};
+            strs.Where(n =>
             {
-                return anagrams.Any(m =>
+                return strs.Any(m =>
                 {
                     if (n == m) return false;
-                    return n.All(c => m.Contains(c));
+                    return string.Concat(n.ToCharArray().OrderBy(x => x)) == string.Concat(m.ToCharArray().OrderBy(x => x));
                 });
-            }).Dump();
+            });
         }
 
         [MarkedItem(@"https://oj.leetcode.com/problems/sort-colors/")]
@@ -1277,17 +1288,27 @@ namespace CSharpNote.Data.AlgorithmMethod
         {
             //Write a function to find the longest common prefix string amongst an array of strings.
 
-            List<string> list = new List<string> { "abbd", "bababd", "", "bababd", "", "bababd", "bababd", "bababd", "aababd" };
-            int max = 0, current = 0;
-            for (int i = 0; i < list.Count() - 1; i++)
+            var items = new string[] {  };
+            LongestCommonPrefix(items).ToConsole();
+        }
+
+        public string LongestCommonPrefix(string[] items)
+        {
+            if (items == null || items.Length <= 0)
             {
-                if (list[i].Length == 0 || list[i + 1].Length == 0)
-                    continue;
-                max = Math.Max(max, ++current);
-                if (list[i][0] != list[i + 1][0]) 
-                    current = 0;
+                return string.Empty;
             }
-            Console.WriteLine(max);
+
+            var last = items[0].Length;
+            for (int i = 1; i < items.Length; i++)
+			{
+                if (last == 0)
+                    return string.Empty;
+                last = Math.Min(last, items[i].Length);
+                while (last > 0 && items[i].Substring(0, last) != items[0].Substring(0, last))
+                    last--;
+            }
+            return items[0].Substring(0, last);
         }
 
         [MarkedItem(@"https://oj.leetcode.com/problems/longest-common-prefix/")]
@@ -3010,22 +3031,25 @@ namespace CSharpNote.Data.AlgorithmMethod
         }
 
         [MarkedItem]
-        public void T()
+        public void SingleNumberⅠ()
         {
-            var nums = new int[] { 1, 1, 2, 2, 10, 10, 3, 3, 4, 4, 0 };
-
-            for (var i = 1; i < nums.Count(); i++)
-            {
-                nums[i] ^= nums[i - 1];
-            }
-
-            nums.Last().ToConsole();
+            var nums = new int[] { 1, 1, 2, 2, 10, 5, 10, 3, 3, 4, 4 };
+            SingleNumberⅠ(nums).ToConsole();
         }
-
+        public unsafe int SingleNumberⅠ(int[] nums)
+        {
+            fixed (int* pNums = nums)
+            {
+                for (var i = 0; i < nums.Count() - 1; i++)
+                {
+                    *(pNums + i + 1) ^= *(pNums + i);
+                }
+                return nums[nums.Count() - 1];
+            }
+        }
         [MarkedItem]
         public void FindKthLargest()
         {
-
             var nums = Enumerable.Range(1, 1).Shuffle().ToArray();
             var k = 1;
             FindKthLargest(nums, k).ToConsole();
@@ -3066,6 +3090,192 @@ namespace CSharpNote.Data.AlgorithmMethod
                 max = Math.Max(max, i - index + 1);
             }
             return max;
+        }
+
+        [MarkedItem]
+        public void LargestRectangleArea()
+        {
+            var height = new int[] { 2, 1, 5, 6, 2, 3 };
+            LargestRectangleArea(Enumerable.Range(1, 10000).ToArray()).ToConsole();
+        }
+
+        public int LargestRectangleArea(int[] height)
+        {
+            if (height == null || height.Count() == 0)
+            {
+                return 0;
+            }
+
+            var max = 0;
+            for (int index = 0; index < height.Count(); index++)
+            {
+                if (height[index] * Count < max)
+                    continue;
+
+                int pIndex;
+                int sIndex;
+                for 
+                (
+                    pIndex = index; 
+                    pIndex - 1 > -1 && height[index] <= height[pIndex - 1]; 
+                    pIndex--
+                );
+                for 
+                (
+                    sIndex = index; 
+                    sIndex + 1 < height.Count() && height[index] <= height[sIndex + 1];
+                    sIndex++
+                );
+
+                var area = height[index] * (sIndex - pIndex + 1);
+                max = Math.Max(max, area);
+            }
+
+            return max;
+        }
+
+        [MarkedItem]
+        public void SummaryRanges()
+        {
+            //https://leetcode.com/problems/summary-ranges/
+            var nums = new int[] { 0, 1, 2, 4, 5, 7 };
+            SummaryRanges(nums).Dump();
+        }
+
+        public List<String> SummaryRanges(int[] nums)
+        {
+            if (nums == null || nums.Count() == 0)
+            {
+                return new List<String>();
+            }
+
+            var index = -1;
+            var result = new List<string>();
+            var temp = new List<int>();
+
+            while (++index < nums.Count())
+            {
+                if (temp.Count() == 0)
+                {
+                    temp.Add(nums[index]);
+                    continue;
+                }
+                if (temp.Last() + 1 == nums[index])
+                {
+                    temp.Add(nums[index]);
+                }
+                else
+                {
+                    result.Add(ConvertToSummary(temp));
+                    temp.Clear();
+                    temp.Add(nums[index]);
+                }
+            }
+            result.Add(ConvertToSummary(temp));
+
+            return result.Where(x => x != string.Empty).ToList();
+        }
+
+        public string ConvertToSummary(List<int> temp)
+        {
+            if (temp == null && temp.Count() == 0)
+            {
+                return string.Empty;
+            }
+            if (temp.First() == temp.Last())
+            {
+                return temp.First().ToString();
+            }
+
+            return string.Format("{0}->{1}", temp.First(), temp.Last());
+        }
+
+        public class TreeNode
+        {
+            public int val;
+            public TreeNode left;
+            public TreeNode right;
+            public TreeNode(int x) { val = x; }
+        }
+
+        [MarkedItem]
+        public void InvertTree()
+        {
+            //https://leetcode.com/problems/invert-binary-tree/
+            var root = new TreeNode(4);
+            root.left = new TreeNode(2);
+            root.left.left = new TreeNode(1);
+            root.left.right = new TreeNode(3);
+            root.right = new TreeNode(7);
+            root.right.left = new TreeNode(6);
+            root.right.right = new TreeNode(9);
+
+            InvertTree(root);
+        }
+
+        public TreeNode InvertTree(TreeNode root)
+        {
+            if (root == null) return null;
+            if (root.left != null) InvertTree(root.left);
+            if (root.right != null) InvertTree(root.right);
+
+            var temp = root.left ;
+            root.left = root.right;
+            root.right = temp;
+            return root;
+        }
+
+        [MarkedItem]
+        public void ComputeArea()
+        {
+            //https://leetcode.com/problems/rectangle-area/
+            ComputeArea(-3, 0, 3, 4, 0, -1, 9, 2).ToConsole();
+        }
+        public int ComputeArea(int A, int B, int C, int D, int E, int F, int G, int H)
+        {
+            int areaOfSqrA = (C - A) * (D - B);
+            int areaOfSqrB = (G - E) * (H - F);
+
+            int left = Math.Max(A, E);
+            int right = Math.Min(G, C);
+            int bottom = Math.Max(F, B);
+            int top = Math.Min(D, H);
+
+            int overlap = 0;
+            if (right > left && top > bottom)
+                overlap = (right - left) * (top - bottom);
+
+            return areaOfSqrA + areaOfSqrB - overlap;
+        }
+
+        [MarkedItem]
+        public void Reverse()
+        {
+            Reverse(1534236469).ToConsole();
+        }
+
+        public int Reverse(int x)
+        {
+            if (x == int.MinValue || x == int.MaxValue)
+            {
+                return 0;
+            }
+
+            var sign = (x < 0) ? -1 : 1;
+            x = Math.Abs(x);
+            var tempString = string.Concat(x.ToString().OrderByDescending(y => y));
+
+            try
+            {
+                checked
+                {
+                    return sign * Convert.ToInt32(tempString);
+                }
+            }
+            catch(Exception e)
+            {
+                return 0;
+            }
         }
     }
 }

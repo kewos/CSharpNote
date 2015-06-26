@@ -49,6 +49,7 @@
     <Compile Include="Attributes\MarkedItemAttribute.cs" />
     <Compile Include="Extendsions\ActionExtensions.cs" />
     <Compile Include="Extendsions\ArrayExtensions.cs" />
+    <Compile Include="Extendsions\RandomExtensions.cs" />
     <Compile Include="Extendsions\DictionaryExtensions.cs" />
     <Compile Include="Extendsions\StringExtensions.cs" />
     <Compile Include="Utility\DB\FakeDbContext.cs" />

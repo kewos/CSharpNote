@@ -5,14 +5,14 @@ using System.Runtime.Remoting.Messaging;
 namespace CSharpNote.Data.DesignPatternMethod.SubClass
 {
     [MyInterceptor]
-        public class TestAop : ContextBoundObject
+    public class TestAop : ContextBoundObject
+    {
+        [MyInterceptorMethod]
+        public void Display()
         {
-            [MyInterceptorMethod]
-            public void Display()
-            {
-                Console.WriteLine("testaop");
-            }
+            Console.WriteLine("testaop");
         }
+    }
 
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
  	public sealed class MyInterceptorMethodAttribute : Attribute { }
@@ -67,7 +67,5 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass
         {
             return null;
         }
-
-        
     }
 }
