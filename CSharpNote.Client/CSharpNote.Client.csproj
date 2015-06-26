@@ -33,27 +33,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSharpNote.Common">
-      <HintPath>..\CSharpNote.Core\bin\Debug\CSharpNote.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="CSharpNote.Core">
-      <HintPath>..\CSharpNote.Core\bin\Debug\CSharpNote.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="CSharpNote.Data.AlgorithmMethod">
-      <HintPath>..\CSharpNote.Data.AlgorithmMethod\bin\Debug\CSharpNote.Data.AlgorithmMethod.dll</HintPath>
-    </Reference>
-    <Reference Include="CSharpNote.Data.CSharpPracticeMethod">
-      <HintPath>..\CSharpNote.Data.CSharpPracticeMethod\bin\Debug\CSharpNote.Data.CSharpPracticeMethod.dll</HintPath>
-    </Reference>
-    <Reference Include="CSharpNote.Data.DataStructureMethod">
-      <HintPath>..\CSharpNote.Data.DataStructureMethod\bin\Debug\CSharpNote.Data.DataStructureMethod.dll</HintPath>
-    </Reference>
-    <Reference Include="CSharpNote.Data.DesignPatternMethod">
-      <HintPath>..\CSharpNote.Data.DesignPatternMethod\bin\Debug\CSharpNote.Data.DesignPatternMethod.dll</HintPath>
-    </Reference>
-    <Reference Include="CSharpNote.Service.CSharpNoteService">
-      <HintPath>..\CSharpNote.Service.CSharpNoteService\bin\Debug\CSharpNote.Service.CSharpNoteService.dll</HintPath>
-    </Reference>
     <Reference Include="SimpleInjector">
       <HintPath>..\packages\SimpleInjector.2.7.1\lib\net45\SimpleInjector.dll</HintPath>
     </Reference>
@@ -77,6 +56,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CSharpNote.Common\CSharpNote.Common.csproj">
+      <Project>{cc38e905-4caf-4100-8125-8e6410f44cf2}</Project>
+      <Name>CSharpNote.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSharpNote.Core\CSharpNote.Core.csproj">
+      <Project>{66dd1b22-5c83-4193-9976-f6ec1f605712}</Project>
+      <Name>CSharpNote.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSharpNote.Data.AlgorithmMethod\CSharpNote.Data.AlgorithmMethod.csproj">
+      <Project>{6df5159d-7c4c-41b0-bd65-aed8d5f47382}</Project>
+      <Name>CSharpNote.Data.AlgorithmMethod</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSharpNote.Data.CSharpPracticeMethod\CSharpNote.Data.CSharpPracticeMethod.csproj">
+      <Project>{481b896b-5b58-4e72-bf5f-248a91a31fdc}</Project>
+      <Name>CSharpNote.Data.CSharpPracticeMethod</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSharpNote.Data.DataStructureMethod\CSharpNote.Data.DataStructureMethod.csproj">
+      <Project>{d4a301d1-681f-4e41-8f1a-ae7916e4fd60}</Project>
+      <Name>CSharpNote.Data.DataStructureMethod</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSharpNote.Data.DesignPatternMethod\CSharpNote.Data.DesignPatternMethod.csproj">
+      <Project>{2a40b151-6678-4ae2-bc57-1a98cbbd933b}</Project>
+      <Name>CSharpNote.Data.DesignPatternMethod</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CSharpNote.Service.CSharpNoteService\CSharpNote.Service.CSharpNoteService.csproj">
+      <Project>{b9adf985-5f6a-492d-840d-8106a6bd23c5}</Project>
+      <Name>CSharpNote.Service.CSharpNoteService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
