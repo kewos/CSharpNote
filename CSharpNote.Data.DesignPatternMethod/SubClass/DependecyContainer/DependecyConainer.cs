@@ -5,14 +5,24 @@ using CSharpNote.Common.Extendsions;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer
 {
+    /// <summary>
+    /// DependecyConainer內部實體的生命週期
+    /// </summary>
     public enum LifeCycle
     {
+        //一般
         Transient,
+        //單例
         Singleton
     }
 
     public class DependecyConainer
     {
+        /// <summary>
+        /// DependecyConainer的實體
+        /// </summary>
+        private static DependecyConainer instance;
+
         /// <summary>
         /// 容器保存Func達到LazyExcution
         /// </summary>
@@ -31,10 +41,23 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer
         /// <summary>
         /// Constructor
         /// </summary>
-        public DependecyConainer()
+        private DependecyConainer()
         {
             singltonContainer = new Dictionary<Type, object>();
             container = new Dictionary<Type, Func<object>>();
+        }
+
+        public static DependecyConainer Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DependecyConainer();
+                }
+
+                return Instance;
+            }
         }
 
         /// <summary>
@@ -63,7 +86,10 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer
             var @interface = typeof(TInterface);
             var @type = typeof (TType);
 
-            if (container.ContainsKey(@interface)) throw new ArgumentException("ContainInstance");
+            if (container.ContainsKey(@interface))
+            {
+                throw new ArgumentException("ContainInstance");
+            }
 
             container.Add(@interface, () =>
             {
@@ -75,6 +101,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer
                             Activator.CreateInstance(@type, GetMatchParameterArray(@type)));
                     }
                 }
+
                 return singltonContainer[@interface];
             });
         }
@@ -98,10 +125,12 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer
         public TInterface Resolve<TInterface>()
         {
             Func<object> createInstanceFunc;
+
             if (!container.TryGetValue(typeof(TInterface), out createInstanceFunc))
             {
                 throw new ArgumentException("CantFindInstance");
             }
+
             return createInstanceFunc() as dynamic;
         }
 

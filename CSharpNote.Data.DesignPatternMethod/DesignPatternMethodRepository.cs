@@ -29,6 +29,8 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.ServiceLocatorPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.SingletonPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ObjectPoolPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.StretagyPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.IteratorPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.FilterPattern;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
@@ -313,10 +315,10 @@ namespace CSharpNote.Data.DesignPatternMethod
         [MarkedItem]
         public void FlyweightPattern()
         {
-            var factory = new FlyweightButtonFactory();
+            var factory = new FlyweightFactory();
             Enumerable.Range(1, 30)
-                .Select(n => factory.GetFlyweightButton(n % 3))
-                .ForEach(button => button.Draw());
+                .Select(n => factory.Get(n % 3))
+                .ForEach(obj => obj.Execute());
         }
 
         [MarkedItem]
@@ -330,7 +332,6 @@ namespace CSharpNote.Data.DesignPatternMethod
             players.ForEach(p => p.Win(mediator));
         }
 
-
         /// <summary>
         /// 強大的Pattern 於程式初始時建立BootStraper
         /// 讓物件都依賴DependencyInjectorContainer
@@ -341,7 +342,9 @@ namespace CSharpNote.Data.DesignPatternMethod
         [MarkedItem]
         public void DependencyInjectionPattern()
         {
-            var container = new DependecyConainer();
+            var container = DependecyConainer.Instance;
+
+            //註冊實體
             container.RegistType<IInstanceA, InstanceA>();
             container.RegistSingleton<IInstanceB, InstanceB>();
             container.RegistType<IDependencyInjectorA, DependencyInjectorA>();
@@ -502,10 +505,57 @@ namespace CSharpNote.Data.DesignPatternMethod
         [MarkedItem]
         public void StrategyPattern()
         {
-            var strategy  = new Strategy();
+            var strategyA = StrategyFactory.Create<StrategyA>();
+            var strategyB = StrategyFactory.Create<StrategyB>();
+
             foreach (var status in Enumerable.Range(1, 3).Select(index => string.Format("Strategy00{0}", index)))
             {
-                Console.WriteLine(strategy[status].Invoke());
+                Console.WriteLine(strategyA[status].Invoke());
+                Console.WriteLine(strategyB[status].Invoke());
+            }
+        }
+
+        [MarkedItem]
+        public void IteratorPattern()
+        {
+            var bookStore = new BookStore();
+            bookStore.RegistBook(Enumerable.Range(1, 10)
+                .Select(x => 
+                    new Book
+                    { 
+                        Id = x, 
+                        Descriptioin = x.ToString()
+                    }));
+
+            var iterator = bookStore.GetIterator();
+            while (iterator.hasNext())
+            {
+                var book = iterator.Next();
+                book.Id.ToConsole();
+            }
+        }
+
+        /// <summary>
+        /// 獨立Filter的樣式
+        /// </summary>
+        [MarkedItem]
+        public void FilterPattern()
+        {
+            var address = new List<Address>
+            {
+                new Address{Contry = "Taiwan", City = "kaohsiung"},
+                new Address{Contry = "Japan", City = "Tokyo"},
+                new Address{Contry = "Taiwan", City = "Taipei"},
+                new Address{Contry = "US", City = "NewYork"},
+                new Address{Contry = "UK", City = "Londom"},
+            };
+
+            var filterManger = new FilterManager<Address>();
+            foreach (var taiwanAddress in filterManger.ExecuteFilter<AddressTaiwanFilter>(address))
+            {
+                Console.WriteLine("Contry:{0} City:{1}", 
+                    taiwanAddress.Contry, 
+                    taiwanAddress.City);
             }
         }
     }

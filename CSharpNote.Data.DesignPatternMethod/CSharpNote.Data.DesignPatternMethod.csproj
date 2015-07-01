@@ -91,9 +91,18 @@
     <Compile Include="SubClass\FecadePattern\Fecade.cs" />
     <Compile Include="SubClass\FecadePattern\IFecade.cs" />
     <Compile Include="SubClass\FecadePattern\SubClass.cs" />
-    <Compile Include="SubClass\FlyweightPattern\FlyweightButton.cs" />
+    <Compile Include="SubClass\FilterPattern\Address.cs" />
+    <Compile Include="SubClass\FilterPattern\Filter.cs" />
+    <Compile Include="SubClass\FilterPattern\FilterManager.cs" />
+    <Compile Include="SubClass\FilterPattern\IFilter.cs" />
+    <Compile Include="SubClass\FlyweightPattern\FlyWeightObject.cs" />
     <Compile Include="SubClass\FlyweightPattern\FlyweightButtonFactory.cs" />
-    <Compile Include="SubClass\FlyweightPattern\IButton.cs" />
+    <Compile Include="SubClass\FlyweightPattern\IFlyWeightObject.cs" />
+    <Compile Include="SubClass\IteratorPattern\Book.cs" />
+    <Compile Include="SubClass\IteratorPattern\IAggregate.cs" />
+    <Compile Include="SubClass\IteratorPattern\BookStore.cs" />
+    <Compile Include="SubClass\IteratorPattern\IIterator.cs" />
+    <Compile Include="SubClass\IteratorPattern\Iterator.cs" />
     <Compile Include="SubClass\MediatorPattern\GamePlayer.cs" />
     <Compile Include="SubClass\MediatorPattern\GamePlayMediator.cs" />
     <Compile Include="SubClass\MediatorPattern\IGamePlayer.cs" />
@@ -131,6 +140,7 @@
     <Compile Include="SubClass\SingletonPattern\SingletonA.cs" />
     <Compile Include="SubClass\SingletonPattern\SingletonB.cs" />
     <Compile Include="SubClass\SingletonPattern\SingletonC.cs" />
+    <Compile Include="SubClass\SingletonPattern\SingletonD.cs" />
     <Compile Include="SubClass\SpecificationPattern\AndSpecification.cs" />
     <Compile Include="SubClass\SpecificationPattern\Band.cs" />
     <Compile Include="SubClass\SpecificationPattern\CompositeSpecification.cs" />
@@ -143,6 +153,8 @@
     <Compile Include="SubClass\StatePattern\IState.cs" />
     <Compile Include="SubClass\StatePattern\State.cs" />
     <Compile Include="SubClass\StretagyPattern\Strategy.cs" />
+    <Compile Include="SubClass\StretagyPattern\StrategyBase.cs" />
+    <Compile Include="SubClass\StretagyPattern\StretagyFactory.cs" />
     <Compile Include="SubClass\VistorPattern\BuffetDinner.cs" />
     <Compile Include="SubClass\VistorPattern\Food.cs" />
     <Compile Include="SubClass\VistorPattern\IFood.cs" />

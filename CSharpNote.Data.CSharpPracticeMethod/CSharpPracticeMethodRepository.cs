@@ -25,7 +25,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
     [MarkedRepositoryAttribue]
     public class CSharpPracticeMethodRepository : AbstractMethodRepository
     {
-        
+
         [MarkedItem]
         public void LamdaPratice()
         {
@@ -103,7 +103,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
 
             using (System.IO.StreamWriter sw = new System.IO.StreamWriter(path, true))
             {
-                for (int i = 1; i <= 100; i ++)
+                for (int i = 1; i <= 100; i++)
                     sw.WriteLine("<key name=\"Level {0}\" value=\"{1}\"/>", i, i);
             }
         }
@@ -210,7 +210,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         [MarkedItem]
         [System.ComponentModel.Description("All 範例")]
         public void PracticeLinqAllMethod()
-        { 
+        {
             List<dynamic> rules = new List<dynamic>()
             {
                 new
@@ -245,7 +245,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 {
                     Console.WriteLine(failState.Message);
                 }
-                
+
             }
         }
 
@@ -253,13 +253,13 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         public void StringJoinAndSplit()
         {
             string s = @"safdasd@fw#opfjkdsokjgpoijegrij$jjrgeoe$r";
-            string[] ss = s.Split(new [] {'@','#','$'} );
+            string[] ss = s.Split(new[] { '@', '#', '$' });
             Console.WriteLine(string.Join("~~~~", ss));
         }
 
         [MarkedItem]
         public void PracticeLinqJoinGeneration()
-        { 
+        {
             var employees = new List<dynamic> {
 				new { ID=1, Name="Scott", DepartmentID=1 },
 				new { ID=2, Name="Poonam", DepartmentID=1 },
@@ -294,10 +294,10 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             XDocument doc = new XDocument(
                 new XElement("Processes",
                     from p in System.Diagnostics.Process.GetProcesses()
-		            orderby p.ProcessName ascending 
-		            select new XElement("Process" , 
-					    new XAttribute("Name" , p.ProcessName) ,
-					    new XAttribute("PID" , p.Id)
+                    orderby p.ProcessName ascending
+                    select new XElement("Process",
+                        new XAttribute("Name", p.ProcessName),
+                        new XAttribute("PID", p.Id)
                     )
                 ));
 
@@ -312,7 +312,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
 
         [MarkedItem]
         public void LinqGroup()
-        { 
+        {
             var employees = new List<dynamic> {
 				new { ID=1, Name="Scott", DepartmentID=1 },
 				new { ID=2, Name="Poonam", DepartmentID=1 },
@@ -328,9 +328,9 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                                  })
             {
                 Console.WriteLine(data.DepartmentID);
-                foreach(var groupData in data.employees)
+                foreach (var groupData in data.employees)
                 {
-                    Console.WriteLine("{0},{1},{2}",groupData.ID, groupData.Name, groupData.DepartmentID);
+                    Console.WriteLine("{0},{1},{2}", groupData.ID, groupData.Name, groupData.DepartmentID);
                 }
             }
         }
@@ -378,7 +378,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                           Pets = new List<string>{ "Scratches", "Diesel" } } };
 
             Console.WriteLine("Using SelectMany():");
-   
+
             foreach (string pet in petOwners.SelectMany(petOwner => petOwner.Pets))
             {
                 Console.WriteLine(pet);
@@ -416,8 +416,8 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             // if (state1 && state2 && state3 && state4)
             int[] numbers = { 1, 11, 3, 19, 41, 65, 19 };
             bool CheckByAll = numbers.All(n => n % 2 == 1);
-            bool CheckByAnd = 
-                (1 % 2 == 1 && 11 % 2 == 1 && 3 % 2 == 1 && 19 % 2 == 1 && 41 % 2 == 1 && 65 % 2 == 1 );
+            bool CheckByAnd =
+                (1 % 2 == 1 && 11 % 2 == 1 && 3 % 2 == 1 && 19 % 2 == 1 && 41 % 2 == 1 && 65 % 2 == 1);
 
             Console.WriteLine("CheckByAll and CheckByAnd have same state : {0}", (CheckByAll == CheckByAnd));
         }
@@ -447,7 +447,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
 
             System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
             stopwatch.Start();
-            foreach (var prime in from n in Enumerable.Range(2, maxNumber -1)
+            foreach (var prime in from n in Enumerable.Range(2, maxNumber - 1)
                                   where n == 2 || Enumerable.Range(2, (int)Math.Sqrt(n)).All(testNum => n % testNum != 0)
                                   select n)
             {
@@ -464,7 +464,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
 
             stopwatch.Start();
-            foreach (var prime in 
+            foreach (var prime in
                 from n in Enumerable.Range(2, maxNumber - 1)
                 .AsParallel()
                 .AsOrdered()
@@ -493,7 +493,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
 
             int counter2 = 0;
             var query2 = (from num in Enumerable.Range(0, 10000).AsParallel()
-                          where (counter2 ++ > 10000)
+                          where (counter2++ > 10000)
                           select num).ToArray();
 
             Console.WriteLine("without locked resource times:{0}", counter2);
@@ -517,7 +517,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         {
             Random r = new Random();
             var items = Enumerable.Range(1, 52).ToList();
-            for (int i = 0; i < items.Count() - 1; i ++)
+            for (int i = 0; i < items.Count() - 1; i++)
             {
                 Swap(items, i, r.Next((i + 1), items.Count()));
             }
@@ -552,9 +552,9 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 from student in students
                 where student.location.StartsWith("A")
                 group student by student.score > 60 into g
-                select 
-                new 
-                { 
+                select
+                new
+                {
                     location = g.Key,
                     students = g.ToList()
                 }
@@ -584,13 +584,13 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 As.Add(new A() { name = num.ToString(), id = num });
             }
 
-            foreach (var item in 
+            foreach (var item in
                 from a in As
                 let hihi = a.name + "fffff"
                 select new { hihi, name = a.name, id = a.id }
             )
             {
-                Console.WriteLine("{0}{1}{2}",item.hihi, item.name, item.id);
+                Console.WriteLine("{0}{1}{2}", item.hihi, item.name, item.id);
             }
         }
 
@@ -607,9 +607,9 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine(csv);
 
             var multipliers = new[] { 10, 20, 30, 40 };
-            var multiplied = multipliers.Aggregate(5, (a, b) => 
-            { 
-                return a * b; 
+            var multiplied = multipliers.Aggregate(5, (a, b) =>
+            {
+                return a * b;
             });
             //Output 1200000 ((((5*10)*20)*30)*40)
             Console.WriteLine(multiplied);
@@ -672,7 +672,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
 
             // Construct a ConcurrentQueue.
             System.Collections.Concurrent.ConcurrentQueue<int> cq = new System.Collections.Concurrent.ConcurrentQueue<int>();
-            
+
             // Populate the queue.
             for (int i = 0; i < 10000; i++) cq.Enqueue(i);
 
@@ -713,7 +713,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             var sw = new System.Diagnostics.Stopwatch();
             sw.Start();
             var testFindAll = numbers.FindAll(number => (number % 2) == 0);
-            sw.Stop();    
+            sw.Stop();
 
             var sw1 = new System.Diagnostics.Stopwatch();
             sw1.Start();
@@ -789,7 +789,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             await Task.Run(() =>
             {
                 var query = Enumerable.Range(2, maxNumber)
-                            .Where( x =>
+                            .Where(x =>
                                 x == 2 ||
                                 Enumerable.Range(2, (int)Math.Sqrt(x)).All(y => x % y != 0));
                 tcs.SetResult(query.ToList());
@@ -977,9 +977,9 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         {
             int size = 10000000;
             Console.WriteLine("Always true");
-            RunTests(size, x => false, true); 
+            RunTests(size, x => false, true);
             Console.WriteLine("Always true");
-            RunTests(size, x => false && false && false, false); 
+            RunTests(size, x => false && false && false, false);
         }
 
         private void RunTests(int size, Func<string, bool> predicate, bool check)
@@ -1005,7 +1005,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                     input = input.Where(predicate);
                 }
             }
-            var sw =  System.Diagnostics.Stopwatch.StartNew();
+            var sw = System.Diagnostics.Stopwatch.StartNew();
             input.Count();
             sw.Stop();
             Console.WriteLine("Depth: {0} Size: {1} Time: {2}ms",
@@ -1135,9 +1135,9 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         public void DynamicalCreateGeneric()
         {
             var types = new List<Type> { typeof(int), typeof(string), typeof(double), typeof(char), typeof(bool) };
-           
+
             var type = typeof(ObjectA<>);
-            foreach (dynamic obj in 
+            foreach (dynamic obj in
                 types.Select(t => Activator.CreateInstance(type.MakeGenericType(t)))
             )
             {
@@ -1159,7 +1159,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         [MarkedItem]
         public void OperateDynamicObject()
         {
-            dynamic dObject =  new System.Dynamic.ExpandoObject();
+            dynamic dObject = new System.Dynamic.ExpandoObject();
             //add Property Changed Event
             ((System.ComponentModel.INotifyPropertyChanged)dObject).PropertyChanged +=
                 new System.ComponentModel.PropertyChangedEventHandler(
@@ -1170,7 +1170,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine(dObject.Name);
 
             //透過dictionary 增加Property
-            var dicObject =  dObject as IDictionary<string, object>;
+            var dicObject = dObject as IDictionary<string, object>;
             dicObject["hello"] = (Action<string>)((msg) => Console.WriteLine(msg));
             dObject.hello("hello world");
 
@@ -1217,7 +1217,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         private string[] GetFile()
         {
             //excel row data
-            string file =@"";
+            string file = @"";
             return file.Split(null).Where(s => s != "").ToArray();
         }
 
@@ -1282,7 +1282,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             new DeferExcuteCaculator(10).Add(1).Add(1).Add(1).Sub(5).Sub(5).Invoke().ToConsole();
         }
 
-        
+
 
         /// <summary>
         /// 1.Parameter
@@ -1342,7 +1342,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        private const string  SALT = "S9@)#IK9FI09";
+        private const string SALT = "S9@)#IK9FI09";
         [MarkedItem]
         public void MD5Encryption()
         {
@@ -1364,7 +1364,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             var hashTable = new System.Collections.Hashtable();
             var dictionary = new Dictionary<int, int>();
             var excuteTimes = Enumerable.Range(0, 1000000);
-            excuteTimes.ForEach(n => 
+            excuteTimes.ForEach(n =>
             {
                 hashTable.Add(n, n);
                 dictionary.Add(n, n);
@@ -1467,7 +1467,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                                      CallingConventions.HasThis, returnType, parameterTypes);
             return builder;
         }
-        #endregion emit 
+        #endregion emit
 
         /// <summary>
         /// Conclusion
@@ -1530,14 +1530,14 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         }
 
         private enum TestEnum
-        { 
+        {
         }
 
         private class TestClass
-        { 
+        {
         }
 
-       
+
 
         /// <summary>
         /// 大於85000bytes的物件建立時分配於LOH(large object heap)
@@ -1552,7 +1552,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         [MarkedItem("https://www.simple-talk.com/dotnet/.net-framework/the-dangers-of-the-large-object-heap/")]
         public void TheDangersOfTheLargeObjectHeap()
         {
-            var  handler = new LargeObjectHeapHandler();
+            var handler = new LargeObjectHeapHandler();
             handler.Fill(true, true, false);
             //handler.Fill(true, true, true);
             //handler.Fill(false, true, false);
@@ -1587,7 +1587,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             {
                 executeTimes.ForEach(n =>
                 {
-                    var t = Enum.GetName(typeof (PerformanceCheckEnum), PerformanceCheckEnum.Test);
+                    var t = Enum.GetName(typeof(PerformanceCheckEnum), PerformanceCheckEnum.Test);
                 });
             };
 
@@ -1701,7 +1701,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Action check1 = () =>
             {
                 var threads = Enumerable.Range(0, 5)
-                    .Select(n => 
+                    .Select(n =>
                         new Thread(() => new TestLockThis().Execute()))
                     .ToList();
 
@@ -1713,7 +1713,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             {
                 var testItem = new TestLockThis();
                 var threads = Enumerable.Range(0, 5)
-                    .Select(n => 
+                    .Select(n =>
                         new Thread(() => testItem.Execute()))
                     .ToList();
 
@@ -1732,9 +1732,9 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 lock (this)
                 {
                     Enumerable.Range(1, 20)
-                        .ForEach(n => 
+                        .ForEach(n =>
                             Console.WriteLine("ThreadId:{0}-{1}", Thread.CurrentThread.ManagedThreadId, n));
-                    
+
                 }
             }
         }
@@ -1801,7 +1801,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         [StructLayout(LayoutKind.Explicit)]
         public class TestFieldOffsetObject
         {
-            [FieldOffset(0)] 
+            [FieldOffset(0)]
             public int a;
 
             [FieldOffset(0)]
@@ -1829,14 +1829,14 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 new { Id = 7, CustomerId = 3, Description = "Order 7"},
                 new { Id = 8, CustomerId = 3, Description = "Order 8"},
                 new { Id = 9, CustomerId = 4, Description = "Order 9"}
-            }; 
-            
+            };
+
             var customerOrders2 = customers
                 .SelectMany(c =>
                     orders.Where(o => o.CustomerId == c.Id),
-                    (c, o) => 
-                        new 
-                        { 
+                    (c, o) =>
+                        new
+                        {
                             CustomerId = c.Id,
                             Name = c.Name,
                             OrderDescription = o.Description
@@ -1904,7 +1904,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 {
                     var j = i + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1;
                 }
-            } 
+            }
             #endregion
 
             #region Action2
@@ -1916,7 +1916,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 {
                     var j = i + (Int32)(1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1);
                 }
-            } 
+            }
             #endregion
         }
 
@@ -1938,7 +1938,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                     {
                     }
                 }
-            } 
+            }
             #endregion
 
             #region Action2
@@ -1953,7 +1953,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                     {
                     }
                 }
-            } 
+            }
             #endregion
 
             #region Action3
@@ -1968,7 +1968,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                     {
                     }
                 }
-            } 
+            }
             #endregion
         }
 
@@ -1997,7 +1997,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                         s += c;
                     }
                 }
-            } 
+            }
             #endregion
 
             #region Action2
@@ -2015,7 +2015,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                     }
                     var s = sb.ToString();
                 }
-            } 
+            }
             #endregion
 
             #region Action3
@@ -2028,7 +2028,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 {
                     var s = string.Join("", chars);
                 }
-            } 
+            }
             #endregion
 
             #region Action4
@@ -2041,7 +2041,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 {
                     var s = string.Concat(chars);
                 }
-            } 
+            }
             #endregion
         }
     }

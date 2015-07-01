@@ -13,7 +13,7 @@ namespace CSharpNote.Data.DataStructureMethod.SubClass.ORM
         {
             return new List<Dictionary<string, string>>
             {
-                new Dictionary<string, string>()
+                new Dictionary<string, string>
                 {
                     {"CustomerID", "1"},
                     { "CompanyName", "1"},
@@ -27,7 +27,7 @@ namespace CSharpNote.Data.DataStructureMethod.SubClass.ORM
                     { "Phone", "1"},
                     { "Fax", "1"},
                 },
-                new Dictionary<string, string>()
+                new Dictionary<string, string>
                 {
                     {"CustomerID", "1"},
                     { "CompanyName", "1"},

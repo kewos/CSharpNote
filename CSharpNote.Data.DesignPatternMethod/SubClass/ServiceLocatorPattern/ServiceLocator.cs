@@ -44,7 +44,9 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.ServiceLocatorPattern
         {
             var typeName = typeof(TInterface).ToString();
             if (!dictionary.ContainsKey(typeName))
+            {
                 throw new Exception();
+            }
             return (TInterface)dictionary[typeName];
         }
     }

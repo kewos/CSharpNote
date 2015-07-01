@@ -3277,5 +3277,50 @@ namespace CSharpNote.Data.AlgorithmMethod
                 return 0;
             }
         }
+
+        [MarkedItem]
+        public void HammingWeight()
+        {
+            //https://leetcode.com/problems/number-of-1-bits/
+            HammingWeight(1).ToString();
+        }
+
+        public int HammingWeight(uint n)
+        {
+            return Convert.ToString(n, 2).Where(x => x == '1').Count();
+        }
+
+        [MarkedItem]
+        public void LengthOfLastWord()
+        {
+            LengthOfLastWord("abc abca abc").ToConsole();
+        }
+
+        public int LengthOfLastWord(string s)
+        {
+            foreach (var set in s.Split(' ').Reverse())
+            {
+                if (set.Length == 0) continue;
+                return set.Length;
+            }
+            return 0;
+        }
+
+        [MarkedItem]
+        public void MajorityElementⅡ()
+        {
+            //https://leetcode.com/problems/majority-element-ii/
+            var random = new Random();
+            Enumerable.Range(1, 100).Select(n => random.Next(30)).ToArray();
+        }
+
+        public IList<int> MajorityElementⅡ(int[] nums)
+        {
+            return nums
+                .GroupBy(x => x)
+                .Where(g => g.Count() > nums.Length / 3)
+                .Select(x => x.Key)
+                .ToList();
+        }
     }
 }

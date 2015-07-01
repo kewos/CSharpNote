@@ -2,23 +2,22 @@
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass.FlyweightPattern
 {
-    public class FlyweightButtonFactory
+    public class FlyweightFactory
     {
-        private readonly IDictionary<int, IButton> pool;
+        private readonly IDictionary<int, IFlyWeightObject> pool;
 
-        public FlyweightButtonFactory()
+        public FlyweightFactory()
         {
-            pool = new Dictionary<int, IButton>();
+            pool = new Dictionary<int, IFlyWeightObject>();
         }
 
-        public IButton GetFlyweightButton(int label)
+        public IFlyWeightObject Get(int label)
         {
             if (!pool.ContainsKey(label))
             {
-                pool.Add(label, new FlyweightButton(label));
+                pool.Add(label, new FlyWeightObjectA(label));
             }
             return pool[label];
         }
-
     }
 }

@@ -8,73 +8,48 @@ using System.Threading.Tasks;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass.StretagyPattern
 {
-    public class Strategy
+    public class StrategyA : StrategyBase
     {
-        private readonly Dictionary<string, Func<int>> strategies;
-
-        public Strategy()
+        public StrategyA() : base()
         {
-            //透過反射可符合close open principle
-            strategies = GetType().GetMethods
-                (
-                    BindingFlags.NonPublic 
-                    | BindingFlags.Instance 
-                    | BindingFlags.DeclaredOnly
-                )
-                .Where(method =>
-                    //Arguments Null
-                    !method.GetGenericArguments().Any()
-                    //Return Int
-                    && method.ReturnType == typeof(int))
-                .ToDictionary(
-                    method => method.Name,
-                    method => 
-                    {
-                        return (Func<int>)Delegate.CreateDelegate
-                        (
-                            Expression.GetDelegateType
-                            (
-                                method.GetParameters()
-                                    .Select(p => p.ParameterType)
-                                    .Concat(new Type[] { method.ReturnType })
-                                    .ToArray()
-                            ),
-                            null,
-                            method
-                        );   
-                    });
         }
 
-        public Func<int> this[string key]
+        private string Strategy001()
         {
-            get
-            {
-                if (strategies == null || !strategies.Any())
-                {
-                    return null;
-                }
-
-                Func<int> value;
-                return strategies.TryGetValue(key, out value) ? value : null;
-            }
+            return string.Format("Strategy001");
         }
 
-        private int Strategy001()
+        private string Strategy002()
         {
-            //your code
-            return 001;
+            return string.Format("Strategy002");
         }
 
-        private int Strategy002()
+        private string Strategy003()
         {
-            //your code
-            return 002;
+            return string.Format("Strategy003");
+        }
+    }
+
+    public class StrategyB : StrategyBase
+    {
+        public StrategyB()
+            : base()
+        {
         }
 
-        private int Strategy003()
+        private string Strategy001()
         {
-            //your code
-            return 003;
+            return string.Format("Strategy001");
+        }
+
+        private string Strategy002()
+        {
+            return string.Format("Strategy002");
+        }
+
+        private string Strategy003()
+        {
+            return string.Format("Strategy003");
         }
     }
 }
