@@ -103,10 +103,17 @@
     <Compile Include="SubClass\IteratorPattern\BookStore.cs" />
     <Compile Include="SubClass\IteratorPattern\IIterator.cs" />
     <Compile Include="SubClass\IteratorPattern\Iterator.cs" />
+    <Compile Include="SubClass\LazyInitial\GroupItem.cs" />
     <Compile Include="SubClass\MediatorPattern\GamePlayer.cs" />
     <Compile Include="SubClass\MediatorPattern\GamePlayMediator.cs" />
     <Compile Include="SubClass\MediatorPattern\IGamePlayer.cs" />
     <Compile Include="SubClass\MediatorPattern\IGamePlayMediator.cs" />
+    <Compile Include="SubClass\MemotoPattern\Charactor.cs" />
+    <Compile Include="SubClass\MemotoPattern\OriginatorBase.cs" />
+    <Compile Include="SubClass\MemotoPattern\ICaretaker.cs" />
+    <Compile Include="SubClass\MemotoPattern\IOriginator.cs" />
+    <Compile Include="SubClass\MemotoPattern\Memento.cs" />
+    <Compile Include="SubClass\MemotoPattern\Caretaker.cs" />
     <Compile Include="SubClass\NullObjectPattern\Object.cs" />
     <Compile Include="SubClass\NullObjectPattern\ObjectBase.cs" />
     <Compile Include="SubClass\NullObjectPattern\ObjectRespository.cs" />
@@ -130,6 +137,12 @@
     <Compile Include="SubClass\ProxyPattern\IServer.cs" />
     <Compile Include="SubClass\ProxyPattern\ProxyServer.cs" />
     <Compile Include="SubClass\ProxyPattern\RealServer.cs" />
+    <Compile Include="SubClass\ReactPattern\Reactor.cs" />
+    <Compile Include="SubClass\ReactPattern\SynchronousEventDemultiplexer.cs" />
+    <Compile Include="SubClass\ReactPattern\MessageEventHandler.cs" />
+    <Compile Include="SubClass\ReactPattern\IReactor.cs" />
+    <Compile Include="SubClass\ReactPattern\ISynchronousEventDemultiplexer.cs" />
+    <Compile Include="SubClass\ReactPattern\IEventHandler.cs" />
     <Compile Include="SubClass\RepositoryPattern\CachePersonRepository.cs" />
     <Compile Include="SubClass\RepositoryPattern\PersonRepository.cs" />
     <Compile Include="SubClass\RepositoryPattern\Person.cs" />
@@ -171,6 +184,7 @@
       <Name>CSharpNote.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

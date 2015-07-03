@@ -31,6 +31,9 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.ObjectPoolPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.StretagyPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.IteratorPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.FilterPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.ReactPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.LazyInitial;
+using CSharpNote.Data.DesignPatternMethod.SubClass.MemotoPattern;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
@@ -557,6 +560,77 @@ namespace CSharpNote.Data.DesignPatternMethod
                     taiwanAddress.Contry, 
                     taiwanAddress.City);
             }
+        }
+
+        /// <summary>
+        /// Reference:http://www.robertsindall.co.uk/blog/the-reactor-pattern-using-c-sharp/
+        /// </summary>
+        [MarkedItem]
+        public void ReactPattern()
+        {
+            IEventHandler client1 = new MessageEventHandler(System.Net.IPAddress.Parse("123.123.123.123"), 123);
+            IEventHandler client2 = new MessageEventHandler(System.Net.IPAddress.Parse("234.234.234.234"), 123);
+            IEventHandler client3 = new MessageEventHandler(System.Net.IPAddress.Parse("245.245.245.245"), 123);
+
+            ISynchronousEventDemultiplexer synchronousEventDemultiplexer = new SynchronousEventDemultiplexer();
+
+            Reactor dispatcher = new Reactor(synchronousEventDemultiplexer);
+
+            dispatcher.RegisterHandle(client1);
+            dispatcher.RegisterHandle(client2);
+            dispatcher.RegisterHandle(client3);
+
+            dispatcher.HandleEvents();
+        }
+
+        [MarkedItem]
+        public void LazyInitial()
+        {
+            GroupItem.GetByName("A").ToConsole();
+            GroupItem.GetByName("B").ToConsole();
+            GroupItem.GetByName("C").ToConsole();
+
+            foreach (var fruit in GroupItem.GetAll())
+            {
+                fruit.ToConsole();
+            }
+        }
+
+        /// <summary>
+        /// 保存狀態
+        /// </summary>
+        [MarkedItem]
+        public void MemotoPattern()
+        {
+            var originator = new Charactor();
+            var caretaker = new Caretaker();
+
+            originator.Atk = 1;
+            originator.Hp = 100;
+            originator.Weapon = "Sword";
+            caretaker.SetMemento(originator.CreateMemento());
+
+            originator.Atk = 3;
+            originator.Hp = 300;
+            originator.Weapon = "Sword";
+            caretaker.SetMemento(originator.CreateMemento());
+
+            originator.Atk = 2;
+            originator.Hp = 200;
+            originator.Weapon = "Axe";
+            caretaker.SetMemento(originator.CreateMemento());
+
+            originator.Atk = 4;
+            originator.Hp = 400;
+            originator.Weapon = "Bow";
+            caretaker.SetMemento(originator.CreateMemento());
+
+            foreach (var memoto in caretaker.GetAll())
+            {
+                originator.RestoreMemento(memoto);
+                Console.WriteLine("Atk:{0} Hp:{1} Weapon:{2}", originator.Atk, originator.Hp, originator.Weapon);
+            }
+          
         }
     }
 }
