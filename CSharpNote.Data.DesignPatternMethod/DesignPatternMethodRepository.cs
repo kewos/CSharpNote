@@ -34,6 +34,7 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.FilterPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ReactPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.LazyInitial;
 using CSharpNote.Data.DesignPatternMethod.SubClass.MemotoPattern;
+using CSharpNote.Data.DesignPatternMethod.SubClass.Aop;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
@@ -135,8 +136,8 @@ namespace CSharpNote.Data.DesignPatternMethod
         public void AspectOrientProgram()
         {
             AOP.Registry.Join(
-                typeof (Actor).GetConstructors().First(),
-                typeof (Concern).GetConstructors().First()
+                typeof(Actor).GetConstructors().First(),
+                typeof(Concern).GetConstructors().First()
                 );
             var actor = (IActor) AOP.Factory.Create<Actor>("");
 

@@ -2443,20 +2443,19 @@ namespace CSharpNote.Data.AlgorithmMethod
             //For example, in array [1, 2, 3, 1], 3 is a peak element and your function should return the index number 2.
             //MutiPeak
             List<int> numbers = new List<int> { 1, 2, 3, 0};
-            FindPeakElement(numbers).Dump();
+            FindPeakElement(numbers).ToConsole();
         }
 
-        private List<int> FindPeakElement(List<int> numbers)
+        private int FindPeakElement(List<int> numbers)
         {
-            var result = new List<int>();
-            var index = 1;
-            while (index < numbers.Count - 1)
+            if (numbers.Count() < 2)
+                return 0;
+            var maxPeak = 0;
+            for (var index = 0; index < numbers.Count(); index++)
             {
-                if (numbers[index] > numbers[index - 1] - 1 && numbers[index] > numbers[index + 1])
-                    result.Add(index++);
-                index++;
+                maxPeak = Math.Max(numbers[index], maxPeak);
             }
-            return result;
+            return maxPeak;
         }
 
         [MarkedItem(@"https://oj.leetcode.com/problems/word-break/")]
@@ -2605,13 +2604,14 @@ namespace CSharpNote.Data.AlgorithmMethod
 
         private string ExcelSheetColumnTitle(int number)
         {
-            var sb = new StringBuilder();
+            var chars = new List<char>();
             while (number > 0) 
             {
-                sb.Append((char)((number - 1) % 26 + 65));
+                chars.Add((char)((number - 1) % 26 + 65));
                 number = (number - 1) / 26;
             }
-            return sb.ToString();
+            chars.Reverse();
+            return string.Concat(chars);
         }
 
         [MarkedItem(@"https://oj.leetcode.com/problems/dungeon-game/")]
@@ -3321,6 +3321,113 @@ namespace CSharpNote.Data.AlgorithmMethod
                 .Where(g => g.Count() > nums.Length / 3)
                 .Select(x => x.Key)
                 .ToList();
+        }
+
+        [MarkedItem]
+        public void IsPowerOfTwo()
+        {
+
+        }
+
+        public bool IsPowerOfTwo(int n)
+        {
+            if (n == 0) return false;
+            if (n == 1 || n == 2) return true;
+            while (n % 2 == 0)
+            {
+                n /= 2;
+            }
+            return n == 1;
+        }
+        [MarkedItem]
+        public void MaxPointsonaLine()
+        {
+            //Random random = new Random();
+            //var points = Enumerable.Range(1, 20).Select(n => new Point((int)random.Next(1, 100), (int)random.Next(1, 100))).ToArray();
+            //MaxPoints(points).ToConsole();
+            var points = new Point[] 
+            { 
+                new Point(84,250),
+                new Point(0,0), 
+                new Point(1,0), 
+                new Point(0,-70),
+                new Point(0,-70),
+                new Point(1,-1),
+                new Point(21,10),
+                new Point(42,90),
+                new Point(-42,-230)
+            };
+            MaxPoints(points).ToConsole();
+        }
+
+        public int MaxPoints(Point[] points)
+        {
+            var PointCountGroup = points.GroupBy(p => new { x = p.x, y = p.y }).ToDictionary(g => 
+                new Point 
+                { 
+                    x = g.Key.x, 
+                    y = g.Key.y 
+                }, 
+                g => g.Count());
+
+            if (PointCountGroup.Count <= 2)
+            {
+                return PointCountGroup.Sum(p => p.Value);
+            }
+            
+            var SlopePointGroup = new Dictionary<float, List<Point>>();
+            for (int i = 0; i < PointCountGroup.Count - 1; i++)
+            {
+                for (int j = i + 1; j < PointCountGroup.Count; j++)
+                {
+                    var p1 = PointCountGroup.Keys.ElementAt(i);
+                    var p2 = PointCountGroup.Keys.ElementAt(j);
+
+                    var slope = CaculateSlopeA(p1, p2);
+                    if (!SlopePointGroup.ContainsKey(slope))
+                    {
+                        SlopePointGroup.Add(slope, new List<Point> { p1 });
+                    }
+                    if (!SlopePointGroup[slope].Contains(p2))
+                    {
+                        SlopePointGroup[slope].Add(p2);
+                    }
+                }
+            }
+
+            return SlopePointGroup
+                .Select(sp => sp.Value.Sum(p => PointCountGroup[p]))
+                .Max();
+        }
+
+        private float CaculateSlopeA(Point point1, Point point2)
+        {
+            if (point1.y == point2.y)
+            {
+                return float.MinValue;
+            }
+            if (point1.x == point2.x)
+            {
+                return float.MaxValue;
+            }
+
+            return (point2.y - point1.y) / (point2.x - point1.x);
+        }
+
+        public class Point 
+        {
+            public int x;
+            public int y;
+            public Point() 
+            { 
+                x = 0; 
+                y = 0; 
+            }
+            public Point(int a, int b) 
+            {
+                x = a;
+                y = b; 
+            }
         }
     }
 }

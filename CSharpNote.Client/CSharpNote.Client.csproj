@@ -82,6 +82,10 @@
       <Project>{2a40b151-6678-4ae2-bc57-1a98cbbd933b}</Project>
       <Name>CSharpNote.Data.DesignPatternMethod</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CSharpNote.Data.ProjectMethod\CSharpNote.Data.ProjectMethod.csproj">
+      <Project>{1b3652ac-8697-4622-a7c6-48ecd19f9874}</Project>
+      <Name>CSharpNote.Data.ProjectMethod</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CSharpNote.Service.CSharpNoteService\CSharpNote.Service.CSharpNoteService.csproj">
       <Project>{b9adf985-5f6a-492d-840d-8106a6bd23c5}</Project>
       <Name>CSharpNote.Service.CSharpNoteService</Name>

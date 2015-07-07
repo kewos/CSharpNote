@@ -53,7 +53,12 @@
     <Compile Include="SubClass\AdapterPattern\IMachine.cs" />
     <Compile Include="SubClass\AdapterPattern\Monkey.cs" />
     <Compile Include="SubClass\AdapterPattern\Robot.cs" />
-    <Compile Include="SubClass\Aop.cs" />
+    <Compile Include="SubClass\Aop\Aop.cs" />
+    <Compile Include="SubClass\Aop\Actor.cs" />
+    <Compile Include="SubClass\Aop\Concern.cs" />
+    <Compile Include="SubClass\Aop\Interceptor.cs" />
+    <Compile Include="SubClass\Aop\JoinCut.cs" />
+    <Compile Include="SubClass\Aop\Util.cs" />
     <Compile Include="SubClass\AopⅠ.cs" />
     <Compile Include="SubClass\BridgePattern\AbstractBridgeShape.cs" />
     <Compile Include="SubClass\BridgePattern\BridegeColorInstance.cs" />
@@ -88,6 +93,7 @@
     <Compile Include="SubClass\DecoratorPattern\IComponent.cs" />
     <Compile Include="SubClass\DependecyContainer\DependecyInjectionObject.cs" />
     <Compile Include="SubClass\DependecyContainer\DependecyConainer.cs" />
+    <Compile Include="SubClass\DisposePattern\Class1.cs" />
     <Compile Include="SubClass\FecadePattern\Fecade.cs" />
     <Compile Include="SubClass\FecadePattern\IFecade.cs" />
     <Compile Include="SubClass\FecadePattern\SubClass.cs" />
