@@ -3339,6 +3339,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
             return n == 1;
         }
+
         [MarkedItem]
         public void MaxPointsonaLine()
         {
@@ -3428,6 +3429,23 @@ namespace CSharpNote.Data.AlgorithmMethod
                 x = a;
                 y = b; 
             }
+        }
+
+        [MarkedItem]
+        public void CountDigitOne()
+        {
+            CountDigitOne(10).ToConsole();
+            CountDigitOne(100).ToConsole();
+            CountDigitOne(1000).ToConsole();
+        }
+
+        public int CountDigitOne(int n)
+        {
+            if (n < 1) return 0;
+            long ones = 0;
+            for (long m = 1; m <= n; m *= 10)
+                ones += (n / m + 8) / 10 * m + (n / m % 10 == 1 ? n % m + 1 : 0);
+            return (int)ones;
         }
     }
 }

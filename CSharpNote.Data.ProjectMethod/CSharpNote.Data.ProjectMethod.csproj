@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ProjectMethodRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubClass\ResultData\ResultData.cs" />
     <Compile Include="SubClass\Validation\ValidationRecord.cs" />
     <Compile Include="SubClass\Validation\ValidationSequenceComponent.cs" />
     <Compile Include="SubClass\Validation\ValidationHelper.cs" />

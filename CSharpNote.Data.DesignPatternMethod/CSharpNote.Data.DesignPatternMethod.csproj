@@ -87,6 +87,7 @@
     <Compile Include="SubClass\CQRSPattern\CommandHandler.cs" />
     <Compile Include="SubClass\CQRSPattern\Message.cs" />
     <Compile Include="SubClass\CQRSPattern\Service.cs" />
+    <Compile Include="SubClass\DecoratorForAop\Class1.cs" />
     <Compile Include="SubClass\DecoratorPattern\AbstractDecorator.cs" />
     <Compile Include="SubClass\DecoratorPattern\ConcreteComponent.cs" />
     <Compile Include="SubClass\DecoratorPattern\Decorator.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="SubClass\MemotoPattern\IOriginator.cs" />
     <Compile Include="SubClass\MemotoPattern\Memento.cs" />
     <Compile Include="SubClass\MemotoPattern\Caretaker.cs" />
+    <Compile Include="SubClass\NullObjectPattern\NullObject.cs" />
     <Compile Include="SubClass\NullObjectPattern\Object.cs" />
     <Compile Include="SubClass\NullObjectPattern\ObjectBase.cs" />
     <Compile Include="SubClass\NullObjectPattern\ObjectRespository.cs" />

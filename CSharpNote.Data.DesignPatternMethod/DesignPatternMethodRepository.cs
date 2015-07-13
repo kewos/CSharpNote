@@ -86,12 +86,22 @@ namespace CSharpNote.Data.DesignPatternMethod
         [MarkedItem]
         public void NullObjectPattern()
         {
-            var elements = new List<ObjectBase> {new ObjectA(), new ObjectB(), new ObjectC()};
-            var repository = new ObjectRespository(elements);
-            repository.Find("ObjectA").GetTypeName.ToConsole();
-            repository.Find("ObjectB").GetTypeName.ToConsole();
-            repository.Find("ObjectC").GetTypeName.ToConsole();
-            repository.Find("ObjectD").GetTypeName.ToConsole();
+            var repository = new ObjectRespository(new List<ObjectBase> 
+            {
+                new ObjectA(), 
+                new ObjectB(), 
+                new ObjectC()
+            });
+
+            repository.Find("ObjectA").IsNull.ToConsole("ObjectAIsNull:");
+            repository.Find("ObjectB").IsNull.ToConsole("ObjectBIsNull:");
+            repository.Find("ObjectC").IsNull.ToConsole("ObjectCIsNull:");
+            repository.Find("ObjectD").IsNull.ToConsole("ObjectDIsNull:");
+
+            var nullObj = ObjectC.Null;
+            nullObj.IsNull.ToConsole("NullObjectIsNull");
+
+            (ObjectC.Null == ObjectA.Null).ToConsole("NullObject == NullObject");
         }
 
         [MarkedItem]

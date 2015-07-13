@@ -1283,8 +1283,6 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             new DeferExcuteCaculator(10).Add(1).Add(1).Add(1).Sub(5).Sub(5).Invoke().ToConsole();
         }
 
-
-
         /// <summary>
         /// 1.Parameter
         /// 2.Body
@@ -1487,7 +1485,6 @@ namespace CSharpNote.Data.CSharpPracticeMethod
 
             Action singleOrDefaultThrowException = () => items.Select(n => items.SingleOrDefault(m => n % 2 == 0)).ToList();
             singleOrDefaultThrowException.ExcauteAndCatchException().ToConsole("ExceptionMessage:");
-
         }
 
         [MarkedItem]
@@ -2084,6 +2081,33 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 }
             }
             Console.WriteLine("Umm... why hasn't the universe ended yet?");
+        }
+
+        private event Action<int> Testt;
+
+        [MarkedItem]
+        public void ExpressionVSLamdaPerformance()
+        {
+            using (var tm = new TimeMeasurer())
+            {
+                tm.Message = "1. Lamda";
+                Func<int, int> action = (x) => x * x;
+                foreach (var i in Enumerable.Range(1, 100000))
+                {
+                    action(1);
+                }
+            }
+
+            using (var tm = new TimeMeasurer())
+            {
+                tm.Message = "2. Expression";
+                Expression<Func<int, int>> myExpression = (x) => x * x;
+                var p = myExpression.Compile();
+                foreach (var i in Enumerable.Range(1, 100000))
+                {
+                    p(1);
+                }
+            }
         }
     }
 }

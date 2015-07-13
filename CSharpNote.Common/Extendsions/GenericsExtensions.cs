@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections;
 
 namespace CSharpNote.Common.Extendsions
 {

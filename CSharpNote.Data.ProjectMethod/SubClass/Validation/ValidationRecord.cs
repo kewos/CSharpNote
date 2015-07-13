@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpNote.Data.ProjectMethod.Validation
+namespace CSharpNote.Data.ProjectMethod.SubClass.Validation
 {
     public class ValidationRecord
     {

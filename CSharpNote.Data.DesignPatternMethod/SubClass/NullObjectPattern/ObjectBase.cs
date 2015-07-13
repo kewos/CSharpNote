@@ -2,11 +2,32 @@
 {
     public abstract class ObjectBase
     {
-        public virtual string GetTypeName { get { return GetType().Name; } }
-        public static NullObject Null { get { return new NullObject(); } }
+        private static NullObject nullObject = new NullObject();
 
-        public class NullObject : ObjectBase
+        public virtual string GetTypeName 
         {
+            get 
+            {
+                return GetType().Name;
+            } 
+        }
+
+        public virtual bool IsNull
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public static NullObject Null
+        {
+            get 
+            {
+                return nullObject;
+            } 
         }
     }
+
+    
 }
