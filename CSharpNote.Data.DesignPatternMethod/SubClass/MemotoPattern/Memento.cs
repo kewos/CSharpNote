@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Reflection;
+
 namespace CSharpNote.Data.DesignPatternMethod.SubClass.MemotoPattern
 {
     public class Memento
     {
         public Dictionary<PropertyInfo, object> Infomation { get; set; }
-
-        public Memento()
-        {
-        }
     }
 }

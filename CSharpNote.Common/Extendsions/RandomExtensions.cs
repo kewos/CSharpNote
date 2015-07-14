@@ -27,5 +27,11 @@ namespace CSharpNote.Common.Extendsions
                 .OrderBy(e => random.Next())
                 .FirstOrDefault();
         }
+
+        public static TType RandomOne<TType>(this Random random, params TType[] items)
+        {
+            var index = random.Next(items.Length);
+            return items[index];
+        }
     }
 }

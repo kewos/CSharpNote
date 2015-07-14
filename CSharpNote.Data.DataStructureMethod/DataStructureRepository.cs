@@ -9,6 +9,7 @@ using CSharpNote.Data.DataStructureMethod.SubClass.HashTable;
 using CSharpNote.Data.DataStructureMethod.SubClass.Queue;
 using CSharpNote.Data.DataStructureMethod.SubClass.ORM;
 using CSharpNote.Common.Utility.DB;
+using CSharpNote.Data.DataStructureMethod.SubClass.Tree;
 
 namespace CSharpNote.Data.DataStructureMethod
 {
@@ -172,6 +173,29 @@ namespace CSharpNote.Data.DataStructureMethod
                     property.SetValue(customer, value, null);
                 }
                 result.Add(customer);
+            }
+        }
+
+        [MarkedItem]
+        public void BinaryTree()
+        {
+            var n7 = new TreeNode<int>(7);
+            var n6 = new TreeNode<int>(6);
+            var n5 = new TreeNode<int>(5);
+            var n4 = new TreeNode<int>(4);
+            var n3 = new TreeNode<int>(3, n7, null);
+            var n2 = new TreeNode<int>(2, n5, n6);
+            var n1 = new TreeNode<int>(1, n3, n4);
+            var n0 = new TreeNode<int>(0, n1, n2);
+
+            //foreach (var i in BinaryTree<int>.PreOrderWithStack(n0))
+            //{
+            //    i.ToConsole();
+            //}
+
+            foreach (var i in BinaryTree<int>.InOrderWithStack(n0))
+            {
+                i.ToConsole();
             }
         }
     }

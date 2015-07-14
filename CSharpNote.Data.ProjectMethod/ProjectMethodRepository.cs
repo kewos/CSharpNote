@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Implements;
@@ -61,7 +60,7 @@ namespace CSharpNote.Data.ProjectMethod
             }
 
             var data2 = new ResultData(true, "Test", 1);
-            if (data2)
+            if (!data2)
             {
                 Console.WriteLine(data2.ToString());
                 Console.WriteLine(data2.GetData<int>());

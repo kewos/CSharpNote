@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass.FilterPattern
 {
     public class FilterManager<TItem>
     {
-        private Dictionary<Type, IFilter<TItem>> filterDic;
+        private readonly Dictionary<Type, IFilter<TItem>> filterDic;
 
         public FilterManager()
         {

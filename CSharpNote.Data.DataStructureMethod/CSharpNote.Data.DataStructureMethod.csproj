@@ -59,6 +59,9 @@
     <Compile Include="SubClass\Sort\Sort.cs" />
     <Compile Include="SubClass\Sort\ISort.cs" />
     <Compile Include="SubClass\Sort\SortOrder.cs" />
+    <Compile Include="SubClass\Tree\BinarySearchTree.cs" />
+    <Compile Include="SubClass\Tree\BinaryTree.cs" />
+    <Compile Include="SubClass\Tree\TreeNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSharpNote.Common\CSharpNote.Common.csproj">

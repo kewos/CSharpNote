@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass.IteratorPattern
 {
@@ -20,14 +18,14 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.IteratorPattern
             max = aggregate.Count();
         }
 
-        public bool hasNext()
+        public bool HasNext()
         {
             return currentIndex < max;
         }
 
         public TItem Next()
         {
-            if (!hasNext()) 
+            if (!HasNext()) 
             {
                 throw new Exception("NoNext");
             }

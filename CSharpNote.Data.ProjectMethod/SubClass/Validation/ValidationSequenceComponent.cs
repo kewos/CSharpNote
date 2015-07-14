@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CSharpNote.Common.Extendsions;
 
 namespace CSharpNote.Data.ProjectMethod.SubClass.Validation
 {
@@ -70,7 +69,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.Validation
 
         public IEnumerable<char> AfterNotification(ValidationRecord record, IEnumerable<char> code)
         {
-            if (!(record.Notification == null || record.Notification == string.Empty) && !record.IsReverse)
+            if (!record.Notification.IsNullOrEmpty() && !record.IsReverse)
             {
                 code = code.SkipWhile(c => c != record.Notification.First()).Skip(1);
             }
@@ -80,7 +79,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.Validation
 
         public IEnumerable<char> BeforeNotification(ValidationRecord record, IEnumerable<char> code)
         {
-            if (!(record.Notification == null || record.Notification == string.Empty) && record.IsReverse)
+            if (!record.Notification.IsNullOrEmpty() && record.IsReverse)
             {
                 code = code.TakeWhile(c => c != record.Notification.First());
             }

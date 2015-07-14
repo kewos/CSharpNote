@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass.LazyInitial
 {
     public sealed class GroupItem
     {
-        private static Dictionary<string, GroupItem> GroupItems 
-            = new Dictionary<string, GroupItem>();
+        private static readonly Dictionary<string, GroupItem> groupItems = new Dictionary<string, GroupItem>();
 
         private GroupItem(string name)
         {
-            this.Name = name;
+            Name = name;
         }
 
         private string Name { get; set; }
@@ -25,17 +22,17 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.LazyInitial
 
         public static GroupItem GetByName(string name)
         {
-            if (!GroupItems.ContainsKey(name))
+            if (!groupItems.ContainsKey(name))
             {
-                GroupItems[name] = new GroupItem(name);
+                groupItems[name] = new GroupItem(name);
             }
 
-            return GroupItems[name];
+            return groupItems[name];
         }
 
         public static IEnumerable<GroupItem> GetAll()
         {
-            return GroupItems.Select(item => item.Value);
+            return groupItems.Select(item => item.Value);
         }
     }
 }

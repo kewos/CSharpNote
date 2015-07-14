@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharpNote.Data.ProjectMethod.SubClass.ResultData
 {
@@ -18,6 +15,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ResultData
         public ResultData()
         { 
         }
+
         public ResultData(Exception exception, String extraInfo = "")
         {
             success = false;
@@ -46,7 +44,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ResultData
             get 
             { 
                 return success; 
-            } 
+            }
         }
         public String Message 
         { 

@@ -16,5 +16,15 @@
 
             return true;
         }
+
+        public static string Format(this string format, params object[] items)
+        {
+            return string.Format(format, items);
+        }
+
+        public static bool IsNullOrEmpty(this string target)
+        {
+            return string.IsNullOrEmpty(target);
+        }
     }
 }

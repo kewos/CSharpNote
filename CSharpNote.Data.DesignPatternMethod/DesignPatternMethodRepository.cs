@@ -5,7 +5,6 @@ using System.Threading;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Implements;
-using CSharpNote.Data.DesignPatternMethod.SubClass;
 using CSharpNote.Data.DesignPatternMethod.SubClass.AbstractFactoryPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ChainResponsibilityPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.CompositePattern;
@@ -542,7 +541,7 @@ namespace CSharpNote.Data.DesignPatternMethod
                     }));
 
             var iterator = bookStore.GetIterator();
-            while (iterator.hasNext())
+            while (iterator.HasNext())
             {
                 var book = iterator.Next();
                 book.Id.ToConsole();

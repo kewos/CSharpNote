@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 namespace CSharpNote.Data.DesignPatternMethod.SubClass.MemotoPattern
 {
     public interface ICaretaker

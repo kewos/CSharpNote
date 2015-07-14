@@ -87,7 +87,12 @@
     <Compile Include="SubClass\CQRSPattern\CommandHandler.cs" />
     <Compile Include="SubClass\CQRSPattern\Message.cs" />
     <Compile Include="SubClass\CQRSPattern\Service.cs" />
-    <Compile Include="SubClass\DecoratorForAop\Class1.cs" />
+    <Compile Include="SubClass\DecoratorForAop\ILogger.cs" />
+    <Compile Include="SubClass\DecoratorForAop\IRepository.cs" />
+    <Compile Include="SubClass\DecoratorForAop\Logger.cs" />
+    <Compile Include="SubClass\DecoratorForAop\LoggerRepository.cs" />
+    <Compile Include="SubClass\DecoratorForAop\LogRepositoryBase.cs" />
+    <Compile Include="SubClass\DecoratorForAop\RepositoryBase.cs" />
     <Compile Include="SubClass\DecoratorPattern\AbstractDecorator.cs" />
     <Compile Include="SubClass\DecoratorPattern\ConcreteComponent.cs" />
     <Compile Include="SubClass\DecoratorPattern\Decorator.cs" />

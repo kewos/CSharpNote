@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass.MemotoPattern
 {
@@ -12,7 +8,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.MemotoPattern
         {
             return new Memento
             {
-                Infomation = this.GetType().GetProperties().ToDictionary(p => p, p => p.GetValue(this, null))
+                Infomation = GetType().GetProperties().ToDictionary(p => p, p => p.GetValue(this, null))
             };
         }
 

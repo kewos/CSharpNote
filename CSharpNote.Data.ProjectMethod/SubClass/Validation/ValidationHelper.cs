@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharpNote.Data.ProjectMethod.SubClass.Validation
 {
@@ -60,19 +58,8 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.Validation
         /// <returns>是否通過驗証</returns>
         private bool Validation(string code)
         {
-            var records = validationRecords.Where(v => !v.IsReturn);
-            if (records == null || !records.Any())
-            {
-                return true;
-            }
-            foreach (var record in records)
-            {
-                if (!MakeValidation(record)(code))
-                {
-                    return false;
-                }
-            }
-            return true;
+            return validationRecords.Where(v => !v.IsReturn)
+                .All(record => MakeValidation(record)(code));
         }
 
         /// <summary>
@@ -120,12 +107,8 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.Validation
         private bool ValidationType(ValidationRecord record, IEnumerable<char> code)
         {
             var rule = RuleOpertator[record.Type];
-            if (rule == null)
-            {
-                return false;
-            }
 
-            return rule.Invoke(code);
+            return (rule != null) ? rule.Invoke(code) : false;
         }
         #endregion
 
@@ -138,12 +121,8 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.Validation
         public int Parse(string code)
         {
             var parseItem = validationRecords.Where(v => v.IsReturn).FirstOrDefault();
-            if (parseItem == null || !Validation(code))
-            {
-                return -1;
-            }
 
-            return MakeParse(parseItem)(code);
+            return (parseItem != null && Validation(code)) ? MakeParse(parseItem)(code) : -1;
         }
         #endregion
     }

@@ -30,5 +30,17 @@ namespace CSharpNote.Common.Extendsions
                 }
             }
         }
+
+        public static bool In<TType>(this TType source, params TType[] items)
+        {
+            foreach(var item in items)
+            {
+                if (source.Equals(item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

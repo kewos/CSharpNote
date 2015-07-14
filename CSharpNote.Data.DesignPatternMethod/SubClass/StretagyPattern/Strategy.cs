@@ -10,46 +10,37 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.StretagyPattern
 {
     public class StrategyA : StrategyBase
     {
-        public StrategyA() : base()
-        {
-        }
-
         private string Strategy001()
         {
-            return string.Format("Strategy001");
+            return "Strategy001";
         }
 
         private string Strategy002()
         {
-            return string.Format("Strategy002");
+            return "Strategy002";
         }
 
         private string Strategy003()
         {
-            return string.Format("Strategy003");
+            return "Strategy003";
         }
     }
 
     public class StrategyB : StrategyBase
     {
-        public StrategyB()
-            : base()
-        {
-        }
-
         private string Strategy001()
         {
-            return string.Format("Strategy001");
+            return "Strategy001";
         }
 
         private string Strategy002()
         {
-            return string.Format("Strategy002");
+            return "Strategy002";
         }
 
         private string Strategy003()
         {
-            return string.Format("Strategy003");
+            return "Strategy003";
         }
     }
 }
