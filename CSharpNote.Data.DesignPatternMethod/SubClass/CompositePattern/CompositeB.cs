@@ -13,11 +13,5 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.CompositePattern
         public CompositeB()
         {
         }
-
-        public override void Execute(int depth = 0)
-        {
-            GetType().Name.ToConsole(new string('-', depth++ * 2));
-            elements.ForEach(element => element.Execute(depth));
-        }
     }
 }

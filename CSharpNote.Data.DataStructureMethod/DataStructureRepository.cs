@@ -8,7 +8,6 @@ using CSharpNote.Data.DataStructureMethod.SubClass.Buffer;
 using CSharpNote.Data.DataStructureMethod.SubClass.HashTable;
 using CSharpNote.Data.DataStructureMethod.SubClass.Queue;
 using CSharpNote.Data.DataStructureMethod.SubClass.ORM;
-using CSharpNote.Common.Utility.DB;
 using CSharpNote.Data.DataStructureMethod.SubClass.Tree;
 
 namespace CSharpNote.Data.DataStructureMethod

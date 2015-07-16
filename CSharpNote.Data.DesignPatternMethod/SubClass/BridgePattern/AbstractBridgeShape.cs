@@ -6,7 +6,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.BridgePattern
     {
         private readonly IBridgeColor color;
 
-        public AbstractBridgeShape(IBridgeColor color)
+        protected AbstractBridgeShape(IBridgeColor color)
         {
             this.color = color;
         }

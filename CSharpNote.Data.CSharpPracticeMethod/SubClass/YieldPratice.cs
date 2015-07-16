@@ -5,8 +5,8 @@ namespace CSharpNote.Data.CSharpPracticeMethod.SubClass
 {
     public class ChatPipeLine
     {
-        ChatSomething root;
-        ChatSomething curent;
+        IChatSomething root;
+        IChatSomething curent;
 
         public void Collect(Boolean hello, Boolean niceToMeetYou)
         {
@@ -30,41 +30,30 @@ namespace CSharpNote.Data.CSharpPracticeMethod.SubClass
             Release(root);
         }
 
-        public void Release(ChatSomething current)
+        public void Release(IChatSomething current)
         {
             current.Speak("Kewos");
             if (current.Next != null) Release(current.Next);
         }
 
-        public IEnumerable<ChatSomething> GenerateChatContent(Boolean hello, Boolean niceToMeetYou)
+        public IEnumerable<IChatSomething> GenerateChatContent(Boolean hello, Boolean niceToMeetYou)
         {
             yield return new SayHello();
             yield return new NiceToMeetYou();
         }
     }
 
-    public interface ChatSomething
+    public interface IChatSomething
     {
         void Speak(string name);
-        ChatSomething Next { set; get; }
+        IChatSomething Next { set; get; }
     }
 
-    public abstract class BasicChat : ChatSomething
+    public abstract class BasicChat : IChatSomething
     {
         public abstract void Speak(string name);
 
-        ChatSomething next;
-        public ChatSomething Next
-        {
-            get
-            {
-                return next;
-            }
-            set
-            {
-                next = value;
-            }
-        }
+        public IChatSomething Next { get; set; }
     }
 
 

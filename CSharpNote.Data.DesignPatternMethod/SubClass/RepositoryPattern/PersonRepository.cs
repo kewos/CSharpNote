@@ -18,7 +18,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern
         {
             using (var context = new FakeDbContext())
             {
-                return context.GetDbSet<Person>().Where(p => p.LastName == lastName).FirstOrDefault();
+                return context.GetDbSet<Person>().FirstOrDefault(p => p.LastName == lastName);
             }
         }
 
@@ -35,7 +35,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern
         {
             using (var context = new FakeDbContext())
             {
-                var person = context.GetDbSet<Person>().Where(p => p.LastName == lastName).FirstOrDefault();
+                var person = context.GetDbSet<Person>().FirstOrDefault(p => p.LastName == lastName);
                 {
                     person.LastName = updatedPerson.LastName;
                     person.FirstName = updatedPerson.FirstName;
@@ -48,7 +48,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern
         {
             using (var context = new FakeDbContext())
             {
-                var person = context.GetDbSet<Person>().Where(p => p.LastName == lastName).FirstOrDefault();
+                var person = context.GetDbSet<Person>().FirstOrDefault(p => p.LastName == lastName);
                 context.GetDbSet<Person>().Remove(person);
                 context.SaveChanges();
             }

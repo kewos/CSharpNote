@@ -4,7 +4,7 @@ namespace CSharpNote.Client
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Bootstrap.Config().GetInstance<ICSharpNotePresenter>().Start();
         }

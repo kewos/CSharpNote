@@ -25,17 +25,12 @@ namespace CSharpNote.Client
         {
             var resource = cSharperNoteService.GetRepositoryNames();
 
-            cSharpNoteView.SelectAndShowOnConsole(resource, index => InvokeRepository(index));
-        }
-
-        private void InvokeRepository(int index)
-        {
-            ShowMethodInfo(cSharperNoteService[index]);
+            cSharpNoteView.SelectAndShowOnConsole(resource, index => ShowMethodInfo(cSharperNoteService[index]));
         }
 
         private void ShowMethodInfo(IMethodRepository repository)
         {
-            var resource = repository.ValidationNotNull().GetMethodNames();
+            var resource = repository.GetMethodNames();
 
             cSharpNoteView.SelectAndShowOnConsole(resource, index => InvokeMethodInfo(index, repository));
         }

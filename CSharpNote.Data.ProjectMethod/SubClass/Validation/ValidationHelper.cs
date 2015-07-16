@@ -108,7 +108,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.Validation
         {
             var rule = RuleOpertator[record.Type];
 
-            return (rule != null) ? rule.Invoke(code) : false;
+            return rule != null && rule.Invoke(code);
         }
         #endregion
 
@@ -120,9 +120,11 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.Validation
         /// <returns>簡碼</returns>
         public int Parse(string code)
         {
-            var parseItem = validationRecords.Where(v => v.IsReturn).FirstOrDefault();
+            var parseItem = validationRecords.FirstOrDefault(v => v.IsReturn);
 
-            return (parseItem != null && Validation(code)) ? MakeParse(parseItem)(code) : -1;
+            return parseItem != null && Validation(code) 
+                ? MakeParse(parseItem)(code) 
+                : -1;
         }
         #endregion
     }

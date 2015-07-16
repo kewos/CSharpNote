@@ -2,7 +2,7 @@
 {
     public abstract class ObjectBase
     {
-        private static NullObject nullObject = new NullObject();
+        private static readonly NullObject nullObject = new NullObject();
 
         public virtual string GetTypeName 
         {

@@ -7,7 +7,7 @@ namespace CSharpNote.Client
 {
     public class CSharpNoteView : ICSharpNoteView
     {
-        public void SelectAndShowOnConsole<T>(IEnumerable<T> menu, Action<int> AfterAction)
+        public void SelectAndShowOnConsole<T>(IEnumerable<T> menu, Action<int> afterAction)
         {
             while (true)
             {
@@ -17,7 +17,7 @@ namespace CSharpNote.Client
 
                     if (input == -1) break;
 
-                    AfterAction(input);
+                    afterAction(input);
 
                     Console.ReadLine();
                 }

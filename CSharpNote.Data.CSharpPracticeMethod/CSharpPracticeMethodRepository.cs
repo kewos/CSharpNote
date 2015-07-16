@@ -52,7 +52,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         public void CountIntLength()
         {
             //數字長度
-            int i = 165446546;
+            var i = 165446546;
             Console.WriteLine("int i = 165446546 長度為{0}", Convert.ToString(i).Count());
         }
 
@@ -69,7 +69,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             //~ 可以取數值補數0x00000000 to 0xffffffff
             Console.WriteLine("取補數");
             int[] values = { 0, 0xfffff };
-            foreach (int v in values)
+            foreach (var v in values)
             {
                 Console.WriteLine("~0x{0:x8} = 0x{1:x8}", v, ~v);
             }
@@ -79,16 +79,16 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         public void DoublePuzzleSymbol()
         {
             //?? 如果左邊為空就設定右邊 如果左邊不為空就設定左邊
-            string s = null ?? "test";
+            var s = null ?? "test";
             Console.WriteLine("string s = null ?? test\ns = {0}", s);
         }
 
         [MarkedItem]
         public void SplitChar()
         {
-            string targetString = "Test#Hello#World#Test";
-            string[] spliteStrings = targetString.Split("#".ToCharArray());
-            for (int i = 0; i < spliteStrings.Count(); i++)
+            var targetString = "Test#Hello#World#Test";
+            var spliteStrings = targetString.Split("#".ToCharArray());
+            for (var i = 0; i < spliteStrings.Count(); i++)
             {
                 Console.WriteLine(spliteStrings.Count());
                 Console.WriteLine(spliteStrings[i]);
@@ -98,13 +98,13 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         [MarkedItem]
         public void ExportTxt()
         {
-            string path = @"";
+            var path = @"";
             if (!System.IO.File.Exists(path))
                 using (System.IO.File.Create(path)) { }
 
-            using (System.IO.StreamWriter sw = new System.IO.StreamWriter(path, true))
+            using (var sw = new System.IO.StreamWriter(path, true))
             {
-                for (int i = 1; i <= 100; i++)
+                for (var i = 1; i <= 100; i++)
                     sw.WriteLine("<key name=\"Level {0}\" value=\"{1}\"/>", i, i);
             }
         }
@@ -148,7 +148,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         public void PassAnonymousParameter()
         {
             HandleAnonymousParameter(
-                new List<dynamic>()
+                new List<dynamic>
                 {
                     new
                     {
@@ -180,7 +180,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
 
         private void HandleAnonymousParameter(dynamic anonymousList)
         {
-            foreach (dynamic anonymousPerson in anonymousList)
+            foreach (var anonymousPerson in anonymousList)
             {
                 anonymousPerson.Speak(anonymousPerson.Name);
             }
@@ -212,7 +212,7 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         [System.ComponentModel.Description("All 範例")]
         public void PracticeLinqAllMethod()
         {
-            List<dynamic> rules = new List<dynamic>()
+            var rules = new List<dynamic>()
             {
                 new
                 {
@@ -231,30 +231,27 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 },
             };
 
-            var People = new
+            var people = new
                 {
                     Name = "aa",
                     ID = 485489,
                     Age = 25
                 };
 
-            bool conform = rules.All(rule => rule.Test(People));
-
-            if (conform)
+            if (rules.All(rule => rule.Test(people)))
             {
-                foreach (var failState in rules.Where(rule => rule.Test(People) == false))
+                foreach (var failState in rules.Where(rule => !rule.Test(people)))
                 {
                     Console.WriteLine(failState.Message);
                 }
-
             }
         }
 
         [MarkedItem]
         public void StringJoinAndSplit()
         {
-            string s = @"safdasd@fw#opfjkdsokjgpoijegrij$jjrgeoe$r";
-            string[] ss = s.Split(new[] { '@', '#', '$' });
+            var s = @"safdasd@fw#opfjkdsokjgpoijegrij$jjrgeoe$r";
+            var ss = s.Split(new[] { '@', '#', '$' });
             Console.WriteLine(string.Join("~~~~", ss));
         }
 
@@ -315,9 +312,9 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         public void LinqGroup()
         {
             var employees = new List<dynamic> {
-				new { ID=1, Name="Scott", DepartmentID=1 },
-				new { ID=2, Name="Poonam", DepartmentID=1 },
-				new { ID=3, Name="Andy", DepartmentID=2}
+				new { ID = 1, Name = "Scott", DepartmentID = 1 },
+				new { ID = 2, Name = "Poonam", DepartmentID = 1 },
+				new { ID = 3, Name = "Andy", DepartmentID = 2}
 			};
 
             foreach (var data in from e in employees
@@ -339,9 +336,9 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         [MarkedItem]
         public void ParallelForeach()
         {
-            object obj = new object();
-            object obj1 = new object();
-            int count = 0;
+            var obj = new object();
+            var obj1 = new object();
+            var count = 0;
             Parallel.For(1, 10 + 1, (num) =>
                 {
                     lock (obj)
@@ -380,16 +377,16 @@ namespace CSharpNote.Data.CSharpPracticeMethod
 
             Console.WriteLine("Using SelectMany():");
 
-            foreach (string pet in petOwners.SelectMany(petOwner => petOwner.Pets))
+            foreach (var pet in petOwners.SelectMany(petOwner => petOwner.Pets))
             {
                 Console.WriteLine(pet);
             }
 
             Console.WriteLine("\nUsing Select():");
 
-            foreach (List<String> petList in petOwners.Select(petOwner => petOwner.Pets))
+            foreach (var petList in petOwners.Select(petOwner => petOwner.Pets))
             {
-                foreach (string pet in petList)
+                foreach (var pet in petList)
                 {
                     Console.WriteLine(pet);
                 }
@@ -409,15 +406,15 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         {
             string[] words = { "believe", "relief", "receipt", "field" };
             // if (state1 || state2 || state3 || state4)
-            bool CheckByOr = "believe".Contains("pt") || "relief".Contains("pt") || "receipt".Contains("pt") || "field".Contains("pt");
-            bool CheckByAny = words.Any(w => w.Contains("pt"));
-
+            var CheckByOr = "believe".Contains("pt") || "relief".Contains("pt") || "receipt".Contains("pt") || "field".Contains("pt");
+            var CheckByAny = words.Any(w => w.Contains("pt"));
+            
             Console.WriteLine("CheckByOr and CheckByAny have same state : {0}", (CheckByOr == CheckByAny));
 
             // if (state1 && state2 && state3 && state4)
             int[] numbers = { 1, 11, 3, 19, 41, 65, 19 };
-            bool CheckByAll = numbers.All(n => n % 2 == 1);
-            bool CheckByAnd =
+            var CheckByAll = numbers.All(n => n % 2 == 1);
+            var CheckByAnd =
                 (1 % 2 == 1 && 11 % 2 == 1 && 3 % 2 == 1 && 19 % 2 == 1 && 41 % 2 == 1 && 65 % 2 == 1);
 
             Console.WriteLine("CheckByAll and CheckByAnd have same state : {0}", (CheckByAll == CheckByAnd));
@@ -1894,10 +1891,8 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         public void PerformanceVariable()
         {
             #region Action1
-            using (var tm = new TimeMeasurer())
+            using (new TimeMeasurer("Action1"))
             {
-                tm.Message = "Action1";
-
                 foreach (var i in Enumerable.Range(1, 10000000))
                 {
                     var j = i + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1;
@@ -1906,10 +1901,8 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             #endregion
 
             #region Action2
-            using (var tm = new TimeMeasurer())
+            using (new TimeMeasurer("Action2"))
             {
-                tm.Message = "Action2";
-
                 foreach (var i in Enumerable.Range(1, 10000000))
                 {
                     var j = i + (Int32)(1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1);
@@ -1925,10 +1918,8 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         public void PerformaceStringNull()
         {
             #region Action1
-            using (var tm = new TimeMeasurer())
+            using (new TimeMeasurer("1. ''"))
             {
-                tm.Message = "1. ''";
-
                 foreach (var i in Enumerable.Range(1, 10000000))
                 {
                     string s = null;
@@ -1940,10 +1931,8 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             #endregion
 
             #region Action2
-            using (var tm = new TimeMeasurer())
+            using (new TimeMeasurer("2.string.Empty"))
             {
-                tm.Message = "2.string.Empty";
-
                 foreach (var i in Enumerable.Range(1, 10000000))
                 {
                     string s = null;
@@ -1955,10 +1944,8 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             #endregion
 
             #region Action3
-            using (var tm = new TimeMeasurer())
+            using (new TimeMeasurer("3.IsNullOrEmpty"))
             {
-                tm.Message = "3.IsNullOrEmpty";
-
                 foreach (var i in Enumerable.Range(1, 10000000))
                 {
                     string s = null;
@@ -1982,10 +1969,8 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             var elements = Enumerable.Range(65, 26).Select(n => (char)n);
 
             #region Action1
-            using (var tm = new TimeMeasurer())
+            using (new TimeMeasurer("1. + operator"))
             {
-                tm.Message = "1. + operator";
-
                 var chars = elements.ToList();
                 foreach (var i in Enumerable.Range(1, 100000))
                 {
@@ -1999,10 +1984,8 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             #endregion
 
             #region Action2
-            using (var tm = new TimeMeasurer())
+            using (new TimeMeasurer("2. String StringBuilder"))
             {
-                tm.Message = "2. String StringBuilder";
-
                 var chars = elements.ToList();
                 foreach (var i in Enumerable.Range(1, 100000))
                 {
@@ -2017,10 +2000,8 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             #endregion
 
             #region Action3
-            using (var tm = new TimeMeasurer())
+            using (new TimeMeasurer("3. String Join"))
             {
-                tm.Message = "3. String Join";
-
                 var chars = elements.ToList();
                 foreach (var i in Enumerable.Range(1, 100000))
                 {
@@ -2030,10 +2011,8 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             #endregion
 
             #region Action4
-            using (var tm = new TimeMeasurer())
+            using (new TimeMeasurer("4. String Concat"))
             {
-                tm.Message = "4. String Concat";
-
                 var chars = elements.ToList();
                 foreach (var i in Enumerable.Range(1, 100000))
                 {
@@ -2083,14 +2062,11 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             Console.WriteLine("Umm... why hasn't the universe ended yet?");
         }
 
-        private event Action<int> Testt;
-
         [MarkedItem]
         public void ExpressionVSLamdaPerformance()
         {
-            using (var tm = new TimeMeasurer())
+            using (new TimeMeasurer("1. Lamda"))
             {
-                tm.Message = "1. Lamda";
                 Func<int, int> action = (x) => x * x;
                 foreach (var i in Enumerable.Range(1, 100000))
                 {
@@ -2098,9 +2074,8 @@ namespace CSharpNote.Data.CSharpPracticeMethod
                 }
             }
 
-            using (var tm = new TimeMeasurer())
+            using (new TimeMeasurer("2. Expression"))
             {
-                tm.Message = "2. Expression";
                 Expression<Func<int, int>> myExpression = (x) => x * x;
                 var p = myExpression.Compile();
                 foreach (var i in Enumerable.Range(1, 100000))

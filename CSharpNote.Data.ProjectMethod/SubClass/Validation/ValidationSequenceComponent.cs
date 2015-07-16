@@ -27,7 +27,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.Validation
         {
             if (record.IsReverse && record.Notification != string.Empty && record.Take != null)
             {
-                int take = record.Take.GetValueOrDefault();
+                var take = record.Take.GetValueOrDefault();
                 code = code.Take(take);
                 code = code.Reverse();
             }

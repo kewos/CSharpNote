@@ -1,17 +1,19 @@
 ﻿using System.Collections.Generic;
+using CSharpNote.Common.Extendsions;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass.CompositePattern
 {
     public abstract class CompositeBase<T> : IComposite<T>
+        where T : IComponent
     {
         protected readonly IList<T> elements;
 
-        public CompositeBase()
+        protected CompositeBase()
+            : this(new List<T>())
         {
-            elements = new List<T>();
         }
 
-        public CompositeBase(IList<T> elements)
+        protected CompositeBase(IList<T> elements)
         {
             this.elements = elements;
         }
@@ -26,6 +28,11 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.CompositePattern
             elements.Remove(component);
         }
 
-        public abstract void Execute(int depth);
+        public virtual void Execute(int depth = 0)
+        {
+            GetType().Name.ToConsole(new string('-', depth++ * 2));
+
+            elements.ForEach(element => element.Execute(depth));
+        }
     }
 }

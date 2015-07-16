@@ -12,27 +12,28 @@ namespace CSharpNote.Common.Utility
     /// 於Dispose stop StopWatch
     /// 
     /// 使用方式
-    /// Using(var tm = new TimeMeasurer())
+    /// Using(new TimeMeasurer("xxx"))
     /// {
-    ///     tm.Message = "xxx";
+    ///     your action
     /// }
     /// </summary>
     public class TimeMeasurer : IDisposable
     {
         #region Constructor
-        public TimeMeasurer()
-            : this(new Stopwatch())
+        public TimeMeasurer(string message = "")
+            : this(new Stopwatch(), message)
         { 
         }
 
-        public TimeMeasurer(Stopwatch stopWatch)
+        public TimeMeasurer(Stopwatch stopWatch, string message = "")
         {
-            this.StopWatch = stopWatch;
-
             if (StopWatch == null)
             {
                 return;
             }
+
+            StopWatch = stopWatch;
+            Message = message;
 
             StopWatch.Start();
         }
@@ -40,7 +41,7 @@ namespace CSharpNote.Common.Utility
 
         #region Property
         private Stopwatch StopWatch { get; set; }
-        public string Message { get; set; } 
+        private string Message { get; set; } 
         #endregion
 
         #region IDisposable Member

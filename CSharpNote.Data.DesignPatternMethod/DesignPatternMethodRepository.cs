@@ -34,6 +34,7 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.ReactPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.LazyInitial;
 using CSharpNote.Data.DesignPatternMethod.SubClass.MemotoPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.Aop;
+using CSharpNote.Data.DesignPatternMethod.SubClass.StateMachine;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
@@ -641,6 +642,12 @@ namespace CSharpNote.Data.DesignPatternMethod
                 Console.WriteLine("Atk:{0} Hp:{1} Weapon:{2}", originator.Atk, originator.Hp, originator.Weapon);
             }
           
+        }
+
+        [MarkedItem]
+        public void StateMachine()
+        {
+            new StateCommandHandler().Execute();
         }
     }
 }

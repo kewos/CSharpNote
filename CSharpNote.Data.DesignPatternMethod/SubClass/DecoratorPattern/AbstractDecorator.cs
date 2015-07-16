@@ -6,7 +6,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.DecoratorPattern
     {
         protected readonly IComponent component;
 
-        public AbstractDecorator(IComponent component)
+        protected AbstractDecorator(IComponent component)
         {
             if (component == null)
                 throw new ArgumentException();

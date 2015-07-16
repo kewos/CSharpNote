@@ -24,13 +24,13 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.ChainResponsibilityPatter
 
         private void NextProcess(IHandlerCommand handlerCommand)
         {
-            if (!hasNextProcess)
+            if (!HasNextProcess)
                 throw new ArgumentNullException("NoFindMatchHandler");
 
             nextHandler.Execute(handlerCommand);
         }
 
-        private bool hasNextProcess
+        private bool HasNextProcess
         {
             get { return (nextHandler != null); }
         }

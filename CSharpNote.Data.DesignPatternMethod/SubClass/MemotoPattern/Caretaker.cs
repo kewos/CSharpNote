@@ -6,7 +6,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.MemotoPattern
 {
     public class Caretaker : ICaretaker
     {
-        private List<Memento> mementos;
+        private readonly List<Memento> mementos;
 
         public Caretaker()
         {

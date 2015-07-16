@@ -10,7 +10,7 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.StretagyPattern
     {
         private readonly Dictionary<string, Func<string>> strategies;
 
-        public StrategyBase()
+        protected StrategyBase()
         {
             //透過反射可符合close open principle
             strategies = GetType().GetMethods

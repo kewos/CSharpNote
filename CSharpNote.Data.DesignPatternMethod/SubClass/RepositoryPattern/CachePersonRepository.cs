@@ -7,9 +7,9 @@ namespace CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern
 {
     public class CachePersonRepository : IPersonRepository
     {
-        private TimeSpan cacheDuration = TimeSpan.FromSeconds(30);
+        private readonly TimeSpan cacheDuration = TimeSpan.FromSeconds(30);
         private DateTime lastUpdateDateTime;
-        private IPersonRepository personRepository;
+        private readonly IPersonRepository personRepository;
         private IEnumerable<Person> cacheItems;
 
         /// <summary>
