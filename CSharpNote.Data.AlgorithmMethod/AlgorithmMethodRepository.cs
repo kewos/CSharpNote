@@ -3445,5 +3445,104 @@ namespace CSharpNote.Data.AlgorithmMethod
                 ones += (n / m + 8) / 10 * m + (n / m % 10 == 1 ? n % m + 1 : 0);
             return (int)ones;
         }
+
+        [MarkedItem("https://leetcode.com/problems/product-of-array-except-self/")]
+        public void ProductExceptSelf()
+        {
+            var set = new [] {1, 1};
+            ProductExceptSelf(set).Dump();
+        }
+
+        public int[] ProductExceptSelf(int[] nums)
+        {
+            if (nums.Count() < 2)
+            {
+                return null;
+            }
+            var zeroCount = nums.Where(x => x == 0).Count();
+            if (zeroCount >= 2)
+            {
+                return nums.Select(x => 0).ToArray();
+            }
+            var total = nums.Where(x => x != 0).Aggregate((a, b) => a * b);
+
+            return zeroCount != 1 
+                ? nums.Select(x => total / x).ToArray() 
+                : nums.Select(x => x == 0 ? total : 0).ToArray();
+        }
+
+        [MarkedItem]
+        public void TwoSumⅠ()
+        {
+            TwoSumⅠ(new[] {3, 2, 4}, 6);
+        }
+
+        public int[] TwoSumⅠ(int[] nums, int target)
+        {
+            var length = nums.Length;
+            var dictionary = new Dictionary<int, int>();
+            for (var i = 0; i < length; i++)
+            {
+                var num = nums[i];
+                if (dictionary.ContainsKey(num))
+                {
+                    return new[] {dictionary[num] + 1, i + 1};
+                }
+                dictionary[target - num] = i;
+            }
+            throw new ArgumentException("Invalid argument.");
+        }
+
+        [MarkedItem]
+        public void ContainsDuplicate()
+        {
+
+        }
+
+        public bool ContainsDuplicate(int[] nums)
+        {
+            if (nums.Length == 0)
+                return false;
+            var set = new HashSet<int>();
+            foreach(var num in nums)
+            {
+                if (set.Contains(num))
+                    return false;
+                set.Add(num);
+            }
+            return true;
+        }
+
+        [MarkedItem("https://leetcode.com/problems/contains-duplicate-ii/")]
+        public void ContainsNearbyDuplicate()
+        {
+
+        }
+
+        public bool ContainsNearbyDuplicate(int[] nums, int k)
+        {
+            if (nums.Length < 2)
+            {
+                return false;
+            }
+
+            var dic = new Dictionary<int, HashSet<int>>();
+            for (var index = 0; index < nums.Length; index++)
+            {
+                var num = nums[index];
+                if (!dic.ContainsKey(num))
+                {
+                    dic.Add(num, new HashSet<int> { index });
+                    continue;
+                }
+                var hashSet = dic[num];
+                if (hashSet.Any(x => index - x <= k))
+                {
+                    return true;
+                }
+                hashSet.Add(index);
+            }
+            return false;
+        }
     }
 }

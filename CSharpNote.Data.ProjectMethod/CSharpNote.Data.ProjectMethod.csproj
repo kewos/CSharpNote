@@ -41,6 +41,21 @@
   <ItemGroup>
     <Compile Include="ProjectMethodRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubClass\ORM\ConvertFactory.cs" />
+    <Compile Include="SubClass\ORM\Custom.cs" />
+    <Compile Include="SubClass\ORM\ConvertHelper.cs" />
+    <Compile Include="SubClass\ORM\TypeConvert\StringToIntNullable.cs" />
+    <Compile Include="SubClass\ORM\TypeConvert\StringToBool.cs" />
+    <Compile Include="SubClass\ORM\TypeConvert\StringToBoolNullable.cs" />
+    <Compile Include="SubClass\ORM\TypeConvert\StringToFloat.cs" />
+    <Compile Include="SubClass\ORM\TypeConvert\StringToFloatNullable.cs" />
+    <Compile Include="SubClass\ORM\TypeConvert\StringToDateTimeNullable.cs" />
+    <Compile Include="SubClass\ORM\TypeConvert\StringToDateTime.cs" />
+    <Compile Include="SubClass\ORM\TypeConvert\StringToEnum.cs" />
+    <Compile Include="SubClass\ORM\TypeConvert\StringToInt.cs" />
+    <Compile Include="SubClass\ORM\TypeConvert\DefaultConvert.cs" />
+    <Compile Include="SubClass\ORM\TypeConvert\IStringTypeConvert.cs" />
+    <Compile Include="SubClass\ORM\TypeConvert\ITypeConvert.cs" />
     <Compile Include="SubClass\ResultData\ResultData.cs" />
     <Compile Include="SubClass\Validation\ValidationRecord.cs" />
     <Compile Include="SubClass\Validation\ValidationSequenceComponent.cs" />
@@ -58,6 +73,7 @@
       <Name>CSharpNote.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -2086,29 +2086,9 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         }
 
         [MarkedItem]
-        public void TestYield()
+        public void ContainerPerformance()
         {
-            foreach (var i in YieldSomething(100))
-            {
-                i.ToConsole();
-            }
         }
 
-        public IEnumerable<int> YieldSomething(int max)
-        {
-            foreach (var i in Enumerable.Range(0, max))
-            {
-                if (i % 3 == 0)
-                {
-                    yield return i;
-                }
-                if (i % 5 == 0)
-                {
-                    continue;
-                }
-
-                yield return i;
-            }
-        }
     }
 }

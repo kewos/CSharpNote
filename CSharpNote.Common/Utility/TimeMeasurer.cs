@@ -27,7 +27,7 @@ namespace CSharpNote.Common.Utility
 
         public TimeMeasurer(Stopwatch stopWatch, string message = "")
         {
-            if (StopWatch == null)
+            if (stopWatch == null)
             {
                 return;
             }

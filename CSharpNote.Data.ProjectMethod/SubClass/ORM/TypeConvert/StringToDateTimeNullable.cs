@@ -1,0 +1,20 @@
+﻿using System;
+
+namespace CSharpNote.Data.ProjectMethod.SubClass.ORM.TypeConvert
+{
+    /// <summary>
+    /// 字串轉DateTime?
+    /// </summary>
+    public class StringToDateTimeNullable : IStringTypeConvert<DateTime?>
+    {
+        public DateTime? Convert(string input)
+        {
+            DateTime value;
+            if (DateTime.TryParse(input, out value))
+            {
+                return value;
+            }
+            return null;
+        }
+    }
+}

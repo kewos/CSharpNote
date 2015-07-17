@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extendsions;
+using CSharpNote.Common.Utility;
 using CSharpNote.Core.Implements;
+using CSharpNote.Data.ProjectMethod.SubClass.ORM;
 using CSharpNote.Data.ProjectMethod.SubClass.Validation;
 using CSharpNote.Data.ProjectMethod.SubClass.ResultData;
 
@@ -63,6 +66,48 @@ namespace CSharpNote.Data.ProjectMethod
             {
                 Console.WriteLine(data2.ToString());
                 Console.WriteLine(data2.GetData<int>());
+            }
+        }
+
+        [MarkedItem]
+        public void ORM()
+        {
+            var data = new List<Dictionary<string, string>>
+            {
+                new Dictionary<string, string>
+                {
+                    {"Name", "tt"},
+                    {"Id", "111"},
+                    {"Phone", "111"},
+                    {"Test", "True"},
+                    {"TestNullable", ""},
+                    {"Money", "1010.22"},
+                    {"CreateOn", "2015/3/11"},
+                    {"ModifyOn", ""},
+                    {"Level", "VIP"}
+                },
+                new Dictionary<string, string>
+                {
+                    {"Name", "tt"},
+                    {"Id", "111"},
+                    {"Phone", ""},
+                    {"Test", "false"},
+                    {"TestNullable", "FaLse"},
+                    {"Money", "1010.22"},
+                    {"CreateOn", "2015/3/11"},
+                    {"ModifyOn", ""},
+                    {"Level", "Normal"}
+                },
+            };
+
+            var helper = new ConvertHelper();
+            using (new TimeMeasurer("Convert 200000Times"))
+            {
+                Enumerable.Range(1, 100000).ForEach(x =>
+                {
+                    var item = helper.Convert<Custom>(data).ToList();
+                    var a = 0;
+                });
             }
         }
     }

@@ -6,9 +6,9 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ResultData
     public class ResultData
     {
         #region Field
-        private Boolean success;
-        private String message;
-        private Object data;
+        private readonly bool success;
+        private readonly string message;
+        private readonly object data;
         #endregion
 
         #region Constructor
@@ -16,7 +16,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ResultData
         { 
         }
 
-        public ResultData(Exception exception, String extraInfo = "")
+        public ResultData(Exception exception, string extraInfo = "")
         {
             success = false;
 
@@ -30,7 +30,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ResultData
             message = sb.ToString();
         }
 
-        public ResultData(Boolean success, String message = "", Object data = null)
+        public ResultData(bool success, string message = "", object data = null)
         {
             this.success = success;
             this.message = message;
@@ -39,21 +39,21 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ResultData
         #endregion
 
         #region Property
-        public Boolean Success 
+        public bool Success 
         { 
             get 
             { 
                 return success; 
             }
         }
-        public String Message 
+        public string Message 
         { 
             get 
             { 
                 return message; 
             } 
         }
-        public Object Data 
+        public object Data 
         { 
             get 
             { 
@@ -63,7 +63,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ResultData
         #endregion
 
         #region MyRegion
-        public override String ToString()
+        public override string ToString()
         {
             return message;
         }
@@ -75,22 +75,22 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ResultData
         #endregion
 
         #region Type Conversion
-        public static implicit operator Boolean(ResultData result)
+        public static implicit operator bool(ResultData result)
         {
             return result.success;
         }
 
-        public static implicit operator String(ResultData result)
+        public static implicit operator string(ResultData result)
         {
             return result.message;
         }
 
-        public static implicit operator ResultData(String result)
+        public static implicit operator ResultData(string result)
         {
-            return new ResultData(result == String.Empty, result);
+            return new ResultData(result == string.Empty, result);
         }
 
-        public static implicit operator ResultData(Boolean result)
+        public static implicit operator ResultData(bool result)
         {
             return new ResultData(result);
         }

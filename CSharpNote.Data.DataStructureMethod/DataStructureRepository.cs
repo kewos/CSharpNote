@@ -7,7 +7,6 @@ using CSharpNote.Core.Implements;
 using CSharpNote.Data.DataStructureMethod.SubClass.Buffer;
 using CSharpNote.Data.DataStructureMethod.SubClass.HashTable;
 using CSharpNote.Data.DataStructureMethod.SubClass.Queue;
-using CSharpNote.Data.DataStructureMethod.SubClass.ORM;
 using CSharpNote.Data.DataStructureMethod.SubClass.Tree;
 
 namespace CSharpNote.Data.DataStructureMethod
@@ -156,26 +155,6 @@ namespace CSharpNote.Data.DataStructureMethod
         }
 
         [MarkedItem]
-        public void ORM()
-        {
-            var db = new CustomerFactory().GetCustoms();
-            var result = new List<Customer>();
-
-            foreach (var row in db)
-            {
-                var customer = new Customer();
-                foreach (var property in customer.GetType().GetProperties())
-                {
-                    Type[] typeArgs = { typeof(string), property.GetType() };
-                    var converter = typeof(TypeConverterFactory).GetMethod("GetConverter").MakeGenericMethod(typeArgs).Invoke(null, null) as dynamic;
-                    var value = converter.Convert(row.GetValueOrDefault(property.Name));
-                    property.SetValue(customer, value, null);
-                }
-                result.Add(customer);
-            }
-        }
-
-        [MarkedItem]
         public void BinaryTree()
         {
             var n7 = new TreeNode<int>(7);
@@ -199,62 +178,5 @@ namespace CSharpNote.Data.DataStructureMethod
         }
     }
 
-    public class TypeConverterFactory
-    {
-        public static IConverter<TInput, TOutput> GetConverter<TInput, TOutput>()
-        {
-            Type[] typeArgs = { typeof(TInput) };
-
-            if (typeof(TInput) == typeof(int))
-            {
-                return Activator.CreateInstance(typeof(IntegerConverter<>)
-                    .MakeGenericType(typeArgs)) as dynamic;
-            }
-            if (typeof(TInput) == typeof(string))
-            {
-                return Activator.CreateInstance(typeof(StringConverter<>)
-                    .MakeGenericType(typeArgs)) as dynamic;
-            }
-            return null;
-        }
-    }
-
-    public interface IConverter<TInput, TOutput>
-    {
-        TOutput DefaultValue { get; }
-        TOutput Convert(TInput input);
-    }
-
-    public class StringConverter<TInput> : IConverter<TInput, string>
-    {
-        
-        public string DefaultValue
-        {
-            get { return ""; }
-        }
-
-        public string Convert(TInput input)
-        {
-            if (input == null)
-                return DefaultValue;
-
-            return input.ToString();
-        }
-    }
-
-    public class IntegerConverter<TInput> : IConverter<TInput, int>
-    {
-        public int DefaultValue
-        {
-            get { return 0; }
-        }
-
-        public int Convert(TInput input)
-        {
-            if (input == null)
-                return DefaultValue;
-
-            return System.Convert.ToInt32(input);
-        }
-    }
+   
 }
