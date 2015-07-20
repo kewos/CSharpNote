@@ -36,9 +36,9 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ORM
                     var type = properties[column.Key].PropertyType;
                     var value = !type.IsEnum
                         ? factory.Create(type).Convert(column.Value)
-                        : typeof(StringToEnum).GetMethod("Convert")
+                        : typeof(StringToEnum<>).GetMethod("Convert")
                             .MakeGenericMethod(type)
-                            .Invoke(factory.Create(type), new[] { column.Value });
+                            .Invoke(factory.Create(type), new [] { column.Value });
 
                     properties[column.Key].SetValue(instance, value);
                 }

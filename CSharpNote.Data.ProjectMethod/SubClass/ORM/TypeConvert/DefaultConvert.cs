@@ -3,7 +3,7 @@
     /// <summary>
     /// 預設字串轉字串
     /// </summary>
-    public class DefaultConvert : IStringTypeConvert<string>
+    public class DefaultConvert : IStringConvert<string>
     {
         public string Convert(string input)
         {

@@ -5,7 +5,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ORM.TypeConvert
     /// <summary>
     /// 字串轉DateTime?
     /// </summary>
-    public class StringToDateTimeNullable : IStringTypeConvert<DateTime?>
+    public class StringToDateTimeNullable : IStringConvert<DateTime?>
     {
         public DateTime? Convert(string input)
         {

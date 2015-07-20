@@ -15,7 +15,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ORM
 
         public ConvertFactory()
         {
-            converterDictionary = Assembly.GetAssembly(typeof(IStringTypeConvert<>))
+            converterDictionary = Assembly.GetAssembly(typeof(IStringConvert<>))
                 .GetTypes()
                 .Where(
                     @type =>

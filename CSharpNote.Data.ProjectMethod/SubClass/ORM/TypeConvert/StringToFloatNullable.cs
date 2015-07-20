@@ -3,7 +3,7 @@
     /// <summary>
     /// 字串轉float?
     /// </summary>
-    public class StringToFloatNullable : IStringTypeConvert<float?>
+    public class StringToFloatNullable : IStringConvert<float?>
     {
         public float? Convert(string input)
         {

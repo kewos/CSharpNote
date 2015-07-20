@@ -54,7 +54,7 @@
     <Compile Include="SubClass\ORM\TypeConvert\StringToEnum.cs" />
     <Compile Include="SubClass\ORM\TypeConvert\StringToInt.cs" />
     <Compile Include="SubClass\ORM\TypeConvert\DefaultConvert.cs" />
-    <Compile Include="SubClass\ORM\TypeConvert\IStringTypeConvert.cs" />
+    <Compile Include="SubClass\ORM\TypeConvert\IStringConvert.cs" />
     <Compile Include="SubClass\ORM\TypeConvert\ITypeConvert.cs" />
     <Compile Include="SubClass\ResultData\ResultData.cs" />
     <Compile Include="SubClass\Validation\ValidationRecord.cs" />

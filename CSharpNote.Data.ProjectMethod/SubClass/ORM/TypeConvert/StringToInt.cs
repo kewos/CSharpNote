@@ -5,7 +5,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ORM.TypeConvert
     /// <summary>
     /// 字串轉Int
     /// </summary>
-    public class StringToInt : IStringTypeConvert<int>
+    public class StringToInt : IStringConvert<int>
     {
         public int Convert(string input)
         {

@@ -5,7 +5,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ORM.TypeConvert
     /// <summary>
     /// 字串轉bool
     /// </summary>
-    public class StringToBool : IStringTypeConvert<bool>
+    public class StringToBool : IStringConvert<bool>
     {
         public bool Convert(string input)
         {

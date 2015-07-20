@@ -3,7 +3,7 @@
     /// <summary>
     /// 字串轉bool?
     /// </summary>
-    public class StringToBoolNullable : IStringTypeConvert<bool?>
+    public class StringToBoolNullable : IStringConvert<bool?>
     {
         public bool? Convert(string input)
         {

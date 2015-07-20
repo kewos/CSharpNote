@@ -3,7 +3,7 @@
     /// <summary>
     /// 字串轉Int?
     /// </summary>
-    public class StringToIntNullable : IStringTypeConvert<int?>
+    public class StringToIntNullable : IStringConvert<int?>
     {
         public int? Convert(string input)
         {

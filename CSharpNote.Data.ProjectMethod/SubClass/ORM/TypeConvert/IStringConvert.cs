@@ -5,7 +5,7 @@
     /// </summary>
     /// <typeparam name="TInput">Input Type</typeparam>
     /// <typeparam name="TOutput">Output Type</typeparam>
-    public interface IStringTypeConvert<out TOutput> : ITypeConvert<string, TOutput>
+    public interface IStringConvert<out TOutput> : ITypeConvert<string, TOutput>
     {
     }
 }

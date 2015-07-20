@@ -5,7 +5,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ORM.TypeConvert
     /// <summary>
     /// 字串轉float
     /// </summary>
-    public class StringToFloat : IStringTypeConvert<float>
+    public class StringToFloat : IStringConvert<float>
     {
         public float Convert(string input)
         {
