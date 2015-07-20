@@ -1254,19 +1254,6 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
-        [MarkedItem]
-        public void MoqTest1()
-        {
-            //var mock = new Moq.Mock<ICustom>();
-            //mock.SetupGet(custom => custom.IsVip).Returns(true);
-            //mock.SetupGet(custom => custom.Name).Returns("test");
-            //mock.Setup(custom => custom.DoSomething()).Returns("look for ..");
-            //var obj = mock.Object;
-            //obj.IsVip.ToConsole();
-            //obj.Name.ToConsole();
-            //obj.DoSomething().ToConsole();
-        }
-
         private interface ICustom
         {
             bool IsVip { get; set; }
@@ -2086,9 +2073,38 @@ namespace CSharpNote.Data.CSharpPracticeMethod
         }
 
         [MarkedItem]
-        public void ContainerPerformance()
+        public void ForAndLamdaPerformance()
         {
-        }
+            var source = Enumerable.Range(1, 100);
+            using (new TimeMeasurer("1. Lamda"))
+            {
+                for (int i = 0; i < 10000; i++)
+                {
+                    source.Where(x => x == 100).ToList();
+                }
+            }
 
+            using (new TimeMeasurer("2. extract predicate"))
+            {
+                Func<int, bool> predicate = x => x == 100;
+                for (int i = 0; i < 10000; i++)
+                {
+                    source.Where(predicate).ToList();
+                }
+            }
+
+            using (new TimeMeasurer("3. for"))
+            {
+                for (int i = 0; i < 10000; i++)
+                {
+                    var list = new List<int>();
+                    for (int j = 1; j < 100; j++)
+                    {
+                        if (j == 100)
+                            list.Add(j);
+                    }
+                }
+            }
+        }
     }
 }

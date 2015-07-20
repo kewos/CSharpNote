@@ -41,9 +41,11 @@
   <ItemGroup>
     <Compile Include="ProjectMethodRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubClass\ORM\Attribute\DBColumnAttribute.cs" />
     <Compile Include="SubClass\ORM\ConvertFactory.cs" />
     <Compile Include="SubClass\ORM\Custom.cs" />
     <Compile Include="SubClass\ORM\ConvertHelper.cs" />
+    <Compile Include="SubClass\ORM\IMappingModel.cs" />
     <Compile Include="SubClass\ORM\TypeConvert\StringToIntNullable.cs" />
     <Compile Include="SubClass\ORM\TypeConvert\StringToBool.cs" />
     <Compile Include="SubClass\ORM\TypeConvert\StringToBoolNullable.cs" />

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using CSharpNote.Data.ProjectMethod.SubClass.ORM.TypeConvert;
 
 namespace CSharpNote.Data.ProjectMethod.SubClass.ORM
@@ -25,9 +26,9 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ORM
         /// Convert to TType
         /// </summary>
         public IEnumerable<TType> Convert<TType>(IEnumerable<Dictionary<string, string>> source)
-            where TType : new()
+            where TType : IMappingModel, new()
         {
-            var properties = typeof (TType).GetProperties().ToDictionary(p => p.Name, p => p);
+            var properties = ToPropertyDictionary<TType>();
             return source.Select(row =>
             {
                 var instance = new TType();
@@ -36,7 +37,7 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ORM
                     var type = properties[column.Key].PropertyType;
                     var value = !type.IsEnum
                         ? factory.Create(type).Convert(column.Value)
-                        : typeof(StringToEnum<>).GetMethod("Convert")
+                        : typeof(StringToEnum).GetMethod("Convert")
                             .MakeGenericMethod(type)
                             .Invoke(factory.Create(type), new [] { column.Value });
 
@@ -44,6 +45,17 @@ namespace CSharpNote.Data.ProjectMethod.SubClass.ORM
                 }
                 return instance;
             });
+        }
+
+        private static Dictionary<string, PropertyInfo> ToPropertyDictionary<TType>() 
+            where TType : IMappingModel, new()
+        {
+            var target = new TType();
+            return typeof(TType).GetProperties().ToDictionary
+            (
+                property => target.Mapping(property.Name),
+                property => property
+            );
         }
     }
 }
