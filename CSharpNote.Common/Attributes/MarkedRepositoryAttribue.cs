@@ -24,21 +24,22 @@ namespace CSharpNote.Common.Attributes
 
     public sealed class ExtraMsgHandler : IMessageSink
     {
-        private IMessageSink nextSink;
-        public IMessageSink NextSink { get { return nextSink; } }
+        private readonly IMessageSink nextSink;
 
         public ExtraMsgHandler(IMessageSink nextSink)
         {
             this.nextSink = nextSink;
         }
 
+        public IMessageSink NextSink { get { return nextSink; } }
+
         #region IMessageSinkMethod
         public IMessage SyncProcessMessage(IMessage msg)
         {
-            IMethodCallMessage methodCallMsg = msg as IMethodCallMessage;
+            var methodCallMsg = msg as IMethodCallMessage;
             var info = Attribute.GetCustomAttribute(methodCallMsg.MethodBase, typeof(MarkedItemAttribute)) as MarkedItemAttribute;
 
-            if (methodCallMsg == null || info == null)
+            if (info == null)
             {
                 return nextSink.SyncProcessMessage(msg);
             }
@@ -59,7 +60,7 @@ namespace CSharpNote.Common.Attributes
             ShowMethodInfomation(info);
             using (new TimeMeasurer())
             {
-                IMessage resultMsg = nextSink.SyncProcessMessage(msg);
+                var resultMsg = nextSink.SyncProcessMessage(msg);
                 return resultMsg;
             }
         }

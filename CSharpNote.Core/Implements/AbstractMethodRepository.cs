@@ -10,7 +10,7 @@ namespace CSharpNote.Core.Implements
 {
     public abstract class AbstractMethodRepository : ContextBoundObject, IMethodRepository
     {
-        private IList<MethodInfo> methodInfos;
+        private IEnumerable<MethodInfo> methodInfos;
         private const string TRIMSTRING = "MethodRepository";
 
         #region IMethodRepository member
@@ -18,7 +18,7 @@ namespace CSharpNote.Core.Implements
         {
             get
             {
-                return MethodInfos.Count;
+                return MethodInfos.Count();
             }
         }
 
@@ -28,7 +28,7 @@ namespace CSharpNote.Core.Implements
             {
                 index.ValidationBetweenRange(0, Count - 1);
 
-                return MethodInfos[index];
+                return MethodInfos.Skip(index).FirstOrDefault();
             }
         }
 
@@ -47,7 +47,7 @@ namespace CSharpNote.Core.Implements
         #endregion
 
         #region private member
-        private IList<MethodInfo> MethodInfos
+        private IEnumerable<MethodInfo> MethodInfos
         {
             get
             {
@@ -55,9 +55,8 @@ namespace CSharpNote.Core.Implements
                 {
                     methodInfos = GetType()
                         .GetMethods(BindingFlags.Public | BindingFlags.Instance)
-                        .Where(method => method.GetCustomAttribute(typeof(MarkedItemAttribute), false) != null)
-                        .OrderBy(method => method.Name)
-                        .ToList();
+                        .Where(method => method.GetCustomAttribute(typeof (MarkedItemAttribute), false) != null)
+                        .OrderBy(method => method.Name);
                 }
 
                 return methodInfos;

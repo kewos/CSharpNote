@@ -7,7 +7,7 @@ namespace CSharpNote.Service.CSharpNoteService
 {
     public class CSharperNoteService : ICSharperNoteService
     {
-        private readonly IList<IMethodRepository> methodRepositories;
+        private readonly IEnumerable<IMethodRepository> methodRepositories;
 
         #region constructor
         public CSharperNoteService(IEnumerable<IMethodRepository> methodRepositories)
@@ -21,7 +21,7 @@ namespace CSharpNote.Service.CSharpNoteService
         {
             get
             {
-                return methodRepositories.Count;
+                return methodRepositories.Count();
             }
         }
 
@@ -36,7 +36,7 @@ namespace CSharpNote.Service.CSharpNoteService
             {
                 index.ValidationBetweenRange(0, Count - 1);
 
-                return methodRepositories[index];
+                return methodRepositories.Skip(index).FirstOrDefault();
             }
         }
         #endregion
