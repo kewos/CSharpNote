@@ -44,25 +44,25 @@
   <ItemGroup>
     <Compile Include="DataStructureRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubClass\Buffer\Buffer.cs" />
-    <Compile Include="SubClass\Buffer\CircularBuffer.cs" />
-    <Compile Include="SubClass\Buffer\IBuffer.cs" />
-    <Compile Include="SubClass\HashTable\HashTable.cs" />
-    <Compile Include="SubClass\HashTable\HashTableArray.cs" />
-    <Compile Include="SubClass\HashTable\HashTableArrayNode.cs" />
-    <Compile Include="SubClass\HashTable\HashTableNodePair.cs" />
-    <Compile Include="SubClass\LRUCache\LRUCache.cs" />
-    <Compile Include="SubClass\LRUCache\LRUItem.cs" />
-    <Compile Include="SubClass\Queue\CircularQueue.cs" />
-    <Compile Include="SubClass\Queue\Deque.cs" />
-    <Compile Include="SubClass\Sort\ComparisonComparer.cs" />
-    <Compile Include="SubClass\Sort\IComparisonSorter.cs" />
-    <Compile Include="SubClass\Sort\Sort.cs" />
-    <Compile Include="SubClass\Sort\ISort.cs" />
-    <Compile Include="SubClass\Sort\SortOrder.cs" />
-    <Compile Include="SubClass\Tree\BinarySearchTree.cs" />
-    <Compile Include="SubClass\Tree\BinaryTree.cs" />
-    <Compile Include="SubClass\Tree\TreeNode.cs" />
+    <Compile Include="Implement\Buffer\Buffer.cs" />
+    <Compile Include="Implement\Buffer\CircularBuffer.cs" />
+    <Compile Include="Implement\Buffer\IBuffer.cs" />
+    <Compile Include="Implement\HashTable\HashTable.cs" />
+    <Compile Include="Implement\HashTable\HashTableArray.cs" />
+    <Compile Include="Implement\HashTable\HashTableArrayNode.cs" />
+    <Compile Include="Implement\HashTable\HashTableNodePair.cs" />
+    <Compile Include="Implement\LRUCache\LRUCache.cs" />
+    <Compile Include="Implement\LRUCache\LRUItem.cs" />
+    <Compile Include="Implement\Queue\CircularQueue.cs" />
+    <Compile Include="Implement\Queue\Deque.cs" />
+    <Compile Include="Implement\Sort\ComparisonComparer.cs" />
+    <Compile Include="Implement\Sort\IComparisonSorter.cs" />
+    <Compile Include="Implement\Sort\Sort.cs" />
+    <Compile Include="Implement\Sort\ISort.cs" />
+    <Compile Include="Implement\Sort\SortOrder.cs" />
+    <Compile Include="Implement\Tree\BinarySearchTree.cs" />
+    <Compile Include="Implement\Tree\BinaryTree.cs" />
+    <Compile Include="Implement\Tree\TreeNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSharpNote.Common\CSharpNote.Common.csproj">

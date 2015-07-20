@@ -4,10 +4,10 @@ using System.Linq;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extendsions;
 using CSharpNote.Core.Implements;
-using CSharpNote.Data.DataStructureMethod.SubClass.Buffer;
-using CSharpNote.Data.DataStructureMethod.SubClass.HashTable;
-using CSharpNote.Data.DataStructureMethod.SubClass.Queue;
-using CSharpNote.Data.DataStructureMethod.SubClass.Tree;
+using CSharpNote.Data.DataStructureMethod.Implement.Buffer;
+using CSharpNote.Data.DataStructureMethod.Implement.HashTable;
+using CSharpNote.Data.DataStructureMethod.Implement.Queue;
+using CSharpNote.Data.DataStructureMethod.Implement.Tree;
 
 namespace CSharpNote.Data.DataStructureMethod
 {

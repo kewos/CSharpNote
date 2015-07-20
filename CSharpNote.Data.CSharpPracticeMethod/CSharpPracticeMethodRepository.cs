@@ -16,7 +16,7 @@ using CSharpNote.Common.Extendsions;
 using CSharpNote.Common.Helper;
 using CSharpNote.Common.Utility;
 using CSharpNote.Core.Implements;
-using CSharpNote.Data.CSharpPracticeMethod.SubClass;
+using CSharpNote.Data.CSharpPracticeMethod.Implement;
 
 using Microsoft.CSharp;
 using System.Reflection.Emit;
@@ -2072,6 +2072,11 @@ namespace CSharpNote.Data.CSharpPracticeMethod
             }
         }
 
+        /// <summary>
+        /// 1. Lamda最慢
+        /// 2. 抽出predicate 次快
+        /// 3. for 最快
+        /// </summary>
         [MarkedItem]
         public void ForAndLamdaPerformance()
         {

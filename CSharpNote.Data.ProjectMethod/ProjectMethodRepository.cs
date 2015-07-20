@@ -5,9 +5,9 @@ using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extendsions;
 using CSharpNote.Common.Utility;
 using CSharpNote.Core.Implements;
-using CSharpNote.Data.ProjectMethod.SubClass.ORM;
-using CSharpNote.Data.ProjectMethod.SubClass.Validation;
-using CSharpNote.Data.ProjectMethod.SubClass.ResultData;
+using CSharpNote.Data.ProjectMethod.Implement.ORM;
+using CSharpNote.Data.ProjectMethod.Implement.Validation;
+using CSharpNote.Data.ProjectMethod.Implement.ResultData;
 
 namespace CSharpNote.Data.ProjectMethod
 {

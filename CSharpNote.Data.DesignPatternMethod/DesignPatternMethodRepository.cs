@@ -33,7 +33,7 @@ using CSharpNote.Data.DesignPatternMethod.SubClass.FilterPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.ReactPattern;
 using CSharpNote.Data.DesignPatternMethod.SubClass.LazyInitial;
 using CSharpNote.Data.DesignPatternMethod.SubClass.MemotoPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.Aop;
+using CSharpNote.Data.DesignPatternMethod.Implement.Aop;
 using CSharpNote.Data.DesignPatternMethod.SubClass.StateMachine;
 
 namespace CSharpNote.Data.DesignPatternMethod

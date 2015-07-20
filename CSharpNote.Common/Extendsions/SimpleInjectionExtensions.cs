@@ -13,8 +13,11 @@ namespace CSharpNote.Common.Extendsions
         /// </summary>
         public static void RegistLocationMatchDll<TInterface>(this Container container, string matchPath)
         {
+            //當前Dll位置
             var path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            //取得path底下全部實作TInterface的class
             var matchType = GetTypeFromMatchDll<TInterface>(path, matchPath);
+            //註冊
             container.RegisterAll<TInterface>(matchType);
         }
 
@@ -24,17 +27,17 @@ namespace CSharpNote.Common.Extendsions
         public static void RegisterEntryAssemblyMappingType(this Container container)
         {
             Assembly.GetEntryAssembly().GetClassType()
-               .ForEach(@type =>
-               {
-                   //取得對應Interface Type
-                   var interfaceType = @type.GetMatchInterface();
+            .ForEach(@type =>
+            {
+                //取得對應Interface Type
+                var interfaceType = @type.GetMatchInterface();
 
-                   //container 註冊 interface 跟 class
-                   if (interfaceType != null)
-                   {
-                       container.RegisterSingle(interfaceType, @type);
-                   }
-               });
+                //container 註冊 interface 跟 class
+                if (interfaceType != null)
+                {
+                    container.RegisterSingle(interfaceType, @type);
+                }
+            });
         }
 
         #region private member
@@ -48,10 +51,7 @@ namespace CSharpNote.Common.Extendsions
 
             var matchDll = System.IO.Directory.GetFiles(path, matchFileName);
 
-            return matchDll.Select(dll =>
-                Assembly.LoadFile(dll)
-                .GetImplementInterfaceClassType<TInterface>()
-                .FirstOrDefault());
+            return matchDll.Select(dll => Assembly.LoadFile(dll).GetImplementInterfaceClassType<TInterface>().FirstOrDefault());
         }
         #endregion
     }
