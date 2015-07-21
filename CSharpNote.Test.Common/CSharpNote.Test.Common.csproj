@@ -6,8 +6,8 @@
     <ProjectGuid>{45486CE8-261E-4AFE-8314-BBAE60F3AC6D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CSharpNote.Test.Common</RootNamespace>
-    <AssemblyName>CSharpNote.Test.Common</AssemblyName>
+    <RootNamespace>CSharpNote.Common.Test</RootNamespace>
+    <AssemblyName>CSharpNote.Common.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,12 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSharpNote.Common">
-      <HintPath>..\CSharpNote.Common\bin\Debug\CSharpNote.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="CSharpNote.Test.Lib">
-      <HintPath>..\CSharpNote.Test.Lib\bin\Debug\CSharpNote.Test.Lib.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -62,6 +56,12 @@
     <Compile Include="Test_ObjectExtension.cs" />
     <Compile Include="Test_TypeExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CSharpNote.Common\CSharpNote.Common.csproj">
+      <Project>{cc38e905-4caf-4100-8125-8e6410f44cf2}</Project>
+      <Name>CSharpNote.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

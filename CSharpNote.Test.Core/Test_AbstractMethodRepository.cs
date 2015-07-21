@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Core.Implements;
 using CSharpNote.Common.Attributes;
-using CSharpNote.Test.Lib.Extension;
+using CSharpNote.Common.Extension;
 
-namespace CSharpNote.Test.Core
+namespace CSharpNote.Core.Test
 {
     [TestClass]
     public class Test_AbstractMethodRepository

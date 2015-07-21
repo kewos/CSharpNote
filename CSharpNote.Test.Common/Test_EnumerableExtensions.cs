@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Common.Extendsions;
-using CSharpNote.Test.Lib.Extension;
+using CSharpNote.Common.Extension;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CSharpNote.Test.Common
+namespace CSharpNote.Common.Test
 {
     [TestClass]
     public class Test_EnumerableExtensions

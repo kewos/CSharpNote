@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Core.Implements;
+using CSharpNote.Common.Extension;
 using CSharpNote.Service.CSharpNoteService;
-using CSharpNote.Test.Lib.Extension;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CSharpNote.Test.Service
+namespace CSharpNote.Service.Test
 {
     [TestClass]
     public class Test_RepositoryManager
     {
-        private class testMethodRepository : AbstractMethodRepository
+        private class TestMethodRepository : AbstractMethodRepository
         {
         }
 
-        private IEnumerable<testMethodRepository> GetRepositories
+        private IEnumerable<TestMethodRepository> GetRepositories
         {
             get
             {
-                yield return new testMethodRepository();
-                yield return new testMethodRepository();
-                yield return new testMethodRepository();
+                yield return new TestMethodRepository();
+                yield return new TestMethodRepository();
+                yield return new TestMethodRepository();
             }
         }
 
@@ -43,7 +43,7 @@ namespace CSharpNote.Test.Service
             var actual = repositoryManager.GetRepositoryNames().ToList();
 
             //Validation
-            var expect = new List<string> {"test", "test", "test"};
+            var expect = new List<string> { "Test", "Test", "Test" };
             for (var i = 0; i < expect.Count; i++)
             {
                 Assert.AreEqual(expect[i], actual[i]);
@@ -60,7 +60,7 @@ namespace CSharpNote.Test.Service
             var actual = Enumerable.Range(0, 3).Select(n => repositoryManager[n].RepositoryName).ToList();
 
             //Validation
-            var expect = new List<string> { "test", "test", "test" };
+            var expect = new List<string> { "Test", "Test", "Test" };
             for (var i = 0; i < expect.Count; i++)
             {
                 Assert.AreEqual(expect[i], actual[i]);
