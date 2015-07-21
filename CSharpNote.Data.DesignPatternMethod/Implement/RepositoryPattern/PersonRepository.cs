@@ -2,7 +2,7 @@
 using System.Linq;
 using CSharpNote.Common.Utility.DB;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.RepositoryPattern
 {
     public class PersonRepository : IPersonRepository
     {

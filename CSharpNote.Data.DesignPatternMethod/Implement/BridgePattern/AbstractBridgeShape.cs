@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.BridgePattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.BridgePattern
 {
     public abstract class AbstractBridgeShape : IBridgeShape
     {

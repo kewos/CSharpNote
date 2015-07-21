@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.ObserverPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.ObserverPattern
 {
     public class SmartPhoneObserver : ObserverBase<Rss>, ISmartPhoneObserver
     {

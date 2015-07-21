@@ -5,36 +5,37 @@ using System.Threading;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extensions;
 using CSharpNote.Core.Implements;
-using CSharpNote.Data.DesignPatternMethod.SubClass.AbstractFactoryPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.ChainResponsibilityPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.CompositePattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer;
-using CSharpNote.Data.DesignPatternMethod.SubClass.FlyweightPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.MediatorPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.ObserverPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.PrototypePattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.SpecificationPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.StatePattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.VistorPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.AdapterPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.BridgePattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.CommandPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.DecoratorPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.FecadePattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.NullObjectPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.ProxyPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.ServiceLocatorPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.SingletonPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.ObjectPoolPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.StretagyPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.IteratorPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.FilterPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.ReactPattern;
-using CSharpNote.Data.DesignPatternMethod.SubClass.LazyInitial;
-using CSharpNote.Data.DesignPatternMethod.SubClass.MemotoPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.AbstractFactoryPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.ChainResponsibilityPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.CompositePattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.RepositoryPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.DependecyContainer;
+using CSharpNote.Data.DesignPatternMethod.Implement.FlyweightPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.MediatorPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.ObserverPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.PrototypePattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.SpecificationPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.StatePattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.VistorPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.AdapterPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.BridgePattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.CommandPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.DecoratorPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.FecadePattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.NullObjectPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.ProxyPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.ServiceLocatorPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.SingletonPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.ObjectPoolPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.StretagyPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.IteratorPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.FilterPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.ReactPattern;
+using CSharpNote.Data.DesignPatternMethod.Implement.LazyInitial;
+using CSharpNote.Data.DesignPatternMethod.Implement.MemotoPattern;
 using CSharpNote.Data.DesignPatternMethod.Implement.Aop;
-using CSharpNote.Data.DesignPatternMethod.SubClass.StateMachine;
+using CSharpNote.Data.DesignPatternMethod.Implement.StateMachine;
+using CSharpNote.Data.DesignPatternMethod.Implement.BuilderPattern;
 
 namespace CSharpNote.Data.DesignPatternMethod
 {
@@ -175,20 +176,20 @@ namespace CSharpNote.Data.DesignPatternMethod
         [MarkedItem]
         public void CompositePattern()
         {
-            new CompositeA(new List<SubClass.CompositePattern.IComponent>
+            new CompositeA(new List<Implement.CompositePattern.IComponent>
             {
-                new CompositeB(new List<SubClass.CompositePattern.IComponent>
+                new CompositeB(new List<Implement.CompositePattern.IComponent>
                 {
                     new Leaf(),
                     new Leaf(),
                     new Leaf()
                 }),
                 new CompositeB(),
-                new CompositeB(new List<SubClass.CompositePattern.IComponent>
+                new CompositeB(new List<Implement.CompositePattern.IComponent>
                 {
                     new CompositeA(),
                     new CompositeA(),
-                    new CompositeA(new List<SubClass.CompositePattern.IComponent>
+                    new CompositeA(new List<Implement.CompositePattern.IComponent>
                     {
                         new Leaf(),
                         new Leaf(),
@@ -648,6 +649,24 @@ namespace CSharpNote.Data.DesignPatternMethod
         public void StateMachine()
         {
             new StateCommandHandler().Execute();
+        }
+
+        [MarkedItem]
+        public void BuilderPattern()
+        {
+            var builder = new CarBuilder()
+                .Add("Color", "Red")
+                .Add("Description", "Test")
+                .Add("Size", 10)
+                .Add("CreateOn", DateTime.Now);
+            var instance = builder.Create();
+            string.Format("{0}{1}{2}{3}", instance.Color, instance.Description, instance.Size, instance.CreateOn).ToConsole();
+            
+            Enumerable.Range(1, 100)
+                .Select(x => builder.Create().GetHashCode())
+                .Distinct()
+                .Count()
+                .ToConsole();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.SubClass.SpecificationPattern
+﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.SpecificationPattern
 {
     public class AndSpecification<T> : CompositeSpecification<T>
     {

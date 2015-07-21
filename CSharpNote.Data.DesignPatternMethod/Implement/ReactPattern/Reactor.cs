@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.ReactPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.ReactPattern
 {
     public class Reactor : IReactor
     {

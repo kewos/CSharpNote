@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.NullObjectPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.NullObjectPattern
 {
     public class ObjectRespository
     {

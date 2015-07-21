@@ -1,6 +1,6 @@
 ﻿using CSharpNote.Common.Extensions;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.StatePattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.StatePattern
 {
     public class StateA : IState
     {

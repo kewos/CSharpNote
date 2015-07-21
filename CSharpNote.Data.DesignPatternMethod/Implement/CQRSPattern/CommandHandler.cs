@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.CQRSPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.CQRSPattern
 {
     public interface ICommandHandler<TCommand>
         where TCommand : ICommand

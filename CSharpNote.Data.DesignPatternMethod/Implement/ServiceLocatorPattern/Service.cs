@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.SubClass.ServiceLocatorPattern
+﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.ServiceLocatorPattern
 {
     public interface IService1
     {

@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.SubClass.AdapterPattern
+﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.AdapterPattern
 {
     public interface IAnimal
     {

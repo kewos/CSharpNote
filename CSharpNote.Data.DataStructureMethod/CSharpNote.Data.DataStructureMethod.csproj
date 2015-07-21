@@ -60,7 +60,6 @@
     <Compile Include="Implement\Sort\Sort.cs" />
     <Compile Include="Implement\Sort\ISort.cs" />
     <Compile Include="Implement\Sort\SortOrder.cs" />
-    <Compile Include="Implement\Tree\BinarySearchTree.cs" />
     <Compile Include="Implement\Tree\BinaryTree.cs" />
     <Compile Include="Implement\Tree\TreeNode.cs" />
   </ItemGroup>

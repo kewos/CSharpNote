@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.ServiceLocatorPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.ServiceLocatorPattern
 {
     public class ServiceLocator
     {

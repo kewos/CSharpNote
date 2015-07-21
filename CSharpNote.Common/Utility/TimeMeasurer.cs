@@ -50,6 +50,7 @@ namespace CSharpNote.Common.Utility
 
             var result = string.Format("{0} excution time:{1}ms", Message, StopWatch.Elapsed.Milliseconds);
             Console.WriteLine(result.Trim());
+            GC.SuppressFinalize(this);
         } 
         #endregion
     }

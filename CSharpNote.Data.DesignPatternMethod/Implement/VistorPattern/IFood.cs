@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.SubClass.VistorPattern
+﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.VistorPattern
 {
     public interface IFood
     {

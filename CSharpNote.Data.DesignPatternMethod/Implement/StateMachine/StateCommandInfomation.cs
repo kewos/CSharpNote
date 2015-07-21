@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.SubClass.StateMachine
+﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.StateMachine
 {
     public class StateCommandInfomation
     {

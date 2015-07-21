@@ -1,45 +1,72 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CSharpNote.Common.Extensions
 {
     public static class GenericsExtensions
     {
-        public static T DeepClone<T>(this T obj)
-            where T : class
+        /// <summary>
+        /// 深層複製
+        /// </summary>
+        public static TType DeepClone<TType>(this TType source)
+            where TType : class
         {
             using (var stream = new MemoryStream())
             {
                 var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, obj);
+                formatter.Serialize(stream, source);
                 stream.Position = 0;
                 return formatter.Deserialize(stream) as dynamic;
             }
         }
 
-        public static void While<TItem>(this TItem item, Predicate<TItem> predicate, params Action<TItem>[] actions)
-            where TItem : class
+        /// <summary>
+        /// While迴圈
+        /// </summary>
+        public static void While<TType>(this TType source, Predicate<TType> predicate, params Action<TType>[] actions)
+            where TType : class
         {
-            while (predicate(item))
+            while (predicate(source))
             {
                 foreach (var action in actions)
                 {
-                    action(item);
+                    action(source);
                 }
             }
         }
 
+        /// <summary>
+        /// 是否包含
+        /// </summary>
         public static bool In<TType>(this TType source, params TType[] items)
         {
-            foreach(var item in items)
+            return items.Any(item => source.Equals(item));
+        }
+
+        /// <summary>
+        /// If判斷
+        /// </summary>
+        public static TType If<TType>(this TType source, Predicate<TType> predicate, Action<TType> action) where TType : class
+        {
+            if (source == null) throw new ArgumentNullException();
+            if (predicate(source))
             {
-                if (source.Equals(item))
-                {
-                    return true;
-                }
+                action(source);
             }
-            return false;
+
+            return source;
+        }
+
+        /// <summary>
+        /// If判斷
+        /// </summary>
+        public static TType If<TType>(this TType source, Predicate<TType> predicate, Func<TType, TType> func)
+        {
+            return predicate(source) 
+                ? func(source) 
+                : source;
         }
     }
 }

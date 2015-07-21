@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using CSharpNote.Common.Extensions;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.ObserverPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.ObserverPattern
 {
     public abstract class ObservableBase<T> : IObservable<T>
     {

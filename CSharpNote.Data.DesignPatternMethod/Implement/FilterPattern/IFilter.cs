@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.FilterPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.FilterPattern
 {
     public interface IFilter<TItem>
     {

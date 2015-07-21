@@ -4,10 +4,13 @@ namespace CSharpNote.Common.Extensions
 {
     public static class ArrayExtensions
     {
-        public static T[] SubArray<T>(this T[] data, int index, int length)
+        /// <summary>
+        /// 取得子字串
+        /// </summary>
+        public static T[] SubArray<T>(this T[] source, int index, int length)
         {
             T[] result = new T[length];
-            Array.Copy(data, index, result, 0, length);
+            Array.Copy(source, index, result, 0, length);
             return result;
         }
     }

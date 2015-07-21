@@ -1,6 +1,6 @@
 ﻿using CSharpNote.Common.Extensions;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.CompositePattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.CompositePattern
 {
     public class Leaf : IComponent
     {

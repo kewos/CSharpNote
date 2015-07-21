@@ -4,24 +4,30 @@ namespace CSharpNote.Common.Extensions
 {
     public static class ActionExtensions
     {
-        public static int CaculateExcuteTime(this Action action)
+        /// <summary>
+        /// 計算執行時間
+        /// </summary>
+        public static int CaculateExcuteTime(this Action source)
         {
-            action.ValidationNotNull();
+            source.ValidationNotNull();
 
             var sw = new System.Diagnostics.Stopwatch();
             sw.Start();
-            action();
+            source();
             sw.Stop();
             return sw.Elapsed.Milliseconds;
         }
 
-        public static string ExcauteAndCatchException(this Action action)
+        /// <summary>
+        /// 執行並且抓取例外
+        /// </summary>
+        public static string ExcauteAndCatchException(this Action source)
         {
             var result = string.Empty;
 
             try
             {
-                action();
+                source();
             }
             catch (Exception e)
             {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.NullObjectPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.NullObjectPattern
 {
     public class NullObject : ObjectBase
     {

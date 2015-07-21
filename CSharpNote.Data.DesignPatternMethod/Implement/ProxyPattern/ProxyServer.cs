@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.SubClass.ProxyPattern
+﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.ProxyPattern
 {
     public class ProxyServer : IServer
     {

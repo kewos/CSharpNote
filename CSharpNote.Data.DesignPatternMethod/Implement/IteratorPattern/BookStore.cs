@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.IteratorPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.IteratorPattern
 {
     public class BookStore : IAggregate<Book>
     {

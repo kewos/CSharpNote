@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.CommandPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.CommandPattern
 {
     public abstract class Command
     {

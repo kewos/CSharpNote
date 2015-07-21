@@ -7,6 +7,9 @@ namespace CSharpNote.Common.Extensions
 {
     public static class EnumerableExtensions
     {
+        /// <summary>
+        /// Foreach迴圈
+        /// </summary>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> elements, Func<T, T> func)
         {
             func.ValidationNotNull();
@@ -17,6 +20,9 @@ namespace CSharpNote.Common.Extensions
             }
         }
 
+        /// <summary>
+        /// Foreach迴圈
+        /// </summary>
         public static void ForEach<T>(this IEnumerable<T> elements, Action<T> action)
         {
             action.ValidationNotNull();
@@ -27,6 +33,9 @@ namespace CSharpNote.Common.Extensions
             }
         }
 
+        /// <summary>
+        /// 有引數的Foreach迴圈 
+        /// </summary>
         public static void ForEach<T>(this IEnumerable<T> elements, Action<int, T> action)
         {
             action.ValidationNotNull();
@@ -38,6 +47,9 @@ namespace CSharpNote.Common.Extensions
             }
         }
 
+        /// <summary>
+        /// 全部為真則真 反之為假
+        /// </summary>
         public static bool All<T>(this IEnumerable<T> elements, Func<int, T, bool> func)
         {
             func.ValidationNotNull();
@@ -54,11 +66,17 @@ namespace CSharpNote.Common.Extensions
             return true;
         }
 
+        /// <summary>
+        /// 顯示容量內容於畫面上
+        /// </summary>
         public static void Dump<T>(this IEnumerable<T> elements, int index = 0)
         {
             elements.ForEach(element => Console.WriteLine("{0}.{1}", index++, element));
         }
 
+        /// <summary>
+        /// 顯示容量內容於畫面上
+        /// </summary>
         public static IEnumerable DumpMany(this IEnumerable enumerable, int dumpLevel = 0)
         {
             var index = 0;
@@ -73,6 +91,9 @@ namespace CSharpNote.Common.Extensions
             return enumerable;
         }
 
+        /// <summary>
+        /// 隨機排列
+        /// </summary>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> elements)
         {
             var random = new Random();
@@ -80,6 +101,9 @@ namespace CSharpNote.Common.Extensions
             return elements.OrderBy(element => random.Next() % 100);
         }
 
+        /// <summary>
+        /// 排列組合
+        /// </summary>
         public static IEnumerable<IEnumerable<T>> Permutations<T>(this IEnumerable<T> source)
         {
             if (source == null)

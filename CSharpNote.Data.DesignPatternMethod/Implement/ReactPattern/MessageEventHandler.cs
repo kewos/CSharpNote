@@ -1,30 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.ReactPattern
+
+namespace CSharpNote.Data.DesignPatternMethod.Implement.ReactPattern
 {
     public class MessageEventHandler : IEventHandler
     {
-        private readonly TcpListener _listener;
+        private readonly TcpListener listener;
 
         public MessageEventHandler(IPAddress ipAddress, int port)
         {
-            _listener = new TcpListener(ipAddress, port);
+            listener = new TcpListener(ipAddress, port);
         }
 
         public void HandleEvent(byte[] data)
         {
-            string message = Encoding.UTF8.GetString(data);
+            var message = Encoding.UTF8.GetString(data);
         }
 
         public TcpListener GetHandler()
         {
-            return _listener;
+            return listener;
         }
     }
 }

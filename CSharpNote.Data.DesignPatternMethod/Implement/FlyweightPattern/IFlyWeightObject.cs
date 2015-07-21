@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.SubClass.FlyweightPattern
+﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.FlyweightPattern
 {
     public interface IFlyWeightObject
     {

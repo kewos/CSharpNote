@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.SubClass.SingletonPattern
+﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.SingletonPattern
 {
     public class SingletonC
     {

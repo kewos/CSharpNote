@@ -40,6 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DesignPatternMethodRepository.cs" />
+    <Compile Include="Implement\BuilderPattern\BuilderBase.cs" />
+    <Compile Include="Implement\BuilderPattern\Car.cs" />
+    <Compile Include="Implement\BuilderPattern\CarBuilder.cs" />
+    <Compile Include="Implement\BuilderPattern\IBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implement\AbstractFactoryPattern\AbstractFactory.cs" />
     <Compile Include="Implement\AbstractFactoryPattern\AbstractProductA.cs" />

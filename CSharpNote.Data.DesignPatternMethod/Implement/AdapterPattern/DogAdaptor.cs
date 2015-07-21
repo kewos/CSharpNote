@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.AdapterPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.AdapterPattern
 {
     public class DogAdaptor : AnimalAdaptorBase<IMachine>
     {

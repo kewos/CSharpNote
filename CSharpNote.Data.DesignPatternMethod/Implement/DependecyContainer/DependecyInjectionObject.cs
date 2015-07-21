@@ -1,6 +1,6 @@
 ﻿using CSharpNote.Common.Extensions;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer
+namespace CSharpNote.Data.DesignPatternMethod.Implement.DependecyContainer
 {
     public interface IDependencyInjectorA
     {

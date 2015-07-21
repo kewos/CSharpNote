@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.PrototypePattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.PrototypePattern
 {
     public class ColorManager : IColorManager
     {

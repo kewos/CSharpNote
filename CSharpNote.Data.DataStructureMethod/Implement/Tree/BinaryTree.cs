@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharpNote.Data.DataStructureMethod.Implement.Tree
 {
@@ -94,26 +92,5 @@ namespace CSharpNote.Data.DataStructureMethod.Implement.Tree
         {
             return null;
         }
-
-        //public static void BreadthFirstTraversal(TreeNode<T> root)
-        //{
-        //    var q = new Queue<TreeNode<T>>();
-        //    var temp = root;
-        //    if (temp != null)
-        //    {
-        //        q.Join(temp);
-        //        while (!q.IsEmpty())
-        //        {
-        //            temp = q.Front.Value;
-        //            q.Leave();
-        //            Console.Write(temp.Value + " ");
-        //            if (temp.Left != null)
-        //                q.Join(temp.Left);
-        //            if (temp.Right != null)
-        //                q.Join(temp.Right);
-        //        }
-        //        Console.WriteLine();
-        //    }
-        //}
     }
 }

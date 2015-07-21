@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.StretagyPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.StretagyPattern
 {
     public class StrategyFactory
     {

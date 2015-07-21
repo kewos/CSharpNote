@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.PrototypePattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.PrototypePattern
 {
     [Serializable]
     public class Color : IColor

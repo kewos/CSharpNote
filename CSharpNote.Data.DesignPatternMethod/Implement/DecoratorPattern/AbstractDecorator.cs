@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.DecoratorPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.DecoratorPattern
 {
     public abstract class AbstractDecorator : IComponent
     {

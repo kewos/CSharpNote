@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.SubClass.StatePattern
+﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.StatePattern
 {
     public interface IContext
     {

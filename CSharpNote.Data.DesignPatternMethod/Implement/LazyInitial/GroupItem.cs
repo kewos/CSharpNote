@@ -2,7 +2,7 @@
 using System.Linq;
 
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.LazyInitial
+namespace CSharpNote.Data.DesignPatternMethod.Implement.LazyInitial
 {
     public sealed class GroupItem
     {

@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.StretagyPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.StretagyPattern
 {
     public class StrategyA : StrategyBase
     {

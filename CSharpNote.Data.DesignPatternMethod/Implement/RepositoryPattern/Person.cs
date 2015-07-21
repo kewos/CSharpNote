@@ -1,5 +1,5 @@
 ﻿
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.RepositoryPattern
 {
     public class Person
     {

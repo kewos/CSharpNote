@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using CSharpNote.Common.Extensions;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.CompositePattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.CompositePattern
 {
     public abstract class CompositeBase<T> : IComposite<T>
         where T : IComponent

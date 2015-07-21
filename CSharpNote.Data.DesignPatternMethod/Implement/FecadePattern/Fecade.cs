@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.FecadePattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.FecadePattern
 {
     public class Fecade : IFecade
     {

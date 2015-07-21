@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.SubClass.ObserverPattern
+﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.ObserverPattern
 {
     public class Rss
     {

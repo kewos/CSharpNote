@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.SubClass.BridgePattern
+﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.BridgePattern
 {
     public interface IBridgeShape
     {

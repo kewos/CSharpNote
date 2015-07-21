@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Common.Extensions;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.RepositoryPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.RepositoryPattern
 {
     public class CachePersonRepository : IPersonRepository
     {

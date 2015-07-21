@@ -1,6 +1,6 @@
 ﻿using CSharpNote.Common.Extensions;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.ChainResponsibilityPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.ChainResponsibilityPattern
 {
     public class HandlerA : AbstractHandler
     {

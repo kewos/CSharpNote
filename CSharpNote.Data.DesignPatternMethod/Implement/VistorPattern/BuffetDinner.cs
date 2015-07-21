@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.VistorPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.VistorPattern
 {
     public class BuffetDinner
     {

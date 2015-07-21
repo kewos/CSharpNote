@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.StateMachine
+namespace CSharpNote.Data.DesignPatternMethod.Implement.StateMachine
 {
     public interface INext<out TNext>
     {

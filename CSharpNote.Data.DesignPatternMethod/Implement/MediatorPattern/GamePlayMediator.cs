@@ -2,7 +2,7 @@
 using System.Linq;
 using CSharpNote.Common.Extensions;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.MediatorPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.MediatorPattern
 {
     public class GamePlayMediator : IGamePlayMediator
     {

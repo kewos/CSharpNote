@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.SubClass.AbstractFactoryPattern
+﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.AbstractFactoryPattern
 {
     public abstract class AbstractFactory
     {

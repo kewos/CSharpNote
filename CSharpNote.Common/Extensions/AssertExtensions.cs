@@ -5,6 +5,9 @@ namespace CSharpNote.Common.Extension
 {
     public static class AssertExtensions
     {
+        /// <summary>
+        /// 預測是否會產生TException
+        /// </summary>
         public static void AssertHandleException<TException>(this Action action)
             where TException : Exception
         {
@@ -22,6 +25,9 @@ namespace CSharpNote.Common.Extension
             }
         }
 
+        /// <summary>
+        /// 預測不產生例外
+        /// </summary>
         public static void AssertHandleException(this Action action)
         {
             try

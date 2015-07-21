@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.SingletonPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.SingletonPattern
 {
     public class GenericsSinglton<T> where T : class, new()
     {

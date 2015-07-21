@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.ObjectPoolPattern
+namespace CSharpNote.Data.DesignPatternMethod.Implement.ObjectPoolPattern
 {
     public class PooledObject
     {

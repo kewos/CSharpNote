@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass.DecoratorForAop
+namespace CSharpNote.Data.DesignPatternMethod.Implement.DecoratorForAop
 {
     public abstract class RepositoryBase : IRepository
     {
