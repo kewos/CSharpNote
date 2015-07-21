@@ -48,25 +48,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extendsions\AssertExtensions.cs" />
+    <Compile Include="Extensions\AssertExtensions.cs" />
     <Compile Include="Attributes\MarkedRepositoryAttribue.cs" />
     <Compile Include="Attributes\MarkedItemAttribute.cs" />
-    <Compile Include="Extendsions\ActionExtensions.cs" />
-    <Compile Include="Extendsions\ArrayExtensions.cs" />
-    <Compile Include="Extendsions\RandomExtensions.cs" />
-    <Compile Include="Extendsions\DictionaryExtensions.cs" />
-    <Compile Include="Extendsions\StringExtensions.cs" />
+    <Compile Include="Extensions\ActionExtensions.cs" />
+    <Compile Include="Extensions\ArrayExtensions.cs" />
+    <Compile Include="Extensions\RandomExtensions.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Utility\DB\FakeDbContext.cs" />
     <Compile Include="Helper\FastInvokeHandler.cs" />
-    <Compile Include="Extendsions\UtilityExtensions.cs" />
-    <Compile Include="Extendsions\ValidationExtensions.cs" />
-    <Compile Include="Extendsions\AssemblyExtensions.cs" />
-    <Compile Include="Extendsions\GenericsExtensions.cs" />
-    <Compile Include="Extendsions\TypeExtensions .cs" />
-    <Compile Include="Extendsions\SimpleInjectionExtensions.cs" />
-    <Compile Include="Extendsions\CurryExtensions.cs" />
-    <Compile Include="Extendsions\ObjectExtensions.cs" />
-    <Compile Include="Extendsions\EnumerableExtensions.cs" />
+    <Compile Include="Helper\UtilityHelper.cs" />
+    <Compile Include="Extensions\ValidationExtensions.cs" />
+    <Compile Include="Extensions\AssemblyExtensions.cs" />
+    <Compile Include="Extensions\GenericsExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions .cs" />
+    <Compile Include="Extensions\SimpleInjectionExtensions.cs" />
+    <Compile Include="Extensions\CurryExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\TimeMeasurer.cs" />
   </ItemGroup>

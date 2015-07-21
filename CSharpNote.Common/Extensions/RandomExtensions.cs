@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace CSharpNote.Common.Extendsions
+namespace CSharpNote.Common.Extensions
 {
     public static class RandomExtensions
     {

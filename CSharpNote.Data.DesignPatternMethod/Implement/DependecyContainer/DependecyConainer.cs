@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Linq;
-using CSharpNote.Common.Extendsions;
+using CSharpNote.Common.Extensions;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass.DependecyContainer
 {

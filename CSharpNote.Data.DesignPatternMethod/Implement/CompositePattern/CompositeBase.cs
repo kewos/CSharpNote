@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using CSharpNote.Common.Extendsions;
+using CSharpNote.Common.Extensions;
 
 namespace CSharpNote.Data.DesignPatternMethod.SubClass.CompositePattern
 {

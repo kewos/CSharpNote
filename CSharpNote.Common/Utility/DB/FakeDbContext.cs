@@ -18,11 +18,8 @@ namespace CSharpNote.Common.Utility.DB
     /// </summary>
     public class FakeDbContext : IDisposable
     {
-        private static Dictionary<string, object> dataSet = new Dictionary<string, object>();
-
-        public FakeDbContext()
-        {
-        }
+        private static Dictionary<string, object> dataSet 
+            = new Dictionary<string, object>();
 
         private void Add<T>(string key)
         {

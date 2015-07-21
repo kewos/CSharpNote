@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CSharpNote.Common.Extendsions;
+using CSharpNote.Common.Extensions;
 using CSharpNote.Core.Contracts;
 
 namespace CSharpNote.Service.CSharpNoteService

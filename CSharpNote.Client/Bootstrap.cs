@@ -1,4 +1,4 @@
-﻿using CSharpNote.Common.Extendsions;
+﻿using CSharpNote.Common.Extensions;
 using CSharpNote.Core.Contracts;
 using CSharpNote.Service.CSharpNoteService;
 using SimpleInjector;

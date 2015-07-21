@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CSharpNote.Common.Attributes;
-using CSharpNote.Common.Extendsions;
+using CSharpNote.Common.Extensions;
+using CSharpNote.Common.Helper;
 using CSharpNote.Core.Implements;
 
 namespace CSharpNote.Data.AlgorithmMethod
@@ -2858,7 +2859,7 @@ namespace CSharpNote.Data.AlgorithmMethod
             {
                 for (var step = moveDistance; step > 0; step--)
                 {
-                    UtilityExtensions.Swap(ref array[indexFromMoveDistance + step - 1], ref array[indexFromMoveDistance + step]);
+                    UtilityHelper.Swap(ref array[indexFromMoveDistance + step - 1], ref array[indexFromMoveDistance + step]);
                 }
             }
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Common.Extendsions
+namespace CSharpNote.Common.Extensions
 {
     public static class ArrayExtensions
     {

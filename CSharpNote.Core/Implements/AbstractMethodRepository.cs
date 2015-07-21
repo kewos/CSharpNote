@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using CSharpNote.Core.Contracts;
 using CSharpNote.Common.Attributes;
-using CSharpNote.Common.Extendsions;
+using CSharpNote.Common.Extensions;
 
 namespace CSharpNote.Core.Implements
 {
