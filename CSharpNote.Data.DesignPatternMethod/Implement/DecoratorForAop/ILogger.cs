@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace CSharpNote.Data.DesignPatternMethod.Implement.DecoratorForAop
 {
     public interface ILogger

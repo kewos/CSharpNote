@@ -1,4 +1,5 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.CompositePattern
+﻿
+namespace CSharpNote.Data.DesignPatternMethod.Implement.CompositePattern
 {
     public interface IComponent
     {

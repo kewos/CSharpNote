@@ -1,4 +1,5 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.DecoratorForAop
+﻿
+namespace CSharpNote.Data.DesignPatternMethod.Implement.DecoratorForAop
 {
     public class LoggerRepository : LogRepositoryBase<Logger>
     {
