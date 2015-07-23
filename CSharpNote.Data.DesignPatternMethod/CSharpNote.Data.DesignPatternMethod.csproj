@@ -40,6 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DesignPatternMethodRepository.cs" />
+    <Compile Include="Implement\Aop2\MyAopHandler.cs" />
+    <Compile Include="Implement\Aop2\MyInterceptorAttribute.cs" />
+    <Compile Include="Implement\Aop2\MyInterceptorMethodAttribute.cs" />
+    <Compile Include="Implement\Aop2\TestAop.cs" />
     <Compile Include="Implement\BuilderPattern\BuilderBase.cs" />
     <Compile Include="Implement\BuilderPattern\Car.cs" />
     <Compile Include="Implement\BuilderPattern\CarBuilder.cs" />
@@ -63,7 +67,6 @@
     <Compile Include="Implement\Aop\Interceptor.cs" />
     <Compile Include="Implement\Aop\JoinCut.cs" />
     <Compile Include="Implement\Aop\Util.cs" />
-    <Compile Include="Implement\AopⅠ.cs" />
     <Compile Include="Implement\BridgePattern\AbstractBridgeShape.cs" />
     <Compile Include="Implement\BridgePattern\BridegeColorInstance.cs" />
     <Compile Include="Implement\BridgePattern\BridgeShapeInstance.cs" />
@@ -145,7 +148,6 @@
     <Compile Include="Implement\ObserverPattern\Rss.cs" />
     <Compile Include="Implement\ObserverPattern\SmartPhoneObserver.cs" />
     <Compile Include="Implement\ObserverPattern\WebSiteObservable.cs" />
-    <Compile Include="Implement\PipelinePattern.cs" />
     <Compile Include="Implement\PrototypePattern\Color.cs" />
     <Compile Include="Implement\PrototypePattern\ColorManager.cs" />
     <Compile Include="Implement\PrototypePattern\IColor.cs" />

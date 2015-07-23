@@ -7,29 +7,70 @@ namespace CSharpNote.Common.Test
     public class Test_StringExtensions
     {
         [TestMethod]
-        public void IsNullOrEmpty()
+        public void IsNullOrEmpty_InputEmpty_OutputTrue()
         {
-            Assert.IsTrue(string.Empty.IsNullOrEmpty());
-            Assert.IsFalse("Test".IsNullOrEmpty());
+            //Arrange
+            var s = string.Empty;
+
+            //Act
+            var actual = s.IsNullOrEmpty();
+
+            //Validation
+            var expect = true;
+            Assert.AreEqual(expect, actual);
         }
 
         [TestMethod]
-        public void Format()
+        public void IsNullOrEmpty_InputTest_OutputFalse()
         {
-            Assert.AreEqual("test", "{0}".Format(new[]
-            {
-                "test"
-            }));
+            //Arrange
+            var s = "Test";
 
-            Assert.AreEqual("", "".Format());
+            //Act
+            var actual = s.IsNullOrEmpty();
 
-            Assert.AreEqual("abcd", "{0}{1}{2}{3}".Format(new[]
-            {
-                "a",
-                "b",
-                "c",
-                "d"
-            }));
+            //Validation
+            var expect = false;
+            Assert.AreEqual(expect, actual);
+        }
+
+        [TestMethod]
+        public void Format_InputNothing_OutputNothing()
+        {
+            //Act
+            var actual = "".Format();
+
+            //Validation
+            var expect = "";
+            Assert.AreEqual(expect, actual);
+        }
+
+        [TestMethod]
+        public void Format_InputABCD_OutputABCD()
+        {
+            //Arrange
+            var set = new[] {"a", "b", "c", "d"};
+
+            //Act
+            var actual = "{0}{1}{2}{3}".Format(set);
+
+            //Validation
+            var expect = "abcd";
+            Assert.AreEqual(expect, actual);
+        }
+
+        [TestMethod]
+        public void Format_InputString_OutputString()
+        {
+            //Arrange
+            var set = new[] {"test"};
+
+            //Act
+            var actual = "{0}".Format(set);
+
+            //Validation
+            var expect = "test";
+            Assert.AreEqual(expect, actual);
         }
     }
 }

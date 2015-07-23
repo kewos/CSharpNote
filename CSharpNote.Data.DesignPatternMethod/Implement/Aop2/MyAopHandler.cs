@@ -1,36 +1,8 @@
 ﻿using System;
-using System.Runtime.Remoting.Contexts;
 using System.Runtime.Remoting.Messaging;
 
-namespace CSharpNote.Data.DesignPatternMethod.SubClass
+namespace CSharpNote.Data.DesignPatternMethod.Implement
 {
-    [MyInterceptor]
-    public class TestAop : ContextBoundObject
-    {
-        [MyInterceptorMethod]
-        public void Display()
-        {
-            Console.WriteLine("testaop");
-        }
-    }
-
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
- 	public sealed class MyInterceptorMethodAttribute : Attribute { }
-
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public sealed class MyInterceptorAttribute : ContextAttribute, IContributeObjectSink
-    {
-        public MyInterceptorAttribute()
-            : base("MyInterceptor")
-        { 
-        }
-
-        public IMessageSink GetObjectSink(MarshalByRefObject obj, IMessageSink next)
-        {
-            return new MyAopHandler(next);
-        }
-    }
-
     public sealed class MyAopHandler : IMessageSink
     {
         private IMessageSink nextSink;

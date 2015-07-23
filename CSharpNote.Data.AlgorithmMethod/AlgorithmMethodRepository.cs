@@ -3545,5 +3545,27 @@ namespace CSharpNote.Data.AlgorithmMethod
             }
             return false;
         }
+
+        [MarkedItem]
+        public void QSort()
+        {
+            var random = new Random();
+            var set = Enumerable.Range(0, 10).OrderBy(x => random.Next());
+            QuickSort(set).Dump();
+        }
+
+        public IEnumerable<int> QuickSort(IEnumerable<int> source)
+        {
+            if (!source.Any())
+            {
+                return source;
+            }
+
+            var pivot = source.First();
+
+            return QuickSort(source.Where(n => n < pivot))
+            .Concat(source.Where(n => n == pivot))
+            .Concat(QuickSort(source.Where(n => n > pivot)));
+        }
     }
 }

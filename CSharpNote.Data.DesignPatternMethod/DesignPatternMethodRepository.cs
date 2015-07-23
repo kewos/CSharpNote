@@ -141,7 +141,7 @@ namespace CSharpNote.Data.DesignPatternMethod
         /// <summary>
         /// 觀注點切入的設計方式
         /// 常用於input validation, log等功能
-        /// 可讓程式更符合close open 的設計原則
+        /// 可讓程式更符合單一責則的設計原則
         /// </summary>
         [MarkedItem]
         public void AspectOrientProgram()
