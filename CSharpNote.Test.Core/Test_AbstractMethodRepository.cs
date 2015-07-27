@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Core.Implements;
-using CSharpNote.Common.Attributes;
+using CSharpNote.Common.Attributes.AopDecorator;
 using CSharpNote.Common.Extension;
 
 namespace CSharpNote.Core.Test
@@ -15,17 +15,17 @@ namespace CSharpNote.Core.Test
         private class testMethodRepository : AbstractMethodRepository
         {
             [MarkedItem]
-            public void test1()
+            public void Test1()
             {
             }
 
             [MarkedItem]
-            public void test2()
+            public void Test2()
             {
             }
 
             [MarkedItem]
-            public void test3()
+            public void Test3()
             {
             }
         }
@@ -100,7 +100,7 @@ namespace CSharpNote.Core.Test
             var actual = Enumerable.Range(0, 3).Select(n => repository[n].Name).ToList();
 
             //Validation
-            var expect = new List<string> { "test1", "test2", "test3" };
+            var expect = new List<string> { "Test1", "Test2", "Test3" };
             Assert.IsTrue(actual.SequenceEqual(expect));
         }
 
@@ -114,7 +114,7 @@ namespace CSharpNote.Core.Test
             var actual = repository.GetMethodNames().ToList();
 
             //Validation
-            var expect = new List<string> { "test1", "test2", "test3" };
+            var expect = new List<string> { "Test1", "Test2", "Test3" };
             Assert.IsTrue(actual.SequenceEqual(expect));
         }
 
@@ -132,7 +132,6 @@ namespace CSharpNote.Core.Test
         [TestMethod]
         public void Indexer_CheckLowerBounded_ThrowIndexOutOfRangeException()
         {
-
             Action action = () =>
             {
                 var methodInfo = TestMethodRepository[-1];

@@ -16,7 +16,7 @@ namespace CSharpNote.Common.Extensions
             //當前Dll位置
             var path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //取得path底下全部實作TInterface的class
-            var matchType = GetTypeFromMatchDll<TInterface>(path, matchPath);
+            var matchType = GetTypeFromMatchDll<TInterface>(path, matchPath).ValidationNotEmptyAndNull();
             //註冊
             container.RegisterAll<TInterface>(matchType);
         }

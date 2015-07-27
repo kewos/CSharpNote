@@ -127,5 +127,15 @@ namespace CSharpNote.Common.Extensions
                 }
             }
         }
+
+        public static T Decorate<T>(this IEnumerable<Func<T, T>> decorators, T target)
+        {
+            foreach (var decorator in decorators)
+            {
+                target = decorator(target);
+            }
+
+            return target;
+        }
     }
 }

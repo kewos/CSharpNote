@@ -5,10 +5,10 @@ namespace CSharpNote.Common.Attributes
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public sealed class MarkedItemAttribute : Attribute
     {
-        private string reference;
-        private string comment;
-        private string date;
-        private bool display;
+        private readonly string reference;
+        private readonly string comment;
+        private readonly string date;
+        private readonly bool display;
 
         public MarkedItemAttribute() { }
         private MarkedItemAttribute(bool display)

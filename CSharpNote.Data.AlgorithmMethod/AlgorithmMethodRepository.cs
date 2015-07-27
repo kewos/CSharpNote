@@ -3564,8 +3564,54 @@ namespace CSharpNote.Data.AlgorithmMethod
             var pivot = source.First();
 
             return QuickSort(source.Where(n => n < pivot))
-            .Concat(source.Where(n => n == pivot))
-            .Concat(QuickSort(source.Where(n => n > pivot)));
+                .Concat(source.Where(n => n == pivot))
+                .Concat(QuickSort(source.Where(n => n > pivot)));
+        }
+
+        [MarkedItem]
+        public void SearchMatrix()
+        {
+            var matrix = new [,]
+            {
+                {1,   4,  7, 11, 15, 60},
+                {2,   5,  8, 12, 19, 61},
+                {3,   6,  9, 16, 22, 62},
+                {10, 13, 14, 17, 24, 63},
+                {18, 21, 23, 26, 30, 64}
+            };
+            SearchMatrix(matrix, 23).ToConsole();
+        }
+
+        public bool SearchMatrix(int[,] matrix, int target)
+        {
+            for (int x = 0; x < matrix.GetLength(0); x++)
+            {
+                if (matrix[x, 0] > target) 
+                    return false;
+                if (BinarySearch(matrix, x, target)) 
+                    return true;
+            }
+            return false;
+        }
+
+        public bool BinarySearch(int[,] matrix, int x, int target)
+        {
+            var right = matrix.GetLength(1) - 1;
+            var left = 0; 
+            
+            while (left <= right)
+            {
+                var middle = (right + left) / 2;
+
+                if (matrix[x, middle] == target)
+                    return true;
+
+                if (matrix[x, middle] > target)
+                    right = middle - 1;
+                else
+                    left = middle + 1;
+            }
+            return false;
         }
     }
 }

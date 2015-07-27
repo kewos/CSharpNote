@@ -8,32 +8,68 @@ namespace CSharpNote.Common.Test
     public class Test_DictionaryExtensions
     {
         [TestMethod]
-        public void GetValueOrDefault()
+        public void GetValueOrDefault_InputA_OutputA()
         {
+            //Arrange
             var dictionary = new Dictionary<string, string>
+                {
+                    {"a", "a"}
+                }; ;
+
+            //Act
+            var actual =  dictionary.GetValueOrDefault("a");
+
+            //Validation
+            var expect = "a";
+            Assert.AreEqual(actual, expect);
+        }
+
+        [TestMethod]
+        public void GetValueOrDefault_InputAAA_OutputNULL()
+        {
+            //Arrange
+            var dictionary = new Dictionary<string, string>
+                {
+                    {"a", "a"}
+                }; ;
+
+            //Act
+            var actual = dictionary.GetValueOrDefault("aaa");
+
+            //Validation
+            var expect = (string)null;
+            Assert.AreEqual(actual, expect);
+        }
+
+        [TestMethod]
+        public void GetValueOrDefault_Input1_Output0()
+        {
+            //Arrange
+            var dictionary = new Dictionary<int, int>();
+
+            //Act
+            var actual = dictionary.GetValueOrDefault(1);
+
+            //Validation
+            var expect = 0;
+            Assert.AreEqual(actual, expect);
+        }
+
+        [TestMethod]
+        public void GetValueOrDefault_Input1_Output1()
+        {
+            //Arrange
+            var dictionary = new Dictionary<int, int>
             {
-                {"a", "a"},
-                {"b", "b"},
-                {"c", "c"},
-                {"d", "d"},
-                {"e", "e"},
+                {1, 1}
             };
 
-            Assert.AreEqual(
-                "a", 
-                dictionary.GetValueOrDefault("a"));
+            //Act
+            var actual = dictionary.GetValueOrDefault(1);
 
-            Assert.AreEqual(
-                null, 
-                dictionary.GetValueOrDefault("aaa"));
-            
-            Assert.AreEqual(
-                0, 
-                new Dictionary<int, int>().GetValueOrDefault(1));
-            
-            Assert.AreEqual(
-                1, 
-                new Dictionary<int, int>{ {1, 1} }.GetValueOrDefault(1));
+            //Validation
+            var expect = 1;
+            Assert.AreEqual(actual, expect);
         }
     }
 }

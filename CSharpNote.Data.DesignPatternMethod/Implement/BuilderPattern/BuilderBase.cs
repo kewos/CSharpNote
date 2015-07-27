@@ -31,7 +31,10 @@ namespace CSharpNote.Data.DesignPatternMethod.Implement.BuilderPattern
 
         public virtual T Create()
         {
-            if (!CanCreate()) throw new ArgumentException("參數不足");
+            if (!CanCreate())
+            {
+                throw new ArgumentException("參數不足");
+            }
 
             var instance = Activator.CreateInstance<T>();
             foreach (var property in typeof(T).GetProperties())

@@ -29,7 +29,7 @@ namespace CSharpNote.Common.Utility.DB
 
         public DbSet<T> GetDbSet<T>()
         {
-            string key = typeof(T).ToString();
+            var key = typeof(T).ToString();
             object value;
 
             if (!dataSet.TryGetValue(key, out value))

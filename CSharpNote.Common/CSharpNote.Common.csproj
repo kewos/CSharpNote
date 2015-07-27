@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\RequiredDecorator.cs" />
+    <Compile Include="Attributes\TimeExecuteDecorator.cs" />
+    <Compile Include="Attributes\RequiredAttribute.cs" />
     <Compile Include="Extensions\AssertExtensions.cs" />
     <Compile Include="Attributes\MarkedRepositoryAttribue.cs" />
     <Compile Include="Attributes\MarkedItemAttribute.cs" />

@@ -659,6 +659,7 @@ namespace CSharpNote.Data.DesignPatternMethod
                 .Add("Description", "Test")
                 .Add("Size", 10)
                 .Add("CreateOn", DateTime.Now);
+
             var instance = builder.Create();
             string.Format("{0}{1}{2}{3}", instance.Color, instance.Description, instance.Size, instance.CreateOn).ToConsole();
             

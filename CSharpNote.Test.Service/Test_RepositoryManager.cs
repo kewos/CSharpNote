@@ -15,21 +15,11 @@ namespace CSharpNote.Service.Test
         {
         }
 
-        private IEnumerable<TestMethodRepository> GetRepositories
-        {
-            get
-            {
-                yield return new TestMethodRepository();
-                yield return new TestMethodRepository();
-                yield return new TestMethodRepository();
-            }
-        }
-
         private CSharperNoteService TestCSharpService
         {
             get
             {
-                return new CSharperNoteService(GetRepositories);
+                return new CSharperNoteService(Enumerable.Range(1, 3).Select(x => new TestMethodRepository()));
             }
         }
 

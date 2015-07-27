@@ -32,8 +32,7 @@ namespace CSharpNote.Common.Test
 
             //Act
             var result = Enumerable.Range(1, 1000).Select(n => random.NextBoolean()).Distinct().ToList();
-            var set = new List<bool> {true, false};
-            var actual = result.All(x => set.Contains(x));
+            var actual = result.All(x => x is bool);
 
             //Validation
             Assert.IsTrue(actual);
@@ -61,7 +60,7 @@ namespace CSharpNote.Common.Test
             var random = NewRandom;
 
             //Act
-            var result = Enumerable.Range(1, 1000).Select(n => random.NextEnum<TestEnum>()).Distinct().ToList();
+            var result = Enumerable.Range(1, 100).Select(n => random.NextEnum<TestEnum>()).Distinct().ToList();
             var set = new List<TestEnum> { TestEnum.A, TestEnum.B, TestEnum.C };
             var actual = result.All(x => set.Contains(x));
 
