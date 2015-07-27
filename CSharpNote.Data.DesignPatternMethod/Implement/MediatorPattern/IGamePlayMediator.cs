@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.MediatorPattern
+﻿namespace CSharpNote.Data.DesignPattern.Implement.MediatorPattern
 {
     public interface IGamePlayMediator
     {

@@ -22,13 +22,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Data", "3.Data", "{3961EE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Common", "1.Common", "{2DE897D3-9291-48C9-AEBD-89B3B61E0FF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Data.AlgorithmMethod", "CSharpNote.Data.AlgorithmMethod\CSharpNote.Data.AlgorithmMethod.csproj", "{6DF5159D-7C4C-41B0-BD65-AED8D5F47382}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Data.Algorithm", "CSharpNote.Data.AlgorithmMethod\CSharpNote.Data.Algorithm.csproj", "{6DF5159D-7C4C-41B0-BD65-AED8D5F47382}"
 	ProjectSection(ProjectDependencies) = postProject
 		{CC38E905-4CAF-4100-8125-8E6410F44CF2} = {CC38E905-4CAF-4100-8125-8E6410F44CF2}
 		{66DD1B22-5C83-4193-9976-F6EC1F605712} = {66DD1B22-5C83-4193-9976-F6EC1F605712}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Data.CSharpPracticeMethod", "CSharpNote.Data.CSharpPracticeMethod\CSharpNote.Data.CSharpPracticeMethod.csproj", "{481B896B-5B58-4E72-BF5F-248A91A31FDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Data.CSharpPractice", "CSharpNote.Data.CSharpPracticeMethod\CSharpNote.Data.CSharpPractice.csproj", "{481B896B-5B58-4E72-BF5F-248A91A31FDC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{CC38E905-4CAF-4100-8125-8E6410F44CF2} = {CC38E905-4CAF-4100-8125-8E6410F44CF2}
 		{66DD1B22-5C83-4193-9976-F6EC1F605712} = {66DD1B22-5C83-4193-9976-F6EC1F605712}
@@ -41,13 +41,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Core", "CSharpNo
 		{CC38E905-4CAF-4100-8125-8E6410F44CF2} = {CC38E905-4CAF-4100-8125-8E6410F44CF2}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Data.DesignPatternMethod", "CSharpNote.Data.DesignPatternMethod\CSharpNote.Data.DesignPatternMethod.csproj", "{2A40B151-6678-4AE2-BC57-1A98CBBD933B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Data.DesignPattern", "CSharpNote.Data.DesignPatternMethod\CSharpNote.Data.DesignPattern.csproj", "{2A40B151-6678-4AE2-BC57-1A98CBBD933B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{CC38E905-4CAF-4100-8125-8E6410F44CF2} = {CC38E905-4CAF-4100-8125-8E6410F44CF2}
 		{66DD1B22-5C83-4193-9976-F6EC1F605712} = {66DD1B22-5C83-4193-9976-F6EC1F605712}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Data.DataStructureMethod", "CSharpNote.Data.DataStructureMethod\CSharpNote.Data.DataStructureMethod.csproj", "{D4A301D1-681F-4E41-8F1A-AE7916E4FD60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Data.DataStructure", "CSharpNote.Data.DataStructureMethod\CSharpNote.Data.DataStructure.csproj", "{D4A301D1-681F-4E41-8F1A-AE7916E4FD60}"
 	ProjectSection(ProjectDependencies) = postProject
 		{CC38E905-4CAF-4100-8125-8E6410F44CF2} = {CC38E905-4CAF-4100-8125-8E6410F44CF2}
 		{66DD1B22-5C83-4193-9976-F6EC1F605712} = {66DD1B22-5C83-4193-9976-F6EC1F605712}
@@ -81,7 +81,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Service.Test", "
 		{CC38E905-4CAF-4100-8125-8E6410F44CF2} = {CC38E905-4CAF-4100-8125-8E6410F44CF2}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Data.ProjectMethod", "CSharpNote.Data.ProjectMethod\CSharpNote.Data.ProjectMethod.csproj", "{1B3652AC-8697-4622-A7C6-48ECD19F9874}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpNote.Data.Project", "CSharpNote.Data.ProjectMethod\CSharpNote.Data.Project.csproj", "{1B3652AC-8697-4622-A7C6-48ECD19F9874}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

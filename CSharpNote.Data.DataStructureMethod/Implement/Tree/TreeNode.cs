@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpNote.Data.DataStructureMethod.Implement.Tree
+namespace CSharpNote.Data.DataStructure.Implement.Tree
 {
     public class TreeNode<T>
     {

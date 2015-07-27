@@ -1,5 +1,5 @@
 ﻿
-namespace CSharpNote.Data.DesignPatternMethod.Implement.MemotoPattern
+namespace CSharpNote.Data.DesignPattern.Implement.MemotoPattern
 {
     public interface ICaretaker
     {

@@ -66,25 +66,25 @@
       <Project>{66dd1b22-5c83-4193-9976-f6ec1f605712}</Project>
       <Name>CSharpNote.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CSharpNote.Data.AlgorithmMethod\CSharpNote.Data.AlgorithmMethod.csproj">
+    <ProjectReference Include="..\CSharpNote.Data.AlgorithmMethod\CSharpNote.Data.Algorithm.csproj">
       <Project>{6df5159d-7c4c-41b0-bd65-aed8d5f47382}</Project>
-      <Name>CSharpNote.Data.AlgorithmMethod</Name>
+      <Name>CSharpNote.Data.Algorithm</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CSharpNote.Data.CSharpPracticeMethod\CSharpNote.Data.CSharpPracticeMethod.csproj">
+    <ProjectReference Include="..\CSharpNote.Data.CSharpPracticeMethod\CSharpNote.Data.CSharpPractice.csproj">
       <Project>{481b896b-5b58-4e72-bf5f-248a91a31fdc}</Project>
-      <Name>CSharpNote.Data.CSharpPracticeMethod</Name>
+      <Name>CSharpNote.Data.CSharpPractice</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CSharpNote.Data.DataStructureMethod\CSharpNote.Data.DataStructureMethod.csproj">
+    <ProjectReference Include="..\CSharpNote.Data.DataStructureMethod\CSharpNote.Data.DataStructure.csproj">
       <Project>{d4a301d1-681f-4e41-8f1a-ae7916e4fd60}</Project>
-      <Name>CSharpNote.Data.DataStructureMethod</Name>
+      <Name>CSharpNote.Data.DataStructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CSharpNote.Data.DesignPatternMethod\CSharpNote.Data.DesignPatternMethod.csproj">
+    <ProjectReference Include="..\CSharpNote.Data.DesignPatternMethod\CSharpNote.Data.DesignPattern.csproj">
       <Project>{2a40b151-6678-4ae2-bc57-1a98cbbd933b}</Project>
-      <Name>CSharpNote.Data.DesignPatternMethod</Name>
+      <Name>CSharpNote.Data.DesignPattern</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CSharpNote.Data.ProjectMethod\CSharpNote.Data.ProjectMethod.csproj">
+    <ProjectReference Include="..\CSharpNote.Data.ProjectMethod\CSharpNote.Data.Project.csproj">
       <Project>{1b3652ac-8697-4622-a7c6-48ecd19f9874}</Project>
-      <Name>CSharpNote.Data.ProjectMethod</Name>
+      <Name>CSharpNote.Data.Project</Name>
     </ProjectReference>
     <ProjectReference Include="..\CSharpNote.Service.CSharpNoteService\CSharpNote.Service.CSharpNoteService.csproj">
       <Project>{b9adf985-5f6a-492d-840d-8106a6bd23c5}</Project>

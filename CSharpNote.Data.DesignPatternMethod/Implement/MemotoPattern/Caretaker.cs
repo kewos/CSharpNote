@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.MemotoPattern
+namespace CSharpNote.Data.DesignPattern.Implement.MemotoPattern
 {
     public class Caretaker : ICaretaker
     {

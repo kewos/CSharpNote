@@ -11,7 +11,7 @@ namespace CSharpNote.Common.Extensions
         /// <summary>
         /// 使用TInterface 註冊所有 符合的Dll裡面有實作 TInterface的 Class Type
         /// </summary>
-        public static void RegistLocationMatchDll<TInterface>(this Container container, string matchPath)
+        public static void RegistLocationMatchDll<TInterface>(this Container container, string matchPath = "*.dll")
         {
             //當前Dll位置
             var path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -49,9 +49,11 @@ namespace CSharpNote.Common.Extensions
             path.ValidationNotEmpty();
             matchFileName.ValidationNotEmpty();
 
-            var matchDll = System.IO.Directory.GetFiles(path, matchFileName);
-
-            return matchDll.Select(dll => Assembly.LoadFile(dll).GetImplementInterfaceClassType<TInterface>().FirstOrDefault());
+            return System.IO.Directory.GetFiles(path, matchFileName)
+                .Select(dll => Assembly.LoadFile(dll)
+                    .GetImplementInterfaceClassType<TInterface>()
+                    .FirstOrDefault())
+                .Where(@type => @type != null);
         }
         #endregion
     }

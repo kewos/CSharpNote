@@ -1,5 +1,5 @@
 ﻿
-namespace CSharpNote.Data.DesignPatternMethod.Implement.IteratorPattern
+namespace CSharpNote.Data.DesignPattern.Implement.IteratorPattern
 {
     public interface IAggregate<TItem>
     {

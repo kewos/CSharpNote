@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CSharpNote.Data.DataStructureMethod.Implement.Queue
+namespace CSharpNote.Data.DataStructure.Implement.Queue
 {
     public class CircularQueue<T> : ICollection<T>
     {

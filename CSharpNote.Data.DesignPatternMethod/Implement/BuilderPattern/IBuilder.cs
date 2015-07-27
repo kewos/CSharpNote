@@ -1,5 +1,5 @@
 ﻿
-namespace CSharpNote.Data.DesignPatternMethod.Implement.BuilderPattern
+namespace CSharpNote.Data.DesignPattern.Implement.BuilderPattern
 {
     public interface IBuilder<T>
         where T : class

@@ -18,7 +18,7 @@ namespace CSharpNote.Client
             container.RegisterEntryAssemblyMappingType();
 
             //註冊Location Bin檔底下符合規則的Dll 裡面實作IMethodRepository的Class
-            container.RegistLocationMatchDll<IMethodRepository>("*Method.DLL");
+            container.RegistLocationMatchDll<IMethodRepository>();
 
             //註冊RepositoryManager
             container.Register<ICSharperNoteService, CSharperNoteService>();

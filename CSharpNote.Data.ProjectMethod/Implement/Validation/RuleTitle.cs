@@ -1,5 +1,5 @@
 ﻿
-namespace CSharpNote.Data.ProjectMethod.Implement.Validation
+namespace CSharpNote.Data.Project.Implement.Validation
 {
     /// <summary>
     /// 規則標題

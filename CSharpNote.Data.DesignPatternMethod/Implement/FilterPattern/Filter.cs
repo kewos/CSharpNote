@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.FilterPattern
+namespace CSharpNote.Data.DesignPattern.Implement.FilterPattern
 {
     public class AddressTaiwanFilter : IFilter<Address>
     {

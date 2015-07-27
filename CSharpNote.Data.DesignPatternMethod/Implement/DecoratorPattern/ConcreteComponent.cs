@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.DecoratorPattern
+﻿namespace CSharpNote.Data.DesignPattern.Implement.DecoratorPattern
 {
     public class ConcreteComponentA : IComponent
     {

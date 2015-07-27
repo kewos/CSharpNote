@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Common.Extensions;
 
-namespace CSharpNote.Data.ProjectMethod.Implement.Validation
+namespace CSharpNote.Data.Project.Implement.Validation
 {
     /// <summary>
     /// 驗証規則元件

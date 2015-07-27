@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.VistorPattern
+﻿namespace CSharpNote.Data.DesignPattern.Implement.VistorPattern
 {
     public interface IVisitor
     {

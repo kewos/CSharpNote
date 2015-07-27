@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.ProjectMethod.Implement.ORM.TypeConvert
+﻿namespace CSharpNote.Data.Project.Implement.ORM.TypeConvert
 {
     /// <summary>
     /// 預設字串轉字串

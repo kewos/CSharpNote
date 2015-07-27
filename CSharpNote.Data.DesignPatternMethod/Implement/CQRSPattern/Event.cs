@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.CQRSPattern
+namespace CSharpNote.Data.DesignPattern.Implement.CQRSPattern
 {
     public interface IEvent
     { 

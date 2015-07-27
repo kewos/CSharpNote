@@ -4,15 +4,15 @@ using System.Linq;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extensions;
 using CSharpNote.Core.Implements;
-using CSharpNote.Data.DataStructureMethod.Implement.Buffer;
-using CSharpNote.Data.DataStructureMethod.Implement.HashTable;
-using CSharpNote.Data.DataStructureMethod.Implement.Queue;
-using CSharpNote.Data.DataStructureMethod.Implement.Tree;
+using CSharpNote.Data.DataStructure.Implement.Buffer;
+using CSharpNote.Data.DataStructure.Implement.HashTable;
+using CSharpNote.Data.DataStructure.Implement.Queue;
+using CSharpNote.Data.DataStructure.Implement.Tree;
 
-namespace CSharpNote.Data.DataStructureMethod
+namespace CSharpNote.Data.DataStructure
 {
     [MarkedRepositoryAttribue]
-    public class DataStructureMethodRepository : AbstractMethodRepository
+    public class DataStructureRepository : AbstractMethodRepository
     {
         [MarkedItem]
         public void HashTable()

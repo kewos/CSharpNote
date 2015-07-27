@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.ChainResponsibilityPattern
+﻿namespace CSharpNote.Data.DesignPattern.Implement.ChainResponsibilityPattern
 {
     public interface IHandler
     {

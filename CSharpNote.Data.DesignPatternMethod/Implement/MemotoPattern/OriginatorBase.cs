@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.MemotoPattern
+namespace CSharpNote.Data.DesignPattern.Implement.MemotoPattern
 {
     public abstract class OriginatorBase : IOriginator
     {

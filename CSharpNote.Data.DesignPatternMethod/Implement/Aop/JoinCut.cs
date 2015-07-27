@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.Aop
+namespace CSharpNote.Data.DesignPattern.Implement.Aop
 {
     public class JoinPoint : IEquatable<JoinPoint>
     {

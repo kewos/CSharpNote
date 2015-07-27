@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CSharpNote.Data.ProjectMethod.Implement.Validation
+namespace CSharpNote.Data.Project.Implement.Validation
 {
     /// <summary>
     /// 驗証幫手

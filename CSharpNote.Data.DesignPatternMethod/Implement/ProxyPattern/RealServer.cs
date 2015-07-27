@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.ProxyPattern
+﻿namespace CSharpNote.Data.DesignPattern.Implement.ProxyPattern
 {
     public class RealServer : IServer
     {

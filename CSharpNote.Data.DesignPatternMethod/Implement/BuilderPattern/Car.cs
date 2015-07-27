@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.BuilderPattern
+namespace CSharpNote.Data.DesignPattern.Implement.BuilderPattern
 {
     public class Car
     {

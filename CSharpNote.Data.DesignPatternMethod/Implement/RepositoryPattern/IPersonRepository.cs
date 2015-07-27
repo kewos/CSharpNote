@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.RepositoryPattern
+namespace CSharpNote.Data.DesignPattern.Implement.RepositoryPattern
 {
     public interface IPersonRepository
     {

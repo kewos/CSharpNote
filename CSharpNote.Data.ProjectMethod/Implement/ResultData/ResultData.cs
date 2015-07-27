@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace CSharpNote.Data.ProjectMethod.Implement.ResultData
+namespace CSharpNote.Data.Project.Implement.ResultData
 {
     public class ResultData
     {

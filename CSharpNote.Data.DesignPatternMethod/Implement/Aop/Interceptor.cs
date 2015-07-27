@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 using System.Runtime.Remoting.Proxies;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.Aop
+namespace CSharpNote.Data.DesignPattern.Implement.Aop
 {
     public sealed class Interceptor : RealProxy, System.Runtime.Remoting.IRemotingTypeInfo
     {

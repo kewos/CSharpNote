@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace CSharpNote.Data.CSharpPracticeMethod.Implement
+namespace CSharpNote.Data.CSharpPractice.Implement
 {
     public class TypeConvert
     {

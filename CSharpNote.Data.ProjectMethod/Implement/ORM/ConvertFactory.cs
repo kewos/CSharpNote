@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using CSharpNote.Data.ProjectMethod.Implement.ORM.TypeConvert;
+using CSharpNote.Data.Project.Implement.ORM.TypeConvert;
 
-namespace CSharpNote.Data.ProjectMethod.Implement.ORM
+namespace CSharpNote.Data.Project.Implement.ORM
 {
     /// <summary>
     /// 轉型工廠

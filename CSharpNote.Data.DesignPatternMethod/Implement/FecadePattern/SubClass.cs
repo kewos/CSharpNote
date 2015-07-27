@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.FecadePattern
+﻿namespace CSharpNote.Data.DesignPattern.Implement.FecadePattern
 {
     public class SubClassA
     {

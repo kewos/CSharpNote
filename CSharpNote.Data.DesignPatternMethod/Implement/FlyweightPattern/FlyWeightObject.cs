@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.FlyweightPattern
+namespace CSharpNote.Data.DesignPattern.Implement.FlyweightPattern
 {
     public class FlyWeightObjectA : IFlyWeightObject
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.ObjectPoolPattern
+namespace CSharpNote.Data.DesignPattern.Implement.ObjectPoolPattern
 {
     public static class Pool
     {

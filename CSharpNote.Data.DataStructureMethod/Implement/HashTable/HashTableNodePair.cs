@@ -1,5 +1,5 @@
 ﻿
-namespace  CSharpNote.Data.DataStructureMethod.Implement.HashTable
+namespace  CSharpNote.Data.DataStructure.Implement.HashTable
 {
     /// <summary>
     /// KeyValuePair

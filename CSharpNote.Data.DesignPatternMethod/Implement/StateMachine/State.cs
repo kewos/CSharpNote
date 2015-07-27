@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DesignPatternMethod.Implement.StateMachine
+﻿namespace CSharpNote.Data.DesignPattern.Implement.StateMachine
 {
     public enum State
     {

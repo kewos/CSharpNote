@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement
+namespace CSharpNote.Data.DesignPattern.Implement
 {
     [MyInterceptor]
     public class TestAop : ContextBoundObject

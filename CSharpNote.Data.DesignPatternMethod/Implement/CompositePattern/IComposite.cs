@@ -1,5 +1,5 @@
 ﻿
-namespace CSharpNote.Data.DesignPatternMethod.Implement.CompositePattern
+namespace CSharpNote.Data.DesignPattern.Implement.CompositePattern
 {
     public interface IComposite<in T> : IComponent
         where T : IComponent

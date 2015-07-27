@@ -11,7 +11,7 @@ namespace CSharpNote.Core.Implements
     public abstract class AbstractMethodRepository : ContextBoundObject, IMethodRepository
     {
         private IEnumerable<MethodInfo> methodInfos;
-        private const string TRIMSTRING = "MethodRepository";
+        private const string TRIMSTRING = "Repository";
 
         #region IMethodRepository member
         public int Count

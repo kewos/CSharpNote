@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.DisposePattern
+namespace CSharpNote.Data.DesignPattern.Implement.DisposePattern
 {
     public class MyResource : IDisposable
     {

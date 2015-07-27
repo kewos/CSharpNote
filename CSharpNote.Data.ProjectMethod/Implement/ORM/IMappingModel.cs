@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CSharpNote.Data.ProjectMethod.Implement.ORM
+namespace CSharpNote.Data.Project.Implement.ORM
 {
     public interface IMappingModel
     {

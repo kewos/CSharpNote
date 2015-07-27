@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.SpecificationPattern
+namespace CSharpNote.Data.DesignPattern.Implement.SpecificationPattern
 {
     public class Band
     {

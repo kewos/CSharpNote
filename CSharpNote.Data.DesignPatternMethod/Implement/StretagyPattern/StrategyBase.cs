@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.StretagyPattern
+namespace CSharpNote.Data.DesignPattern.Implement.StretagyPattern
 {
     public abstract class StrategyBase
     {

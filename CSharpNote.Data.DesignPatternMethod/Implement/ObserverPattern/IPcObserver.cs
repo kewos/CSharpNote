@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.ObserverPattern
+namespace CSharpNote.Data.DesignPattern.Implement.ObserverPattern
 {
     public interface IPcObserver : IObserver<Rss>
     {

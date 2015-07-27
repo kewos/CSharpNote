@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CSharpNote.Data.DataStructureMethod.Implement.Tree
+namespace CSharpNote.Data.DataStructure.Implement.Tree
 {
 
     public class BinaryTree<T>

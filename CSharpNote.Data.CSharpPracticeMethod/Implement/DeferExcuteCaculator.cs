@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CSharpNote.Data.CSharpPracticeMethod.Implement
+namespace CSharpNote.Data.CSharpPractice.Implement
 {
     public class DeferExcuteCaculator
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CSharpNote.Data.DataStructureMethod.Implement.Sort
+namespace CSharpNote.Data.DataStructure.Implement.Sort
 {
     public interface ISort<T>
     {

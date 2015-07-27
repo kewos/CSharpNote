@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CSharpNote.Data.DataStructureMethod.Implement.LRUCache
+namespace CSharpNote.Data.DataStructure.Implement.LRUCache
 {
     public class LRUCache<TK, TV>
     {

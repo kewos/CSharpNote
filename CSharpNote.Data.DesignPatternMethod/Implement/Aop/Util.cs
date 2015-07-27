@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.Aop
+namespace CSharpNote.Data.DesignPattern.Implement.Aop
 {
     public static class Utils
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.FilterPattern
+namespace CSharpNote.Data.DesignPattern.Implement.FilterPattern
 {
     public class FilterManager<TItem>
     {

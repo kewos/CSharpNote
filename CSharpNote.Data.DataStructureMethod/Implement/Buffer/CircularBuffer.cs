@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CSharpNote.Data.DataStructureMethod.Implement.Buffer
+namespace CSharpNote.Data.DataStructure.Implement.Buffer
 {
     /// <summary>
     /// FIFO

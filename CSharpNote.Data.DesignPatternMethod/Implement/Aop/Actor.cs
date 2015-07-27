@@ -1,5 +1,5 @@
 ﻿
-namespace CSharpNote.Data.DesignPatternMethod.Implement.Aop
+namespace CSharpNote.Data.DesignPattern.Implement.Aop
 {
     interface IActor
     {

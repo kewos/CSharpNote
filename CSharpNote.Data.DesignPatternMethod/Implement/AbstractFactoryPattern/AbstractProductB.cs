@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.AbstractFactoryPattern
+namespace CSharpNote.Data.DesignPattern.Implement.AbstractFactoryPattern
 {
     public abstract class AbstractProductB
     {

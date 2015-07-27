@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace CSharpNote.Data.ProjectMethod.Implement.ORM.Attribute
+namespace CSharpNote.Data.Project.Implement.ORM.Attribute
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
     public class DBColumnAttribute : System.Attribute

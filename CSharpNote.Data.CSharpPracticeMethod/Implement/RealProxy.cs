@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.CSharpPracticeMethod.Implement
+namespace CSharpNote.Data.CSharpPractice.Implement
 {
     class Baby : MarshalByRefObject
     {

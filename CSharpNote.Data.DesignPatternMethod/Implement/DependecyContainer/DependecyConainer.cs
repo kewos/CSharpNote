@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using CSharpNote.Common.Extensions;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.DependecyContainer
+namespace CSharpNote.Data.DesignPattern.Implement.DependecyContainer
 {
     /// <summary>
     /// DependecyConainer內部實體的生命週期

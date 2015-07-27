@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CSharpNote.Data.DataStructureMethod.Implement.HashTable
+namespace CSharpNote.Data.DataStructure.Implement.HashTable
 {
     /// <summary>
     /// Array為基底容器 管理 HashTableArrayNode<TKey, TValue>

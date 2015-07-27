@@ -7,8 +7,8 @@
     <ProjectGuid>{1B3652AC-8697-4622-A7C6-48ECD19F9874}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CSharpNote.Data.ProjectMethod</RootNamespace>
-    <AssemblyName>CSharpNote.Data.ProjectMethod</AssemblyName>
+    <RootNamespace>CSharpNote.Data.Project</RootNamespace>
+    <AssemblyName>CSharpNote.Data.Project</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProjectMethodRepository.cs" />
+    <Compile Include="ProjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implement\ORM\Attribute\DBColumnAttribute.cs" />
     <Compile Include="Implement\ORM\ConvertFactory.cs" />

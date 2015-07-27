@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.CommandPattern
+namespace CSharpNote.Data.DesignPattern.Implement.CommandPattern
 {
     public class Invoker
     {

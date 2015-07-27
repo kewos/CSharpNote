@@ -1,4 +1,4 @@
-﻿namespace CSharpNote.Data.DataStructureMethod.Implement.LRUCache
+﻿namespace CSharpNote.Data.DataStructure.Implement.LRUCache
 {
     public class LRUItem<TK, TV>
     {

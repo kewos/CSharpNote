@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.IteratorPattern
+namespace CSharpNote.Data.DesignPattern.Implement.IteratorPattern
 {
     public class Iterator<TItem> : IIterator<TItem>
     {

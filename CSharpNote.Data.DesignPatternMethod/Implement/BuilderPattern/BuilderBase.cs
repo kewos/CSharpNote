@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Common.Extensions;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.BuilderPattern
+namespace CSharpNote.Data.DesignPattern.Implement.BuilderPattern
 {
     public abstract class BuilderBase<T> : IBuilder<T>
         where T : class

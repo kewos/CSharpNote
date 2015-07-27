@@ -2,7 +2,7 @@
 using System.Runtime.Remoting.Contexts;
 using System.Runtime.Remoting.Messaging;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement
+namespace CSharpNote.Data.DesignPattern.Implement
 {
     
 

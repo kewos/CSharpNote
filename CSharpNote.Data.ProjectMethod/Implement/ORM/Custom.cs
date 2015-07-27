@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpNote.Data.ProjectMethod.Implement.ORM
+namespace CSharpNote.Data.Project.Implement.ORM
 {
     public enum Level
     {

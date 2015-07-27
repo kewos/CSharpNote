@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CSharpNote.Data.DataStructureMethod.Implement.HashTable
+namespace CSharpNote.Data.DataStructure.Implement.HashTable
 {
     public class HashTable<TKey, TValue>
     {

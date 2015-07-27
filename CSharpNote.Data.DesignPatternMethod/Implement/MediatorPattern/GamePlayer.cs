@@ -1,6 +1,6 @@
 ﻿using CSharpNote.Common.Extensions;
 
-namespace CSharpNote.Data.DesignPatternMethod.Implement.MediatorPattern
+namespace CSharpNote.Data.DesignPattern.Implement.MediatorPattern
 {
     public class GamePlayer : IGamePlayer
     {

@@ -5,14 +5,14 @@ using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extensions;
 using CSharpNote.Common.Utility;
 using CSharpNote.Core.Implements;
-using CSharpNote.Data.ProjectMethod.Implement.ORM;
-using CSharpNote.Data.ProjectMethod.Implement.Validation;
-using CSharpNote.Data.ProjectMethod.Implement.ResultData;
+using CSharpNote.Data.Project.Implement.ORM;
+using CSharpNote.Data.Project.Implement.ResultData;
+using CSharpNote.Data.Project.Implement.Validation;
 
-namespace CSharpNote.Data.ProjectMethod
+namespace CSharpNote.Data.Project
 {
     [MarkedRepositoryAttribue]
-    public class ProjectMethodRepository : AbstractMethodRepository
+    public class ProjectRepository : AbstractMethodRepository
     {
         [MarkedItem]
         public void DynamicValidationHelper()
