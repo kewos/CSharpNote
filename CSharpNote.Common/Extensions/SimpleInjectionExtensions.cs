@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using SimpleInjector;
 using System.Reflection;
@@ -14,7 +15,7 @@ namespace CSharpNote.Common.Extensions
         public static void RegistLocationMatchDll<TInterface>(this Container container, string matchPath = "*.dll")
         {
             //當前Dll位置
-            var path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //取得path底下全部實作TInterface的class
             var matchType = GetTypeFromMatchDll<TInterface>(path, matchPath).ValidationNotEmptyAndNull();
             //註冊
@@ -27,17 +28,17 @@ namespace CSharpNote.Common.Extensions
         public static void RegisterEntryAssemblyMappingType(this Container container)
         {
             Assembly.GetEntryAssembly().GetClassType()
-            .ForEach(@type =>
-            {
-                //取得對應Interface Type
-                var interfaceType = @type.GetMatchInterface();
-
-                //container 註冊 interface 跟 class
-                if (interfaceType != null)
+                .ForEach(@type =>
                 {
-                    container.RegisterSingle(interfaceType, @type);
-                }
-            });
+                    //取得對應Interface Type
+                    var interfaceType = @type.GetMatchInterface();
+
+                    //container 註冊 interface 跟 class
+                    if (interfaceType != null)
+                    {
+                        container.RegisterSingle(interfaceType, @type);
+                    }
+                });
         }
 
         #region private member

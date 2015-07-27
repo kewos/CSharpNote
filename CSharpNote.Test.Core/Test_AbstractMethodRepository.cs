@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Core.Implements;
-using CSharpNote.Common.Attributes.AopDecorator;
+using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extension;
 
 namespace CSharpNote.Core.Test
@@ -12,7 +12,7 @@ namespace CSharpNote.Core.Test
     public class Test_AbstractMethodRepository
     {
         [MarkedRepositoryAttribue]
-        private class testMethodRepository : AbstractMethodRepository
+        private class testRepository : AbstractRepository
         {
             [MarkedItem]
             public void Test1()
@@ -30,43 +30,32 @@ namespace CSharpNote.Core.Test
             }
         }
 
-        private AbstractMethodRepository TestMethodRepository
+        private AbstractRepository TestRepository
         {
             get
             {
-                return new testMethodRepository();
+                return new testRepository();
             }
         }
 
         [MarkedRepositoryAttribue]
-        private class testMethodRepositories : AbstractMethodRepository
+        private class testRepositories : AbstractRepository
         {
         }
 
-        private AbstractMethodRepository TestMethodRepositories
+        private AbstractRepository TestRepositories
         {
             get
             {
-                return new testMethodRepositories();
+                return new testRepositories();
             }
-        }
-
-        [TestMethod]
-        public void RepositoryName_InvalidRepositoryName_ThrowArgumentException()
-        {
-            Action action = () =>
-            {
-                var name = TestMethodRepositories.RepositoryName;
-            };
-
-            action.AssertHandleException<ArgumentException>();
         }
 
         [TestMethod]
         public void RepositoryName_Get_ReturnRepositoryName()
         {
             //Arrange
-            var repository = TestMethodRepository;
+            var repository = TestRepository;
 
             //Act
             var actual = repository.RepositoryName;
@@ -80,7 +69,7 @@ namespace CSharpNote.Core.Test
         public void Count_Get_ReturnRepositoryCount()
         {
             //Arrange
-            var repository = TestMethodRepository;
+            var repository = TestRepository;
 
             //Act
             var actual = repository.Count;
@@ -94,7 +83,7 @@ namespace CSharpNote.Core.Test
         public void Indexer_Get_ReturnMethodinfo()
         {
             //Arrange
-            var repository = TestMethodRepository;
+            var repository = TestRepository;
 
             //Act
             var actual = Enumerable.Range(0, 3).Select(n => repository[n].Name).ToList();
@@ -108,7 +97,7 @@ namespace CSharpNote.Core.Test
         public void GetMethodNames_Get_ReturnMethodNames()
         {
             //Arrange
-            var repository = TestMethodRepository;
+            var repository = TestRepository;
 
             //Act
             var actual = repository.GetMethodNames().ToList();
@@ -123,7 +112,7 @@ namespace CSharpNote.Core.Test
         {
             Action action = () =>
             {
-                var methodInfo = TestMethodRepository[3];
+                var methodInfo = TestRepository[3];
             };
 
             action.AssertHandleException<ArgumentException>();
@@ -134,7 +123,7 @@ namespace CSharpNote.Core.Test
         {
             Action action = () =>
             {
-                var methodInfo = TestMethodRepository[-1];
+                var methodInfo = TestRepository[-1];
             };
 
             action.AssertHandleException<ArgumentException>();

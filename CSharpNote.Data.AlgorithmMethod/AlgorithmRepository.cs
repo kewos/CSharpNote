@@ -11,7 +11,7 @@ using CSharpNote.Core.Implements;
 namespace CSharpNote.Data.Algorithm
 {
     [MarkedRepositoryAttribue]
-    public class AlgorithmRepository : AbstractMethodRepository
+    public class AlgorithmRepository : AbstractRepository
     {
         [MarkedItem]
         public void LargeRepunitFactors()

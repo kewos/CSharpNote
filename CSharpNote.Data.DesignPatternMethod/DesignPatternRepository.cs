@@ -40,7 +40,7 @@ using CSharpNote.Data.DesignPattern.Implement.VistorPattern;
 namespace CSharpNote.Data.DesignPattern
 {
     [MarkedRepositoryAttribue]
-    public class DesignPatternRepository : AbstractMethodRepository
+    public class DesignPatternRepository : AbstractRepository
     {
         [MarkedItem]
         public void CommandPattern()

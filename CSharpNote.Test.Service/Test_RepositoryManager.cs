@@ -11,7 +11,7 @@ namespace CSharpNote.Service.Test
     [TestClass]
     public class Test_RepositoryManager
     {
-        private class TestMethodRepository : AbstractMethodRepository
+        private class TestRepository : AbstractRepository
         {
         }
 
@@ -19,7 +19,7 @@ namespace CSharpNote.Service.Test
         {
             get
             {
-                return new CSharperNoteService(Enumerable.Range(1, 3).Select(x => new TestMethodRepository()));
+                return new CSharperNoteService(Enumerable.Range(1, 3).Select(x => new TestRepository()));
             }
         }
 

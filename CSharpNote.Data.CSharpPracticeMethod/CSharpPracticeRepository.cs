@@ -21,7 +21,7 @@ using CSharpNote.Data.CSharpPractice.Implement;
 namespace CSharpNote.Data.CSharpPractice
 {
     [MarkedRepositoryAttribue]
-    public class CSharpPracticeRepository : AbstractMethodRepository
+    public class CSharpPracticeRepository : AbstractRepository
     {
 
         [MarkedItem]

@@ -12,7 +12,7 @@ using CSharpNote.Data.DataStructure.Implement.Tree;
 namespace CSharpNote.Data.DataStructure
 {
     [MarkedRepositoryAttribue]
-    public class DataStructureRepository : AbstractMethodRepository
+    public class DataStructureRepository : AbstractRepository
     {
         [MarkedItem]
         public void HashTable()

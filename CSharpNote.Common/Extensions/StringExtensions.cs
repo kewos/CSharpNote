@@ -35,5 +35,10 @@
         {
             return string.IsNullOrEmpty(target);
         }
+
+        public static string Except(this string target, string except)
+        {
+            return target.Replace(except, "");
+        }
     }
 }

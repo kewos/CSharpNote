@@ -12,7 +12,7 @@ using CSharpNote.Data.Project.Implement.Validation;
 namespace CSharpNote.Data.Project
 {
     [MarkedRepositoryAttribue]
-    public class ProjectRepository : AbstractMethodRepository
+    public class ProjectRepository : AbstractRepository
     {
         [MarkedItem]
         public void DynamicValidationHelper()
