@@ -69,7 +69,7 @@ namespace CSharpNote.Data.Project.Implement.Validation
         /// <returns>驗証流程樣版</returns>
         private Func<IEnumerable<char>, bool> MakeValidation(ValidationRecord record)
         {
-            return (code) =>
+            return code =>
             {
                 code = ValidationOperator.BeforeNotification(record, code);
                 code = ValidationOperator.AfterNotification(record, code);
@@ -97,7 +97,8 @@ namespace CSharpNote.Data.Project.Implement.Validation
                 code = ValidationOperator.Take(record, code);
                 code = ValidationOperator.ReverseTake(record, code);
 
-                return ValidationType(record, code) ? ValidationOperator.Return(record, code) : -1;
+                var enumerable = code as IList<char> ?? code.ToList();
+                return ValidationType(record, enumerable) ? ValidationOperator.Return(record, enumerable) : -1;
             };
         }
 

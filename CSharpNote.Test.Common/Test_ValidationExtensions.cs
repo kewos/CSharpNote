@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using CSharpNote.Common.Extensions;
-using CSharpNote.Common.Extension;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSharpNote.Common.Test

@@ -50,7 +50,7 @@ namespace CSharpNote.Common.Extensions
             path.ValidationNotEmpty();
             matchFileName.ValidationNotEmpty();
 
-            return System.IO.Directory.GetFiles(path, matchFileName)
+            return Directory.GetFiles(path, matchFileName)
                 .Select(dll => Assembly.LoadFile(dll)
                     .GetImplementInterfaceClassType<TInterface>()
                     .FirstOrDefault())

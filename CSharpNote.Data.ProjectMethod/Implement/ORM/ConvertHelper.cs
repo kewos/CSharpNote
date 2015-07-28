@@ -39,7 +39,7 @@ namespace CSharpNote.Data.Project.Implement.ORM
                         ? factory.Create(type).Convert(column.Value)
                         : typeof(StringToEnum).GetMethod("Convert")
                             .MakeGenericMethod(type)
-                            .Invoke(factory.Create(type), new [] { column.Value });
+                            .Invoke(factory.Create(type), new object[] { column.Value });
 
                     properties[column.Key].SetValue(instance, value);
                 }

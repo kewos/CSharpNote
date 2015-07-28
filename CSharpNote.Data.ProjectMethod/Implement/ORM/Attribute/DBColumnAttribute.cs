@@ -4,9 +4,9 @@ using System;
 namespace CSharpNote.Data.Project.Implement.ORM.Attribute
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
-    public class DBColumnAttribute : System.Attribute
+    public class DbColumnAttribute : System.Attribute
     {
-        public DBColumnAttribute(string columnName)
+        public DbColumnAttribute(string columnName)
         {
             ColumnName = columnName;
         }

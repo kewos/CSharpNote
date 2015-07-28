@@ -1,4 +1,8 @@
-﻿namespace CSharpNote.Common.Extensions
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CSharpNote.Common.Extensions
 {
     public static class StringExtensions
     {
@@ -36,9 +40,20 @@
             return string.IsNullOrEmpty(target);
         }
 
+        /// <summary>
+        /// 排除字元
+        /// </summary>
         public static string Except(this string target, string except)
         {
             return target.Replace(except, "");
+        }
+
+        /// <summary>
+        /// 分解字元成數字列
+        /// </summary>
+        public static IList<int> DecomposeDigit(string source)
+        {
+            return source.Select(@char => (int) Char.GetNumericValue(@char)).ToList();
         }
     }
 }

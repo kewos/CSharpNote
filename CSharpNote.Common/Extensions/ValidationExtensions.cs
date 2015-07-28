@@ -9,7 +9,16 @@ namespace CSharpNote.Common.Extensions
         /// <summary>
         /// 假如predicate為假丟出錯誤訊息
         /// </summary>
-        private static void Validation<TException>(bool predicate, string message)
+        public static void Validation<TException>(string message)
+            where TException : Exception
+        {
+            Validation<TException>(false, message);
+        }
+
+        /// <summary>
+        /// 假如predicate為假丟出錯誤訊息
+        /// </summary>
+        public static void Validation<TException>(bool predicate, string message)
             where TException : Exception
         {
             if (!predicate)

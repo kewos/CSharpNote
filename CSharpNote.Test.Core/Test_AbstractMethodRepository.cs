@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Core.Implements;
 using CSharpNote.Common.Attributes;
-using CSharpNote.Common.Extension;
+using CSharpNote.Common.Extensions;
 
 namespace CSharpNote.Core.Test
 {

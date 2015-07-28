@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Common.Extensions;
-using CSharpNote.Common.Extension;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSharpNote.Common.Test

@@ -14,10 +14,7 @@ namespace CSharpNote.Common.Extensions
         {
             func.ValidationNotNull();
 
-            foreach (var element in elements)
-            {
-                yield return func(element);
-            }
+            return elements.Select(func);
         }
 
         /// <summary>
@@ -55,15 +52,7 @@ namespace CSharpNote.Common.Extensions
             func.ValidationNotNull();
 
             var index = 0;
-            foreach (var element in elements)
-            {
-                if (!func(index++, element))
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return elements.All(element => func(index++, element));
         }
 
         /// <summary>
@@ -80,7 +69,8 @@ namespace CSharpNote.Common.Extensions
         public static IEnumerable DumpMany(this IEnumerable enumerable, int dumpLevel = 0)
         {
             var index = 0;
-            foreach (var element in enumerable)
+            var dumpMany = enumerable as IList<object> ?? enumerable.Cast<object>().ToList();
+            foreach (var element in dumpMany)
             {
                 Console.WriteLine("{0}{1}.{2}", new string('-', dumpLevel * 3), index++, element);
                 if (element is IEnumerable)
@@ -88,7 +78,7 @@ namespace CSharpNote.Common.Extensions
                     (element as IEnumerable).DumpMany(dumpLevel + 1);
                 }
             }
-            return enumerable;
+            return dumpMany;
         }
 
         /// <summary>
@@ -128,14 +118,12 @@ namespace CSharpNote.Common.Extensions
             }
         }
 
+        /// <summary>
+        /// 裝飾者集合會逐一裝飾目標
+        /// </summary>
         public static T Decorate<T>(this IEnumerable<Func<T, T>> decorators, T target)
         {
-            foreach (var decorator in decorators)
-            {
-                target = decorator(target);
-            }
-
-            return target;
+            return decorators.Aggregate(target, (current, decorator) => decorator(current));
         }
     }
 }

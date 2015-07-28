@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extensions;
 using CSharpNote.Common.Helper;
+using CSharpNote.Common.Utility;
 using CSharpNote.Core.Implements;
 
 namespace CSharpNote.Data.Algorithm
@@ -3007,10 +3008,10 @@ namespace CSharpNote.Data.Algorithm
         [MarkedItem("https://leetcode.com/problems/happy-number/")]
         public void HappyNumber()
         {
-            HappyNumber(82).ToConsole();
+            IsHappy(82).ToConsole();
         }
 
-        public bool HappyNumber(int number)
+        public bool IsHappy(int number)
         {
             if (number <= 0) 
                 return false;
@@ -3018,15 +3019,16 @@ namespace CSharpNote.Data.Algorithm
                 return true;
 
             var sum = 0;
-
-            while (number != 0)
+            var temp = number;
+            while (temp != 0)
             {
-                var digit = number % 10;
+                var digit = temp % 10;
                 sum += digit * digit;
-                number /= 10;
+                temp /= 10;
             }
-
-            return sum > 1 ? HappyNumber(sum) : sum == 1;
+            if (number == sum) 
+                return false;
+            return sum == 1 || IsHappy(sum);
         }
 
         [MarkedItem]
@@ -3094,7 +3096,6 @@ namespace CSharpNote.Data.Algorithm
         [MarkedItem]
         public void LargestRectangleArea()
         {
-            var height = new int[] { 2, 1, 5, 6, 2, 3 };
             LargestRectangleArea(Enumerable.Range(1, 10000).ToArray()).ToConsole();
         }
 
@@ -3106,7 +3107,7 @@ namespace CSharpNote.Data.Algorithm
             }
 
             var max = 0;
-            for (int index = 0; index < height.Count(); index++)
+            for (var index = 0; index < height.Count(); index++)
             {
                 if (height[index] * Count < max)
                     continue;
@@ -3141,7 +3142,7 @@ namespace CSharpNote.Data.Algorithm
             SummaryRanges(nums).Dump();
         }
 
-        public List<String> SummaryRanges(int[] nums)
+        public List<string> SummaryRanges(int[] nums)
         {
             if (nums == null || nums.Count() == 0)
             {
@@ -3154,7 +3155,7 @@ namespace CSharpNote.Data.Algorithm
 
             while (++index < nums.Count())
             {
-                if (temp.Count() == 0)
+                if (!temp.Any())
                 {
                     temp.Add(nums[index]);
                     continue;
@@ -3286,7 +3287,7 @@ namespace CSharpNote.Data.Algorithm
 
         public int HammingWeight(uint n)
         {
-            return Convert.ToString(n, 2).Where(x => x == '1').Count();
+            return Convert.ToString(n, 2).Count(x => x == '1');
         }
 
         [MarkedItem]
@@ -3494,26 +3495,6 @@ namespace CSharpNote.Data.Algorithm
             throw new ArgumentException("Invalid argument.");
         }
 
-        [MarkedItem]
-        public void ContainsDuplicate()
-        {
-
-        }
-
-        public bool ContainsDuplicate(int[] nums)
-        {
-            if (nums.Length == 0)
-                return false;
-            var set = new HashSet<int>();
-            foreach(var num in nums)
-            {
-                if (set.Contains(num))
-                    return false;
-                set.Add(num);
-            }
-            return true;
-        }
-
         [MarkedItem("https://leetcode.com/problems/contains-duplicate-ii/")]
         public void ContainsNearbyDuplicate()
         {
@@ -3556,16 +3537,17 @@ namespace CSharpNote.Data.Algorithm
 
         public IEnumerable<int> QuickSort(IEnumerable<int> source)
         {
-            if (!source.Any())
+            var quickSort = source as IList<int> ?? source.ToList();
+            if (!quickSort.Any())
             {
-                return source;
+                return quickSort;
             }
 
-            var pivot = source.First();
+            var pivot = quickSort.First();
 
-            return QuickSort(source.Where(n => n < pivot))
-                .Concat(source.Where(n => n == pivot))
-                .Concat(QuickSort(source.Where(n => n > pivot)));
+            return QuickSort(quickSort.Where(n => n < pivot))
+                .Concat(quickSort.Where(n => n == pivot))
+                .Concat(QuickSort(quickSort.Where(n => n > pivot)));
         }
 
         [MarkedItem]
@@ -3584,7 +3566,7 @@ namespace CSharpNote.Data.Algorithm
 
         public bool SearchMatrix(int[,] matrix, int target)
         {
-            for (int x = 0; x < matrix.GetLength(0); x++)
+            for (var x = 0; x < matrix.GetLength(0); x++)
             {
                 if (matrix[x, 0] > target) 
                     return false;
@@ -3603,7 +3585,7 @@ namespace CSharpNote.Data.Algorithm
             {
                 var middle = (right + left) / 2;
 
-                if (matrix[x, middle] == target)
+                if (matrix[x, middle] == target) 
                     return true;
 
                 if (matrix[x, middle] > target)

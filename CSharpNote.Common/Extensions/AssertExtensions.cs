@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CSharpNote.Common.Extension
+namespace CSharpNote.Common.Extensions
 {
     public static class AssertExtensions
     {
@@ -16,10 +16,10 @@ namespace CSharpNote.Common.Extension
                 action();
                 Assert.Fail("ExceptionMustBeThrown");
             }
-            catch (TException e)
+            catch (TException)
             {
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail("IncorrectException");
             }
@@ -34,7 +34,7 @@ namespace CSharpNote.Common.Extension
             {
                 action();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail("IncorrectException");
             }

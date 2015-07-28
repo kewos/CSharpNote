@@ -222,8 +222,7 @@ namespace CSharpNote.Data.DesignPattern
             ISpecification<Band> germanExpSpec =
                 new ExpressionSpecification<Band>(band => band.Country == Country.Gereman);
 
-            ISpecification<Band> britPopExpSpec =
-                new ExpressionSpecification<Band>(band => band.BandKind == BandKind.BritPop);
+            new ExpressionSpecification<Band>(band => band.BandKind == BandKind.BritPop);
             ISpecification<Band> classRockExpSpec =
                 new ExpressionSpecification<Band>(band => band.BandKind == BandKind.ClassRock);
 
@@ -339,7 +338,7 @@ namespace CSharpNote.Data.DesignPattern
         [MarkedItem]
         public void MediatorPattern()
         {
-            Func<int, string> convertToString = (number) => ((char) (65 + number)).ToString();
+            Func<int, string> convertToString = number => ((char) (65 + number)).ToString();
             var players = Enumerable.Range(0, 5)
                 .Select(n => new GamePlayer(convertToString(n)))
                 .ToList<IGamePlayer>();

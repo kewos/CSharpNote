@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CSharpNote.Common.Extensions;
 using CSharpNote.Core.Implements;
-using CSharpNote.Common.Extension;
 using CSharpNote.Service.CSharpNoteService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
