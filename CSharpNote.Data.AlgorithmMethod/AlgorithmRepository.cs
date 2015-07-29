@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extensions;
 using CSharpNote.Common.Helper;
-using CSharpNote.Common.Utility;
 using CSharpNote.Core.Implements;
 
 namespace CSharpNote.Data.Algorithm
@@ -50,6 +49,7 @@ namespace CSharpNote.Data.Algorithm
         {
             var sb = new StringBuilder();
             foreach (var n in Enumerable.Repeat("1", length)) sb.Append(n);
+
             return int.Parse(sb.ToString());
         }
 
@@ -70,11 +70,13 @@ namespace CSharpNote.Data.Algorithm
                     sum += CaculateCoinPartitions(leak);
                     continue;
                 }
+
                 if (leak == 0)
                 {
                     return sum++;
                 }
             }
+
             return sum;
         }
 
@@ -85,7 +87,7 @@ namespace CSharpNote.Data.Algorithm
             //For a positive integer n, let σ2(n) be the sum of the squares of its divisors. For example,
             //σ2(10) = 1 + 4 + 25 + 100 = 130.
             //Find the sum of all n, 0 < n < 64,000,000 such that σ2(n) is a perfect square.
-            object obj = new object();
+            var obj = new object();
             var sw = new System.Diagnostics.Stopwatch();
             sw.Start();
             Parallel.ForEach(Enumerable.Range(1, 64000), (number) =>
@@ -98,6 +100,7 @@ namespace CSharpNote.Data.Algorithm
                         Console.WriteLine(number);
                 }
             });
+
             sw.Stop();
             Console.WriteLine("SpentTime:{0}ms", sw.ElapsedMilliseconds);
         }
@@ -123,12 +126,13 @@ namespace CSharpNote.Data.Algorithm
             double sum = 0;
 
             Parallel.ForEach(numbers, (number) =>
+            {
+                lock (obj)
                 {
-                    lock (obj)
-                    {
-                        sum += Math.Pow(number, 2);
-                    }
-                });
+                    sum += Math.Pow(number, 2);
+                }
+            });
+
             return sum;
         }
 
@@ -139,13 +143,14 @@ namespace CSharpNote.Data.Algorithm
         /// <returns>全部因子</returns>
         private List<int> GetFactor(int number)
         {
-            List<int> factors = new List<int>();
+            var factors = new List<int>();
             foreach (var factor in Enumerable.Range(1, (int)Math.Floor(Math.Sqrt(number))).Where(x => number % x == 0))
             {
                 factors.Add(factor);
                 if (!factors.Contains(number / factor))
                     factors.Add(number / factor);
             }
+
             return factors;
         }
 
@@ -162,13 +167,14 @@ namespace CSharpNote.Data.Algorithm
             //        You are given that g(1 000) = 2524 and g(1 000 000) = 2624152.
             //Find g(1015).
 
-            Dictionary<int, int> g = new Dictionary<int, int>();
+            var g = new Dictionary<int, int>();
             g.Add(4, 13);
 
             foreach (var number in Enumerable.Range(5, 10000))
             {
                 var currentResult = g[number - 1] + GetGcd(number, g[number - 1]);
                 g.Add(number, currentResult);
+
                 Console.WriteLine("index:{0} number:{1}", number, currentResult);
             }
         }
@@ -183,6 +189,7 @@ namespace CSharpNote.Data.Algorithm
         {
             var factors1 = GetFactor(number1);
             var factors2 = GetFactor(number2);
+
             return factors1.Intersect(factors2).Max();
         }
 
@@ -192,12 +199,8 @@ namespace CSharpNote.Data.Algorithm
             //It can be verified that there are 23 positive integers less than 1000 that are divisible by at least four distinct primes less than 100.
             //Find how many positive integers less than 1016 are divisible by at least four distinct primes less than 100.
             var primes = GetPrimesWithinRange(100);
-            var sum = 0;
-            foreach (var number in Enumerable.Range(1, 1000))
-            {
-                var matchPrime = primes.Where(prime => number % prime == 0).Count();
-                if (matchPrime >= 4) sum++;
-            }
+            var sum = Enumerable.Range(1, 1000).Select(number => primes.Count(prime => number%prime == 0)).Count(matchPrime => matchPrime >= 4);
+            
             Console.WriteLine(sum);
         }
 
@@ -217,10 +220,14 @@ namespace CSharpNote.Data.Algorithm
             var sum = 0;
             foreach (var number in Enumerable.Range(1, 900))
             {
-                if (number % 10 == 0) continue;
+                if (number % 10 == 0)
+                    continue;
+
                 var reverseNumber = GetReverseNumber(number);
-                if (IsReverseNumber(reverseNumber)) sum++;
+                if (IsReverseNumber(reverseNumber)) 
+                    sum++;
             }
+
             Console.WriteLine(sum);
         }
 
@@ -236,8 +243,9 @@ namespace CSharpNote.Data.Algorithm
 
         private string Reverse(string s)
         {
-            char[] charArray = s.ToCharArray();
+            var charArray = s.ToCharArray();
             Array.Reverse(charArray);
+
             return new string(charArray);
         }
 
@@ -264,10 +272,10 @@ namespace CSharpNote.Data.Algorithm
                     {
                         if (primes.Where(prime => prime <= fractionC).Any(prime => fractionM % prime == 0 && fractionC % prime == 0))
                             sum++;
-                        //if (GetGcd(fractionM, fractionC) == 1) sum ++;
                     }
                 });
             });
+
             sw.Stop();
             Console.WriteLine("{0}:{1}", sum, sw.ElapsedMilliseconds);
         }
@@ -291,6 +299,7 @@ namespace CSharpNote.Data.Algorithm
                     Console.WriteLine(sum);
                     break;
                 }
+
                 count++;
                 sum += prime;
             }
@@ -311,18 +320,22 @@ namespace CSharpNote.Data.Algorithm
                     var term2 = number + step * 2;
                     var term3 = number + step * 3;
                     if (term1 == 1487 && IsPrime(term1) && IsPrime(term2) && IsPrime(term3))
-                    {
                         Console.WriteLine("{0}:{1}:{2}", term1, term2, term3);
-                    }
+
                 }
             }
+
             Console.WriteLine(IsPrime(53));
         }
 
         private bool IsPrime(int number)
         {
-            if (number < 1) return false;
-            if (number == 2) return true;
+            if (number < 1) 
+                return false;
+
+            if (number == 2) 
+                return true;
+
             return GetPrimesWithinRange(number).Contains(number);
         }
 
@@ -334,29 +347,25 @@ namespace CSharpNote.Data.Algorithm
             //Find the minimum element.
             //You may assume no duplicate exists in the array.
             var max = new List<int>();
-            List<int> sortArray = new List<int> { 0, 1, 2, 4, 5, 6, 7 };
+            var sortArray = new List<int> { 0, 1, 2, 4, 5, 6, 7 };
 
-            for (int i = 0; i < sortArray.Count; i++)
+            for (var i = 0; i < sortArray.Count; i++)
             {
                 if (sortArray[0] != 0)
                 {
                     max.Add(IntArrayToInt(sortArray));
                 }
+
                 sortArray.Add(sortArray[0]);
                 sortArray.Remove(sortArray[0]);
             }
+
             Console.WriteLine(max.Min());
         }
 
         private int IntArrayToInt(List<int> sortArray)
         {
-            var sum = 0;
-            for (int i = 0; i < sortArray.Count; i++)
-            {
-                var term = sortArray.Count - i - 1;
-                sum += sortArray[term] * (int)Math.Pow(10, i);
-            }
-            return sum;
+            return sortArray.Select((t, i) => sortArray.Count - i - 1).Select((term, i) => sortArray[term]*(int) Math.Pow(10, i)).Sum();
         }
 
         [MarkedItem]
@@ -383,20 +392,24 @@ namespace CSharpNote.Data.Algorithm
             var list = new List<int> { 2, 3, -2, 4, 10, -3, 5, -1 };
             var subList = new List<int>();
             var max = 0;
-            for (int x = 0; x <= list.Count; x++)
-                for (int y = 1; x + y <= list.Count; y++)
+            for (var x = 0; x <= list.Count; x++)
+            {
+                for (var y = 1; x + y <= list.Count; y++)
                 {
                     var sub = list.Skip(x).Take(y);
-                    var subSumValue = sub.Aggregate((a, b) => a * b);
+                    var subSumValue = sub.Aggregate((a, b) => a*b);
                     if (subSumValue > max)
                     {
                         max = subSumValue;
                         subList = sub.ToList();
                     }
                 }
+            }
+
             var sb = new StringBuilder();
             subList.ForEach(n => sb.Append("[" + n + "]"));
             sb.Append("=" + max);
+
             Console.WriteLine(sb.ToString());
         }
 
@@ -409,21 +422,22 @@ namespace CSharpNote.Data.Algorithm
             //Some examples:
             //["2", "1", "+", "3", "*"] -> ((2 + 1) * 3) -> 9
             //["4", "13", "5", "/", "+"] -> (4 + (13 / 5)) -> 6
-            List<string> evaluate = new List<string> { "4", "13", "5", "/", "+" };
-            List<string> notation = new List<string> { "+", "-", "*", "/" };
+            var evaluate = new List<string> { "4", "13", "5", "/", "+" };
+            var notation = new List<string> { "+", "-", "*", "/" };
             while (evaluate.Count != 1)
-                for (int i = 0; i < evaluate.Count - 2; i++)
+                for (var i = 0; i < evaluate.Count - 2; i++)
                 {
-                    int value1, value2;
-                    if (int.TryParse(evaluate[i], out value1)
-                        && int.TryParse(evaluate[i + 1], out value2)
-                        && notation.Any(n => n == evaluate[i + 2])
-                    )
-                    {
-                        Caculate(value1, value2, i + 2, evaluate);
-                        break;
-                    }
+                    int value1;
+                    int value2;
+                    if (!int.TryParse(evaluate[i], out value1) 
+                        || !int.TryParse(evaluate[i + 1], out value2) 
+                        || notation.All(n => n != evaluate[i + 2])) 
+                        continue;
+
+                    Caculate(value1, value2, i + 2, evaluate);
+                    break;
                 }
+
             Console.WriteLine(evaluate.First());
         }
 
@@ -440,6 +454,7 @@ namespace CSharpNote.Data.Algorithm
                 case "/": evaluate[postion] = (x / y).ToString();
                     break;
             }
+
             evaluate.Remove(evaluate[postion - 1]);
             evaluate.Remove(evaluate[postion - 2]);
         }
@@ -463,23 +478,25 @@ namespace CSharpNote.Data.Algorithm
                     state = true;
                     candies[n]++;
                 }
+
                 return state;
             }))
+
             Console.WriteLine(candies.Aggregate((a, b) => a + b));
         }
 
         private bool CompareWithNeighbors(List<int> childredRates, List<int> candies, int position)
         {
             if (position == 0)
-                return (checkNeedAdd(childredRates[position], candies[position], childredRates[position + 1], candies[position + 1]) || checkNeedAdd(childredRates[position], candies[position], childredRates[childredRates.Count - 1], candies[childredRates.Count - 1]));
+                return (CheckNeedAdd(childredRates[position], candies[position], childredRates[position + 1], candies[position + 1]) || CheckNeedAdd(childredRates[position], candies[position], childredRates[childredRates.Count - 1], candies[childredRates.Count - 1]));
             
             if (position >= childredRates.Count - 1)
-                return checkNeedAdd(childredRates[position], candies[position], childredRates[position - 1], candies[position - 1]) || checkNeedAdd(childredRates[position], candies[position], childredRates[0], candies[0]);
+                return CheckNeedAdd(childredRates[position], candies[position], childredRates[position - 1], candies[position - 1]) || CheckNeedAdd(childredRates[position], candies[position], childredRates[0], candies[0]);
             
-            return checkNeedAdd(childredRates[position], candies[position], childredRates[position - 1], candies[position - 1]) || checkNeedAdd(childredRates[position], candies[position], childredRates[position + 1], candies[position + 1]);
+            return CheckNeedAdd(childredRates[position], candies[position], childredRates[position - 1], candies[position - 1]) || CheckNeedAdd(childredRates[position], candies[position], childredRates[position + 1], candies[position + 1]);
         }
 
-        private bool checkNeedAdd(int childredRate1, int candy1, int childredRate2, int candy2)
+        private bool CheckNeedAdd(int childredRate1, int candy1, int childredRate2, int candy2)
         {
             return (childredRate1 > childredRate2 && candy1 <= candy2) ? true : false;
         }
@@ -507,27 +524,33 @@ namespace CSharpNote.Data.Algorithm
             var end = "cog";
             var dict = new List<string> { "hot", "dot", "dog", "lot", "log" };
             var path = new Stack<string>();
+
             Translate(start, end, dict, path).ToList().ForEach(n => Console.WriteLine(n));
         }
 
         private Stack<string> Translate(string start, string end, List<string> dict, Stack<string> path)
         {
-            if (path.Count == 0) path.Push(start);
-            if (checkTranslate(start, end))
+            if (path.Count == 0)
+                path.Push(start);
+
+            if (CheckTranslate(start, end))
             {
                 path.Push(end);
                 return path;
             }
-            foreach (var canTranlate in dict.Where(s => checkTranslate(start, s) && !path.Contains(s)))
+
+            foreach (var canTranlate in dict.Where(s => CheckTranslate(start, s) && !path.Contains(s)))
             {
                 path.Push(canTranlate);
                 return Translate(canTranlate, end, dict, path);
             }
+
             path.Pop();
+
             return path;
         }
 
-        private bool checkTranslate(string s1, string s2)
+        private bool CheckTranslate(string s1, string s2)
         {
             return s1.ToList().Intersect(s2.ToList()).Count() == 2;
         }
@@ -549,37 +572,39 @@ namespace CSharpNote.Data.Algorithm
             //isMatch("aa", "a*") → true
             //isMatch("ab", "?*") → true
             //isMatch("aab", "c*a*b") → false
-            Console.WriteLine(isMatch("aa", "a"));
-            Console.WriteLine(isMatch("aa", "aa"));
-            Console.WriteLine(isMatch("aaa", "aa"));
-            Console.WriteLine(isMatch("aa", "*"));
-            Console.WriteLine(isMatch("aa", "a*"));
-            Console.WriteLine(isMatch("ab", "?*"));
-            Console.WriteLine(isMatch("aab", "c*a*b"));
-
+            Console.WriteLine(IsMatch("aa", "a"));
+            Console.WriteLine(IsMatch("aa", "aa"));
+            Console.WriteLine(IsMatch("aaa", "aa"));
+            Console.WriteLine(IsMatch("aa", "*"));
+            Console.WriteLine(IsMatch("aa", "a*"));
+            Console.WriteLine(IsMatch("ab", "?*"));
+            Console.WriteLine(IsMatch("aab", "c*a*b"));
         }
 
-        private bool isMatch(string checkString, string validateString)
+        private bool IsMatch(string checkString, string validateString)
         {
-            if (!validateString.Contains("*") && !validateString.Contains("?")) return checkString.Equals(validateString);
+            if (!validateString.Contains("*") && !validateString.Contains("?")) 
+                return checkString.Equals(validateString);
+
             var postion = 0;
             var bondary = checkString.Length - 1;
-            foreach (var c in validateString)
+            foreach (var c in validateString.TakeWhile(c => postion <= bondary).Where(c => !c.Equals('*')))
             {
-                if (postion > bondary) break;
-                if (c.Equals('*')) continue;
                 if (c.Equals('?'))
                 {
                     postion++;
                     continue;
                 }
+
                 if (checkString[postion].Equals(c))
                 {
                     postion++;
                     continue;
                 }
+
                 while (postion <= bondary && !checkString[postion].Equals(c)) postion++;
             }
+
             return postion <= bondary;
         }
 
@@ -605,10 +630,13 @@ namespace CSharpNote.Data.Algorithm
             var lastIndex = array.Count() - 1;
             while (position < lastIndex)
             {
-                if (array[position] == 0) break;
+                if (array[position] == 0) 
+                    break;
+
                 position += array[position];
             }
-            return (position == lastIndex) ? true : false;
+
+            return (position == lastIndex);
         }
 
         [MarkedItem]
@@ -629,9 +657,12 @@ namespace CSharpNote.Data.Algorithm
         private int CheckJumpGameMinStep(List<int> array, int position = 0, int step = 0)
         {
             var lastIndex = array.Count() - 1;
-            if (array[position] == 0 || position > lastIndex) return default(int);
-            if (position == lastIndex) return step;
-            return Enumerable.Range(1, array[position]).Min(n => CheckJumpGameMinStep(array, position + n, step + 1));
+            if (array[position] == 0 || position > lastIndex)
+                return default(int);
+
+            return position == lastIndex 
+                ? step 
+                : Enumerable.Range(1, array[position]).Min(n => CheckJumpGameMinStep(array, position + n, step + 1));
         }
 
         [MarkedItem]
@@ -639,7 +670,7 @@ namespace CSharpNote.Data.Algorithm
         {
             //https://oj.leetcode.com/problems/jump-game-ii/
             //Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.
-            Random random = new Random();
+            var random = new Random();
             var points = Enumerable.Range(1, 20).Select(n => new { X = (int)random.Next(1, 100), Y = (int)random.Next(1, 100) }).ToList<dynamic>();
             CaculateMaxPointOnALine(points);
             Console.WriteLine(CaculateMaxPointOnALine(points));
@@ -658,17 +689,13 @@ namespace CSharpNote.Data.Algorithm
         private double CaculateSlope(dynamic point1, dynamic point2)
         {
             if (point1.Y == point2.Y && point1.X == point2.X)
-            {
                 return 100;
-            }
+
             if (point1.Y == point2.Y)
-            {
-                return 0;
-            }
+               return 0;
+
             if (point1.X == point2.X)
-            {
                 return 1;
-            }
 
             return (double)((point1.X - point2.X) / (point1.Y - point2.Y));
         }
@@ -680,13 +707,15 @@ namespace CSharpNote.Data.Algorithm
             //Given an array of integers, every element appears three times except for one. Find that single one.
             //Note:
             //Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
-            List<int> TestArray = new List<int> { 3, 1, 4, 1, 4, 2, 4, 1, 5, 2, 2, 3, 3 };
-            int ones = 0, twos = 0;
-            for (int i = 0; i < TestArray.Count(); i++)
+            var TestArray = new List<int> { 3, 1, 4, 1, 4, 2, 4, 1, 5, 2, 2, 3, 3 };
+            var ones = 0;
+            var twos = 0;
+            for (var i = 0; i < TestArray.Count(); i++)
             {
                 ones = (ones ^ TestArray[i]) & ~twos;//1100 1101
                 twos = (twos ^ TestArray[i]) & ~ones;//0000 0010
             }
+
             Console.WriteLine(ones);
         }
 
@@ -728,12 +757,18 @@ namespace CSharpNote.Data.Algorithm
             var temp = 0;
             foreach (var index in Enumerable.Range(0, maxLength))
             {
-                int x = 0, y = 0;
-                if (index <= n1.Count - 1) x = n1[index];
-                if (index <= n2.Count - 1) y = n2[index];
+                var x = 0;
+                var y = 0;
+                if (index <= n1.Count - 1)
+                    x = n1[index];
+
+                if (index <= n2.Count - 1)
+                    y = n2[index];
+
                 count.Add((x + y) % 10 + temp);
                 temp = (x + y) / 10;
             }
+
             count.Add(temp);
         }
 
@@ -761,13 +796,11 @@ namespace CSharpNote.Data.Algorithm
         public ListNode AddTwoNumbersⅡ(ListNode l1, ListNode l2)
         {
             if (l1 == null || l2 == null)
-            {
                 return null;
-            }
-            var tmpNum = l1.val + l2.val;
-            ListNode head = new ListNode(tmpNum % 10);
-            ListNode tmp = head;
 
+            var tmpNum = l1.val + l2.val;
+            var head = new ListNode(tmpNum % 10);
+            var tmp = head;
             while (l1.next != null && l2.next != null)
             {
                 tmpNum = l1.val + l2.val + (tmpNum / 10);
@@ -777,10 +810,10 @@ namespace CSharpNote.Data.Algorithm
                 l1 = l1.next;
                 l2 = l2.next;
             }
+
             if (tmpNum / 10 != 0)
-            {
                 tmp.next = new ListNode(tmpNum / 10);
-            }
+
             return head;
         }
         
@@ -799,6 +832,7 @@ namespace CSharpNote.Data.Algorithm
 
             var intSet = new List<List<int>> { new List<int> { 1, 2 }, new List<int> { 3, 5 }, new List<int> { 6, 7 }, new List<int> { 8, 10 }, new List<int> { 12, 16 } };
             var newInterval = new List<int> { 1, 100 };
+            
             Insert(intSet, newInterval).ForEach(set => Console.WriteLine("[{0},{1}]", set[0], set[1]));
         }
 
@@ -810,7 +844,9 @@ namespace CSharpNote.Data.Algorithm
             var end = list.Where(set => interval[1] >= set[0] && interval[0] <= set[0]).Max(set => set[1]);
             var newInterval = new List<int> { start, end };
             var need = list.Where(set => set[1] <= interval[0] || set[0] >= interval[1]).ToList();
+            
             need.Add(newInterval);
+            
             return need;
         }
 
@@ -841,9 +877,8 @@ namespace CSharpNote.Data.Algorithm
 
         private List<int> TreeToList(Node head)
         {
-            var newList = new List<int>();
+            var newList = new List<int> { head.Key };
 
-            newList.Add(head.Key);
             if (head.Left != null)
                 newList.AddRange(TreeToList(head.Left));
 
@@ -921,10 +956,8 @@ namespace CSharpNote.Data.Algorithm
                 scientificNotation
             };
 
-            var state = regexList.Any(regex =>
-                {
-                    return new System.Text.RegularExpressions.Regex(regex).IsMatch(validationString);
-                });
+            var state = regexList
+                .Any(regex => new System.Text.RegularExpressions.Regex(regex).IsMatch(validationString));
 
             Console.WriteLine("{0}:{1}", validationString, state);
         }
@@ -936,14 +969,16 @@ namespace CSharpNote.Data.Algorithm
             //Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.
             //For example, 
             //Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.
-            List<int> elements = new List<int> { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
+            var elements = new List<int> { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
             var sum = 0;
             var Intervals = new List<List<int>>();
-            for (int i = 0; i < elements.Count; i++)
+            for (var i = 0; i < elements.Count; i++)
             {
-                for (int j = i + 1; j < elements.Count; j++)
+                for (var j = i + 1; j < elements.Count; j++)
                 {
-                    if (elements[j] < elements[i]) continue;
+                    if (elements[j] < elements[i]) 
+                        continue;
+
                     if (!(Intervals.Any(interval => interval[0] <= i 
                         && interval[1] >= j))
                         && j - i > 1)
@@ -952,6 +987,7 @@ namespace CSharpNote.Data.Algorithm
                         var min = Math.Min(elements[i], elements[j]);
                         sum += Enumerable.Range(i + 1, j - i - 1).Sum(index => min - elements[index]);
                     }
+
                     break;
                 }
             }
@@ -973,21 +1009,18 @@ namespace CSharpNote.Data.Algorithm
             //If there is no such window in S that covers all characters in T, return the emtpy string "".
             //If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S.
 
-            string s = "ADOBECODEBANC";
-            string t = "ABC";
+            var s = "ADOBECODEBANC";
+            var t = "ABC";
         }
 
         private string FindMinimumWindow(string s, string t)
         {
             var a = new List<int>();
-            for (int i = 0; i < s.Length; i++)
+            for (var i = 0; i < s.Length; i++)
             {
                 if (t.Contains(s[i].ToString()))
-                {
                     a.Add(i);
-                }
             }
-
 
             return null;
         }
@@ -1011,16 +1044,21 @@ namespace CSharpNote.Data.Algorithm
             var triangle = new List<List<int>> { new List<int> { 2 }, new List<int> { 3, 4 }, new List<int> { 6, 5, 7 }, new List<int> { 4, 1, 8, 3 } };
             var level = 0;
             var index = 0;
+
             Console.WriteLine(GetMinValueByTrianglePath(triangle, level, index).Min(n => n.Sum(x => x)));
         }
 
         private List<List<int>> GetMinValueByTrianglePath(List<List<int>> triangle, int level, int index)
         {
-            if (level + 1 >= triangle.Count) return new List<List<int>> { new List<int> { triangle[level][index] } };
+            if (level + 1 >= triangle.Count) 
+                return new List<List<int>> { new List<int> { triangle[level][index] } };
+
             var leftValue = GetMinValueByTrianglePath(triangle, level + 1, index);
             var righttValue = GetMinValueByTrianglePath(triangle, level + 1, index + 1);
+
             leftValue.AddRange(righttValue);
             leftValue.ForEach(n => n.Add(triangle[level][index]));
+
             return leftValue;
         }
 
@@ -1036,10 +1074,11 @@ namespace CSharpNote.Data.Algorithm
 
             var input = new List<int> { 2, 7, 2, 11, 15 };
             var target = 9;
+
             FindMatchTargetIndex(input, target).DumpMany();
         }
 
-        private List<List<int>> FindMatchTargetIndex(List<int> numberList, int target)
+        private IEnumerable<List<int>> FindMatchTargetIndex(List<int> numberList, int target)
         {
             var sets = new List<List<int>>();
             var index = 0;
@@ -1047,10 +1086,15 @@ namespace CSharpNote.Data.Algorithm
             while (index + range < numberList.Count)
             {
                 target -= numberList[index + range];
-                if (target == 0) sets.Add(new List<int> { index, index + range });
-                if (target > 0) range++;
-                else target += numberList[index++];
+                if (target == 0) 
+                    sets.Add(new List<int> { index, index + range });
+
+                if (target > 0)
+                    range++;
+                else 
+                    target += numberList[index++];
             }
+
             return sets;
         }
 
@@ -1061,6 +1105,7 @@ namespace CSharpNote.Data.Algorithm
             //Given a string, find the length of the longest substring without repeating characters. For example, the longest substring without repeating letters for "abcabcbb" is "abc", 
             //which the length is 3. For "bbbbb" the longest substring is "b", with the length of 1.
             var test = "aaaaaaaaaaaaaaaaaaefc";
+
             Console.WriteLine(GetLengthWithoutRepeat(test));
         }
 
@@ -1090,6 +1135,7 @@ namespace CSharpNote.Data.Algorithm
                 if (noRepeatLength == stringMax)
                     break;
             }
+
             return noRepeatLength;
         }
 
@@ -1099,31 +1145,34 @@ namespace CSharpNote.Data.Algorithm
             //https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock/
             //Say you have an array for which the ith element is the price of a given stock on day i.
             //If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.
-            List<int> price = new List<int> { 2, 1 };
+            var price = new List<int> { 2, 1 };
+
             Console.WriteLine(GetBestTimeToBuyAndSell(price));
         }
 
         private int GetBestTimeToBuyAndSell(List<int> prices)
         {
             if (prices == null
-                || prices.Count() == 0 
+                || !prices.Any() 
                 || prices.Any(p => p < 0))
                 return 0;
 
             var min = new List<int> { 0 };
             var maxBenifit = 0;
-            for (int index = 1; index < prices.Count(); index++)
+            for (var index = 1; index < prices.Count(); index++)
             {
                 if (prices[index] > prices[index - 1])
                 {
                     maxBenifit = Math.Max(maxBenifit, min.Max(n => prices[index] - prices[n]));
                     continue;
                 }
+
                 if (prices[index] < prices[index - 1])
                 {
                     min.Add(index);
                 }
             }
+
             return maxBenifit;
         }
 
@@ -1135,43 +1184,49 @@ namespace CSharpNote.Data.Algorithm
             //Design an algorithm to find the maximum profit. You may complete as many transactions as you like 
             //(ie, buy one and sell one share of the stock multiple times). However, 
             //you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
-            List<int> prices = new List<int> { 10, 5, 8, 1, 5, 3, 9, 4, 2, 6, 7 };
-            int totalProfit = 0;
-            for (int i = 0; i < prices.Count() - 1; i++)
+            var prices = new List<int> { 10, 5, 8, 1, 5, 3, 9, 4, 2, 6, 7 };
+            var totalProfit = 0;
+            for (var i = 0; i < prices.Count() - 1; i++)
             {
-                if (prices[i + 1] > prices[i]) totalProfit += prices[i + 1] - prices[i];
+                if (prices[i + 1] > prices[i]) 
+                    totalProfit += prices[i + 1] - prices[i];
             }
+
             Console.WriteLine(totalProfit);
         }
 
         [MarkedItem]
-        public void BestTimetoBuyandSellStockIII()
+        public void BestTimetoBuyandSellStockIii()
         {
             //https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
             //Say you have an array for which the ith element is the price of a given stock on day i.
             //Design an algorithm to find the maximum profit. You may complete at most two transactions.
             //Note:
             //You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
-            List<int> prices = new List<int> { 10, 5, 8, 1, 5, 3, 9, 4, 2, 6, 5 };
-            List<List<int>> set = new List<List<int>>();
+            var prices = new List<int> { 10, 5, 8, 1, 5, 3, 9, 4, 2, 6, 5 };
+            var set = new List<List<int>>();
             var p = 0;
-            for (int i = 0; i < prices.Count() - 1; i++)
+            for (var i = 0; i < prices.Count() - 1; i++)
             {
                 if (prices[i + 1] < prices[i])
                 {
                     if (i != p) set.Add(new List<int> { p, i });
                     p = i + 1;
                 }
-                if (i == prices.Count() - 2)
-                {
-                    if (i != p) set.Add(new List<int> { p, i + 1 });
-                }
+
+                if (i != prices.Count() - 2)
+                    continue;
+
+                if (i != p) 
+                    set.Add(new List<int> { p, i + 1 });
             }
+
             var maxProfitOfTwoTransaction =
                 set.Select(n => prices[n[1]] - prices[n[0]])
                 .OrderByDescending(n => n)
                 .Take(2)
                 .Sum();
+
             Console.WriteLine(maxProfitOfTwoTransaction);
         }
 
@@ -1184,15 +1239,17 @@ namespace CSharpNote.Data.Algorithm
             //How many possible unique paths are there?
             //Above is a 3 x 7 grid. How many possible unique paths are there?
             //Note: m and n will be at most 100.
-            int arrayX = 10, arrayY = 9;
-            int allStep = arrayX + arrayY - 2;
-            int goDown = arrayX - 1;
+            var arrayX = 10;
+            var arrayY = 9;
+            var allStep = arrayX + arrayY - 2;
+            var goDown = arrayX - 1;
             double res = 1;
-            for (int step = 1; step <= goDown; step++)
+            for (var step = 1; step <= goDown; step++)
             {
                 var goRight = allStep - goDown;
                 res = res * (goRight + step) / step;
             }
+
             Console.WriteLine(res);
         }
 
@@ -1202,7 +1259,7 @@ namespace CSharpNote.Data.Algorithm
             //https://oj.leetcode.com/problems/anagrams/
             //Given an array of strings, return all groups of strings that are anagrams.
             //Note: All inputs will be in lower-case.
-            List<string> strs = new List<string> { "dog", "god", "cab", "bac", "zdz", "aac"};
+            var strs = new List<string> { "dog", "god", "cab", "bac", "zdz", "aac"};
             strs.Where(n =>
             {
                 return strs.Any(m =>
@@ -1225,8 +1282,8 @@ namespace CSharpNote.Data.Algorithm
             //First, iterate the array counting number of 0's, 1's, and 2's, then overwrite array with total number of 0's, then 1's and followed by 2's.
             //Could you come up with an one-pass algorithm using only constant space?
 
-            List<int> colors = new List<int> { 1, 100, 2, 1, 1, 4, 1, 4, 1, 5, 1, 2 };
-            int postion = 0;
+            var colors = new List<int> { 1, 100, 2, 1, 1, 4, 1, 4, 1, 5, 1, 2 };
+            var postion = 0;
             while (postion < colors.Count - 1)
             {
                 if (postion < 0) postion = 0;
@@ -1260,26 +1317,27 @@ namespace CSharpNote.Data.Algorithm
             //First, iterate the array counting number of 0's, 1's, and 2's, then overwrite array with total number of 0's, then 1's and followed by 2's.
             //Could you come up with an one-pass algorithm using only constant space?
 
-            List<int> colors = new List<int> { 1, 1, 2, 1, 0, 1, 2, 1, 0, 1, 1, 2 };
+            var colors = new List<int> { 1, 1, 2, 1, 0, 1, 2, 1, 0, 1, 1, 2 };
             int blue = -1, white = -1, red = -1;
-            for (int i = 0; i < colors.Count; i++)
+            for (var i = 0; i < colors.Count; i++)
             {
-                if (colors[i] == 0)
+                switch (colors[i])
                 {
-                    colors[++blue] = 0;
-                    colors[++white] = 1;
-                    colors[++red] = 2;
-                }
-                else if (colors[i] == 1)
-                {
-                    colors[++white] = 1;
-                    colors[++red] = 2;
-                }
-                else
-                {
-                    colors[++red] = 2;
+                    case 0:
+                        colors[++blue] = 0;
+                        colors[++white] = 1;
+                        colors[++red] = 2;
+                        break;
+                    case 1:
+                        colors[++white] = 1;
+                        colors[++red] = 2;
+                        break;
+                    default:
+                        colors[++red] = 2;
+                        break;
                 }
             }
+
             colors.Dump();
         }
 
@@ -1295,19 +1353,19 @@ namespace CSharpNote.Data.Algorithm
         public string LongestCommonPrefix(string[] items)
         {
             if (items == null || items.Length <= 0)
-            {
                 return string.Empty;
-            }
 
             var last = items[0].Length;
-            for (int i = 1; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
 			{
                 if (last == 0)
                     return string.Empty;
+
                 last = Math.Min(last, items[i].Length);
                 while (last > 0 && items[i].Substring(0, last) != items[0].Substring(0, last))
                     last--;
             }
+
             return items[0].Substring(0, last);
         }
 
@@ -1316,18 +1374,19 @@ namespace CSharpNote.Data.Algorithm
         {
             //Determine whether an integer is a palindrome. Do this without extra space.
 
-            long i = 77801120877;
+            var i = 77801120877;
             Console.WriteLine("{0}:IsPalindromeNumber:{1}", i, IsPalindromeNumber(i));
         }
 
         private bool IsPalindromeNumber(long i)
         {
-            if (i > Int64.MaxValue && i < 0) return false;
             var s = i.ToString();
-            for (int j = 0; j < s.Length / 2; j++)
+            for (var j = 0; j < s.Length / 2; j++)
             {
-                if (s[j] != s[s.Length - 1 - j]) return false;
+                if (s[j] != s[s.Length - 1 - j])
+                    return false;
             }
+
             return true;
         }
 
@@ -1336,19 +1395,21 @@ namespace CSharpNote.Data.Algorithm
         {
             //Determine whether an integer is a palindrome. Do this without extra space.
 
-            long i = 7780110877;
+            var i = 7780110877;
+
             Console.WriteLine("{0}:IsPalindromeNumber:{1}", i, IsPalindromeNumberII(i));
         }
 
         private bool IsPalindromeNumberII(long i)
         {
-            if (i > Int64.MaxValue && i < 0) return false;
-            for (int j = 0; j < (int)((int)(Math.Log10(i) + 1) / 2); j++)
+            for (var j = 0; j < (int)(Math.Log10(i) + 1) / 2; j++)
             {
                 var one = (int)(i / Math.Pow(10, j) % 10);
                 var two = (int)(i / Math.Pow(10, (int)(Math.Log10(i) - j) % 10));
-                if (one != two) return false;
+                if (one != two) 
+                    return false;
             }
+
             return true;
         }
 
@@ -1367,9 +1428,10 @@ namespace CSharpNote.Data.Algorithm
 
         private int GetLastWordLength(string s)
         {
-            int postion = s.Length - 1;
+            var postion = s.Length - 1;
             while (postion >= 0 && s[postion] != ' ')
                 postion--;
+
             return s.Length - 1 - postion;
         }
 
@@ -1381,13 +1443,16 @@ namespace CSharpNote.Data.Algorithm
             //The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 
             var set = new int[] { 1, 2, 5, 7, -4, -4, 10, 9, 7 };
+
             Console.WriteLine(GetCloseSet(set, -10));
         }
 
         private int GetCloseSet(int[] nums, int target)
         {
-            int x = 0, y = 1, z = 2;
-            int min = nums.Max();
+            var x = 0;
+            var y = 1;
+            var z = 2;
+            var min = nums.Max();
             var count = nums.Count();
             while (!(x == count - 3 && y == count - 2 && z == count - 1))
             {
@@ -1407,6 +1472,7 @@ namespace CSharpNote.Data.Algorithm
                     ++z;
                 }
             }
+
             return min;
         }
 
@@ -1418,14 +1484,17 @@ namespace CSharpNote.Data.Algorithm
             //For example,
             //Given height = [2,1,5,6,2,3],
             //return 10.
-            List<int> set = new List<int> { 2, 1, 5, 6, 2, 3 };
-            int max = 0;
-            for (int x = 0; x < set.Count() - 1; x++)
-                for (int y = x; y < set.Count(); y++)
+            var set = new List<int> { 2, 1, 5, 6, 2, 3 };
+            var max = 0;
+            for (var x = 0; x < set.Count() - 1; x++)
+            {
+                for (var y = x; y < set.Count(); y++)
                 {
                     var area = Math.Min(set[x], set[y]) * (y - x);
                     max = Math.Max(max, area);
                 }
+            }
+
             Console.WriteLine(max);
         }
 
@@ -1441,20 +1510,18 @@ namespace CSharpNote.Data.Algorithm
 
         private List<string> RestoreIPAddresses(string ip)
         {
-            List<List<string>> ipSet = new List<List<string>>();
-            foreach(var x in Enumerable.Range(1, 3))
-                foreach (var y in Enumerable.Range(1, 3))
-                    foreach (var z in Enumerable.Range(1, 3))
-                    {
-                        ipSet.Add(new List<string> { ip.Substring(0, x), ip.Substring(x, y), ip.Substring(x + y + 1, z), ip.Substring(x + y + z + 2) });
-                    }
-            return ipSet.Where(n => n.All(x => check(x))).Select(n => string.Join(".", n)).ToList();
+            var ipSet = (from x in Enumerable.Range(1, 3) from y in Enumerable.Range(1, 3) from z in Enumerable.Range(1, 3) select new List<string> {ip.Substring(0, x), ip.Substring(x, y), ip.Substring(x + y + 1, z), ip.Substring(x + y + z + 2)}).ToList();
+           
+            return ipSet.Where(n => n.All(check)).Select(n => string.Join(".", n)).ToList();
         }
 
         private bool check(string ipNumber)
         {
-            if (ipNumber.Length <= 0 || ipNumber.Length > 3) return false;
+            if (ipNumber.Length <= 0 || ipNumber.Length > 3) 
+                return false;
+
             var n = Convert.ToInt32(ipNumber);
+
             return n > 0 && n <= 255;
         }
 
@@ -1502,8 +1569,10 @@ namespace CSharpNote.Data.Algorithm
                     duplicate++;
                     continue;
                 }
+
                 if (nums[index] != index - negativeIndex - duplicate)
                     return index - negativeIndex - duplicate;
+
                 preNum = nums[index];
             }
             //缺最後一個
@@ -1520,8 +1589,12 @@ namespace CSharpNote.Data.Algorithm
 
         private int ClimbingStairs(int distinct)
         {
-            if (distinct < 0) return 0;
-            if (distinct <= 2) return distinct;
+            if (distinct < 0)
+                return 0;
+
+            if (distinct <= 2) 
+                return distinct;
+
             return ClimbingStairs(distinct - 2) + ClimbingStairs(distinct - 1);
         }
 
@@ -1535,11 +1608,16 @@ namespace CSharpNote.Data.Algorithm
 
         private int ClimbingStairsⅠ(int distinct)
         {
-            if (distinct < 0) return 0;
-            if (distinct <= 2) return distinct;
+            if (distinct < 0) 
+                return 0;
+
+            if (distinct <= 2) 
+                return distinct;
+
             var set = new List<int> { 1, 2 };
-            for (int i = 2; i < distinct; i++)
+            for (var i = 2; i < distinct; i++)
                 set.Add(set[i - 2] + set[i - 1]);
+
             return set.Last();
         }
 
@@ -1548,26 +1626,34 @@ namespace CSharpNote.Data.Algorithm
         {
             //Given a non-negative number represented as an array of digits, plus one to the number.
             //The digits are stored such that the most significant digit is at the head of the list.
-            List<int> num1 = new List<int> { 9, 2, 5 };
-            List<int> num2 = new List<int> { 3, 2, 5 };
+            var num1 = new List<int> { 9, 2, 5 };
+            var num2 = new List<int> { 3, 2, 5 };
+
             PlusOne(num1, num2).Dump();
         }
 
         private List<int> PlusOne(List<int> num1, List<int> num2)
         {
-            Stack<int> sum = new Stack<int>();
+            var sum = new Stack<int>();
             var max = Math.Max(num1.Count, num2.Count);
             var nextPlus = 0;
-            for (int i = 0; i < max; i++)
+            for (var i = 0; i < max; i++)
             {
                 var current = 0;
                 current += nextPlus;
-                if (i < num1.Count) current += num1[num1.Count - 1 - i];
-                if (i < num2.Count) current += num2[num2.Count - 1 - i];
+                if (i < num1.Count) 
+                    current += num1[num1.Count - 1 - i];
+
+                if (i < num2.Count)
+                    current += num2[num2.Count - 1 - i];
+
                 nextPlus = current / 10;
                 sum.Push(current % 10);
             }
-            if (nextPlus != 0) sum.Push(nextPlus);
+
+            if (nextPlus != 0) 
+                sum.Push(nextPlus);
+
             return sum.ToList();
         }
 
@@ -1578,19 +1664,20 @@ namespace CSharpNote.Data.Algorithm
             //Rotate the image by 90 degrees (clockwise).
             //Follow up:
             //Could you do this in-place?
-            int[,] matrix = new int[5, 5] { { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 } };
+            var matrix = new[,] { { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 } };
             RotateDegree90(matrix);
         }
 
-        private int[,] RotateDegree90(int[,] array)
+        private void RotateDegree90(int[,] array)
         {
             var result = new int[array.GetLength(1), array.GetLength(0)];
-            for (int i = 0; i < array.GetLength(0); i++)
-                for (int j = 0; j < array.GetLength(1); j++)
+            for (var i = 0; i < array.GetLength(0); i++)
+            {
+                for (var j = 0; j < array.GetLength(1); j++)
                 {
                     result[j, array.GetLength(0) - i - 1] = array[i, j];
                 }
-            return result;
+            }
         }
 
         [MarkedItem(@"https://oj.leetcode.com/problems/search-a-2d-matrix/")]
@@ -1605,8 +1692,9 @@ namespace CSharpNote.Data.Algorithm
             //  [10, 11, 16, 20],
             //  [23, 30, 34, 50]
             //Given target = 3, return true.
-            int[,] matrix = new int[3, 4] { { 1, 3, 5, 7 }, { 10, 11, 16, 20 }, { 23, 30, 34, 50 }};
+            var matrix = new int[3, 4] { { 1, 3, 5, 7 }, { 10, 11, 16, 20 }, { 23, 30, 34, 50 }};
             var target = 9;
+
             Console.WriteLine(SearchA2dMatrix(matrix, target));
         }
 
@@ -1620,8 +1708,10 @@ namespace CSharpNote.Data.Algorithm
                 var y = start % matrix.GetLength(0);
                 if (matrix[x, y] - target <= matrix[x - 1, y]) 
                     return false;
+
                 start++;
             }
+
             return true;
         }
 
@@ -1633,11 +1723,16 @@ namespace CSharpNote.Data.Algorithm
 
         private double ImplementPow(double x, int y)
         {
-            double temp = x;
-            if (y == 0) return 1;
-            if (y == 1) return x;
-            temp = ImplementPow(x, y / 2);
-            if (y % 2 == 0) return temp * temp;
+            if (y == 0) 
+                return 1;
+
+            if (y == 1) 
+                return x;
+
+            var temp = ImplementPow(x, y / 2);
+            if (y % 2 == 0) 
+                return temp * temp;
+
             return x * temp * temp;
         }
 
@@ -1650,15 +1745,20 @@ namespace CSharpNote.Data.Algorithm
 
         private int DivideTwoIntegers(int x, int y)
         {
-            if (x == 0 || y == 0) return 0;
+            if (x == 0 || y == 0) 
+                return 0;
+
             var state = 1;
-            if (!((x > 0 && y > 0) || (x < 0 && y < 0))) state = 1;
+            if (!((x > 0 && y > 0) || (x < 0 && y < 0))) 
+                state = 1;
+
             var sum = 0;
             while ((x >= y))
             {
                 x -= y;
                 sum++;
             }
+
             return sum * state;
         }
 
@@ -1684,6 +1784,7 @@ namespace CSharpNote.Data.Algorithm
                 if (target <= array[n]) return n;
                 n++;
             }
+
             return n;
         }
 
@@ -1692,16 +1793,23 @@ namespace CSharpNote.Data.Algorithm
             var low = 0;
             var height = array.Count - 1;
 
-            if (target <= array[low]) return low;
-            if (target > array[height]) return height + 1;
+            if (target <= array[low]) 
+                return low;
+
+            if (target > array[height]) 
+                return height + 1;
 
             while (low < height)
             {
                 var mid = low + (height - low) / 2;
-                if (target > array[mid]) low = mid + 1;
-                else if (target < array[mid]) height = mid - 1;
-                else return mid;
+                if (target > array[mid])
+                    low = mid + 1;
+                else if (target < array[mid]) 
+                    height = mid - 1;
+                else 
+                    return mid;
             }
+
             return low;
         }
 
@@ -1722,7 +1830,10 @@ namespace CSharpNote.Data.Algorithm
                 if (!set.Contains(s)) set.Add(s);
                 return;
             }
-            if (s != "()") GenerateParentheses(set, n - 1, s + "()");
+
+            if (s != "()")
+                GenerateParentheses(set, n - 1, s + "()");
+
             GenerateParentheses(set, n - 1, "()" + s);
             GenerateParentheses(set, n - 1, "(" + s + ")");
         }
@@ -1738,11 +1849,14 @@ namespace CSharpNote.Data.Algorithm
                 set.Clear();
                 tempSet.ForEach(s =>
                 {
-                    if (s != "()") set.Add(s + "()");
+                    if (s != "()") 
+                        set.Add(s + "()");
+
                     set.Add("()" + s);
                     set.Add("(" + s + ")");
                 });
             }
+
             return set;
         }
 
@@ -1751,26 +1865,34 @@ namespace CSharpNote.Data.Algorithm
         {
             var donations = new List<int>{ 10, 3, 2, 5, 7, 8};
             Console.WriteLine(MaxDonations(donations));
+
             var donations1 = new List<int> { 11, 15 };
             Console.WriteLine(MaxDonations(donations1));
+
             var donations2 = new List<int> { 7, 7, 7, 7, 7, 7, 7 };
             Console.WriteLine(MaxDonations(donations2));
+
             var donations3 = new List<int> { 1, 2, 3, 4, 5, 1, 2, 3, 4, 5 };
             Console.WriteLine(MaxDonations(donations3));
+
             var donations4 = new List<int> 
             { 
                 94, 40, 49, 65, 21, 21, 106, 80, 92, 81, 679, 4, 61,  
                 6, 237, 12, 72, 74, 29, 95, 265, 35, 47, 1, 61, 397,
                 52, 72, 37, 51, 1, 81, 45, 435, 7, 36, 57, 86, 81, 72
             };
+
             Console.WriteLine(MaxDonations(donations4));
         }
 
         private int MaxDonations(List<int> donations)
         {
-            var max = new Dictionary<int, int>();
-            max.Add(0, donations[0]);
-            max.Add(1, donations[1]);
+            var max = new Dictionary<int, int>
+            {
+                {0, donations[0]},
+                {1, donations[1]}
+            };
+
             var index = 2; 
             while (index < donations.Count() - 1)
             {
@@ -1780,9 +1902,11 @@ namespace CSharpNote.Data.Algorithm
                     index++;
                     continue;
                 }
+
                 max.Add(index, Math.Max(max[index - 2], max[index - 3]) + donations[index]);
                 index++;
             }
+
             return max.Max(m => m.Value);
         }
 
@@ -1799,9 +1923,9 @@ namespace CSharpNote.Data.Algorithm
 
         private int LongestZigZag(List<int> zigZagSequence)
         {
-            int index = 0;
-            int max = 1;
-            int tempMax = 1;
+            var index = 0;
+            var max = 1;
+            var tempMax = 1;
             bool? state = null;
             while (index < zigZagSequence.Count() - 1)
             {
@@ -1814,6 +1938,7 @@ namespace CSharpNote.Data.Algorithm
                     index++;
                     continue;
                 }
+
                 if (nextState == state)
                 {
                     state = !state;
@@ -1821,10 +1946,9 @@ namespace CSharpNote.Data.Algorithm
                     index++;
                 }
                 else
-                {
                     state = null;
-                }
             }
+
             return max;
         }
 
@@ -1846,12 +1970,14 @@ namespace CSharpNote.Data.Algorithm
             while (index < k)
             {
                 space.Add(space[0]);
-                for (int i = index; i > 0; i--)
+                for (var i = index; i > 0; i--)
                 {
                     space[i] += space[i - 1];
                 }
+
                 index++;
             }
+
             return space;
         }
 
@@ -1865,31 +1991,35 @@ namespace CSharpNote.Data.Algorithm
         private List<List<int>> PascalsTriangleI(int k)
         {
             var set = new List<List<int>> { new List<int>{ 1 } };
-            for (int i = 1; i <= k; i++)
+            for (var i = 1; i <= k; i++)
             {
                 var newSet = new List<int>();
                 var frontSet = set[i - 1];
                 newSet.Add(frontSet[0]);
-                for (int j = 1; j < i; j++)
+                for (var j = 1; j < i; j++)
                 {
                     newSet.Add(frontSet[j] + frontSet[j - 1]);
                 }
+
                 newSet.Add(frontSet[frontSet.Count - 1]);
                 set.Add(newSet);
             }
+
             return set;
         }
 
         [MarkedItem]
         public void ArrayListAllSubSet()
         {
-            List<int> set = new List<int> { 1, 5, 9 , 100, 4, 99, 88};
+            var set = new List<int> { 1, 5, 9 , 100, 4, 99, 88};
             ArrayListAllSubSet(set).DumpMany();
         }
 
         private List<List<int>> ArrayListAllSubSet(List<int> set, List<int> subset = null, int index = 0)
         {
-            if (index >= set.Count) return new List<List<int>> { subset };
+            if (index >= set.Count) 
+                return new List<List<int>> { subset };
+
             var newset1 = new List<int>();
             var newset2 = new List<int>();
             if (subset != null)
@@ -1897,6 +2027,7 @@ namespace CSharpNote.Data.Algorithm
                 newset1.AddRange(subset);
                 newset2.AddRange(subset);
             }
+
             newset2.Add(set[index]);
             var result1 = ArrayListAllSubSet(set, newset1, index + 1);
             var result2 = ArrayListAllSubSet(set, newset2, index + 1);
@@ -1910,34 +2041,35 @@ namespace CSharpNote.Data.Algorithm
         {
             var input1 = new List<int> { 1, 2, 3 };
             Console.WriteLine(numberOfRejections(input1));
+
             var input2 = new List<int> { 1, 1, 1 };
             Console.WriteLine(numberOfRejections(input2));
+
             var input3 = new List<int> { 1, 2, 1, 2 };
             Console.WriteLine(numberOfRejections(input3));
         }
 
         private int numberOfRejections(List<int> requests)
         {
-            if (requests.Count > 50) return -1;
+            if (requests.Count > 50)
+                return -1;
 
             var reject = 0;
-            List<int> accepts = new List<int>();
-            for (int i = 0; i < requests.Count; i++)
+            var accepts = new List<int>();
+            foreach (int request in requests)
             {
-                if (requests[i] > 100 || requests[i] < 1)
+                if (request > 100 || request < 1)
                 {
                     reject++;
                     continue;
                 }
-                if (accepts.Contains(requests[i]))
-                {
+
+                if (accepts.Contains(request))
                     reject++;
-                }
                 else
-                {
-                    accepts.Add(requests[i]);
-                }
+                    accepts.Add(request);
             }
+
             return reject;
         }
 
@@ -1959,7 +2091,10 @@ namespace CSharpNote.Data.Algorithm
             while (index < array.Count() - 1)
             {
                 while (index + 1 < array.Count && array[index] == array[index + 1])
+                {
                     array.RemoveAt(index + 1);
+                }
+
                 index++;
             }
         }
@@ -1970,20 +2105,24 @@ namespace CSharpNote.Data.Algorithm
             //Given two sorted integer arrays A and B, merge B into A as one sorted array.
             //Note:
             //You may assume that A has enough space (size that is greater or equal to m + n) to hold additional elements from B. The number of elements initialized in A and B are m and n respectively.
-            List<int> list1 = new List<int> { 1,1,1,5,6,7};
-            List<int> list2 = new List<int> { 2,3,7,9};
+            var list1 = new List<int> { 1,1,1,5,6,7};
+            var list2 = new List<int> { 2,3,7,9};
+
             MergeSortedArray(list1, list2).Dump();
         }
 
         private List<int> MergeSortedArray(List<int> list1, List<int> list2)
         { 
-            int p1 = 0, p2 = 0;
+            var p1 = 0;
+            var p2 = 0;
             while (p2 < list2.Count)
             {
-                while (p1 < list1.Count && list1[p1++] < list2[p2]) {}
+                while (p1 < list1.Count && list1[p1++] < list2[p2]);
+
                 list1.Insert(p1, list2[p2]);
                 p2++;
             }
+
             return list1;
         }
 
@@ -1999,10 +2138,10 @@ namespace CSharpNote.Data.Algorithm
 
         private int MaximumSubarray(List<int> array)
         {
-            int index1 = 0;
-            int index2 = 0;
-            int currentSum = 0;
-            int max = array[0];
+            var index1 = 0;
+            var index2 = 0;
+            var currentSum = 0;
+            var max = array[0];
             while (index1 < array.Count - 1)
             {
                 if (index2 >= array.Count)
@@ -2010,9 +2149,11 @@ namespace CSharpNote.Data.Algorithm
                     index2 = ++index1;
                     currentSum = 0;
                 }
+
                 currentSum += array[index2++];
                 max = Math.Max(max, currentSum);
             }
+
             return max;
         }
 
@@ -2020,18 +2161,21 @@ namespace CSharpNote.Data.Algorithm
         public void MaximumSubarrayⅠ()
         {
             var array = new List<int> { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+
             Console.WriteLine(MaximumSubarrayⅠ(array));
         }
 
         private int MaximumSubarrayⅠ(List<int> array)
         {
-            int max = array[0], sum = 0;
-            for (var i = 0; i < array.Count; i++)
+            var max = array[0];
+            var sum = 0;
+            foreach (var item in array)
             {
-                sum += array[i];
+                sum += item;
                 max = Math.Max(sum, max);
                 sum = Math.Max(sum, 0);
             }
+
             return max;
         }
 
@@ -2056,24 +2200,15 @@ namespace CSharpNote.Data.Algorithm
                 set.Add(subset);
                 return;
             }
+
             if (pass > 0)
             {
                 Combinations(n - 1, k, pass - 1, subset.ToList(), set);
             }
+
             var subSet1 = subset.ToList();
             subSet1.Add(n);
             Combinations(n - 1, k - 1, pass, subSet1, set);
-        }
-
-        private class Aspect
-        {
-            public int X { get; set; }
-            public int Y { get; set; }
-        }
-
-        private List<int> getCubeList(int max)
-        {
-            return Enumerable.Range(0, max + 1).Select(n => n * n * n).ToList();
         }
 
         [MarkedItem(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-array-ii/")]
@@ -2085,14 +2220,20 @@ namespace CSharpNote.Data.Algorithm
             //Given sorted array A = [1,1,1,2,2,3],
             //Your function should return length = 5, and A is now [1,1,2,2,3].
             var elements = new List<int> { 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 3 };
+
             Console.WriteLine(RemoveDuplicatesFromSortedArrayⅡ(elements));
         }
 
         private int RemoveDuplicatesFromSortedArrayⅡ(List<int> elements)
         {
-            if (elements.Count() <= 2) return elements.Count();
-            for (int i = elements.Count - 1; i >= 2; i--)
+            if (elements.Count() <= 2) 
+                return elements.Count();
+
+            for (var i = elements.Count - 1; i >= 2; i--)
+            {
                 if (elements[i] == elements[i - 2]) elements.RemoveAt(i);
+            }
+
             return elements.Count();
         }
 
@@ -2107,7 +2248,7 @@ namespace CSharpNote.Data.Algorithm
         private long ImplementSqrt(int x)
         {
             long ans = 0;
-            long bit = 1l << 16;
+            var bit = 1l << 16;
             while (bit > 0)
             {
                 ans |= bit;
@@ -2115,9 +2256,11 @@ namespace CSharpNote.Data.Algorithm
                 {
                     ans ^= bit;
                 }
+
                 bit >>= 1;
             }
-            return (long)ans;
+
+            return ans;
         }
 
         [MarkedItem(@"https://oj.leetcode.com/problems/distinct-subsequences/")]
@@ -2130,6 +2273,7 @@ namespace CSharpNote.Data.Algorithm
             //Return 3.
             var s = "aarabbbit";
             var t = "rabbit";
+
             Console.WriteLine(DistinctSubsequences(s, t));
         }
 
@@ -2137,17 +2281,19 @@ namespace CSharpNote.Data.Algorithm
         {
             var stime = SequenceRepeatTimes(s);
             var ttime = SequenceRepeatTimes(t);
-            if (stime.Count != ttime.Count) return 0;
+            if (stime.Count != ttime.Count) 
+                return 0;
+
             var all = 1;
             for (var i = 0; i < stime.Count; i++)
             {
                 if (stime[i].Key != ttime[i].Key || stime[i].Value < ttime[i].Value) 
                     return 0;
+
                 if (stime[i].Value > ttime[i].Value)
-                {
                     all *= AllGroup(stime[i].Value, ttime[i].Value);
-                }
             }
+
             return all;
         }
 
@@ -2155,6 +2301,7 @@ namespace CSharpNote.Data.Algorithm
         {
             var i = Enumerable.Range(1, y).Aggregate((a, b) => a * b);
             var j = Enumerable.Range(x - y + 1, y).Aggregate((a, b) => a * b);
+
             return i / j;
         }
 
@@ -2163,13 +2310,15 @@ namespace CSharpNote.Data.Algorithm
             var repeat = new List<KeyValuePair<char, int>>();
             for (var i = 0; i < s.Length; i++)
             {
-                if (i == 0 || !(s[i] == s[i - 1]))
+                if (i == 0 || s[i] != s[i - 1])
                 {
                     repeat.Add(new KeyValuePair<char, int>(s[i], 1));
                     continue;
                 }
+
                 repeat[repeat.Count - 1] = new KeyValuePair<char, int>(repeat.Last().Key, repeat.Last().Value + 1);
             }
+
             return repeat;
         }
 
@@ -2178,21 +2327,28 @@ namespace CSharpNote.Data.Algorithm
         {
             var s = "aaa";
             var t = "a";         
+
             Console.WriteLine(DistinctSubsequencesⅠ(s, t));
         }
 
         private int DistinctSubsequencesⅠ(string s, string t)
         {
-            int m = s.Length;
-            int n = t.Length;
-            if (m < n) return 0;   
+            var m = s.Length;
+            var n = t.Length;
+            if (m < n) 
+                return 0;   
 
             var path = Enumerable.Range(0, n + 1).Select(i => 0).ToList();
-            path[0] = 1;           
+            path[0] = 1;
 
-            for (int i = 1; i <= m; i++)
-                for (int j = n; j >= 1; j--)
-                    path[j] += (s[i - 1] == t[j - 1])? path[j - 1] : 0;
+            for (var i = 1; i <= m; i++)
+            {
+                for (var j = n; j >= 1; j--)
+                {
+                    path[j] += (s[i - 1] == t[j - 1]) ? path[j - 1] : 0;
+                }
+            }
+
             return path[n];
         }
 
@@ -2205,11 +2361,11 @@ namespace CSharpNote.Data.Algorithm
         private List<List<int>> PermutationSequence(int n)
         {
             var containElement = Enumerable.Range(1, n).ToList();
-            List<List<int>> sets = containElement.Select(elements => new List<int> { elements }).ToList();
+            var sets = containElement.Select(elements => new List<int> { elements }).ToList();
             containElement.Select(elements => new List<int> { elements });
             for (var i = 1; i < n; i++)
             {
-                List<List<int>> temp = new List<List<int>>();
+                var temp = new List<List<int>>();
                 sets.ForEach(set =>
                 {
                     foreach (var element in containElement.Where(elements => !set.Contains(elements)))
@@ -2219,16 +2375,18 @@ namespace CSharpNote.Data.Algorithm
                         temp.Add(sub);
                     }
                 });
+
                 sets = temp;
             }
+
             return sets;
         }
 
         [MarkedItem(@"https://projecteuler.net/problem=21")]
         public void AmicableNumbers()
         {
-            int max = 10000;
-            var primes = GetPrimesWithinRange(max).ToList();
+            var max = 10000;
+            GetPrimesWithinRange(max).ToList();
             var sumSet = Enumerable.Range(2, max - 1)
                 .Select(number => new 
                     { 
@@ -2239,9 +2397,7 @@ namespace CSharpNote.Data.Algorithm
                     })
                     .ToDictionary(x => x.Key, x => x.Value);
 
-            foreach (var element in 
-                sumSet.Where(set => (sumSet.ContainsKey(set.Value) && set.Key == sumSet[set.Value]) ? true : false)
-            )
+            foreach (var element in sumSet.Where(set => (sumSet.ContainsKey(set.Value) && set.Key == sumSet[set.Value])))
             {
                 Console.WriteLine("index:{0} sum:{1}", element.Key, element.Value);
             }
@@ -2257,10 +2413,16 @@ namespace CSharpNote.Data.Algorithm
             {
                 var sub1 = validString.Substring(validString.Length - index - 1, index + 1);
                 var sub2 = validString.Substring(index, validString.Length - index);
-                int value1, value2;
-                if (int.TryParse(sub1, out value1)) group.Add(value1);
-                if (int.TryParse(sub2, out value2)) group.Add(value2);
+
+                int value1;
+                if (int.TryParse(sub1, out value1)) 
+                    group.Add(value1);
+
+                int value2;
+                if (int.TryParse(sub2, out value2)) 
+                    group.Add(value2);
             }
+
             Console.WriteLine("All Primes{0}", group.All(i => IsPrime(i)));
         }
 
@@ -2275,6 +2437,7 @@ namespace CSharpNote.Data.Algorithm
             //return [3, 4].
             var search = new List<int> { 5, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 10, 10 };
             var target = 8;
+
             SearchForARange(search, target).Dump();
         }
 
@@ -2288,6 +2451,7 @@ namespace CSharpNote.Data.Algorithm
             var right = index;
             while ((right = SearchIndex(search, target, 0, --right)) != -1)
                 result[0] = right;
+
             var left = index;
             while ((left = SearchIndex(search, target, ++left, search.Count - 1)) != -1)
                 result[1] = left;
@@ -2308,10 +2472,16 @@ namespace CSharpNote.Data.Algorithm
             while (start <= end)
             {
                 var middle = start + (end - start) / 2;
-                if (search[middle] > target) end = middle - 1;
-                if (search[middle] < target) start = middle + 1;
-                if (search[middle] == target) return middle;
+                if (search[middle] > target) 
+                    end = middle - 1;
+
+                if (search[middle] < target) 
+                    start = middle + 1;
+
+                if (search[middle] == target) 
+                    return middle;
             }
+
             return -1;
         }
 
@@ -2322,7 +2492,7 @@ namespace CSharpNote.Data.Algorithm
             ReorderList(order).Dump();
         }
 
-        private List<int> ReorderList(List<int> order)
+        private IEnumerable<int> ReorderList(List<int> order)
         {
             var index = 0;
             while (index < (order.Count - 1) / 2)
@@ -2331,6 +2501,7 @@ namespace CSharpNote.Data.Algorithm
                 order.RemoveAt(order.Count - 1);
                 index++;
             }
+
             return order;
         }
 
@@ -2341,6 +2512,7 @@ namespace CSharpNote.Data.Algorithm
             //Note:
             //Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
             var searchList = new List<int> { 1, 2, 2, 3, 1, 6, 3, 4, 4, 5, 5, 5, 5 };
+
             Console.WriteLine(SingleNumber(searchList));
         }
 
@@ -2349,34 +2521,15 @@ namespace CSharpNote.Data.Algorithm
             return searchList.Aggregate((a, b) => a ^ b);
         }
 
-        [MarkedItem(@"https://oj.leetcode.com/problems/word-search/")]
-        public void WordSearch()
-        {
-            var map = new List<List<string>>
-            {
-                new List<string> {"w", "c", "n", "w"},
-                new List<string> {"s", "b", "v", "a"},
-                new List<string> {"x", "n", "f", "n"},
-                new List<string> {"f", "r", "d", "q"},
-            };
-        }
-
-        private void WordSearch(List<List<string>> map, string path)
-        {
-            foreach (var c in path)
-            {
- 
-            }
-        }
-
         [MarkedItem(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list-ii/")]
         public void RemoveDuplicatesFromSortedListii()
         {
             var list = new List<int> { 1, 1, 1, 1, 2, 5, 6, 9, 88, 88, 99, 99, 99, 100 };
+
             RemoveDuplicatesFromSortedListii(list).Dump();
         }
 
-        private List<int> RemoveDuplicatesFromSortedListii(List<int> list)
+        private IEnumerable<int> RemoveDuplicatesFromSortedListii(List<int> list)
         {
             var i = 1;
             var state = false;
@@ -2388,14 +2541,17 @@ namespace CSharpNote.Data.Algorithm
                     state = true;
                     continue;
                 }
+
                 if (state)
                 {
                     list.RemoveAt(i - 1);
                     state = false;
                     continue;
                 }
+
                 i++;
             }
+
             return list;
         }
 
@@ -2407,71 +2563,30 @@ namespace CSharpNote.Data.Algorithm
             //[1,2,3] have the following permutations:
             //[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1]
             var elements = Enumerable.Range(1, 7).ToList();
+
             Permutations(elements, elements.Count).DumpMany();
         }
 
-        private List<List<int>> Permutations(List<int> elements, int level, List<int> sub = null)
+        private IEnumerable<List<int>> Permutations(List<int> elements, int level, List<int> sub = null)
         {
             var subSets = new List<List<int>>();
-            if (level == 0) return new List<List<int>> { sub };
-            if (sub == null) sub = new List<int>();
+            if (level == 0) 
+                return new List<List<int>> { sub };
+
+            if (sub == null) 
+                sub = new List<int>();
+
             foreach (var element in elements)
             {
-                if (!sub.Contains(element))
-                {
-                    var tmp = sub.ToList();
-                    tmp.Add(element);
-                    subSets.AddRange(Permutations(elements, level - 1, tmp));
-                }
+                if (sub.Contains(element))
+                    continue;
+
+                var tmp = sub.ToList();
+                tmp.Add(element);
+                subSets.AddRange(Permutations(elements, level - 1, tmp));
             }
+
             return subSets;
-        }
-
-        [MarkedItem(@"https://oj.leetcode.com/problems/min-stack/")]
-        public void MinStack()
-        {
-            //Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
-            //push(x) -- Push element x onto stack.
-            //pop() -- Removes the element on top of the stack.
-            //top() -- Get the top element.
-            //getMin() -- Retrieve the minimum element in the stack.
-        }
-
-        private class MStack
-        {
-            private int[] elements;
-            private int index;
-
-            public MStack(int size)
-            {
-                elements = new int[size];
-            }
-
-            public int getMin()
-            {
-                var tmp = index;
-                var min = 0;
-                while (tmp >= 0)
-                {
-                    min = Math.Min(min, elements[min--]);
-                }
-                return min;
-            }
-
-            public int Top()
-            {
-                return this.elements[index];
-            }
-
-            public void Push(int obj)
-            {
-                this.elements[index++] = obj;
-            }
-
-            public void Pop(int obj)
-            {
-                this.elements[index--] = 0;
-            }
         }
 
         [MarkedItem(@"https://oj.leetcode.com/problems/find-peak-element/")]
@@ -2483,7 +2598,8 @@ namespace CSharpNote.Data.Algorithm
             //You may imagine that num[-1] = num[n] = -∞.
             //For example, in array [1, 2, 3, 1], 3 is a peak element and your function should return the index number 2.
             //MutiPeak
-            List<int> numbers = new List<int> { 1, 2, 3, 0};
+            var numbers = new List<int> { 1, 2, 3, 0};
+
             FindPeakElement(numbers).ToConsole();
         }
 
@@ -2491,11 +2607,13 @@ namespace CSharpNote.Data.Algorithm
         {
             if (numbers.Count() < 2)
                 return 0;
+
             var maxPeak = 0;
             for (var index = 0; index < numbers.Count(); index++)
             {
                 maxPeak = Math.Max(numbers[index], maxPeak);
             }
+
             return maxPeak;
         }
 
@@ -2509,6 +2627,7 @@ namespace CSharpNote.Data.Algorithm
             //Return true because "leetcode" can be segmented as "leet code".
             var dict = new List<string> {"leet", "code"};
             var s = "leetcode";
+
             Console.WriteLine(WordBreak(dict, s));
         }
 
@@ -2523,8 +2642,10 @@ namespace CSharpNote.Data.Algorithm
                     stringIndex += dict[dictIndex].Length - 1;
                     dictIndex++;
                 }
+
                 stringIndex++;
             }
+
             return dictIndex >= dict.Count; 
         }
 
@@ -2537,22 +2658,13 @@ namespace CSharpNote.Data.Algorithm
             //The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.
             //Your algorithm should run in O(n) complexity.
             var elements = new List<int> { 100, 4, 200, 1, 3, 2 };
+
             Console.WriteLine(LongestConsecutiveSequence(elements));
         }
 
         private int LongestConsecutiveSequence(List<int> elements)
         {
-            var temp = elements.ToDictionary(e => e, e => 1);
-            for (var index = 0; index < elements.Count; index++)
-            {
-                var tmpIndex = elements[index];
-                if (temp[tmpIndex] != 1) break;
-                while (temp.ContainsKey(++tmpIndex))
-                {
-                    temp[tmpIndex] += temp[tmpIndex - 1];
-                }
-            }
-            return temp.Max(t => t.Value);
+            return 0;
         }
 
         [MarkedItem(@"https://oj.leetcode.com/problems/fraction-to-recurring-decimal/")]
@@ -2572,28 +2684,21 @@ namespace CSharpNote.Data.Algorithm
         private string FractionToRecurringDecimal(int numerator, int denominator)
         {
             if (numerator == 0)
-            {
                 return "0";
-            }
-
+            
             var result = new StringBuilder();
 
             if (numerator < 0 ^ denominator < 0)
-            {
                 result.Append("-");
-            }
 
             numerator = Math.Abs(numerator);
             denominator = Math.Abs(denominator);
 
             result.Append(numerator / denominator);
             if (numerator % denominator == 0)
-            {
                 return result.ToString();
-            }
 
             result.Append(".");
-
             for (var dic = new Dictionary<int, int>(); numerator > 0; numerator %= denominator)
             {
                 if (dic.ContainsKey(numerator))
@@ -2602,6 +2707,7 @@ namespace CSharpNote.Data.Algorithm
                     result.Append(")");
                     break;
                 }
+
                 dic.Add(numerator, result.Length);
                 numerator *= 10;
                 result.Append(numerator / denominator);
@@ -2633,6 +2739,7 @@ namespace CSharpNote.Data.Algorithm
                     dic[e]++;
                 }
             }
+
             return dic.Aggregate((a, b) => a.Value > b.Value ? a : b).Key;
         }
 
@@ -2651,14 +2758,16 @@ namespace CSharpNote.Data.Algorithm
                 chars.Add((char)((number - 1) % 26 + 65));
                 number = (number - 1) / 26;
             }
+
             chars.Reverse();
+
             return string.Concat(chars);
         }
 
         [MarkedItem(@"https://oj.leetcode.com/problems/dungeon-game/")]
         public void DungeonGame()
         {
-            Random rm = new Random();
+            var rm = new Random();
             var maxNum = 3;
             var dungeon =
                 Enumerable.Repeat(0, maxNum).Select(n =>
@@ -2666,6 +2775,7 @@ namespace CSharpNote.Data.Algorithm
                         rm.Next(-10, 3)).ToList())
                 .ToList();
             var result = DungeonGame(dungeon);
+
             ((result >= 0) ? 1 : Math.Abs(result) + 1).ToConsole();
         }
 
@@ -2675,14 +2785,13 @@ namespace CSharpNote.Data.Algorithm
             var hpList = new List<int>();
             if (x == dungeon.Count - 1 && y == dungeon[0].Count - 1)
                 return maxHp;
+
             if (x + 1 < dungeon.Count)
-            {
                 hpList.Add(Math.Max(DungeonGame(dungeon, x + 1, y, currentHp), currentHp));
-            }
+
             if (y + 1 < dungeon[0].Count)
-            {
                 hpList.Add(Math.Max(DungeonGame(dungeon, x, y + 1, currentHp), currentHp));
-            }
+
             return hpList.Max();
         }
 
@@ -2695,6 +2804,7 @@ namespace CSharpNote.Data.Algorithm
             var list = new List<int> { 3, 30, 34, 5, 9 ,49, 491};
             var comparer = new IntComparer();
             list.Sort(comparer);
+
             string.Join("", list.ConvertAll(i => i.ToString()).ToArray()).ToConsole();
         }
 
@@ -2712,8 +2822,11 @@ namespace CSharpNote.Data.Algorithm
                     if (strA[i] < strB[i]) return 1;
                 }
                 //Compare situation:Length
-                if (strA.Length > strB.Length) return 1;
-                if (strA.Length < strB.Length) return -1;
+                if (strA.Length > strB.Length) 
+                    return 1;
+
+                if (strA.Length < strB.Length)
+                    return -1;
                 
                 return 0;
             }
@@ -2723,15 +2836,19 @@ namespace CSharpNote.Data.Algorithm
         public void DayPlanner()
         {
             var tasks = new List<string> { "01:22 A", "01:22 B", "23:22 C" };
+
             GetEnds(tasks).ToConsole();
         }
 
         private string GetEnds(List<string> parameters)
         {
-            if (parameters.Count <= 0) return "";
+            if (parameters.Count <= 0)
+                return "";
+
             var rule = @"[0-2]{1}[0-9][1][:]{1}[0-5]{1}[0-9][1][ ]{1}[A-Zz-z]+$";
             var regex = new System.Text.RegularExpressions.Regex(rule);
-            if (!parameters.Any(p => regex.IsMatch(p))) return string.Empty;
+            if (!parameters.Any(p => regex.IsMatch(p))) 
+                return string.Empty;
 
             var firstTime = int.MaxValue;
             var firstTask = string.Empty;
@@ -2747,12 +2864,14 @@ namespace CSharpNote.Data.Algorithm
                         endTime = totalMin;
                         endTask = parameterArray[1];
                     }
+
                     if (firstTime > totalMin)
                     {
                         firstTime = totalMin;
                         firstTask = parameterArray[1];
                     }
                 });
+
             return string.Format("{0}-{1}", firstTask, endTask);
         }
 
@@ -2768,12 +2887,14 @@ namespace CSharpNote.Data.Algorithm
                 {51545, 2},
                 {12531, 1}
             };
+
             NumberMind(5, dictionary).ToConsole();
         }
 
         private int NumberMind(int digit, Dictionary<int, int> dictionary)
         {
             var elements = Enumerable.Range((int)Math.Pow(10, digit - 1), (int)Math.Pow(10, digit) - (int)Math.Pow(10, digit - 1));
+           
             return elements.FirstOrDefault(element => 
                 dictionary.All((key, keypair) =>
                 {
@@ -2788,6 +2909,7 @@ namespace CSharpNote.Data.Algorithm
                         if (count > times) 
                             return false;
                     }
+
                     return (count == times);
                 }));
         } 
@@ -2801,7 +2923,7 @@ namespace CSharpNote.Data.Algorithm
 
         public List<string> RepeatedDnaSequences(string dna, int letterLong)
         {
-            IDictionary<string, int> dictionary = new Dictionary<string, int>();
+            var dictionary = new Dictionary<string, int>();
             for(var index = 0; index < dna.Length - letterLong; index++)
             {
                 var str = dna.Substring(index, letterLong);
@@ -2810,6 +2932,7 @@ namespace CSharpNote.Data.Algorithm
                     dictionary[str]++;
                     continue;
                 }
+
                 dictionary.Add(str, 1);
             }
 
@@ -2821,6 +2944,7 @@ namespace CSharpNote.Data.Algorithm
         {
             var random = new Random();
             var elements = Enumerable.Range(1, 10).Select(n => random.Next(1, 100)).ToList();
+
             BestTimeToBuyAndSellStock(elements).ToConsole("BestProfit:");
         }
 
@@ -2828,7 +2952,6 @@ namespace CSharpNote.Data.Algorithm
         {
             var profit = 0;
             var buyPrice = 0;
-
             for (var i = 0; i < elements.Count - 1; i++)
             {
                 if (buyPrice == 0 && elements[i] < elements[i + 1])
@@ -2837,6 +2960,7 @@ namespace CSharpNote.Data.Algorithm
                     buyPrice = elements[i];
                     continue;
                 }
+
                 if (buyPrice != 0 && elements[i] > elements[i + 1])
                 {
                     profit += elements[i];
@@ -2851,24 +2975,28 @@ namespace CSharpNote.Data.Algorithm
         public void RotateArray()
         {
             var elements = Enumerable.Range(1, 7).ToArray();
+
             RotateArrayⅠ(elements, 3).Dump();
             "=======================".ToConsole();
+
             RotateArrayⅡ(elements, 3).Dump();
+
             "=======================".ToConsole();
             RotateArrayⅢ(elements, 3).Dump();
         }
 
         private int[] RotateArrayⅠ(int[] array, int position)
         {
-            if (position < 0) throw new Exception("invalid paramater positon");
+            if (position < 0) 
+                throw new Exception("invalid paramater positon");
 
             var length = array.Length;
             position = position % length + 1;
 
-            if (position == 0) return array;
+            if (position == 0) 
+                return array;
 
             var newArray = new int[length];
-
             for (var i = 0; i < length; i++)
             {
                 newArray[i] = array[(position + i) % length];
@@ -2879,23 +3007,27 @@ namespace CSharpNote.Data.Algorithm
 
         private int[] RotateArrayⅡ(int[] array, int position)
         {
-            if (position < 0) throw new Exception("invalid paramater positon");
+            if (position < 0) 
+                throw new Exception("invalid paramater positon");
 
             var length = array.Length;
 
-            if (position == 0) return array;
+            if (position == 0) 
+                return array;
 
             return Enumerable.Range(1, length).Select(n => array[(n + position) % length]).ToArray();
         }
 
         private int[] RotateArrayⅢ(int[] array, int position)
         {
-            if (position < 0) throw new Exception("invalid paramater positon");
+            if (position < 0) 
+                throw new Exception("invalid paramater positon");
 
             var length = array.Length;
             var moveDistance = length - (position % length);
 
-            if (position == 0) return array;
+            if (position == 0) 
+                return array;
 
             for (var indexFromMoveDistance = 0; indexFromMoveDistance < length - moveDistance; indexFromMoveDistance++)
             {
@@ -2918,20 +3050,18 @@ namespace CSharpNote.Data.Algorithm
         {
             var result = new List<string>();
             var index = 0;
-
             while (index < @string.Length)
             {
                 var tempindex = 0;
                 var tempString = string.Empty;
-
                 for (var subStringLength = 1; index + subStringLength <= @string.Length; subStringLength++)
                 {
                     var tempValue = @string.Substring(index, subStringLength);
-                    if (tempValue.IsPalindrome())
-                    {
-                        tempindex = index + subStringLength;
-                        tempString = tempValue;
-                    }
+                    if (!tempValue.IsPalindrome())
+                        continue;
+
+                    tempindex = index + subStringLength;
+                    tempString = tempValue;
                 }
 
                 result.Add(tempString);
@@ -2955,10 +3085,13 @@ namespace CSharpNote.Data.Algorithm
         {
             if (s1.Length + s2.Length != s3.Length)
                 return false;
+
             if (s3.Length == 0)
                 return true;
+
             if (s1.Length == 0)
                 return s2 == s3;
+
             if (s2.Length == 0)
                 return s1 == s3;
 
@@ -2974,7 +3107,8 @@ namespace CSharpNote.Data.Algorithm
         [MarkedItem("https://leetcode.com/problems/candy/")]
         public void Candy2()
         {
-            var ratings = new int[] { 2, 1, 9, 2, 3, 34, 1 };
+            var ratings = new[] { 2, 1, 9, 2, 3, 34, 1 };
+
             Candy2(ratings).ToConsole();
         }
 
@@ -2994,19 +3128,22 @@ namespace CSharpNote.Data.Algorithm
                     peak = index + 1;
                     continue;
                 }
+
                 if (ratings[index] > ratings[index + 1]
                     && candy[index] <= candy[index + 1])
                 {
                     for (var addIndex = peak; addIndex <= index; addIndex++)
                         candy[addIndex]++;
+
                     continue;
                 }
-                if (ratings[index] == ratings[index + 1])
-                {
-                    var max = Math.Max(candy[index], candy[index + 1]);
-                    candy[index] = max;
-                    candy[index + 1] = max;
-                }
+
+                if (ratings[index] != ratings[index + 1])
+                    continue;
+
+                var max = Math.Max(candy[index], candy[index + 1]);
+                candy[index] = max;
+                candy[index + 1] = max;
             }
 
             return candy.Sum();
@@ -3015,8 +3152,9 @@ namespace CSharpNote.Data.Algorithm
         [MarkedItem("https://leetcode.com/problems/minimum-size-subarray-sum/")]
         public void MinimumSizeSubarraySum()
         {
-            var elements = new int[] { 2, 3, 1, 2, 4, 3 };
+            var elements = new[] { 2, 3, 1, 2, 4, 3 };
             var solution = 7;
+
             MinimumSizeSubarraySum(solution, elements).ToConsole();
         }
 
@@ -3029,7 +3167,7 @@ namespace CSharpNote.Data.Algorithm
             {
                 var tail = length - gap + 1;
                 var subArray = Enumerable.Range(0, tail)
-                    .Select(start => elements.SubArray<int>(start, gap));
+                    .Select(start => elements.SubArray(start, gap));
 
                 if (subArray.Any(array => array.Sum() >= solution))
                     return gap;
@@ -3042,13 +3180,17 @@ namespace CSharpNote.Data.Algorithm
         public void HappyNumber()
         {
             IsHappy(7).ToConsole();
+
             IsHappy(100).ToConsole();
         }
 
         public bool IsHappy(int number)
         {
-            if (number == 0) return false;
-            if (number == 1) return true;
+            if (number == 0)
+                return false;
+
+            if (number == 1) 
+                return true;
 
             var hashSet = new HashSet<int>();
             while (true)
@@ -3056,8 +3198,10 @@ namespace CSharpNote.Data.Algorithm
                 number = number.DecomposeNoSignDigit().Sum(digit => digit * digit);
                 if (number == 1) 
                     return true; 
+
                 if (hashSet.Contains(number))
                     return false; 
+
                 hashSet.Add(number);
             }
         }
@@ -3065,7 +3209,8 @@ namespace CSharpNote.Data.Algorithm
         [MarkedItem]
         public void SingleNumberⅠ()
         {
-            var nums = new int[] { 1, 1, 2, 2, 10, 5, 10, 3, 3, 4, 4 };
+            var nums = new[] { 1, 1, 2, 2, 10, 5, 10, 3, 3, 4, 4 };
+
             SingleNumberⅠ(nums).ToConsole();
         }
         public unsafe int SingleNumberⅠ(int[] nums)
@@ -3076,6 +3221,7 @@ namespace CSharpNote.Data.Algorithm
                 {
                     *(pNums + i + 1) ^= *(pNums + i);
                 }
+
                 return nums[nums.Count() - 1];
             }
         }
@@ -3084,6 +3230,7 @@ namespace CSharpNote.Data.Algorithm
         {
             var nums = Enumerable.Range(1, 1).Shuffle().ToArray();
             var k = 1;
+
             FindKthLargest(nums, k).ToConsole();
         }
 
@@ -3101,26 +3248,22 @@ namespace CSharpNote.Data.Algorithm
         public int LengthOfLongestSubstring(string s)
         {
             if (s == string.Empty)
-            {
                 return 0;
-            }
+
             if (s.Length == 1)
-            {
                 return 1;
-            }
 
             var index = 0;
             var max = int.MinValue;
-            for (int i = 0; i < s.Length; i++)
+            for (var i = 0; i < s.Length; i++)
             {
                 var sub = s.Substring(index, i - index);
                 if (sub.Contains(s[i]))
-                {
                     index += sub.IndexOf(s[i]) + 1;
-                }
 
                 max = Math.Max(max, i - index + 1);
             }
+
             return max;
         }
 
@@ -3133,9 +3276,7 @@ namespace CSharpNote.Data.Algorithm
         public int LargestRectangleArea(int[] height)
         {
             if (height == null || height.Count() == 0)
-            {
                 return 0;
-            }
 
             var max = 0;
             for (var index = 0; index < height.Count(); index++)
@@ -3151,6 +3292,7 @@ namespace CSharpNote.Data.Algorithm
                     pIndex - 1 > -1 && height[index] <= height[pIndex - 1]; 
                     pIndex--
                 );
+
                 for 
                 (
                     sIndex = index; 
@@ -3169,21 +3311,19 @@ namespace CSharpNote.Data.Algorithm
         public void SummaryRanges()
         {
             //https://leetcode.com/problems/summary-ranges/
-            var nums = new int[] { 0, 1, 2, 4, 5, 7 };
+            var nums = new[] { 0, 1, 2, 4, 5, 7 };
+
             SummaryRanges(nums).Dump();
         }
 
         public List<string> SummaryRanges(int[] nums)
         {
             if (nums == null || nums.Count() == 0)
-            {
-                return new List<String>();
-            }
+                return new List<string>();
 
             var index = -1;
             var result = new List<string>();
             var temp = new List<int>();
-
             while (++index < nums.Count())
             {
                 if (!temp.Any())
@@ -3191,6 +3331,7 @@ namespace CSharpNote.Data.Algorithm
                     temp.Add(nums[index]);
                     continue;
                 }
+
                 if (temp.Last() + 1 == nums[index])
                 {
                     temp.Add(nums[index]);
@@ -3202,6 +3343,7 @@ namespace CSharpNote.Data.Algorithm
                     temp.Add(nums[index]);
                 }
             }
+
             result.Add(ConvertToSummary(temp));
 
             return result.Where(x => x != string.Empty).ToList();
@@ -3209,14 +3351,11 @@ namespace CSharpNote.Data.Algorithm
 
         public string ConvertToSummary(List<int> temp)
         {
-            if (temp == null && temp.Count() == 0)
-            {
+            if (temp == null && !temp.Any())
                 return string.Empty;
-            }
+
             if (temp.First() == temp.Last())
-            {
                 return temp.First().ToString();
-            }
 
             return string.Format("{0}->{1}", temp.First(), temp.Last());
         }
@@ -3233,26 +3372,38 @@ namespace CSharpNote.Data.Algorithm
         public void InvertTree()
         {
             //https://leetcode.com/problems/invert-binary-tree/
-            var root = new TreeNode(4);
-            root.left = new TreeNode(2);
-            root.left.left = new TreeNode(1);
-            root.left.right = new TreeNode(3);
-            root.right = new TreeNode(7);
-            root.right.left = new TreeNode(6);
-            root.right.right = new TreeNode(9);
+            var root = new TreeNode(4)
+            {
+                left = new TreeNode(2)
+                {
+                    left = new TreeNode(1),
+                    right = new TreeNode(3)
+                },
+                right = new TreeNode(7)
+                {
+                    left = new TreeNode(6),
+                    right = new TreeNode(9)
+                }
+            };
 
             InvertTree(root);
         }
 
         public TreeNode InvertTree(TreeNode root)
         {
-            if (root == null) return null;
-            if (root.left != null) InvertTree(root.left);
-            if (root.right != null) InvertTree(root.right);
+            if (root == null) 
+                return null;
+
+            if (root.left != null) 
+                InvertTree(root.left);
+
+            if (root.right != null) 
+                InvertTree(root.right);
 
             var temp = root.left ;
             root.left = root.right;
             root.right = temp;
+
             return root;
         }
 
@@ -3264,15 +3415,15 @@ namespace CSharpNote.Data.Algorithm
         }
         public int ComputeArea(int A, int B, int C, int D, int E, int F, int G, int H)
         {
-            int areaOfSqrA = (C - A) * (D - B);
-            int areaOfSqrB = (G - E) * (H - F);
+            var areaOfSqrA = (C - A) * (D - B);
+            var areaOfSqrB = (G - E) * (H - F);
 
-            int left = Math.Max(A, E);
-            int right = Math.Min(G, C);
-            int bottom = Math.Max(F, B);
-            int top = Math.Min(D, H);
+            var left = Math.Max(A, E);
+            var right = Math.Min(G, C);
+            var bottom = Math.Max(F, B);
+            var top = Math.Min(D, H);
 
-            int overlap = 0;
+            var overlap = 0;
             if (right > left && top > bottom)
                 overlap = (right - left) * (top - bottom);
 
@@ -3288,14 +3439,11 @@ namespace CSharpNote.Data.Algorithm
         public int Reverse(int x)
         {
             if (x == int.MinValue || x == int.MaxValue)
-            {
                 return 0;
-            }
 
             var sign = (x < 0) ? -1 : 1;
             x = Math.Abs(x);
             var tempString = string.Concat(x.ToString().OrderByDescending(y => y));
-
             try
             {
                 checked
@@ -3329,12 +3477,7 @@ namespace CSharpNote.Data.Algorithm
 
         public int LengthOfLastWord(string s)
         {
-            foreach (var set in s.Split(' ').Reverse())
-            {
-                if (set.Length == 0) continue;
-                return set.Length;
-            }
-            return 0;
+            return (from set in s.Split(' ').Reverse() where set.Length != 0 select set.Length).FirstOrDefault();
         }
 
         [MarkedItem]
@@ -3362,12 +3505,20 @@ namespace CSharpNote.Data.Algorithm
 
         public bool IsPowerOfTwo(int n)
         {
-            if (n == 0) return false;
-            if (n == 1 || n == 2) return true;
+            switch (n)
+            {
+                case 0:
+                    return false;
+                case 1:
+                case 2:
+                    return true;
+            }
+
             while (n % 2 == 0)
             {
                 n /= 2;
             }
+
             return n == 1;
         }
 
@@ -3377,7 +3528,7 @@ namespace CSharpNote.Data.Algorithm
             //Random random = new Random();
             //var points = Enumerable.Range(1, 20).Select(n => new Point((int)random.Next(1, 100), (int)random.Next(1, 100))).ToArray();
             //MaxPoints(points).ToConsole();
-            var points = new Point[] 
+            var points = new[] 
             { 
                 new Point(84,250),
                 new Point(0,0), 
@@ -3389,12 +3540,13 @@ namespace CSharpNote.Data.Algorithm
                 new Point(42,90),
                 new Point(-42,-230)
             };
+
             MaxPoints(points).ToConsole();
         }
 
         public int MaxPoints(Point[] points)
         {
-            var PointCountGroup = points.GroupBy(p => new { x = p.x, y = p.y }).ToDictionary(g => 
+            var pointCountGroup = points.GroupBy(p => new { x = p.x, y = p.y }).ToDictionary(g => 
                 new Point 
                 { 
                     x = g.Key.x, 
@@ -3402,46 +3554,39 @@ namespace CSharpNote.Data.Algorithm
                 }, 
                 g => g.Count());
 
-            if (PointCountGroup.Count <= 2)
-            {
-                return PointCountGroup.Sum(p => p.Value);
-            }
+            if (pointCountGroup.Count <= 2)
+                return pointCountGroup.Sum(p => p.Value);
+
             
             var SlopePointGroup = new Dictionary<float, List<Point>>();
-            for (int i = 0; i < PointCountGroup.Count - 1; i++)
+            for (var i = 0; i < pointCountGroup.Count - 1; i++)
             {
-                for (int j = i + 1; j < PointCountGroup.Count; j++)
+                for (var j = i + 1; j < pointCountGroup.Count; j++)
                 {
-                    var p1 = PointCountGroup.Keys.ElementAt(i);
-                    var p2 = PointCountGroup.Keys.ElementAt(j);
+                    var p1 = pointCountGroup.Keys.ElementAt(i);
+                    var p2 = pointCountGroup.Keys.ElementAt(j);
 
                     var slope = CaculateSlopeA(p1, p2);
                     if (!SlopePointGroup.ContainsKey(slope))
-                    {
                         SlopePointGroup.Add(slope, new List<Point> { p1 });
-                    }
+
                     if (!SlopePointGroup[slope].Contains(p2))
-                    {
                         SlopePointGroup[slope].Add(p2);
-                    }
                 }
             }
 
             return SlopePointGroup
-                .Select(sp => sp.Value.Sum(p => PointCountGroup[p]))
+                .Select(sp => sp.Value.Sum(p => pointCountGroup[p]))
                 .Max();
         }
 
         private float CaculateSlopeA(Point point1, Point point2)
         {
             if (point1.y == point2.y)
-            {
                 return float.MinValue;
-            }
+
             if (point1.x == point2.x)
-            {
                 return float.MaxValue;
-            }
 
             return (point2.y - point1.y) / (point2.x - point1.x);
         }
@@ -3450,11 +3595,13 @@ namespace CSharpNote.Data.Algorithm
         {
             public int x;
             public int y;
+
             public Point() 
             { 
                 x = 0; 
                 y = 0; 
             }
+
             public Point(int a, int b) 
             {
                 x = a;
@@ -3472,10 +3619,15 @@ namespace CSharpNote.Data.Algorithm
 
         public int CountDigitOne(int n)
         {
-            if (n < 1) return 0;
+            if (n < 1) 
+                return 0;
+
             long ones = 0;
             for (long m = 1; m <= n; m *= 10)
+            {
                 ones += (n / m + 8) / 10 * m + (n / m % 10 == 1 ? n % m + 1 : 0);
+            }
+
             return (int)ones;
         }
 
@@ -3489,14 +3641,12 @@ namespace CSharpNote.Data.Algorithm
         public int[] ProductExceptSelf(int[] nums)
         {
             if (nums.Count() < 2)
-            {
                 return null;
-            }
+
             var zeroCount = nums.Where(x => x == 0).Count();
             if (zeroCount >= 2)
-            {
                 return nums.Select(x => 0).ToArray();
-            }
+
             var total = nums.Where(x => x != 0).Aggregate((a, b) => a * b);
 
             return zeroCount != 1 
@@ -3518,11 +3668,11 @@ namespace CSharpNote.Data.Algorithm
             {
                 var num = nums[i];
                 if (dictionary.ContainsKey(num))
-                {
                     return new[] {dictionary[num] + 1, i + 1};
-                }
+
                 dictionary[target - num] = i;
             }
+
             throw new ArgumentException("Invalid argument.");
         }
 
@@ -3535,9 +3685,7 @@ namespace CSharpNote.Data.Algorithm
         public bool ContainsNearbyDuplicate(int[] nums, int k)
         {
             if (nums.Length < 2)
-            {
                 return false;
-            }
 
             var dic = new Dictionary<int, HashSet<int>>();
             for (var index = 0; index < nums.Length; index++)
@@ -3548,13 +3696,14 @@ namespace CSharpNote.Data.Algorithm
                     dic.Add(num, new HashSet<int> { index });
                     continue;
                 }
+
                 var hashSet = dic[num];
                 if (hashSet.Any(x => index - x <= k))
-                {
                     return true;
-                }
+
                 hashSet.Add(index);
             }
+
             return false;
         }
 
@@ -3563,6 +3712,7 @@ namespace CSharpNote.Data.Algorithm
         {
             var random = new Random();
             var set = Enumerable.Range(0, 10).OrderBy(x => random.Next());
+
             QuickSort(set).Dump();
         }
 
@@ -3570,9 +3720,7 @@ namespace CSharpNote.Data.Algorithm
         {
             var quickSort = source as IList<int> ?? source.ToList();
             if (!quickSort.Any())
-            {
                 return quickSort;
-            }
 
             var pivot = quickSort.First();
 
@@ -3592,6 +3740,7 @@ namespace CSharpNote.Data.Algorithm
                 {10, 13, 14, 17, 24, 63},
                 {18, 21, 23, 26, 30, 64}
             };
+
             SearchMatrix(matrix, 23).ToConsole();
         }
 
@@ -3601,9 +3750,11 @@ namespace CSharpNote.Data.Algorithm
             {
                 if (matrix[x, 0] > target) 
                     return false;
+
                 if (BinarySearch(matrix, x, target)) 
                     return true;
             }
+
             return false;
         }
 
@@ -3624,6 +3775,7 @@ namespace CSharpNote.Data.Algorithm
                 else
                     left = middle + 1;
             }
+
             return false;
         }
 
@@ -3632,6 +3784,7 @@ namespace CSharpNote.Data.Algorithm
         {
             var s = "abeceeeeeea";
             var t = "bc";
+
             MinWindow(s, t).ToConsole();
         }
         
@@ -3690,6 +3843,7 @@ namespace CSharpNote.Data.Algorithm
         {
             var haystack = "mississippi";
             var needle = "pi";
+
             StrStr(haystack, needle);
         }
 
@@ -3697,15 +3851,19 @@ namespace CSharpNote.Data.Algorithm
         {
             if (needle.Length > haystack.Length)
                 return -1;
+
             if (needle == haystack)
                 return 0;
+
             if (haystack.Length == 0 || needle.Length == 0)
                 return -1;
+
             for (var i = 0; i < haystack.Length - needle.Length + 1; i++)
             {
                 if (haystack[i] == needle[0] && haystack.Substring(i, needle.Length) == needle)
                     return i;
             }
+
             return -1;
         }
 
@@ -3714,23 +3872,24 @@ namespace CSharpNote.Data.Algorithm
         {
             var word1 = "aaaaa";
             var word2 = "aaa";
+
             MinDistance(word1, word2).ToConsole();
         }
 
         public int MinDistance(string word1, string word2)
         {
-            int[,] matrix = new int[word2.Length + 1, word1.Length + 1];
+            var matrix = new int[word2.Length + 1, word1.Length + 1];
             matrix[0, 0] = 0;
 
-            for (int i = 1; i <= word1.Length; i++) 
+            for (var i = 1; i <= word1.Length; i++) 
                 matrix[0, i] = i;
 
-            for (int i = 1; i <= word2.Length; i++)
+            for (var i = 1; i <= word2.Length; i++)
                 matrix[i, 0] = i;
 
-            for (int i = 1; i <= word2.Length; i++)
+            for (var i = 1; i <= word2.Length; i++)
             {
-                for (int j = 1; j <= word1.Length; j++)
+                for (var j = 1; j <= word1.Length; j++)
                 {
                     int min = Math.Min(matrix[i - 1, j - 1] + (word1[j - 1] == word2[i - 1] ? 0 : 1), matrix[i - 1, j] + 1);
                     min = Math.Min(min, matrix[i, j - 1] + 1);
@@ -3774,6 +3933,7 @@ namespace CSharpNote.Data.Algorithm
                         index3--;
                 }
             }
+
             return result.ToList();
         }
 
@@ -3792,6 +3952,7 @@ namespace CSharpNote.Data.Algorithm
                 var other = obj as SumItem;
                 if (other == null)
                     return false;
+
                 return this[0] == other[0] && this[1] == other[1] && this[2] == other[2];
             }
         }
@@ -3825,6 +3986,7 @@ namespace CSharpNote.Data.Algorithm
                     }
                 }
             }
+
             return result.ToList();
         }
 
@@ -3838,6 +4000,7 @@ namespace CSharpNote.Data.Algorithm
         {
             if (string.IsNullOrEmpty(a))
                 return b;
+
             if (string.IsNullOrEmpty(b))
                 return a;
 
@@ -3861,6 +4024,7 @@ namespace CSharpNote.Data.Algorithm
                     result += CaculateBit(ref carry, longArray[currentIndex]);
                 }
             }
+
             if (carry)
                 result += "1";
 
@@ -3927,6 +4091,7 @@ namespace CSharpNote.Data.Algorithm
             {
                 if (string.IsNullOrEmpty(phoneNumber))
                     return null;
+
                 var subNumber = phoneNumber.Substring(1, phoneNumber.Length - 1);
                 switch (phoneNumber[0])
                 {
@@ -3970,6 +4135,17 @@ namespace CSharpNote.Data.Algorithm
                 return !node.HasSons() 
                     ? new List<string> { msg }
                     : node.Sons.SelectMany(son => GetCombinations(son, msg));
+            }
+
+            [MarkedItem]
+            public void CombinationSum()
+            {
+
+            }
+
+            public IList<IList<int>> CombinationSum(int[] candidates, int target)
+            {
+                return null;
             }
         }
     }
