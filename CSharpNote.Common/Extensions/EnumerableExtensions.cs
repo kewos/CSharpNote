@@ -123,7 +123,32 @@ namespace CSharpNote.Common.Extensions
         /// </summary>
         public static T Decorate<T>(this IEnumerable<Func<T, T>> decorators, T target)
         {
+            decorators.ValidationNotEmptyAndNull();
+            target.ValidationNotNull();
+
             return decorators.Aggregate(target, (current, decorator) => decorator(current));
+        }
+
+        /// <summary>
+        /// 轉成HashSet
+        /// </summary>
+        public static HashSet<T> ToHashSet<T>(this IEnumerable<T> source)
+        {
+            source.ValidationNotEmptyAndNull();
+
+            return new HashSet<T>(source);
+        }
+
+        /// <summary>
+        /// 交叉運算
+        /// </summary>
+        public static IEnumerable<T> CrossCaculate<T>(this IEnumerable<T> left, IEnumerable<T> right, Func<T, T, T> func)
+        {
+            left.ValidationNotEmptyAndNull();
+            right.ValidationNotEmptyAndNull();
+            func.ValidationNotNull();
+
+            return left.SelectMany(x => right.Select(y => func(x, y)));
         }
     }
 }

@@ -55,5 +55,15 @@ namespace CSharpNote.Common.Extensions
         {
             return source.Select(@char => (int) Char.GetNumericValue(@char)).ToList();
         }
+
+        /// <summary>
+        /// 反轉字串
+        /// </summary>
+        public static string Reverse(this string source)
+        {
+            var charArray = source.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
+        }
     }
 }

@@ -1380,24 +1380,25 @@ namespace CSharpNote.Data.Algorithm
             //For example, given array S = {-1 2 1 -4}, and target = 1.
             //The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 
-            List<int> set = new List<int> { 1, 2, 5, 7, -4, -4, 10, 9, 7 };
+            var set = new int[] { 1, 2, 5, 7, -4, -4, 10, 9, 7 };
             Console.WriteLine(GetCloseSet(set, -10));
         }
 
-        private int GetCloseSet(List<int> set, int target)
+        private int GetCloseSet(int[] nums, int target)
         {
             int x = 0, y = 1, z = 2;
-            int min = set.Max();
-            while (! (x == set.Count() - 3 && y == set.Count() - 2 && z == set.Count() - 1))
+            int min = nums.Max();
+            var count = nums.Count();
+            while (!(x == count - 3 && y == count - 2 && z == count - 1))
             {
-                var close = Math.Abs(target - (set[x] + set[y] + set[z]));
+                var close = Math.Abs(target - (nums[x] + nums[y] + nums[z]));
                 min = Math.Min(min, close);
-                if (y == set.Count() - 2 && z == set.Count() - 1)
+                if (y == count - 2 && z == count - 1)
                 {
                     y = ++x + 1;
                     z = x + 2;
                 }
-                else if(z == set.Count() - 1)
+                else if (z == count - 1)
                 {
                     z = ++y + 1;
                 }
@@ -1458,15 +1459,55 @@ namespace CSharpNote.Data.Algorithm
         }
 
         [MarkedItem(@"https://oj.leetcode.com/problems/first-missing-positive/")]
-        public void FirstMissingPositive ()
+        public void FirstMissingPositive()
         {
             //Given an unsorted integer array, find the first missing positive integer.
             //For example,
             //Given [1,2,0] return 3,
             //and [3,4,-1,1] return 2.
             //Your algorithm should run in O(n) time and uses constant space.
-            List<int> set = new List<int> { 3, 4, -1, 1 };
-            Console.WriteLine(Enumerable.Range(set.Min(), set.Max()).Where(n => !set.Contains(n)).First());
+            FirstMissingPositive(new[] {4,3,4,1,1,4,1,4 }).ToConsole();
+        }
+
+        public int FirstMissingPositive(int[] nums)
+        {
+            if (nums == null || !nums.Any())
+                return 1;
+            //非正整數位置
+            var negativeIndex = -1;
+            for (var index1 = 0; index1 < nums.Length; index1++)
+            {
+                if (nums[index1] <= 0)
+                    negativeIndex++;
+                //排序
+                for (var index2 = index1; index2 > 0 && index2 >= negativeIndex  && nums[index2 - 1] > nums[index2]; index2--)
+                {
+                    var temp = nums[index2];
+                    nums[index2] = nums[index2 - 1];
+                    nums[index2 - 1] = temp;
+                }
+            }
+            //沒正整數
+            if (negativeIndex + 1 == nums.Length)
+                return 1;
+            //重複次數
+            var duplicate = 0;
+            //前個數
+            var preNum = 0;
+            //確認是否在自已的位置上
+            for (var index = negativeIndex + 1; index < nums.Length; index++)
+            {
+                if (preNum == nums[index])
+                {
+                    duplicate++;
+                    continue;
+                }
+                if (nums[index] != index - negativeIndex - duplicate)
+                    return index - negativeIndex - duplicate;
+                preNum = nums[index];
+            }
+            //缺最後一個
+            return nums[nums.GetUpperBound(0)] + 1;
         }
 
         [MarkedItem(@"https://oj.leetcode.com/problems/climbing-stairs/")]
@@ -2903,39 +2944,31 @@ namespace CSharpNote.Data.Algorithm
         [MarkedItem("https://oj.leetcode.com/problems/interleaving-string/")]
         public void InterleavingString()
         {
-            var s1 = "aadb";
-            var s2 = "acca";
-            var s3 = "acaadbca";
-            InterleavingString(s1, s2, s3).ToConsole();
+            var s1 = "a";
+            var s2 = "b";
+            var s3 = "ab";
+
+            IsInterleave(s1, s2, s3).ToConsole();
         }
 
-        public bool InterleavingString(string s1, string s2, string s3)
+        public bool IsInterleave(string s1, string s2, string s3)
         {
             if (s1.Length + s2.Length != s3.Length)
-            {
                 return false;
-            }
             if (s3.Length == 0)
-            {
                 return true;
-            }
+            if (s1.Length == 0)
+                return s2 == s3;
+            if (s2.Length == 0)
+                return s1 == s3;
 
-            bool state = false;
-
-            if (s1.Length > 0 && s1[0] == s3[0])
-            {
-                state = InterleavingString(s1.Substring(1, s1.Length - 1), s2, s3.Substring(1, s3.Length - 1));
-            }
-            if (state)
-            {
-                return state;
-            }
-            if (s2.Length > 0 && s2[0] == s3[0])
-            {
-                state = InterleavingString(s1, s2.Substring(1, s2.Length - 1), s3.Substring(1, s3.Length - 1));
-            }
-
-            return state;
+            return (s1[0] == s3[0]
+                    &&
+                    IsInterleave(s1.Substring(1, s1.Length - 1), s2, s3.Substring(1, s3.Length - 1)))
+                   ||
+                   (s2[0] == s3[0]
+                    &&
+                    IsInterleave(s1, s2.Substring(1, s2.Length - 1), s3.Substring(1, s3.Length - 1)));
         }
 
         [MarkedItem("https://leetcode.com/problems/candy/")]
@@ -3008,27 +3041,25 @@ namespace CSharpNote.Data.Algorithm
         [MarkedItem("https://leetcode.com/problems/happy-number/")]
         public void HappyNumber()
         {
-            IsHappy(82).ToConsole();
+            IsHappy(7).ToConsole();
+            IsHappy(100).ToConsole();
         }
 
         public bool IsHappy(int number)
         {
-            if (number <= 0) 
-                return false;
-            if (number == 1) 
-                return true;
+            if (number == 0) return false;
+            if (number == 1) return true;
 
-            var sum = 0;
-            var temp = number;
-            while (temp != 0)
+            var hashSet = new HashSet<int>();
+            while (true)
             {
-                var digit = temp % 10;
-                sum += digit * digit;
-                temp /= 10;
+                number = number.DecomposeNoSignDigit().Sum(digit => digit * digit);
+                if (number == 1) 
+                    return true; 
+                if (hashSet.Contains(number))
+                    return false; 
+                hashSet.Add(number);
             }
-            if (number == sum) 
-                return false;
-            return sum == 1 || IsHappy(sum);
         }
 
         [MarkedItem]
@@ -3594,6 +3625,352 @@ namespace CSharpNote.Data.Algorithm
                     left = middle + 1;
             }
             return false;
+        }
+
+        [MarkedItem]
+        public void MinWindow()
+        {
+            var s = "abeceeeeeea";
+            var t = "bc";
+            MinWindow(s, t).ToConsole();
+        }
+        
+        public string MinWindow(string s, string t)
+        {
+            var dictionary = new Dictionary<char, Queue<int>>();
+            foreach (var @char in t)
+            {
+                if (!dictionary.ContainsKey(@char))
+                    dictionary[@char] = new Queue<int>();
+                dictionary[@char].Enqueue(-1);
+            }
+
+            var counter = 0;
+            var firstIndex = 0;
+            var start = -1;
+            var minLength = s.Length;
+
+            Queue<int> pointer;
+            for (var index = 0; index < s.Length; index++)
+            {
+                if (dictionary.ContainsKey(s[index]))
+                {
+                    pointer = dictionary[s[index]];
+                    if (pointer.Peek() == -1)
+                        counter++;
+
+                    pointer.Enqueue(index);
+                    pointer.Dequeue();
+
+                    //Counter集滿前不向下進行
+                    if (counter != t.Length
+                        || (minLength != s.Length && s[index] != s[firstIndex]))
+                        continue;
+
+                    //最小的index
+                    firstIndex = dictionary
+                        .Select(item => item.Value.Peek())
+                        .Concat(new[] { s.Length })
+                        .Min();
+
+                    var len = index - firstIndex + 1;
+                    if (len >= minLength && len != s.Length)
+                        continue;
+
+                    start = firstIndex;
+                    minLength = len;
+                }
+            }
+
+            return start == -1 ? string.Empty : s.Substring(start, minLength);
+        }
+
+        [MarkedItem]
+        public void StrStr()
+        {
+            var haystack = "mississippi";
+            var needle = "pi";
+            StrStr(haystack, needle);
+        }
+
+        public int StrStr(string haystack, string needle)
+        {
+            if (needle.Length > haystack.Length)
+                return -1;
+            if (needle == haystack)
+                return 0;
+            if (haystack.Length == 0 || needle.Length == 0)
+                return -1;
+            for (var i = 0; i < haystack.Length - needle.Length + 1; i++)
+            {
+                if (haystack[i] == needle[0] && haystack.Substring(i, needle.Length) == needle)
+                    return i;
+            }
+            return -1;
+        }
+
+        [MarkedItem]
+        public void MinDistance()
+        {
+            var word1 = "aaaaa";
+            var word2 = "aaa";
+            MinDistance(word1, word2).ToConsole();
+        }
+
+        public int MinDistance(string word1, string word2)
+        {
+            int[,] matrix = new int[word2.Length + 1, word1.Length + 1];
+            matrix[0, 0] = 0;
+
+            for (int i = 1; i <= word1.Length; i++) 
+                matrix[0, i] = i;
+
+            for (int i = 1; i <= word2.Length; i++)
+                matrix[i, 0] = i;
+
+            for (int i = 1; i <= word2.Length; i++)
+            {
+                for (int j = 1; j <= word1.Length; j++)
+                {
+                    int min = Math.Min(matrix[i - 1, j - 1] + (word1[j - 1] == word2[i - 1] ? 0 : 1), matrix[i - 1, j] + 1);
+                    min = Math.Min(min, matrix[i, j - 1] + 1);
+
+                    matrix[i, j] = min;
+                }
+            }
+
+            return matrix[word2.Length, word1.Length];
+        }
+
+        [MarkedItem]
+        public void ThreeSum()
+        {
+            ThreeSum(new[] {-2,0,1,1,2}).DumpMany();
+        }
+
+        public List<List<int>> ThreeSum(int[] nums)
+        {
+            var result = new HashSet<List<int>>();
+            if (nums.Length < 3) 
+                return result.ToList();
+
+            Array.Sort(nums);
+            for (var index1 = 0; index1 < nums.Length - 2; index1++)
+            {
+                var index2 = index1 + 1;
+                var index3 = nums.Length - 1;
+                while (index2 < index3)
+                {
+                    var sum = nums[index1] + nums[index2] + nums[index3];
+                    if (sum == 0)
+                    {
+                        result.Add(new SumItem { nums[index1], nums[index2], nums[index3] });
+                        index2++;
+                        index3--;
+                    }
+                    else if (sum < 0)
+                        index2++;
+                    else
+                        index3--;
+                }
+            }
+            return result.ToList();
+        }
+
+        private class SumItem : List<int>
+        {
+            public override int GetHashCode()
+            {
+                unchecked
+                {
+                    return this.Aggregate(19, (current, item) => current * 31 + item.GetHashCode());
+                }
+            }
+
+            public override bool Equals(object obj)
+            {
+                var other = obj as SumItem;
+                if (other == null)
+                    return false;
+                return this[0] == other[0] && this[1] == other[1] && this[2] == other[2];
+            }
+        }
+
+        public List<List<int>> FourSum(int[] nums, int target)
+        {
+            var result = new HashSet<List<int>>();
+            if (nums.Length < 4)
+                return result.ToList();
+
+            Array.Sort(nums);
+            for (var index1 = 0; index1 < nums.Length - 3; index1++)
+            {
+                for (var index2 = index1 + 1; index2 < nums.Length - 2; index2++)
+                {
+                    var index3 = index2 + 1;
+                    var index4 = nums.Length - 1;
+                    while (index3 < index4)
+                    {
+                        var sum = nums[index1] + nums[index2] + nums[index3] + nums[index4];
+                        if (sum == target)
+                        {
+                            result.Add(new SumItem { nums[index1], nums[index2], nums[index3], nums[index4] });
+                            index3++;
+                            index4--;
+                        }
+                        else if (sum < target)
+                            index3++;
+                        else
+                            index4--;
+                    }
+                }
+            }
+            return result.ToList();
+        }
+
+        [MarkedItem]
+        public void AddBinary()
+        {
+            AddBinary("11", "1").ToConsole();
+        }
+
+        public string AddBinary(string a, string b)
+        {
+            if (string.IsNullOrEmpty(a))
+                return b;
+            if (string.IsNullOrEmpty(b))
+                return a;
+
+            a = a.Reverse();
+            b = b.Reverse();
+
+            var result = string.Empty;
+            var bound = Math.Min(a.Length, b.Length);
+            var carry = false;
+            var currentIndex = 0;
+            for (; currentIndex < bound; currentIndex++)
+            {
+                result += CaculateBit(ref carry, a[currentIndex], b[currentIndex]);
+            }
+
+            if (a.Length != b.Length)
+            {
+                var longArray = (a.Length > b.Length) ? a : b;
+                for (; currentIndex < longArray.Length; currentIndex++)
+                {
+                    result += CaculateBit(ref carry, longArray[currentIndex]);
+                }
+            }
+            if (carry)
+                result += "1";
+
+            return result.Reverse();
+        }
+
+        public string CaculateBit(ref bool add, char right = '0', char left = '0')
+        {
+            switch (right.ToString() + left.ToString() + add.ToString())
+            {
+                case "00False":
+                    return "0";
+                case "10False":
+                case "01False":
+                    return "1";
+                case "11False":
+                    add = true;
+                    return "0";
+                case "00True":
+                    add = false;
+                    return "1";
+                case "10True":
+                case "01True":
+                    return "0";
+                case "11True":
+                    return "1";
+                default:
+                    throw new Exception();
+            }
+        }
+        [MarkedItem]
+        public void LetterCombinations()
+        {
+            LetterCombinations("33429").Dump();
+        }
+
+        public IList<string> LetterCombinations(string digits)
+        {
+            return string.IsNullOrEmpty(digits) ? new List<string>() : new PhoneNode(digits).GetCombinations().ToList();
+        }
+
+        private class PhoneNode
+        {
+            private string Value { get; set; }
+            private IEnumerable<PhoneNode> Sons { get; set; }
+
+            private PhoneNode(IEnumerable<PhoneNode> sons)
+            {
+                Sons = sons;
+            }
+
+            private PhoneNode(string phoneNumber, string value)
+                : this(phoneNumber)
+            {
+                Value = value;
+            }
+
+            public PhoneNode(string phoneNumber)
+                :this(ParseNumber(phoneNumber))
+            {
+            }
+
+            private static IEnumerable<PhoneNode> ParseNumber(string phoneNumber)
+            {
+                if (string.IsNullOrEmpty(phoneNumber))
+                    return null;
+                var subNumber = phoneNumber.Substring(1, phoneNumber.Length - 1);
+                switch (phoneNumber[0])
+                {
+                    case '1':
+                        return new List<PhoneNode>{};
+                    case '2':
+                        return new List<PhoneNode> { new PhoneNode(subNumber, "a"), new PhoneNode(subNumber, "b"), new PhoneNode(subNumber, "c") };
+                    case '3':
+                        return new List<PhoneNode> { new PhoneNode(subNumber, "d"), new PhoneNode(subNumber, "e"), new PhoneNode(subNumber, "f") };
+                    case '4':
+                        return new List<PhoneNode> { new PhoneNode(subNumber, "g"), new PhoneNode(subNumber, "h"), new PhoneNode(subNumber, "i") };
+                    case '5':
+                        return new List<PhoneNode> { new PhoneNode(subNumber, "j"), new PhoneNode(subNumber, "k"), new PhoneNode(subNumber, "l") };
+                    case '6':
+                        return new List<PhoneNode> { new PhoneNode(subNumber, "m"), new PhoneNode(subNumber, "n"), new PhoneNode(subNumber, "o") };
+                    case '7':
+                        return new List<PhoneNode> { new PhoneNode(subNumber, "p"), new PhoneNode(subNumber, "q"), new PhoneNode(subNumber, "r"), new PhoneNode(subNumber, "s") };
+                    case '8':
+                        return new List<PhoneNode> { new PhoneNode(subNumber, "t"), new PhoneNode(subNumber, "u"), new PhoneNode(subNumber, "v") };
+                    case '9':
+                        return new List<PhoneNode> { new PhoneNode(subNumber, "w"), new PhoneNode(subNumber, "x"), new PhoneNode(subNumber, "y"), new PhoneNode(subNumber, "z") };
+                    default:
+                        return null;
+                }
+            }
+
+            private bool HasSons()
+            {
+                return Sons != null && Sons.Any();
+            }
+
+            public IEnumerable<string> GetCombinations()
+            {
+                return GetCombinations(this);
+            }
+
+            private IEnumerable<string> GetCombinations(PhoneNode node, string msg = "")
+            {
+                msg = msg + node.Value;
+
+                return !node.HasSons() 
+                    ? new List<string> { msg }
+                    : node.Sons.SelectMany(son => GetCombinations(son, msg));
+            }
         }
     }
 }
