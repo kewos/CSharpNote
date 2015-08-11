@@ -49,11 +49,10 @@ namespace CSharpNote.Data.DesignPattern.Implement.StretagyPattern
             get
             {
                 if (strategies == null || !strategies.Any())
-                {
                     return null;
-                }
 
                 Func<string> value;
+
                 return strategies.TryGetValue(key, out value) 
                     ? value 
                     : null;

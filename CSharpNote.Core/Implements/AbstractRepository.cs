@@ -51,15 +51,10 @@ namespace CSharpNote.Core.Implements
         {
             get
             {
-                if (methodInfos == null)
-                {
-                    methodInfos = GetType()
-                        .GetMethods(BindingFlags.Public | BindingFlags.Instance)
-                        .Where(method => method.GetCustomAttribute(typeof (MarkedItemAttribute), false) != null)
-                        .OrderBy(method => method.Name);
-                }
-
-                return methodInfos;
+                return methodInfos ?? (methodInfos = GetType()
+                    .GetMethods(BindingFlags.Public | BindingFlags.Instance)
+                    .Where(method => method.GetCustomAttribute(typeof (MarkedItemAttribute), false) != null)
+                    .OrderBy(method => method.Name));
             }
         }
         #endregion

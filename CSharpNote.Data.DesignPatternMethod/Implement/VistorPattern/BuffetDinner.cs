@@ -23,7 +23,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.VistorPattern
 
         public void Accept(IVisitor visitor)
         {
-            foreach (IFood food in elements)
+            foreach (var food in elements)
             {
                 food.Accept(visitor);
             }

@@ -1210,7 +1210,9 @@ namespace CSharpNote.Data.Algorithm
             {
                 if (prices[i + 1] < prices[i])
                 {
-                    if (i != p) set.Add(new List<int> { p, i });
+                    if (i != p) 
+                        set.Add(new List<int> { p, i });
+
                     p = i + 1;
                 }
 
@@ -1264,7 +1266,9 @@ namespace CSharpNote.Data.Algorithm
             {
                 return strs.Any(m =>
                 {
-                    if (n == m) return false;
+                    if (n == m) 
+                        return false;
+
                     return string.Concat(n.ToCharArray().OrderBy(x => x)) == string.Concat(m.ToCharArray().OrderBy(x => x));
                 });
             });
@@ -1286,15 +1290,19 @@ namespace CSharpNote.Data.Algorithm
             var postion = 0;
             while (postion < colors.Count - 1)
             {
-                if (postion < 0) postion = 0;
+                if (postion < 0)
+                    postion = 0;
+
                 if (colors[postion + 1] < colors[postion])
                 {
                     Swap(ref colors, postion, postion + 1);
                     postion--;
                     continue;
                 }
+
                 postion++;
             }
+
             colors.Dump();
         }
 
@@ -1347,6 +1355,7 @@ namespace CSharpNote.Data.Algorithm
             //Write a function to find the longest common prefix string amongst an array of strings.
 
             var items = new string[] {  };
+
             LongestCommonPrefix(items).ToConsole();
         }
 
@@ -1375,6 +1384,7 @@ namespace CSharpNote.Data.Algorithm
             //Determine whether an integer is a palindrome. Do this without extra space.
 
             var i = 77801120877;
+
             Console.WriteLine("{0}:IsPalindromeNumber:{1}", i, IsPalindromeNumber(i));
         }
 
@@ -1394,7 +1404,6 @@ namespace CSharpNote.Data.Algorithm
         public void PalindromeNumberII()
         {
             //Determine whether an integer is a palindrome. Do this without extra space.
-
             var i = 7780110877;
 
             Console.WriteLine("{0}:IsPalindromeNumber:{1}", i, IsPalindromeNumberII(i));
@@ -1665,6 +1674,7 @@ namespace CSharpNote.Data.Algorithm
             //Follow up:
             //Could you do this in-place?
             var matrix = new[,] { { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 }, { 1, 5, 5, 5, 5 } };
+           
             RotateDegree90(matrix);
         }
 
@@ -1773,6 +1783,7 @@ namespace CSharpNote.Data.Algorithm
             //[1,3,5,6], 7 → 4
             //[1,3,5,6], 0 → 0
             var testArray = new List<int> { 1, 3, 5, 6 };
+
             Console.WriteLine(SearchInsertPositionⅠ(testArray, 5));
         }
 
@@ -1820,6 +1831,7 @@ namespace CSharpNote.Data.Algorithm
             //For example, given n = 3, a solution set is:
             //"((()))", "(()())", "(())()", "()(())", "()()()"
             var set = new List<string>();
+
             GenerateParenthesesⅠ(6).Dump();
         }
 
@@ -1827,7 +1839,9 @@ namespace CSharpNote.Data.Algorithm
         {
             if (n == 0)
             {
-                if (!set.Contains(s)) set.Add(s);
+                if (!set.Contains(s)) 
+                    set.Add(s);
+
                 return;
             }
 
@@ -1988,7 +2002,7 @@ namespace CSharpNote.Data.Algorithm
             PascalsTriangleI(5).DumpMany();
         }
 
-        private List<List<int>> PascalsTriangleI(int k)
+        private IEnumerable<List<int>> PascalsTriangleI(int k)
         {
             var set = new List<List<int>> { new List<int>{ 1 } };
             for (var i = 1; i <= k; i++)
@@ -2133,6 +2147,7 @@ namespace CSharpNote.Data.Algorithm
             //For example, given the array [−2,1,−3,4,−1,2,1,−5,4],
             //the contiguous subarray [4,−1,2,1] has the largest sum = 6.
             var array = new List<int> { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+
             Console.WriteLine(MaximumSubarray(array));
         }
 
@@ -2190,6 +2205,7 @@ namespace CSharpNote.Data.Algorithm
             var k = 2;
             var pass = n - k;
             Combinations(n, k, pass, new List<int>(), set);
+
             set.DumpMany();
         }
 
@@ -2589,34 +2605,6 @@ namespace CSharpNote.Data.Algorithm
             return subSets;
         }
 
-        [MarkedItem(@"https://oj.leetcode.com/problems/find-peak-element/")]
-        public void FindPeakElement()
-        {
-            //A peak element is an element that is greater than its neighbors.
-            //Given an input array where num[i] ≠ num[i+1], find a peak element and return its index.
-            //The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.
-            //You may imagine that num[-1] = num[n] = -∞.
-            //For example, in array [1, 2, 3, 1], 3 is a peak element and your function should return the index number 2.
-            //MutiPeak
-            var numbers = new List<int> { 1, 2, 3, 0};
-
-            FindPeakElement(numbers).ToConsole();
-        }
-
-        private int FindPeakElement(List<int> numbers)
-        {
-            if (numbers.Count() < 2)
-                return 0;
-
-            var maxPeak = 0;
-            for (var index = 0; index < numbers.Count(); index++)
-            {
-                maxPeak = Math.Max(numbers[index], maxPeak);
-            }
-
-            return maxPeak;
-        }
-
         [MarkedItem(@"https://oj.leetcode.com/problems/word-break/")]
         public void WordBreak()
         {
@@ -2722,6 +2710,7 @@ namespace CSharpNote.Data.Algorithm
             //Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
             //You may assume that the array is non-empty and the majority element always exist in the array.
             var elements = new List<int> { 1, 3, 1, 1, 5, 1, 9, 1, 1, 7, 1 };
+            
             MajorityElement(elements).ToConsole();
         }
 
@@ -2731,13 +2720,9 @@ namespace CSharpNote.Data.Algorithm
             foreach (var e in elements)
             {
                 if (!dic.ContainsKey(e))
-                {
                     dic.Add(e, 1);
-                }
                 else
-                {
                     dic[e]++;
-                }
             }
 
             return dic.Aggregate((a, b) => a.Value > b.Value ? a : b).Key;
@@ -2793,43 +2778,6 @@ namespace CSharpNote.Data.Algorithm
                 hpList.Add(Math.Max(DungeonGame(dungeon, x, y + 1, currentHp), currentHp));
 
             return hpList.Max();
-        }
-
-        [MarkedItem(@"https://oj.leetcode.com/problems/largest-number/")]
-        public void LargestNumber()
-        {
-            //Given a list of non negative integers, arrange them such that they form the largest number.
-            //For example, given [3, 30, 34, 5, 9], the largest formed number is 9534330.
-            //Note: The result may be very large, so you need to return a string instead of an integer.
-            var list = new List<int> { 3, 30, 34, 5, 9 ,49, 491};
-            var comparer = new IntComparer();
-            list.Sort(comparer);
-
-            string.Join("", list.ConvertAll(i => i.ToString()).ToArray()).ToConsole();
-        }
-
-        private class IntComparer : IComparer<int>
-        {
-            public int Compare(int a, int b)
-            {
-                var strA = a.ToString();
-                var strB = b.ToString();
-                var minLength = Math.Min(strA.Length, strB.Length);
-                //Compare situation:minLength string literate
-                for (var i = 0; i < minLength; i++)
-                {
-                    if (strA[i] > strB[i]) return -1;
-                    if (strA[i] < strB[i]) return 1;
-                }
-                //Compare situation:Length
-                if (strA.Length > strB.Length) 
-                    return 1;
-
-                if (strA.Length < strB.Length)
-                    return -1;
-                
-                return 0;
-            }
         }
 
         [MarkedItem(@"http://community.topcoder.com/stat?c=problem_statement&pm=4637")]
@@ -2918,6 +2866,7 @@ namespace CSharpNote.Data.Algorithm
         public void RepeatedDnaSequences()
         {
             var dna = "AAAAACCCCCAAAAACCCCCAAAAAGGGTTT";
+
             RepeatedDnaSequences(dna, 10).Dump();
         }
 
@@ -3184,7 +3133,7 @@ namespace CSharpNote.Data.Algorithm
             IsHappy(100).ToConsole();
         }
 
-        public bool IsHappy(int number)
+        private bool IsHappy(int number)
         {
             if (number == 0)
                 return false;
@@ -3213,7 +3162,8 @@ namespace CSharpNote.Data.Algorithm
 
             SingleNumberⅠ(nums).ToConsole();
         }
-        public unsafe int SingleNumberⅠ(int[] nums)
+
+        private unsafe int SingleNumberⅠ(int[] nums)
         {
             fixed (int* pNums = nums)
             {
@@ -3234,7 +3184,7 @@ namespace CSharpNote.Data.Algorithm
             FindKthLargest(nums, k).ToConsole();
         }
 
-        public int FindKthLargest(int[] nums, int k)
+        private int FindKthLargest(int[] nums, int k)
         {
             return nums.OrderByDescending(x => x).Skip(k - 1).First();
         }
@@ -3245,7 +3195,7 @@ namespace CSharpNote.Data.Algorithm
             LengthOfLongestSubstring("ac").ToConsole();
         }
 
-        public int LengthOfLongestSubstring(string s)
+        private int LengthOfLongestSubstring(string s)
         {
             if (s == string.Empty)
                 return 0;
@@ -3273,7 +3223,7 @@ namespace CSharpNote.Data.Algorithm
             LargestRectangleArea(Enumerable.Range(1, 10000).ToArray()).ToConsole();
         }
 
-        public int LargestRectangleArea(int[] height)
+        private int LargestRectangleArea(int[] height)
         {
             if (height == null || height.Count() == 0)
                 return 0;
@@ -3316,7 +3266,7 @@ namespace CSharpNote.Data.Algorithm
             SummaryRanges(nums).Dump();
         }
 
-        public List<string> SummaryRanges(int[] nums)
+        private List<string> SummaryRanges(int[] nums)
         {
             if (nums == null || nums.Count() == 0)
                 return new List<string>();
@@ -3333,9 +3283,7 @@ namespace CSharpNote.Data.Algorithm
                 }
 
                 if (temp.Last() + 1 == nums[index])
-                {
                     temp.Add(nums[index]);
-                }
                 else
                 {
                     result.Add(ConvertToSummary(temp));
@@ -3349,7 +3297,7 @@ namespace CSharpNote.Data.Algorithm
             return result.Where(x => x != string.Empty).ToList();
         }
 
-        public string ConvertToSummary(List<int> temp)
+        private string ConvertToSummary(List<int> temp)
         {
             if (temp == null && !temp.Any())
                 return string.Empty;
@@ -3389,7 +3337,7 @@ namespace CSharpNote.Data.Algorithm
             InvertTree(root);
         }
 
-        public TreeNode InvertTree(TreeNode root)
+        private TreeNode InvertTree(TreeNode root)
         {
             if (root == null) 
                 return null;
@@ -3413,7 +3361,8 @@ namespace CSharpNote.Data.Algorithm
             //https://leetcode.com/problems/rectangle-area/
             ComputeArea(-3, 0, 3, 4, 0, -1, 9, 2).ToConsole();
         }
-        public int ComputeArea(int A, int B, int C, int D, int E, int F, int G, int H)
+
+        private int ComputeArea(int A, int B, int C, int D, int E, int F, int G, int H)
         {
             var areaOfSqrA = (C - A) * (D - B);
             var areaOfSqrB = (G - E) * (H - F);
@@ -3436,7 +3385,7 @@ namespace CSharpNote.Data.Algorithm
             Reverse(1534236469).ToConsole();
         }
 
-        public int Reverse(int x)
+        private int Reverse(int x)
         {
             if (x == int.MinValue || x == int.MaxValue)
                 return 0;
@@ -3464,7 +3413,7 @@ namespace CSharpNote.Data.Algorithm
             HammingWeight(1).ToString();
         }
 
-        public int HammingWeight(uint n)
+        private int HammingWeight(uint n)
         {
             return Convert.ToString(n, 2).Count(x => x == '1');
         }
@@ -3475,7 +3424,7 @@ namespace CSharpNote.Data.Algorithm
             LengthOfLastWord("abc abca abc").ToConsole();
         }
 
-        public int LengthOfLastWord(string s)
+        private int LengthOfLastWord(string s)
         {
             return (from set in s.Split(' ').Reverse() where set.Length != 0 select set.Length).FirstOrDefault();
         }
@@ -3488,7 +3437,7 @@ namespace CSharpNote.Data.Algorithm
             Enumerable.Range(1, 100).Select(n => random.Next(30)).ToArray();
         }
 
-        public IList<int> MajorityElementⅡ(int[] nums)
+        private IList<int> MajorityElementⅡ(int[] nums)
         {
             return nums
                 .GroupBy(x => x)
@@ -3503,7 +3452,7 @@ namespace CSharpNote.Data.Algorithm
 
         }
 
-        public bool IsPowerOfTwo(int n)
+        private bool IsPowerOfTwo(int n)
         {
             switch (n)
             {
@@ -3544,7 +3493,7 @@ namespace CSharpNote.Data.Algorithm
             MaxPoints(points).ToConsole();
         }
 
-        public int MaxPoints(Point[] points)
+        private int MaxPoints(Point[] points)
         {
             var pointCountGroup = points.GroupBy(p => new { x = p.x, y = p.y }).ToDictionary(g => 
                 new Point 
@@ -3591,7 +3540,7 @@ namespace CSharpNote.Data.Algorithm
             return (point2.y - point1.y) / (point2.x - point1.x);
         }
 
-        public class Point 
+        private class Point 
         {
             public int x;
             public int y;
@@ -3617,7 +3566,7 @@ namespace CSharpNote.Data.Algorithm
             CountDigitOne(1000).ToConsole();
         }
 
-        public int CountDigitOne(int n)
+        private int CountDigitOne(int n)
         {
             if (n < 1) 
                 return 0;
@@ -3638,7 +3587,7 @@ namespace CSharpNote.Data.Algorithm
             ProductExceptSelf(set).Dump();
         }
 
-        public int[] ProductExceptSelf(int[] nums)
+        private int[] ProductExceptSelf(int[] nums)
         {
             if (nums.Count() < 2)
                 return null;
@@ -3654,13 +3603,19 @@ namespace CSharpNote.Data.Algorithm
                 : nums.Select(x => x == 0 ? total : 0).ToArray();
         }
 
+        /// <summary>
+        /// context
+        /// 兩個數加起來等於target
+        /// solution
+        /// 用字典記錄target - num 及 num 去做mapping
+        /// </summary>
         [MarkedItem]
         public void TwoSumⅠ()
         {
-            TwoSumⅠ(new[] {3, 2, 4}, 6);
+            TwoSumⅠ(new[] {3, 2, 4}, 6).Dump();
         }
 
-        public int[] TwoSumⅠ(int[] nums, int target)
+        private int[] TwoSumⅠ(int[] nums, int target)
         {
             var length = nums.Length;
             var dictionary = new Dictionary<int, int>();
@@ -3682,7 +3637,7 @@ namespace CSharpNote.Data.Algorithm
 
         }
 
-        public bool ContainsNearbyDuplicate(int[] nums, int k)
+        private bool ContainsNearbyDuplicate(int[] nums, int k)
         {
             if (nums.Length < 2)
                 return false;
@@ -3716,7 +3671,7 @@ namespace CSharpNote.Data.Algorithm
             QuickSort(set).Dump();
         }
 
-        public IEnumerable<int> QuickSort(IEnumerable<int> source)
+        private IEnumerable<int> QuickSort(IEnumerable<int> source)
         {
             var quickSort = source as IList<int> ?? source.ToList();
             if (!quickSort.Any())
@@ -3729,6 +3684,12 @@ namespace CSharpNote.Data.Algorithm
                 .Concat(QuickSort(quickSort.Where(n => n > pivot)));
         }
 
+        /// <summary>
+        /// context
+        /// 搜尋target是否有在matrix當中
+        /// solution
+        /// 二元搜尋row直到第一個引數大於target
+        /// </summary>
         [MarkedItem]
         public void SearchMatrix()
         {
@@ -3744,7 +3705,7 @@ namespace CSharpNote.Data.Algorithm
             SearchMatrix(matrix, 23).ToConsole();
         }
 
-        public bool SearchMatrix(int[,] matrix, int target)
+        private bool SearchMatrix(int[,] matrix, int target)
         {
             for (var x = 0; x < matrix.GetLength(0); x++)
             {
@@ -3758,7 +3719,7 @@ namespace CSharpNote.Data.Algorithm
             return false;
         }
 
-        public bool BinarySearch(int[,] matrix, int x, int target)
+        private bool BinarySearch(int[,] matrix, int x, int target)
         {
             var right = matrix.GetLength(1) - 1;
             var left = 0; 
@@ -3787,14 +3748,15 @@ namespace CSharpNote.Data.Algorithm
 
             MinWindow(s, t).ToConsole();
         }
-        
-        public string MinWindow(string s, string t)
+
+        private string MinWindow(string s, string t)
         {
             var dictionary = new Dictionary<char, Queue<int>>();
             foreach (var @char in t)
             {
                 if (!dictionary.ContainsKey(@char))
                     dictionary[@char] = new Queue<int>();
+
                 dictionary[@char].Enqueue(-1);
             }
 
@@ -3838,16 +3800,21 @@ namespace CSharpNote.Data.Algorithm
             return start == -1 ? string.Empty : s.Substring(start, minLength);
         }
 
+        /// <summary>
+        /// context 
+        /// 從haystack尋找needle的位置
+        /// solution
+        /// </summary>
         [MarkedItem]
         public void StrStr()
         {
             var haystack = "mississippi";
             var needle = "pi";
 
-            StrStr(haystack, needle);
+            StrStr(haystack, needle).ToConsole();
         }
 
-        public int StrStr(string haystack, string needle)
+        private int StrStr(string haystack, string needle)
         {
             if (needle.Length > haystack.Length)
                 return -1;
@@ -3876,7 +3843,7 @@ namespace CSharpNote.Data.Algorithm
             MinDistance(word1, word2).ToConsole();
         }
 
-        public int MinDistance(string word1, string word2)
+        private int MinDistance(string word1, string word2)
         {
             var matrix = new int[word2.Length + 1, word1.Length + 1];
             matrix[0, 0] = 0;
@@ -3901,13 +3868,21 @@ namespace CSharpNote.Data.Algorithm
             return matrix[word2.Length, word1.Length];
         }
 
+        /// <summary>
+        /// context
+        /// 三個元素加起來等於0
+        /// solution
+        /// 使用三個指針 index1向右 index2於index1 +1 向右 index3最尾邊向左 
+        /// 當index2 > index3 index1 + 1
+        /// 使用三個元素組成新的hashcode防重複組合進入
+        /// </summary>
         [MarkedItem]
         public void ThreeSum()
         {
             ThreeSum(new[] {-2,0,1,1,2}).DumpMany();
         }
 
-        public List<List<int>> ThreeSum(int[] nums)
+        private List<List<int>> ThreeSum(int[] nums)
         {
             var result = new HashSet<List<int>>();
             if (nums.Length < 3) 
@@ -3957,7 +3932,7 @@ namespace CSharpNote.Data.Algorithm
             }
         }
 
-        public List<List<int>> FourSum(int[] nums, int target)
+        private List<List<int>> FourSum(int[] nums, int target)
         {
             var result = new HashSet<List<int>>();
             if (nums.Length < 4)
@@ -3990,13 +3965,19 @@ namespace CSharpNote.Data.Algorithm
             return result.ToList();
         }
 
+        /// <summary>
+        /// context
+        /// 二進位字串加法
+        /// solution
+        /// 先反轉ab字串列出所有加法情況逐一進行運算
+        /// </summary>
         [MarkedItem]
         public void AddBinary()
         {
             AddBinary("11", "1").ToConsole();
         }
 
-        public string AddBinary(string a, string b)
+        private string AddBinary(string a, string b)
         {
             if (string.IsNullOrEmpty(a))
                 return b;
@@ -4031,7 +4012,7 @@ namespace CSharpNote.Data.Algorithm
             return result.Reverse();
         }
 
-        public string CaculateBit(ref bool add, char right = '0', char left = '0')
+        private string CaculateBit(ref bool add, char right = '0', char left = '0')
         {
             switch (right.ToString() + left.ToString() + add.ToString())
             {
@@ -4055,22 +4036,26 @@ namespace CSharpNote.Data.Algorithm
                     throw new Exception();
             }
         }
+
+        /// <summary>
+        /// context
+        /// 號碼有對應的英文字找出所有可能
+        /// solution
+        /// 生成字典樹片遍出所有可能
+        /// </summary>
         [MarkedItem]
         public void LetterCombinations()
         {
             LetterCombinations("33429").Dump();
         }
 
-        public IList<string> LetterCombinations(string digits)
+        private IList<string> LetterCombinations(string digits)
         {
             return string.IsNullOrEmpty(digits) ? new List<string>() : new PhoneNode(digits).GetCombinations().ToList();
         }
 
         private class PhoneNode
         {
-            private string Value { get; set; }
-            private IEnumerable<PhoneNode> Sons { get; set; }
-
             private PhoneNode(IEnumerable<PhoneNode> sons)
             {
                 Sons = sons;
@@ -4087,6 +4072,10 @@ namespace CSharpNote.Data.Algorithm
             {
             }
 
+            private string Value { get; set; }
+
+            private IEnumerable<PhoneNode> Sons { get; set; }
+
             private static IEnumerable<PhoneNode> ParseNumber(string phoneNumber)
             {
                 if (string.IsNullOrEmpty(phoneNumber))
@@ -4096,7 +4085,7 @@ namespace CSharpNote.Data.Algorithm
                 switch (phoneNumber[0])
                 {
                     case '1':
-                        return new List<PhoneNode>{};
+                        return new List<PhoneNode>();
                     case '2':
                         return new List<PhoneNode> { new PhoneNode(subNumber, "a"), new PhoneNode(subNumber, "b"), new PhoneNode(subNumber, "c") };
                     case '3':
@@ -4135,17 +4124,311 @@ namespace CSharpNote.Data.Algorithm
                 return !node.HasSons() 
                     ? new List<string> { msg }
                     : node.Sons.SelectMany(son => GetCombinations(son, msg));
-            }
+            }  
+        }
 
-            [MarkedItem]
-            public void CombinationSum()
-            {
+        /// <summary>
+        /// context
+        /// 每個candidates可以重複加起來等於target
+        /// solution
+        /// 遞迴求解
+        /// </summary>
+        [MarkedItem]
+        public void CombinationSum()
+        {
+            var result = CombinationSum(new[] { 2, 3, 6, 7 }, 7);
+        }
 
-            }
+        private List<List<int>> CombinationSum(int[] candidates, int target)
+        {
+            Array.Sort(candidates);
+            return CombinationSum(candidates, target, new List<int>()).ToList();
+        }
 
-            public IList<IList<int>> CombinationSum(int[] candidates, int target)
-            {
+        private IEnumerable<List<int>> CombinationSum(int[] candidates, int target, IEnumerable<int> current, int candidateIndex = 0)
+        {
+            var enumerable = current as IList<int> ?? current.ToList();
+            if (enumerable.Sum() == target)
+                return new List<List<int>> { enumerable.ToList() };
+
+            if (enumerable.Sum() > target || candidateIndex >= candidates.Length)
                 return null;
+
+            var result = new List<List<int>>();
+            for (var index = candidateIndex; index < candidates.Length; index++)
+            {
+                var items = enumerable.ToList();
+                items.Add(candidates[index]);
+
+                var collection = CombinationSum(candidates, target, items, index + 1);
+                if (collection != null && collection.Any())
+                    result.AddRange(collection);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// context
+        /// 存重複數字列出可組成target的所有可能
+        /// solution
+        /// 遞迴求解
+        /// </summary>
+        [MarkedItem]
+        public void CombinationSum2()
+        {
+            var result = CombinationSum2(new[] { 1, 1 }, 1);
+        }
+
+        private List<List<int>> CombinationSum2(int[] candidates, int target)
+        {
+            candidates = candidates.Where(x => x <= target).OrderBy(x => x).ToArray();
+            var result = new List<List<int>>();
+            CombinationSum2(candidates, target, new List<int>(), result);
+
+            return result.Select(item => item.ToList()).ToList();
+        }
+
+        private void CombinationSum2(int[] candidates, int target, List<int> currentItems, List<List<int>> result, int candidateIndex = 0)
+        {
+            if (target == 0)
+            {
+                result.Add(currentItems);
+
+                return;
+            }
+
+            if (target < 0 || candidateIndex >= candidates.Length || candidateIndex < 0)
+                return;
+
+            var preNum = int.MinValue;
+            for (var index = candidateIndex; index < candidates.Length; index++)
+            {
+                var curNum = candidates[index];
+                if (preNum == curNum)
+                    continue;
+
+                var items = currentItems.ToList();
+                items.Add(candidates[index]);
+                preNum = curNum;
+
+                CombinationSum2(candidates, target - candidates[index], items, result, index + 1);
+            }
+        }
+
+        /// <summary>
+        /// context
+        /// 尋找第一個峰項的引數
+        /// solution
+        /// 爬山 坡度上升用peakIndex儲存位置下降回傳Index
+        /// </summary>
+        [MarkedItem]
+        public void FindPeakElement()
+        {
+            FindPeakElement(new []{1, 2, 3, 1}).ToConsole();
+        }
+
+        public int FindPeakElement(int[] nums)
+        {
+            if (nums.Length < 1)
+                return 0;
+
+            var peakIndex = 0;
+            for (var index = 0; index < nums.Length - 1; index++)
+            {
+                if (nums[index] < nums[index + 1])
+                    peakIndex = index + 1;
+                if (nums[index] > nums[index + 1])
+                    return peakIndex;
+            }
+
+            return peakIndex;
+        }
+
+        /// <summary>
+        /// context
+        /// 是否為字謎 
+        /// solution
+        /// t字串變成字典檔s字串逐一去減看是否全部被去除
+        /// </summary>
+        [MarkedItem]
+        public void IsAnagram()
+        {
+            IsAnagram("a", "b").ToConsole();
+        }
+
+        public bool IsAnagram(string s, string t)
+        {
+            if (s == t)
+                return true;
+            if (t.Length != s.Length)
+                return false;
+
+            var dic  = new Dictionary<char, int>();
+            foreach (var c in t)
+            {
+                if (!dic.ContainsKey(c))
+                {
+                    dic.Add(c, 1);
+                    continue;
+                }
+
+                dic[c]++;
+            }
+
+            foreach (var c in s.Where(x => dic.ContainsKey(x)))
+            {
+                dic[c]--;
+            }
+
+            return dic.All(x => x.Value == 0);
+        }
+
+        /// <summary>
+        /// context 
+        /// 找尋獨立島
+        /// solution
+        /// 片歷元素 如果是陸地遞迴四周 並使用xy組成hashcode加入hashtable防止重複找尋
+        /// </summary>
+        [MarkedItem]
+        public void NumIslands()
+        {
+            var island = new[,]
+            {
+                { '1', '1', '1', '0', '0', '0' },
+                { '1', '1', '0', '0', '0', '0' }, 
+                { '1', '0', '0', '0', '0', '0' }, 
+                { '1', '0', '0', '0', '0', '0' }, 
+                { '1', '0', '0', '0', '1', '0' }
+            };
+            NumIslands(island).ToConsole();
+        }
+
+        public int NumIslands(char[,] grid)
+        {
+            var xBoundary = grid.GetLength(1);
+            var yBoundary = grid.GetLength(0);
+
+            var set = new HashSet<int>();
+            var count = 0;
+            foreach (var index in Enumerable.Range(0, xBoundary * yBoundary))
+            {
+                var x = index % xBoundary;
+                var y = index / xBoundary;
+
+                if (grid[y, x] == '0')
+                    continue;
+
+                var hash = x * 37 + y * 31 ;
+                if (set.Contains(hash))
+                    continue;
+
+                Check(set, grid, x, y);
+
+                count++;
+            }
+
+            return count;
+        }
+
+        public void Check(HashSet<int> set, char[,] grid, int x, int y)
+        {
+            if (x < 0 || x >= grid.GetLength(1))
+                return;
+
+            if (y < 0 || y >= grid.GetLength(0))
+                return;
+
+            var hash = x * 37 + y * 31;
+            if (set.Contains(hash))
+                return;
+
+            set.Add(hash);
+            if (grid[y, x] == '0')
+                return;
+
+            Check(set, grid, x + 1, y);
+            Check(set, grid, x - 1, y);
+            Check(set, grid, x, y + 1);
+            Check(set, grid, x, y - 1);
+        }
+
+        /// <summary>
+        /// Context
+        /// 排出最大數
+        /// Solution
+        /// 實作compare
+        /// 1.比最短長度
+        /// 2.比最長長度
+        /// 3.比第一個大於第二個
+        /// </summary>
+        [MarkedItem]
+        public void LargestNumber()
+        {
+            var a = LargestNumber(new[] { 830, 8308 });
+        }
+
+        public string LargestNumber(int[] nums)
+        {
+            if (nums.All(n => n == 0))
+                return "0";
+
+            var list = nums.ToList();
+            list.Sort(new IntComparer());
+
+            return list.Select(x => x.ToString()).Aggregate((a, b) => a + b);
+        }
+
+        private class IntComparer : IComparer<int>
+        {
+            public int Compare(int a, int b)
+            {
+                var strA = a.ToString();
+                var strB = b.ToString();
+                var minLength = Math.Min(strA.Length, strB.Length);
+                var maxLength = Math.Max(strA.Length, strB.Length);
+
+                var preIndex = -1;
+                while (++preIndex < minLength)
+                {
+                    if (strA[preIndex] > strB[preIndex]) 
+                        return -1;
+
+                    if (strA[preIndex] < strB[preIndex]) 
+                        return 1;
+                }
+
+                if (strA.Length == strB.Length)
+                    return 0;
+
+                var lastIndex = -1;
+                var state = (strA.Length > strB.Length) 
+                    ? 1 
+                    : -1;
+
+                var maxString = (strA.Length > strB.Length) 
+                    ? strA 
+                    : strB;
+
+                while (preIndex + ++lastIndex < maxLength)
+                {
+                    if (maxString[lastIndex] > maxString[preIndex + lastIndex])
+                        return 1 * state;
+
+                    if (maxString[lastIndex] < maxString[preIndex + lastIndex])
+                        return -1 * state;
+                }
+
+                for (var index = 0; index < maxLength - 1; index++)
+                {
+                    if (maxString[index] > maxString[index + 1])
+                        return -1 * state;
+
+                    if (maxString[index] < maxString[index + 1])
+                        return 1 * state;
+                }
+
+                return state * -1;
             }
         }
     }
