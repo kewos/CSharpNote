@@ -72,6 +72,7 @@
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\GenericUtility.cs" />
     <Compile Include="Utility\TimeMeasurer.cs" />
   </ItemGroup>
   <ItemGroup>

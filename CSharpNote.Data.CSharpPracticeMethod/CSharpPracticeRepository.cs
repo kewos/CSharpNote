@@ -2108,5 +2108,69 @@ namespace CSharpNote.Data.CSharpPractice
                 }
             }
         }
+
+        private class Item
+        {
+            public string Name { get; set; }
+            public int Sequence { get; set; }
+        }
+
+        [MarkedItem]
+        public void Test()
+        {
+            var items = new List<Item>
+            {
+                new Item
+                {
+                    Name = "test1",
+                    Sequence = 1
+                },
+                new Item
+                {
+                    Name = "test2",
+                    Sequence = 2
+                },
+                new Item
+                {
+                    Name = "test3",
+                    Sequence = 3
+                },
+                new Item
+                {
+                    Name = "test2",
+                    Sequence = 4
+                },
+                new Item
+                {
+                    Name = "test1",
+                    Sequence = 5
+                }
+            };
+
+            var result = items.GroupBy(x => x.Name)
+                .Select(g => 
+                    new Item
+                    {
+                        Name = g.Key, 
+                        Sequence = g.Select(x => x.Sequence)
+                            .OrderByDescending(x => x)
+                            .First()
+                    })
+                    .ToList();
+        }
+
+        [MarkedItem]
+        public void CheckOverLap()
+        {
+            GenericUtility.NoOverlap(1, 3, 2, 4).ToConsole("false :");
+            GenericUtility.NoOverlap(1, 2, 3, 4).ToConsole("true :");
+            GenericUtility.NoOverlap(1, 4, 2, 3).ToConsole("false :");
+            GenericUtility.NoOverlap(2, 3, 1, 4).ToConsole("false :");
+            GenericUtility.NoOverlap(3, 4, 1, 2).ToConsole("true :");
+            GenericUtility.NoOverlap(2, 4, 1, 3).ToConsole("false :");
+            var dateTime = DateTime.Today;
+            GenericUtility.NoOverlap(dateTime.AddDays(-1), dateTime.AddDays(1), dateTime, dateTime.AddDays(2))
+                .ToConsole("false :");
+        }
     }
 }

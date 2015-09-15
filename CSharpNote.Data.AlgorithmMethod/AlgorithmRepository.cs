@@ -4431,5 +4431,169 @@ namespace CSharpNote.Data.Algorithm
                 return state * -1;
             }
         }
+
+        [MarkedItem]
+        public void IsIsomorphic()
+        {
+            IsIsomorphic("ab", "aa").ToConsole();
+        }
+
+        public bool IsIsomorphic(string s, string t)
+        {
+            if (s == t)
+                return true;
+
+            if (string.IsNullOrEmpty(s) || string.IsNullOrEmpty(t))
+                return false;
+
+            if (s.Length != t.Length)
+                return false;
+
+            var dic = new Dictionary<char, char>();
+            for (var i = 0; i < s.Length; i++)
+            {
+                if (!dic.ContainsKey(s[i]))
+                    dic.Add(s[i], t[i]);
+
+                if (dic[s[i]] != t[i])
+                    return false;
+            }
+
+            return true;
+        }
+
+        [MarkedItem]
+        public void MinSubArrayLen()
+        {
+            MinSubArrayLen(100, new[] {10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10}).ToConsole();
+        }
+
+        public int MinSubArrayLen(int target, int[] nums)
+        {
+            var queue = new Queue<ValueNext>();
+            for (var i = 0; i < nums.Length; i++)
+            {
+                queue.Enqueue(new ValueNext{ Value = nums[i], Index = i});
+            }
+
+            queue.Enqueue(null);
+
+            for (var index = 0; index < nums.Length && queue.Peek() != null; index++)
+            {
+                while (queue.Peek() != null)
+                {
+                    if (queue.Peek().Value == target)
+                        return index + 1;
+
+                    var temp = queue.Dequeue();
+                    if (temp.Index + 1 >= nums.Length || temp.Value > target)
+                        continue;
+
+                    temp.Value += nums[++temp.Index];
+
+                    queue.Enqueue(temp);
+                }
+
+                queue.Dequeue();
+                queue.Enqueue(null);
+            }
+
+            return 0;
+        }
+
+        public class ValueNext
+        {
+            public int Value { get; set; }
+            public int Index { get; set; }
+        }
+
+        public int MinSubArrayLenⅡ(int target, int[] nums)
+        {
+            var sum = 0;
+            var length = nums.Length + 1;
+            var preIndex = 0;
+            for (var index = 0; index < nums.Length; index++)
+            {
+                if (sum == 0)
+                    length = Math.Min(length, index - preIndex + 1);
+
+                sum += nums[index];
+                while (sum > target && preIndex + 1 < index)
+                {
+                    sum -= nums[preIndex++];
+                }
+            }
+
+            return length <= nums.Length ? length : 0;
+        }
+
+        [MarkedItem]
+        public void MissingNumber()
+        {
+            MissingNumber(new[] {1, 2, 3, 5}).ToConsole();
+        }
+
+        public int MissingNumber(int[] nums)
+        {
+            var items = Enumerable.Range(0, nums.Length + 1).ToList();
+            foreach (var num in nums)
+            {
+                items.Remove(num);
+            }
+
+            throw new Exception();
+        }
+
+        [MarkedItem]
+        public void IsUgly()
+        {
+            IsUgly(10).ToConsole();
+        }
+
+        public bool IsUgly(int num)
+        {
+            if (num < 1)
+                return false;
+            if (num < 7)
+                return true;
+
+            var factors = new List<int>{ 2, 3, 5 };
+            var index = 0;
+            while (num >= 7)
+            {
+                if (index == factors.Count)
+                    return false;
+
+                if (num % factors[index] == 0)
+                {
+                    num /= factors[index];
+                    continue;
+                }
+
+                index++;
+            }
+
+            return true;
+        }
+
+        public int NthUglyNumber(int n)
+        {
+            if (n < 0)
+                throw new Exception();
+
+            if (n <= 6)
+                return n;
+
+            var num = 7;
+            var current = 6;
+            while (current != n)
+            {
+                if (IsUgly(num))
+                    current++;
+                num++;
+            }
+
+            return num;
+        }
     }
 }
