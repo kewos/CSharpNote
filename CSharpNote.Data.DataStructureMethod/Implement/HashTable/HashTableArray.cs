@@ -4,27 +4,66 @@ using System.Collections.Generic;
 namespace CSharpNote.Data.DataStructure.Implement.HashTable
 {
     /// <summary>
-    /// Array為基底容器 管理 HashTableArrayNode<TKey, TValue>
+    ///     Array為基底容器 管理 HashTableArrayNode<TKey, TValue>
     /// </summary>
     public class HashTableArray<TKey, TValue>
     {
-        private HashTableArrayNode<TKey, TValue>[] array;
-
-        public int Capacity
-        {
-            get
-            {
-                return array.Length;
-            }
-        }
+        private readonly HashTableArrayNode<TKey, TValue>[] array;
 
         public HashTableArray(int capacity)
         {
             array = new HashTableArrayNode<TKey, TValue>[capacity];
 
-            for (int i = 0; i < capacity; i++)
+            for (var i = 0; i < capacity; i++)
             {
                 array[i] = new HashTableArrayNode<TKey, TValue>();
+            }
+        }
+
+        public int Capacity
+        {
+            get { return array.Length; }
+        }
+
+        public IEnumerable<TValue> Values
+        {
+            get
+            {
+                foreach (var node in array)
+                {
+                    foreach (var value in node.Values)
+                    {
+                        yield return value;
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<TKey> Keys
+        {
+            get
+            {
+                foreach (var node in array)
+                {
+                    foreach (var key in node.Keys)
+                    {
+                        yield return key;
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<HashTableNodePair<TKey, TValue>> Items
+        {
+            get
+            {
+                foreach (var node in array)
+                {
+                    foreach (var pair in node.Items)
+                    {
+                        yield return pair;
+                    }
+                }
             }
         }
 
@@ -50,57 +89,15 @@ namespace CSharpNote.Data.DataStructure.Implement.HashTable
 
         public void Clear()
         {
-            foreach (HashTableArrayNode<TKey, TValue> node in array)
+            foreach (var node in array)
             {
                 node.Clear();
             }
         }
 
-        public IEnumerable<TValue> Values
-        {
-            get
-            {
-                foreach (HashTableArrayNode<TKey, TValue> node in array)
-                {
-                    foreach (TValue value in node.Values)
-                    {
-                        yield return value;
-                    }
-                }
-            }
-        }
-
-        public IEnumerable<TKey> Keys
-        {
-            get
-            {
-                foreach (HashTableArrayNode<TKey, TValue> node in array)
-                {
-                    foreach (TKey key in node.Keys)
-                    {
-                        yield return key;
-                    }
-                }
-            }
-        }
-
-        public IEnumerable<HashTableNodePair<TKey, TValue>> Items
-        {
-            get
-            {
-                foreach (HashTableArrayNode<TKey, TValue> node in array)
-                {
-                    foreach (HashTableNodePair<TKey, TValue> pair in node.Items)
-                    {
-                        yield return pair;
-                    }
-                }
-            }
-        }
-
         private int GetIndex(TKey key)
         {
-            return Math.Abs(key.GetHashCode() % Capacity);
+            return Math.Abs(key.GetHashCode()%Capacity);
         }
     }
 }

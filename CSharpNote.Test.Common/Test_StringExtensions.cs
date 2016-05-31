@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpNote.Common.Test
 {
     [TestClass]
-    public class Test_StringExtensions
+    public class TestStringExtensions
     {
         [TestMethod]
         public void IsNullOrEmpty_InputEmpty_OutputTrue()

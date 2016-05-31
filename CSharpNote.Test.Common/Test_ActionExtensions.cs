@@ -5,16 +5,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpNote.Common.Test
 {
     [TestClass]
-    public class Test_ActionExtensions
+    public class TestActionExtensions
     {
         [TestMethod]
         public void ExcauteAndCatchException_ThrowException_ReturnExceptionResult()
         {
             //Arrange
-            Action action = () =>
-            {
-                throw new Exception("TestException");
-            };
+            Action action = () => { throw new Exception("TestException"); };
 
             //Act
             var actual = action.ExcauteAndCatchException();
@@ -36,7 +33,7 @@ namespace CSharpNote.Common.Test
                 var actual = action.CaculateExcuteTime();
                 Assert.Fail("ExceptionMustBeThrown");
             }
-            //Validation
+                //Validation
             catch (ArgumentNullException e)
             {
             }

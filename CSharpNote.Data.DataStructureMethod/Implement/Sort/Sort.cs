@@ -2,7 +2,7 @@
 
 namespace CSharpNote.Data.DataStructure.Implement.Sort
 {
-    public abstract class  Sorts<T> : ISort<T>
+    public abstract class Sorts<T> : ISort<T>
     {
         public IList<T> Sort(IList<T> list)
         {

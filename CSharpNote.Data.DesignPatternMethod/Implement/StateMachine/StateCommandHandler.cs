@@ -14,15 +14,15 @@ namespace CSharpNote.Data.DesignPattern.Implement.StateMachine
             this.commandSet = commandSet;
         }
 
-        public StateCommandHandler() : 
+        public StateCommandHandler() :
             this(new StateCommandInfomation(State.Create, Command.Begin),
-            new Dictionary<StateCommandInfomation, IStateComand>
-            {
-                { new StateCommandInfomation(State.Create, Command.Begin), new CreateBegin()},
-                { new StateCommandInfomation(State.Create, Command.Pause), new CreatePause()},
-                { new StateCommandInfomation(State.Create, Command.Resume), new CreateResume()},
-                { new StateCommandInfomation(State.Create, Command.End), new CreateEnd()},
-            })
+                new Dictionary<StateCommandInfomation, IStateComand>
+                {
+                    {new StateCommandInfomation(State.Create, Command.Begin), new CreateBegin()},
+                    {new StateCommandInfomation(State.Create, Command.Pause), new CreatePause()},
+                    {new StateCommandInfomation(State.Create, Command.Resume), new CreateResume()},
+                    {new StateCommandInfomation(State.Create, Command.End), new CreateEnd()}
+                })
         {
         }
 

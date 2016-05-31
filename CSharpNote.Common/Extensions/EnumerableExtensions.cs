@@ -8,7 +8,7 @@ namespace CSharpNote.Common.Extensions
     public static class EnumerableExtensions
     {
         /// <summary>
-        /// Foreach迴圈
+        ///     Foreach迴圈
         /// </summary>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> elements, Func<T, T> func)
         {
@@ -18,7 +18,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// Foreach迴圈
+        ///     Foreach迴圈
         /// </summary>
         public static void ForEach<T>(this IEnumerable<T> elements, Action<T> action)
         {
@@ -31,7 +31,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// 有引數的Foreach迴圈 
+        ///     有引數的Foreach迴圈
         /// </summary>
         public static void ForEach<T>(this IEnumerable<T> elements, Action<int, T> action)
         {
@@ -45,7 +45,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// 全部為真則真 反之為假
+        ///     全部為真則真 反之為假
         /// </summary>
         public static bool All<T>(this IEnumerable<T> elements, Func<int, T, bool> func)
         {
@@ -56,7 +56,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// 顯示容量內容於畫面上
+        ///     顯示容量內容於畫面上
         /// </summary>
         public static void Dump<T>(this IEnumerable<T> elements, int index = 0)
         {
@@ -64,7 +64,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// 顯示容量內容於畫面上
+        ///     顯示容量內容於畫面上
         /// </summary>
         public static IEnumerable DumpMany(this IEnumerable enumerable, int dumpLevel = 0)
         {
@@ -72,7 +72,7 @@ namespace CSharpNote.Common.Extensions
             var dumpMany = enumerable as IList<object> ?? enumerable.Cast<object>().ToList();
             foreach (var element in dumpMany)
             {
-                Console.WriteLine("{0}{1}.{2}", new string('-', dumpLevel * 3), index++, element);
+                Console.WriteLine("{0}{1}.{2}", new string('-', dumpLevel*3), index++, element);
                 if (element is IEnumerable)
                 {
                     (element as IEnumerable).DumpMany(dumpLevel + 1);
@@ -82,17 +82,17 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// 隨機排列
+        ///     隨機排列
         /// </summary>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> elements)
         {
             var random = new Random();
 
-            return elements.OrderBy(element => random.Next() % 100);
+            return elements.OrderBy(element => random.Next()%100);
         }
 
         /// <summary>
-        /// 排列組合
+        ///     排列組合
         /// </summary>
         public static IEnumerable<IEnumerable<T>> Permutations<T>(this IEnumerable<T> source)
         {
@@ -109,7 +109,7 @@ namespace CSharpNote.Common.Extensions
             {
                 yield return source;
             }
-            for (int i = 0; i < c; i++)
+            for (var i = 0; i < c; i++)
             {
                 foreach (var p in permutations(source.Take(i).Concat(source.Skip(i + 1))))
                 {
@@ -119,7 +119,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// 裝飾者集合會逐一裝飾目標
+        ///     裝飾者集合會逐一裝飾目標
         /// </summary>
         public static T Decorate<T>(this IEnumerable<Func<T, T>> decorators, T target)
         {
@@ -130,7 +130,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// 轉成HashSet
+        ///     轉成HashSet
         /// </summary>
         public static HashSet<T> ToHashSet<T>(this IEnumerable<T> source)
         {
@@ -140,7 +140,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// 交叉運算
+        ///     交叉運算
         /// </summary>
         public static IEnumerable<T> CrossCaculate<T>(this IEnumerable<T> left, IEnumerable<T> right, Func<T, T, T> func)
         {

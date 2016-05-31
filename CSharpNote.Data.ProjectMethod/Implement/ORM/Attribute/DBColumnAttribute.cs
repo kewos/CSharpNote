@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace CSharpNote.Data.Project.Implement.ORM.Attribute
 {

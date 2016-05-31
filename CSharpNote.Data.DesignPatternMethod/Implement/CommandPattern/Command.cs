@@ -49,7 +49,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.CommandPattern
 
         public override void Execute()
         {
-            Console.WriteLine("X * Y = {0}", receiver.X * receiver.Y);
+            Console.WriteLine("X * Y = {0}", receiver.X*receiver.Y);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.CompositePattern
 
         public virtual void Execute(int depth = 0)
         {
-            GetType().Name.ToConsole(new string('-', depth++ * 2));
+            GetType().Name.ToConsole(new string('-', depth++*2));
 
             elements.ForEach(element => element.Execute(depth));
         }

@@ -1,15 +1,12 @@
-﻿
-namespace CSharpNote.Data.DesignPattern.Implement.Aop
+﻿namespace CSharpNote.Data.DesignPattern.Implement.Aop
 {
-    interface IConcern<T>
+    internal interface IConcern<T>
     {
         T This { get; }
     }
 
     public class Concern : IConcern<Actor>
     {
-        public Actor This { get; set; }
-
         public Concern(string name)
         {
             if (string.IsNullOrEmpty(name))
@@ -19,5 +16,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.Aop
 
             This = new Actor(name);
         }
+
+        public Actor This { get; set; }
     }
 }

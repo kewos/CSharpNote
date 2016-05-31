@@ -13,14 +13,8 @@ namespace CSharpNote.Data.DesignPattern.Implement.PrototypePattern
 
         public IColor this[string name]
         {
-            get
-            {
-                return colors[name];
-            }
-            set
-            {
-                colors.Add(name, value);
-            }
+            get { return colors[name]; }
+            set { colors.Add(name, value); }
         }
     }
 }

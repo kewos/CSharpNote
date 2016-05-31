@@ -5,28 +5,16 @@ namespace CSharpNote.Data.DataStructure.Implement.Sort
 {
     public class ComparisonComparer<T> : IComparer<T>
     {
-        private Comparison<T> comparsion;
-
         public ComparisonComparer(Comparison<T> comparsion)
         {
-            this.comparsion = comparsion;
+            this.Comparsion = comparsion;
         }
 
-        public Comparison<T> Comparsion
-        {
-            get
-            {
-                return comparsion;
-            }
-            set
-            {
-                comparsion = value;
-            }
-        }
+        public Comparison<T> Comparsion { get; set; }
 
         public int Compare(T x, T y)
         {
-            return comparsion(x, y);
+            return Comparsion(x, y);
         }
     }
 }

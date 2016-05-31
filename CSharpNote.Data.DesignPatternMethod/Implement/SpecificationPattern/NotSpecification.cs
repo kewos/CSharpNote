@@ -2,7 +2,7 @@
 {
     public class NotSpecification<T> : CompositeSpecification<T>
     {
-        ISpecification<T> specification;
+        private readonly ISpecification<T> specification;
 
         public NotSpecification(ISpecification<T> spec)
         {

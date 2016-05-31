@@ -8,12 +8,12 @@ namespace CSharpNote.Data.DesignPattern.Implement.RepositoryPattern
     public class CachePersonRepository : IPersonRepository
     {
         private readonly TimeSpan cacheDuration = TimeSpan.FromSeconds(30);
-        private DateTime lastUpdateDateTime;
         private readonly IPersonRepository personRepository;
         private IEnumerable<Person> cacheItems;
+        private DateTime lastUpdateDateTime;
 
         /// <summary>
-        /// Decorator Pattern operate object dynamically via Dependecy Injection
+        ///     Decorator Pattern operate object dynamically via Dependecy Injection
         /// </summary>
         public CachePersonRepository(IPersonRepository personRepository)
         {
@@ -22,47 +22,21 @@ namespace CSharpNote.Data.DesignPattern.Implement.RepositoryPattern
 
         private bool IsCacheValid
         {
-            get
-            {
-                return (DateTimeOffset.Now - lastUpdateDateTime) < cacheDuration;
-            }
-        }
-
-        private void ValidateCache()
-        {
-            if (cacheItems != null || IsCacheValid) return;
-            try
-            {
-                cacheItems = personRepository.GetPeople();
-                lastUpdateDateTime = DateTime.Now;
-            }
-            catch  
-            {
-                cacheItems = new List<Person>()
-                {
-                    new Person { FirstName="No Data Available", LastName = "No Data Available"},
-                };
-            }
-        }
-
-        private void InvalidateCache()
-        {
-            "Cache清空".ToConsole();
-            cacheItems = null; 
+            get { return (DateTimeOffset.Now - lastUpdateDateTime) < cacheDuration; }
         }
 
         public IEnumerable<Person> GetPeople()
         {
             ValidateCache();
             "GetObjectFromCache".ToConsole();
-            return cacheItems; 
+            return cacheItems;
         }
 
         public Person GetPerson(string lastName)
         {
             ValidateCache();
             "GetObjectFromCache".ToConsole();
-            return cacheItems.FirstOrDefault(p => p.LastName.Equals(lastName)); 
+            return cacheItems.FirstOrDefault(p => p.LastName.Equals(lastName));
         }
 
         public void AddPerson(Person newPerson)
@@ -81,6 +55,29 @@ namespace CSharpNote.Data.DesignPattern.Implement.RepositoryPattern
         {
             personRepository.DeletePerson(lastName);
             InvalidateCache();
+        }
+
+        private void ValidateCache()
+        {
+            if (cacheItems != null || IsCacheValid) return;
+            try
+            {
+                cacheItems = personRepository.GetPeople();
+                lastUpdateDateTime = DateTime.Now;
+            }
+            catch
+            {
+                cacheItems = new List<Person>
+                {
+                    new Person {FirstName = "No Data Available", LastName = "No Data Available"}
+                };
+            }
+        }
+
+        private void InvalidateCache()
+        {
+            "Cache清空".ToConsole();
+            cacheItems = null;
         }
     }
 }

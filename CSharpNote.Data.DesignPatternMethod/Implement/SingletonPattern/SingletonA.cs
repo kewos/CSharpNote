@@ -3,7 +3,7 @@
     public class SingletonA
     {
         private static SingletonA instance;
-        private static object lockobject = new object();
+        private static readonly object lockobject = new object();
 
         private SingletonA()
         {

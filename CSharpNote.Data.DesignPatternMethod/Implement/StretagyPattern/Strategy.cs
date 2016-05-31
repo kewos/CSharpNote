@@ -1,5 +1,4 @@
-﻿
-namespace CSharpNote.Data.DesignPattern.Implement.StretagyPattern
+﻿namespace CSharpNote.Data.DesignPattern.Implement.StretagyPattern
 {
     public class StrategyA : StrategyBase
     {

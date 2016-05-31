@@ -12,7 +12,7 @@
             return GetType().Name + component.Operation();
         }
     }
-    
+
     public class DecoratorB : AbstractDecorator
     {
         public DecoratorB(IComponent component)

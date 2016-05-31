@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpNote.Common.Test
 {
     [TestClass]
-    public class Test_EnumerableExtensions
+    public class TestEnumerableExtensions
     {
         [TestMethod]
         public void ForEach_InputFunc_ReturnExecuteResult()
@@ -26,7 +26,7 @@ namespace CSharpNote.Common.Test
         [TestMethod]
         public void ForEach_InputNullFunc_ThrowArgumentException()
         {
-            Action action = () => Enumerable.Range(1, 5).ForEach((Func<int, int>)null).ToList();
+            Action action = () => Enumerable.Range(1, 5).ForEach((Func<int, int>) null).ToList();
             action.AssertHandleException<ArgumentException>();
         }
 
@@ -38,10 +38,7 @@ namespace CSharpNote.Common.Test
 
             //Act
             var actual = new List<int>();
-            elements.ForEach(n =>
-            {
-                actual.Add(n);
-            });
+            elements.ForEach(n => { actual.Add(n); });
 
             //Validation
             var expect = new List<int> {1, 2, 3, 4, 5};
@@ -56,10 +53,7 @@ namespace CSharpNote.Common.Test
 
             //Act
             var actual = new Dictionary<int, int>();
-            elements.ForEach((index, n) =>
-            {
-                actual.Add(index, n);
-            });
+            elements.ForEach((index, n) => { actual.Add(index, n); });
 
             //Validation
             var expect = new Dictionary<int, int>
@@ -68,7 +62,7 @@ namespace CSharpNote.Common.Test
                 {1, 2},
                 {2, 3},
                 {3, 4},
-                {4, 5},
+                {4, 5}
             };
             Assert.IsTrue(actual.SequenceEqual(expect));
         }

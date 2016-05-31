@@ -6,34 +6,8 @@ namespace CSharpNote.Data.DataStructure.Implement.Buffer
 {
     public class Buffer<T> : IBuffer<T>, IEnumerable<T>, IEnumerable
     {
-        private T[] buffer;
+        private readonly T[] buffer;
         private int top;
-
-        #region property
-        public int Capacity
-        {
-            get
-            {
-                return buffer.Length;
-            }
-        }
-
-        public bool IsEmpty
-        {
-            get
-            {
-                return top == -1;
-            }
-        }
-
-        public bool IsFull
-        {
-            get
-            {
-                return top == Capacity - 1;
-            }
-        }
-        #endregion
 
         public Buffer(int capacity = 10)
         {
@@ -41,10 +15,43 @@ namespace CSharpNote.Data.DataStructure.Implement.Buffer
             {
                 throw new ArgumentException("InvalidArgument");
             }
-            
+
             buffer = new T[capacity];
             top = -1;
         }
+
+        public void Write(T value)
+        {
+            if (IsFull) throw new InvalidOperationException("Full");
+            buffer[++top] = value;
+        }
+
+        public T Read()
+        {
+            if (IsEmpty) throw new InvalidOperationException("Empty");
+            return buffer[top--];
+        }
+
+        #region IEnumerator<T> Member
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (var index = top; index != -1; index--)
+            {
+                yield return buffer[index];
+            }
+        }
+
+        #endregion
+
+        #region IEnumerator Member
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        #endregion
 
         public void Write(T[] items)
         {
@@ -62,33 +69,23 @@ namespace CSharpNote.Data.DataStructure.Implement.Buffer
             }
         }
 
-        public void Write(T value)
+        #region property
+
+        public int Capacity
         {
-            if (IsFull) throw new InvalidOperationException("Full");
-            buffer[++top] = value;
+            get { return buffer.Length; }
         }
 
-        public T Read()
+        public bool IsEmpty
         {
-            if (IsEmpty) throw new InvalidOperationException("Empty");
-            return buffer[top--];
+            get { return top == -1; }
         }
 
-        #region IEnumerator<T> Member
-        public IEnumerator<T> GetEnumerator()
+        public bool IsFull
         {
-            for (var index = top; index != -1; index--)
-            {
-                yield return buffer[index];
-            }
+            get { return top == Capacity - 1; }
         }
-        #endregion
 
-        #region IEnumerator Member
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
         #endregion
     }
 }

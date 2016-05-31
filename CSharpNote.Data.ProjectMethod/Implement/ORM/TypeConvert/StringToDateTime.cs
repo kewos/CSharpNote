@@ -3,7 +3,7 @@
 namespace CSharpNote.Data.Project.Implement.ORM.TypeConvert
 {
     /// <summary>
-    /// 字串轉DateTime
+    ///     字串轉DateTime
     /// </summary>
     public class StringToDateTime : IStringConvert<DateTime>
     {

@@ -4,12 +4,11 @@ namespace CSharpNote.Data.CSharpPractice.Implement
 {
     public class TypeConvert
     {
-        private string _name;
-
+        private readonly string name;
         //將建構子設為私有，代表無法用new關鍵字new出A型別
         private TypeConvert(string name)
         {
-            _name = "ExampleObj:" + name;
+            this.name = "ExampleObj:" + name;
         }
 
         //隱含轉換
@@ -31,7 +30,7 @@ namespace CSharpNote.Data.CSharpPractice.Implement
 
         public override string ToString()
         {
-            return _name;
+            return name;
         }
     }
 }

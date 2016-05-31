@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharpNote.Data.DesignPattern.Implement.SingletonPattern
 {
@@ -14,7 +11,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.SingletonPattern
         public TType Instance<TType>()
             where TType : new()
         {
-            var type = typeof(TType);
+            var type = typeof (TType);
 
             if (!dic.ContainsKey(type))
             {

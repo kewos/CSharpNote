@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Reflection;
+using System.Runtime.Remoting.Messaging;
+using System.Runtime.Remoting.Proxies;
 
 namespace CSharpNote.Data.CSharpPractice.Implement
 {
-    class Baby : MarshalByRefObject
+    internal class Baby : MarshalByRefObject
     {
         public string Name
         {
@@ -15,29 +18,29 @@ namespace CSharpNote.Data.CSharpPractice.Implement
         }
     }
 
-    class LoggingProxy : System.Runtime.Remoting.Proxies.RealProxy
+    internal class LoggingProxy : RealProxy
     {
-        readonly object target;
+        private readonly object target;
 
-        LoggingProxy(object target)
+        private LoggingProxy(object target)
             : base(target.GetType())
         {
             this.target = target;
         }
 
-        public override System.Runtime.Remoting.Messaging.IMessage Invoke(System.Runtime.Remoting.Messaging.IMessage msg)
+        public override IMessage Invoke(IMessage msg)
         {
-            var methodCall = msg as System.Runtime.Remoting.Messaging.IMethodCallMessage;
+            var methodCall = msg as IMethodCallMessage;
 
             if (methodCall != null)
             {
-                return HandleMethodCall(methodCall); 
+                return HandleMethodCall(methodCall);
             }
 
             return null;
         }
 
-        System.Runtime.Remoting.Messaging.IMessage HandleMethodCall(System.Runtime.Remoting.Messaging.IMethodCallMessage methodCall)
+        private IMessage HandleMethodCall(IMethodCallMessage methodCall)
         {
             Console.WriteLine("Calling method {0}...", methodCall.MethodName);
 
@@ -45,20 +48,20 @@ namespace CSharpNote.Data.CSharpPractice.Implement
             {
                 var result = methodCall.MethodBase.Invoke(target, methodCall.InArgs);
                 Console.WriteLine("Calling {0}... OK", methodCall.MethodName);
-                return new System.Runtime.Remoting.Messaging.ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
+                return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
             }
-            catch (System.Reflection.TargetInvocationException invocationException)
+            catch (TargetInvocationException invocationException)
             {
                 var exception = invocationException.InnerException;
                 Console.WriteLine("Calling {0}... {1}", methodCall.MethodName, exception.GetType());
-                return new System.Runtime.Remoting.Messaging.ReturnMessage(exception, methodCall);
+                return new ReturnMessage(exception, methodCall);
             }
         }
 
         public static T Wrap<T>(T target)
             where T : MarshalByRefObject
         {
-            return (T)new LoggingProxy(target).GetTransparentProxy();
+            return (T) new LoggingProxy(target).GetTransparentProxy();
         }
     }
 }

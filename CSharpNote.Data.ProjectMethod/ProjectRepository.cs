@@ -54,7 +54,7 @@ namespace CSharpNote.Data.Project
 
         [MarkedItem]
         public void ResultData()
-        { 
+        {
             var data1 = new ResultData(new Exception("Test"), "");
             if (!data1)
             {
@@ -70,7 +70,7 @@ namespace CSharpNote.Data.Project
         }
 
         [MarkedItem]
-        public void ORM()
+        public void Orm()
         {
             var data = new List<Dictionary<string, string>>
             {
@@ -97,7 +97,7 @@ namespace CSharpNote.Data.Project
                     {"CreateOn", "2015/3/11"},
                     {"ModifyOn", ""},
                     {"Level", "Normal"}
-                },
+                }
             };
 
             var helper = new ConvertHelper();

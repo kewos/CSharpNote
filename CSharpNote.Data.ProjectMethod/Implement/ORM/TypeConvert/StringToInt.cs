@@ -3,7 +3,7 @@
 namespace CSharpNote.Data.Project.Implement.ORM.TypeConvert
 {
     /// <summary>
-    /// 字串轉Int
+    ///     字串轉Int
     /// </summary>
     public class StringToInt : IStringConvert<int>
     {

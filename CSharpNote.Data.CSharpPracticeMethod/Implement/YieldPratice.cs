@@ -5,10 +5,10 @@ namespace CSharpNote.Data.CSharpPractice.Implement
 {
     public class ChatPipeLine
     {
-        IChatSomething root;
-        IChatSomething curent;
+        private IChatSomething curent;
+        private IChatSomething root;
 
-        public void Collect(Boolean hello, Boolean niceToMeetYou)
+        public void Collect(bool hello, bool niceToMeetYou)
         {
             foreach (var say in GenerateChatContent(hello, niceToMeetYou))
             {
@@ -36,7 +36,7 @@ namespace CSharpNote.Data.CSharpPractice.Implement
             if (current.Next != null) Release(current.Next);
         }
 
-        public IEnumerable<IChatSomething> GenerateChatContent(Boolean hello, Boolean niceToMeetYou)
+        public IEnumerable<IChatSomething> GenerateChatContent(bool hello, bool niceToMeetYou)
         {
             yield return new SayHello();
             yield return new NiceToMeetYou();
@@ -45,14 +45,13 @@ namespace CSharpNote.Data.CSharpPractice.Implement
 
     public interface IChatSomething
     {
-        void Speak(string name);
         IChatSomething Next { set; get; }
+        void Speak(string name);
     }
 
     public abstract class BasicChat : IChatSomething
     {
         public abstract void Speak(string name);
-
         public IChatSomething Next { get; set; }
     }
 

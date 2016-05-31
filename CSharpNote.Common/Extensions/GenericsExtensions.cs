@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CSharpNote.Common.Extensions
@@ -10,7 +8,7 @@ namespace CSharpNote.Common.Extensions
     public static class GenericsExtensions
     {
         /// <summary>
-        /// 深層複製
+        ///     深層複製
         /// </summary>
         public static TType DeepClone<TType>(this TType source)
             where TType : class
@@ -25,7 +23,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// While迴圈
+        ///     While迴圈
         /// </summary>
         public static void While<TType>(this TType source, Predicate<TType> predicate, params Action<TType>[] actions)
             where TType : class
@@ -40,7 +38,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// 是否包含
+        ///     是否包含
         /// </summary>
         public static bool In<TType>(this TType source, params TType[] items)
         {
@@ -48,9 +46,10 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// If判斷
+        ///     If判斷
         /// </summary>
-        public static TType If<TType>(this TType source, Predicate<TType> predicate, Action<TType> action) where TType : class
+        public static TType If<TType>(this TType source, Predicate<TType> predicate, Action<TType> action)
+            where TType : class
         {
             if (source == null) throw new ArgumentNullException();
             if (predicate(source))
@@ -62,14 +61,13 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// If判斷
+        ///     If判斷
         /// </summary>
         public static TType If<TType>(this TType source, Predicate<TType> predicate, Func<TType, TType> func)
         {
-            return predicate(source) 
-                ? func(source) 
+            return predicate(source)
+                ? func(source)
                 : source;
         }
-
     }
 }

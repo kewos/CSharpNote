@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharpNote.Data.DesignPattern.Implement.CQRSPattern
 {
@@ -10,7 +6,6 @@ namespace CSharpNote.Data.DesignPattern.Implement.CQRSPattern
     {
         void Send<TEvent>(TEvent command)
             where TEvent : IEvent;
-
     }
 
     public class EventBus : IEventBus

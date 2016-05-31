@@ -9,10 +9,7 @@
 
         public override string Shape
         {
-            get
-            {
-                return GetType().Name;
-            }
+            get { return GetType().Name; }
         }
     }
 
@@ -25,10 +22,7 @@
 
         public override string Shape
         {
-            get
-            {
-                return GetType().Name;
-            }
+            get { return GetType().Name; }
         }
     }
 }

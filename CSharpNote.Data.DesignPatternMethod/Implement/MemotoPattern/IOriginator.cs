@@ -1,5 +1,4 @@
-﻿
-namespace CSharpNote.Data.DesignPattern.Implement.MemotoPattern
+﻿namespace CSharpNote.Data.DesignPattern.Implement.MemotoPattern
 {
     public interface IOriginator
     {

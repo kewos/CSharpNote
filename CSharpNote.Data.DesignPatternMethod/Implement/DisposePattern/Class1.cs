@@ -1,13 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Runtime.InteropServices;
 
 namespace CSharpNote.Data.DesignPattern.Implement.DisposePattern
 {
     public class MyResource : IDisposable
     {
+        private readonly Component component = new Component();
+        private bool disposed;
         private IntPtr handle;
-        private Component component = new Component();
-        private bool disposed = false;
 
         public MyResource(IntPtr handle)
         {
@@ -36,8 +37,8 @@ namespace CSharpNote.Data.DesignPattern.Implement.DisposePattern
             }
         }
 
-        [System.Runtime.InteropServices.DllImport("Kernel32")]
-        private extern static Boolean CloseHandle(IntPtr handle);
+        [DllImport("Kernel32")]
+        private static extern bool CloseHandle(IntPtr handle);
 
         ~MyResource()
         {

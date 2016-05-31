@@ -1,8 +1,8 @@
 ﻿namespace CSharpNote.Data.DataStructure.Implement.LRUCache
 {
-    public class LRUItem<TK, TV>
+    public class LruItem<TK, TV>
     {
-        public LRUItem(TK key, TV value)
+        public LruItem(TK key, TV value)
         {
             Key = key;
             Value = value;

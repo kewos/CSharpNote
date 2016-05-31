@@ -1,5 +1,4 @@
-﻿
-namespace CSharpNote.Data.DesignPattern.Implement.FilterPattern
+﻿namespace CSharpNote.Data.DesignPattern.Implement.FilterPattern
 {
     public class Address
     {

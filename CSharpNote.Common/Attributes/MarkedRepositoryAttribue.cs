@@ -7,17 +7,17 @@ using CSharpNote.Common.Extensions;
 namespace CSharpNote.Common.Attributes
 {
     /// <summary>
-    /// 實作Aop
+    ///     實作Aop
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public sealed class MarkedRepositoryAttribue : ContextAttribute, IContributeObjectSink
     {
         /// <summary>
-        /// 裝飾池
+        ///     裝飾池
         /// </summary>
         private readonly List<Func<IMessageSink, IMessageSink>> decoratorList;
 
-        public MarkedRepositoryAttribue() 
+        public MarkedRepositoryAttribue()
             : base("MarkedRepositoryAttribue")
         {
             decoratorList = new List<Func<IMessageSink, IMessageSink>>

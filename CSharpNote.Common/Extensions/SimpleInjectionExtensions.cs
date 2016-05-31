@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using SimpleInjector;
 using System.Reflection;
+using SimpleInjector;
 
 namespace CSharpNote.Common.Extensions
 {
     public static class SimpleInjectionExtensions
     {
         /// <summary>
-        /// 使用TInterface 註冊所有 符合的Dll裡面有實作 TInterface的 Class Type
+        ///     使用TInterface 註冊所有 符合的Dll裡面有實作 TInterface的 Class Type
         /// </summary>
         public static void RegistLocationMatchDll<TInterface>(this Container container, string matchPath = "*.dll")
         {
@@ -23,7 +23,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// 把有對應的interface 跟 class 綁在一起
+        ///     把有對應的interface 跟 class 綁在一起
         /// </summary>
         public static void RegisterEntryAssemblyMappingType(this Container container)
         {
@@ -42,8 +42,9 @@ namespace CSharpNote.Common.Extensions
         }
 
         #region private member
+
         /// <summary>
-        /// 取得符合DLL 實作 TInterface 的 class Type
+        ///     取得符合DLL 實作 TInterface 的 class Type
         /// </summary>
         private static IEnumerable<Type> GetTypeFromMatchDll<TInterface>(string path, string matchFileName)
         {
@@ -56,6 +57,7 @@ namespace CSharpNote.Common.Extensions
                     .FirstOrDefault())
                 .Where(@type => @type != null);
         }
+
         #endregion
     }
 }

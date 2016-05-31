@@ -3,7 +3,7 @@
 namespace CSharpNote.Data.Project.Implement.ORM.TypeConvert
 {
     /// <summary>
-    /// 字串轉bool
+    ///     字串轉bool
     /// </summary>
     public class StringToBool : IStringConvert<bool>
     {

@@ -4,30 +4,19 @@
     {
         private static readonly NullObject nullObject = new NullObject();
 
-        public virtual string GetTypeName 
+        public virtual string GetTypeName
         {
-            get 
-            {
-                return GetType().Name;
-            } 
+            get { return GetType().Name; }
         }
 
         public virtual bool IsNull
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         public static NullObject Null
         {
-            get 
-            {
-                return nullObject;
-            } 
+            get { return nullObject; }
         }
     }
-
-    
 }

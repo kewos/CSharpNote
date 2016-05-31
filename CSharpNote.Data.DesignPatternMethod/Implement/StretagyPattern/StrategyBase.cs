@@ -14,34 +14,34 @@ namespace CSharpNote.Data.DesignPattern.Implement.StretagyPattern
         {
             //透過反射可符合close open principle
             strategies = GetType().GetMethods
-            (
-                BindingFlags.NonPublic
-                | BindingFlags.Instance
-                | BindingFlags.DeclaredOnly
-            )
-            .Where(method =>
-                //Arguments Null
-                !method.GetGenericArguments().Any()
-                //Return Int
-                && method.ReturnType == typeof(string))
-            .ToDictionary(
-                method => method.Name,
-                //轉成Delegate
-                method =>
-                {
-                    return (Func<string>)Delegate.CreateDelegate
-                    (
-                        Expression.GetDelegateType
-                        (
-                            method.GetParameters()
-                                .Select(p => p.ParameterType)
-                                .Concat(new [] { method.ReturnType })
-                                .ToArray()
-                        ),
-                        null,
-                        method
-                    );
-                });
+                (
+                    BindingFlags.NonPublic
+                    | BindingFlags.Instance
+                    | BindingFlags.DeclaredOnly
+                )
+                .Where(method =>
+                    //Arguments Null
+                    !method.GetGenericArguments().Any()
+                        //Return Int
+                    && method.ReturnType == typeof (string))
+                .ToDictionary(
+                    method => method.Name,
+                    //轉成Delegate
+                    method =>
+                    {
+                        return (Func<string>) Delegate.CreateDelegate
+                            (
+                                Expression.GetDelegateType
+                                    (
+                                        method.GetParameters()
+                                            .Select(p => p.ParameterType)
+                                            .Concat(new[] {method.ReturnType})
+                                            .ToArray()
+                                    ),
+                                null,
+                                method
+                            );
+                    });
         }
 
         public Func<string> this[string key]
@@ -53,8 +53,8 @@ namespace CSharpNote.Data.DesignPattern.Implement.StretagyPattern
 
                 Func<string> value;
 
-                return strategies.TryGetValue(key, out value) 
-                    ? value 
+                return strategies.TryGetValue(key, out value)
+                    ? value
                     : null;
             }
         }

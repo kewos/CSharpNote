@@ -1,8 +1,7 @@
-﻿
-namespace CSharpNote.Data.Project.Implement.Validation
+﻿namespace CSharpNote.Data.Project.Implement.Validation
 {
     /// <summary>
-    /// 規則標題
+    ///     規則標題
     /// </summary>
     public enum RuleTitle
     {

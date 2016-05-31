@@ -32,7 +32,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.MemotoPattern
         }
 
         public IEnumerable<Memento> GetAll()
-        { 
+        {
             if (mementos == null || !mementos.Any())
             {
                 throw new Exception();

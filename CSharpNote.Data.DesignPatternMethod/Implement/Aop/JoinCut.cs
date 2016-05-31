@@ -5,8 +5,8 @@ namespace CSharpNote.Data.DesignPattern.Implement.Aop
 {
     public class JoinPoint : IEquatable<JoinPoint>
     {
-        public MethodBase pointcutMethod;
         public MethodBase concernMethod;
+        public MethodBase pointcutMethod;
 
         private JoinPoint(MethodBase pointcutMethod, MethodBase concernMethod)
         {
@@ -20,9 +20,10 @@ namespace CSharpNote.Data.DesignPattern.Implement.Aop
         }
 
         #region Equatable
+
         public bool Equals(JoinPoint other)
         {
-            return this.pointcutMethod == other.concernMethod && this.concernMethod == other.concernMethod;
+            return pointcutMethod == other.concernMethod && concernMethod == other.concernMethod;
         }
 
         public static bool operator ==(JoinPoint x, JoinPoint y)
@@ -37,13 +38,13 @@ namespace CSharpNote.Data.DesignPattern.Implement.Aop
 
         public override bool Equals(object other)
         {
-            if (other is JoinPoint) return Equals((JoinPoint)other);
+            if (other is JoinPoint) return Equals((JoinPoint) other);
             return false;
         }
 
         public override int GetHashCode()
         {
-            return this.pointcutMethod.GetHashCode() ^ this.concernMethod.GetHashCode();
+            return pointcutMethod.GetHashCode() ^ concernMethod.GetHashCode();
         }
 
         #endregion

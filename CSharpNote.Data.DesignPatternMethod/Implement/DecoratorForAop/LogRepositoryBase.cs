@@ -1,21 +1,15 @@
-﻿
-namespace CSharpNote.Data.DesignPattern.Implement.DecoratorForAop
+﻿namespace CSharpNote.Data.DesignPattern.Implement.DecoratorForAop
 {
     public abstract class LogRepositoryBase<TLogger> : IRepository
         where TLogger : ILogger
     {
-        private readonly RepositoryBase repository;
         private readonly TLogger logger;
+        private readonly RepositoryBase repository;
 
         protected LogRepositoryBase(RepositoryBase repository, TLogger logger)
         {
             this.repository = repository;
             this.logger = logger;
-        }
-
-        private void Log(string msg)
-        {
-            logger.Log(msg);
         }
 
         public void Get()
@@ -40,6 +34,11 @@ namespace CSharpNote.Data.DesignPattern.Implement.DecoratorForAop
         {
             Log("Delete");
             repository.Delete();
+        }
+
+        private void Log(string msg)
+        {
+            logger.Log(msg);
         }
     }
 }

@@ -1,46 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharpNote.Data.DesignPattern.Implement.ReactPattern
 {
     public class Reactor : IReactor
     {
-        private readonly ISynchronousEventDemultiplexer _synchronousEventDemultiplexer;
-        private readonly IDictionary<TcpListener, IEventHandler> _handlers;
+        private readonly IDictionary<TcpListener, IEventHandler> handlers;
+        private readonly ISynchronousEventDemultiplexer synchronousEventDemultiplexer;
 
         public Reactor(ISynchronousEventDemultiplexer synchronousEventDemultiplexer)
         {
-            _synchronousEventDemultiplexer = synchronousEventDemultiplexer;
-            _handlers = new Dictionary<TcpListener, IEventHandler>();
+            this.synchronousEventDemultiplexer = synchronousEventDemultiplexer;
+            handlers = new Dictionary<TcpListener, IEventHandler>();
         }
 
         public void RegisterHandle(IEventHandler eventHandler)
         {
-            _handlers.Add(eventHandler.GetHandler(), eventHandler);
+            handlers.Add(eventHandler.GetHandler(), eventHandler);
         }
 
         public void RemoveHandle(IEventHandler eventHandler)
         {
-            _handlers.Remove(eventHandler.GetHandler());
+            handlers.Remove(eventHandler.GetHandler());
         }
 
         public void HandleEvents()
         {
             while (true)
             {
-                IList<TcpListener> listeners = _synchronousEventDemultiplexer.Select(_handlers.Keys);
+                var listeners = synchronousEventDemultiplexer.Select(handlers.Keys);
 
-                foreach (TcpListener listener in listeners)
+                foreach (var listener in listeners)
                 {
-                    int dataReceived = 0;
-                    byte[] buffer = new byte[1];
+                    var dataReceived = 0;
+                    var buffer = new byte[1];
                     IList<byte> data = new List<byte>();
 
-                    Socket socket = listener.AcceptSocket();
+                    var socket = listener.AcceptSocket();
 
                     do
                     {
@@ -50,12 +47,11 @@ namespace CSharpNote.Data.DesignPattern.Implement.ReactPattern
                         {
                             data.Add(buffer[0]);
                         }
-
                     } while (dataReceived > 0);
 
                     socket.Close();
 
-                    _handlers[listener].HandleEvent(data.ToArray());
+                    handlers[listener].HandleEvent(data.ToArray());
                 }
             }
         }

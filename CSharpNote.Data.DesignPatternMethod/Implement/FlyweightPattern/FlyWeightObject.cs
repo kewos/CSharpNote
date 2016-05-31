@@ -8,7 +8,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.FlyweightPattern
 
         public FlyWeightObjectA(int label)
         {
-            this.id = label;
+            id = label;
         }
 
         public void Execute()

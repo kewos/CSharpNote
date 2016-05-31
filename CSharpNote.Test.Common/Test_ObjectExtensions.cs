@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpNote.Common.Test
 {
     [TestClass]
-    public class Test_ObjectExtensions
+    public class TestObjectExtensions
     {
         [TestMethod]
         public void ToConsole_InputPrefixSuffix_ReturnResult()

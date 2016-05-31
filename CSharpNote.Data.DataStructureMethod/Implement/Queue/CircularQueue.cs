@@ -1,37 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace CSharpNote.Data.DataStructure.Implement.Queue
 {
     public class CircularQueue<T> : ICollection<T>
     {
-        private LinkedList<T> linklist;
-        private int capacity;
-
-        public int Capacity
-        {
-            get
-            {
-                return capacity;
-            }
-        }
-
-        public bool IsFull
-        {
-            get
-            {
-                return linklist.Count == Capacity;
-            }
-        }
-
-        public bool IsEmpty
-        {
-            get
-            {
-                return Count == 0;
-            }
-        }
-
+        private readonly LinkedList<T> linklist;
 
         public CircularQueue(int capacity)
         {
@@ -40,9 +15,39 @@ namespace CSharpNote.Data.DataStructure.Implement.Queue
                 throw new ArgumentException();
             }
 
-            this.capacity = capacity;
-            this.linklist = new LinkedList<T>();
+            Capacity = capacity;
+            linklist = new LinkedList<T>();
         }
+
+        public int Capacity { get; private set; }
+
+        public bool IsFull
+        {
+            get { return linklist.Count == Capacity; }
+        }
+
+        public bool IsEmpty
+        {
+            get { return Count == 0; }
+        }
+
+        #region IEnumerable<T> Members
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return linklist.GetEnumerator();
+        }
+
+        #endregion
+
+        #region IEnumerable Members
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        #endregion
 
         public CircularQueue<T> Enqueue(T item)
         {
@@ -87,6 +92,7 @@ namespace CSharpNote.Data.DataStructure.Implement.Queue
 
             return value;
         }
+
         #region ICollection<T> Members
 
         public void Add(T item)
@@ -122,24 +128,6 @@ namespace CSharpNote.Data.DataStructure.Implement.Queue
         public bool Remove(T item)
         {
             return linklist.Remove(item);
-        }
-
-        #endregion
-
-        #region IEnumerable<T> Members
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            return linklist.GetEnumerator();
-        }
-
-        #endregion
-
-        #region IEnumerable Members
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
 
         #endregion

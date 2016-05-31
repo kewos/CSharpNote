@@ -1,5 +1,4 @@
-﻿
-namespace CSharpNote.Data.DataStructure.Implement.Buffer
+﻿namespace CSharpNote.Data.DataStructure.Implement.Buffer
 {
     public interface IBuffer<T>
     {

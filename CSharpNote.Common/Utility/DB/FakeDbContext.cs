@@ -4,22 +4,24 @@ using System.Collections.Generic;
 namespace CSharpNote.Common.Utility.DB
 {
     /// <summary>
-    /// 假的DBSet
+    ///     假的DBSet
     /// </summary>
     public class DbSet<T> : List<T>
     {
-        public DbSet()
-        {
-        }
     }
 
     /// <summary>
-    /// 假的DBContext
+    ///     假的DBContext
     /// </summary>
     public class FakeDbContext : IDisposable
     {
-        private static Dictionary<string, object> dataSet 
+        private static readonly Dictionary<string, object> dataSet
             = new Dictionary<string, object>();
+
+        public void Dispose()
+        {
+            //Dispose
+        }
 
         private void Add<T>(string key)
         {
@@ -29,7 +31,7 @@ namespace CSharpNote.Common.Utility.DB
 
         public DbSet<T> GetDbSet<T>()
         {
-            var key = typeof(T).ToString();
+            var key = typeof (T).ToString();
             object value;
 
             if (!dataSet.TryGetValue(key, out value))
@@ -43,11 +45,6 @@ namespace CSharpNote.Common.Utility.DB
         public void SaveChanges()
         {
             //SaveChanges
-        }
-
-        public void Dispose()
-        {
-            //Dispose
         }
     }
 }

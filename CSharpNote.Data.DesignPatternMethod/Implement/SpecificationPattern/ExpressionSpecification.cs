@@ -4,7 +4,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.SpecificationPattern
 {
     public class ExpressionSpecification<T> : CompositeSpecification<T>
     {
-        private Func<T, bool> expression;
+        private readonly Func<T, bool> expression;
 
         public ExpressionSpecification(Func<T, bool> expression)
         {

@@ -4,8 +4,8 @@ namespace CSharpNote.Data.DesignPattern.Implement.ObjectPoolPattern
 {
     public static class Pool
     {
-        private static List<PooledObject> available = new List<PooledObject>();
-        private static List<PooledObject> inUse = new List<PooledObject>();
+        private static readonly List<PooledObject> available = new List<PooledObject>();
+        private static readonly List<PooledObject> inUse = new List<PooledObject>();
 
         public static PooledObject GetObject()
         {
@@ -28,7 +28,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.ObjectPoolPattern
         }
 
         /// <summary>
-        /// 清回物件池
+        ///     清回物件池
         /// </summary>
         public static void ReleaseObject(PooledObject obj)
         {

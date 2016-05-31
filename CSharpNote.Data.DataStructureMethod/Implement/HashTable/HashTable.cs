@@ -5,10 +5,9 @@ namespace CSharpNote.Data.DataStructure.Implement.HashTable
 {
     public class HashTable<TKey, TValue>
     {
-        private const double fillFactor = 0.75;
-        private int maxItemAtCurrentSize;
-        private int count;
+        private const double FILL_FACTOR = 0.75;
         private HashTableArray<TKey, TValue> array;
+        private int maxItemAtCurrentSize;
 
         public HashTable() : this(1000)
         {
@@ -22,44 +21,7 @@ namespace CSharpNote.Data.DataStructure.Implement.HashTable
             }
 
             array = new HashTableArray<TKey, TValue>(capacity);
-            maxItemAtCurrentSize = (int)(capacity * fillFactor) + 1;
-        }
-
-        public void Add(TKey key, TValue value)
-        {
-            CheckMaxItemAtCurrentSize();
-
-            array.Add(key, value);
-            count++;
-        }
-
-        private void CheckMaxItemAtCurrentSize()
-        {
-            //省空間不夠用才加大
-            if (count >= maxItemAtCurrentSize)
-            {
-                var largerArray = new HashTableArray<TKey, TValue>(array.Capacity * 2);
-
-                foreach (HashTableNodePair<TKey, TValue> node in array.Items)
-                {
-                    largerArray.Add(node.Key, node.Value);
-                }
-
-                array = largerArray;
-                maxItemAtCurrentSize = (int)(array.Capacity * fillFactor) + 1;
-            }
-        }
-
-        public bool Remove(TKey key)
-        {
-            bool removed = array.Remove(key);
-
-            if (removed)
-            {
-                count--;
-            }
-
-            return removed;
+            maxItemAtCurrentSize = (int) (capacity*FILL_FACTOR) + 1;
         }
 
         public TValue this[TKey key]
@@ -75,10 +37,68 @@ namespace CSharpNote.Data.DataStructure.Implement.HashTable
 
                 return value;
             }
-            set
+            set { array.Update(key, value); }
+        }
+
+        public IEnumerable<TKey> Keys
+        {
+            get
             {
-                array.Update(key, value);
+                foreach (var key in array.Keys)
+                {
+                    yield return key;
+                }
             }
+        }
+
+        public IEnumerable<TValue> Values
+        {
+            get
+            {
+                foreach (var value in array.Values)
+                {
+                    yield return value;
+                }
+            }
+        }
+
+        public int Count { get; private set; }
+
+        public void Add(TKey key, TValue value)
+        {
+            CheckMaxItemAtCurrentSize();
+
+            array.Add(key, value);
+            Count++;
+        }
+
+        private void CheckMaxItemAtCurrentSize()
+        {
+            //省空間不夠用才加大
+            if (Count >= maxItemAtCurrentSize)
+            {
+                var largerArray = new HashTableArray<TKey, TValue>(array.Capacity*2);
+
+                foreach (var node in array.Items)
+                {
+                    largerArray.Add(node.Key, node.Value);
+                }
+
+                array = largerArray;
+                maxItemAtCurrentSize = (int) (array.Capacity*FILL_FACTOR) + 1;
+            }
+        }
+
+        public bool Remove(TKey key)
+        {
+            var removed = array.Remove(key);
+
+            if (removed)
+            {
+                Count--;
+            }
+
+            return removed;
         }
 
         public bool TryGetValue(TKey key, out TValue value)
@@ -94,7 +114,7 @@ namespace CSharpNote.Data.DataStructure.Implement.HashTable
 
         public bool ContainsValue(TValue value)
         {
-            foreach (TValue foundValue in array.Values)
+            foreach (var foundValue in array.Values)
             {
                 if (value.Equals(foundValue))
                 {
@@ -105,40 +125,10 @@ namespace CSharpNote.Data.DataStructure.Implement.HashTable
             return false;
         }
 
-        public IEnumerable<TKey> Keys
-        {
-            get
-            {
-                foreach (TKey key in array.Keys)
-                {
-                    yield return key;
-                }
-            }
-        }
-
-        public IEnumerable<TValue> Values
-        {
-            get
-            {
-                foreach (TValue value in array.Values)
-                {
-                    yield return value;
-                }
-            }
-        }
-
         public void Clear()
         {
             array.Clear();
-            count = 0;
-        }
-
-        public int Count
-        {
-            get
-            {
-                return count;
-            }
+            Count = 0;
         }
     }
 }

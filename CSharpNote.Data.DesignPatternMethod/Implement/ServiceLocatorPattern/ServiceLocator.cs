@@ -5,8 +5,8 @@ namespace CSharpNote.Data.DesignPattern.Implement.ServiceLocatorPattern
 {
     public class ServiceLocator
     {
-        private readonly Dictionary<string, object> dictionary;
         private static ServiceLocator instance;
+        private readonly Dictionary<string, object> dictionary;
 
         private ServiceLocator()
         {
@@ -27,7 +27,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.ServiceLocatorPattern
 
         public void RegistService<TInterface>(TInterface obj)
         {
-            var typeName = typeof(TInterface).ToString();
+            var typeName = typeof (TInterface).ToString();
 
             if (!dictionary.ContainsKey(typeName))
             {
@@ -41,12 +41,12 @@ namespace CSharpNote.Data.DesignPattern.Implement.ServiceLocatorPattern
 
         public TInterface GetService<TInterface>()
         {
-            var typeName = typeof(TInterface).ToString();
+            var typeName = typeof (TInterface).ToString();
             if (!dictionary.ContainsKey(typeName))
             {
                 throw new Exception();
             }
-            return (TInterface)dictionary[typeName];
+            return (TInterface) dictionary[typeName];
         }
     }
 }

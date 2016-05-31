@@ -1,5 +1,4 @@
-﻿
-namespace CSharpNote.Data.DataStructure.Implement.Sort
+﻿namespace CSharpNote.Data.DataStructure.Implement.Sort
 {
     public enum SortOrder
     {

@@ -11,6 +11,11 @@ namespace CSharpNote.Data.DesignPattern.Implement.IteratorPattern
             books = new List<Book>();
         }
 
+        public IIterator<Book> GetIterator()
+        {
+            return new Iterator<Book>(books);
+        }
+
         public void RegistBook(Book book)
         {
             books.Add(book);
@@ -19,11 +24,6 @@ namespace CSharpNote.Data.DesignPattern.Implement.IteratorPattern
         public void RegistBook(IEnumerable<Book> books)
         {
             this.books.AddRange(books);
-        }
-
-        public IIterator<Book> GetIterator()
-        {
-            return new Iterator<Book>(books);
         }
     }
 }

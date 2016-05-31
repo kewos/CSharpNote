@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CSharpNote.Data.DataStructure.Implement.Tree
+﻿namespace CSharpNote.Data.DataStructure.Implement.Tree
 {
     public class TreeNode<T>
     {
@@ -20,21 +14,10 @@ namespace CSharpNote.Data.DataStructure.Implement.Tree
             Right = right;
         }
 
-        public T Value 
-        {
-            get; 
-            private set;
-        }
+        public T Value { get; private set; }
 
-        public TreeNode<T> Left
-        {
-            get; 
-            private set;
-        }
-        public TreeNode<T> Right
-        {
-            get; 
-            private set;
-        }
+        public TreeNode<T> Left { get; private set; }
+
+        public TreeNode<T> Right { get; private set; }
     }
 }

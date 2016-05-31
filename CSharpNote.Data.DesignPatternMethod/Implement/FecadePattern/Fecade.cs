@@ -23,7 +23,6 @@ namespace CSharpNote.Data.DesignPattern.Implement.FecadePattern
             return subClassB.DoSomeThing() + MethodBase.GetCurrentMethod().Name;
         }
 
-
         public string MethodC()
         {
             return MethodA() + MethodB();

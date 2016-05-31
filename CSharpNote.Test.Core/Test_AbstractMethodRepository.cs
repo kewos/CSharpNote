@@ -1,54 +1,24 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
-using CSharpNote.Core.Implements;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extensions;
+using CSharpNote.Core.Implements;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSharpNote.Core.Test
 {
     [TestClass]
-    public class Test_AbstractMethodRepository
+    public class TestAbstractMethodRepository
     {
-        [MarkedRepositoryAttribue]
-        private class testRepository : AbstractRepository
-        {
-            [MarkedItem]
-            public void Test1()
-            {
-            }
-
-            [MarkedItem]
-            public void Test2()
-            {
-            }
-
-            [MarkedItem]
-            public void Test3()
-            {
-            }
-        }
-
         private AbstractRepository TestRepository
         {
-            get
-            {
-                return new testRepository();
-            }
-        }
-
-        [MarkedRepositoryAttribue]
-        private class testRepositories : AbstractRepository
-        {
+            get { return new testRepository(); }
         }
 
         private AbstractRepository TestRepositories
         {
-            get
-            {
-                return new testRepositories();
-            }
+            get { return new testRepositories(); }
         }
 
         [TestMethod]
@@ -89,7 +59,7 @@ namespace CSharpNote.Core.Test
             var actual = Enumerable.Range(0, 3).Select(n => repository[n].Name).ToList();
 
             //Validation
-            var expect = new List<string> { "Test1", "Test2", "Test3" };
+            var expect = new List<string> {"Test1", "Test2", "Test3"};
             Assert.IsTrue(actual.SequenceEqual(expect));
         }
 
@@ -103,17 +73,14 @@ namespace CSharpNote.Core.Test
             var actual = repository.GetMethodNames().ToList();
 
             //Validation
-            var expect = new List<string> { "Test1", "Test2", "Test3" };
+            var expect = new List<string> {"Test1", "Test2", "Test3"};
             Assert.IsTrue(actual.SequenceEqual(expect));
         }
 
         [TestMethod]
         public void Indexer_CheckUpperBounded_ThrowIndexOutOfRangeException()
         {
-            Action action = () =>
-            {
-                var methodInfo = TestRepository[3];
-            };
+            Action action = () => { var methodInfo = TestRepository[3]; };
 
             action.AssertHandleException<ArgumentException>();
         }
@@ -121,12 +88,33 @@ namespace CSharpNote.Core.Test
         [TestMethod]
         public void Indexer_CheckLowerBounded_ThrowIndexOutOfRangeException()
         {
-            Action action = () =>
-            {
-                var methodInfo = TestRepository[-1];
-            };
+            Action action = () => { var methodInfo = TestRepository[-1]; };
 
             action.AssertHandleException<ArgumentException>();
+        }
+
+        [MarkedRepositoryAttribue]
+        private class testRepository : AbstractRepository
+        {
+            [MarkedItem]
+            public void Test1()
+            {
+            }
+
+            [MarkedItem]
+            public void Test2()
+            {
+            }
+
+            [MarkedItem]
+            public void Test3()
+            {
+            }
+        }
+
+        [MarkedRepositoryAttribue]
+        private class testRepositories : AbstractRepository
+        {
         }
     }
 }

@@ -8,32 +8,32 @@ namespace CSharpNote.Common.Helper
     using InvokeHelper = Func<object, object[], object>;
 
     /// <summary>
-    /// 快速執行幫手
-    /// 透過DynamicMethod 跳過CompileTime 加快方法執行速度
-    ///                compile time |
-    ///                     |       | static
-    ///                     v       | 
-    ///       dynamic|   run time   |    
-    /// referenece : http://www.codeproject.com/Articles/14593/A-General-Fast-Method-Invoker
+    ///     快速執行幫手
+    ///     透過DynamicMethod 跳過CompileTime 加快方法執行速度
+    ///     compile time |
+    ///     |       | static
+    ///     v       |
+    ///     dynamic|   run time   |
+    ///     referenece : http://www.codeproject.com/Articles/14593/A-General-Fast-Method-Invoker
     /// </summary>
     public class FastInvokeHelper
     {
         /// <summary>
-        /// 建立方法快速封裝
+        ///     建立方法快速封裝
         /// </summary>
         public static InvokeHelper Create(MethodInfo methodInfo)
         {
             methodInfo.DeclaringType.ValidationNotNull();
 
-            DynamicMethod dynamicMethod = new DynamicMethod(string.Empty,
-                typeof(object),
-                new[] { typeof(object), typeof(object[]) },
+            var dynamicMethod = new DynamicMethod(string.Empty,
+                typeof (object),
+                new[] {typeof (object), typeof (object[])},
                 methodInfo.DeclaringType.Module);
-            ILGenerator il = dynamicMethod.GetILGenerator();
-            ParameterInfo[] ps = methodInfo.GetParameters();
-            Type[] paramTypes = new Type[ps.Length];
+            var il = dynamicMethod.GetILGenerator();
+            var ps = methodInfo.GetParameters();
+            var paramTypes = new Type[ps.Length];
             //解析parameterType
-            for (int i = 0; i < paramTypes.Length; i++)
+            for (var i = 0; i < paramTypes.Length; i++)
             {
                 if (ps[i].ParameterType.IsByRef)
                 {
@@ -44,14 +44,14 @@ namespace CSharpNote.Common.Helper
                     paramTypes[i] = ps[i].ParameterType;
                 }
             }
-            LocalBuilder[] locals = new LocalBuilder[paramTypes.Length];
+            var locals = new LocalBuilder[paramTypes.Length];
 
             //宣告指定型別的區域變數
-            for (int i = 0; i < paramTypes.Length; i++)
+            for (var i = 0; i < paramTypes.Length; i++)
             {
                 locals[i] = il.DeclareLocal(paramTypes[i], true);
             }
-            for (int i = 0; i < paramTypes.Length; i++)
+            for (var i = 0; i < paramTypes.Length; i++)
             {
                 il.Emit(OpCodes.Ldarg_1);
                 EmitFastInt(il, i);
@@ -63,12 +63,12 @@ namespace CSharpNote.Common.Helper
             {
                 il.Emit(OpCodes.Ldarg_0);
             }
-            for (int i = 0; i < paramTypes.Length; i++)
+            for (var i = 0; i < paramTypes.Length; i++)
             {
                 il.Emit(ps[i].ParameterType.IsByRef ? OpCodes.Ldloca_S : OpCodes.Ldloc, locals[i]);
             }
             il.EmitCall(methodInfo.IsStatic ? OpCodes.Call : OpCodes.Callvirt, methodInfo, null);
-            if (methodInfo.ReturnType == typeof(void))
+            if (methodInfo.ReturnType == typeof (void))
             {
                 il.Emit(OpCodes.Ldnull);
             }
@@ -77,7 +77,7 @@ namespace CSharpNote.Common.Helper
                 EmitBoxIfNeeded(il, methodInfo.ReturnType);
             }
 
-            for (int i = 0; i < paramTypes.Length; i++)
+            for (var i = 0; i < paramTypes.Length; i++)
             {
                 if (ps[i].ParameterType.IsByRef)
                 {
@@ -93,7 +93,7 @@ namespace CSharpNote.Common.Helper
             }
 
             il.Emit(OpCodes.Ret);
-            InvokeHelper invoder = (InvokeHelper)dynamicMethod.CreateDelegate(typeof(InvokeHelper));
+            var invoder = (InvokeHelper) dynamicMethod.CreateDelegate(typeof (InvokeHelper));
             return invoder;
         }
 
@@ -148,7 +148,7 @@ namespace CSharpNote.Common.Helper
 
             if (value > -129 && value < 128)
             {
-                il.Emit(OpCodes.Ldc_I4_S, (SByte)value);
+                il.Emit(OpCodes.Ldc_I4_S, (sbyte) value);
             }
             else
             {

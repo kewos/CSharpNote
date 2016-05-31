@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extensions;
@@ -36,6 +37,7 @@ using CSharpNote.Data.DesignPattern.Implement.StateMachine;
 using CSharpNote.Data.DesignPattern.Implement.StatePattern;
 using CSharpNote.Data.DesignPattern.Implement.StretagyPattern;
 using CSharpNote.Data.DesignPattern.Implement.VistorPattern;
+using IComponent = CSharpNote.Data.DesignPattern.Implement.CompositePattern.IComponent;
 
 namespace CSharpNote.Data.DesignPattern
 {
@@ -45,8 +47,8 @@ namespace CSharpNote.Data.DesignPattern
         [MarkedItem]
         public void CommandPattern()
         {
-            Receiver receiver = new Receiver(20, 10);
-            Invoker invoker = new Invoker();
+            var receiver = new Receiver(20, 10);
+            var invoker = new Invoker();
 
             invoker.SetCommand(new AddCommond(receiver));
             invoker.SetCommand(new SubtractCommond(receiver));
@@ -71,13 +73,13 @@ namespace CSharpNote.Data.DesignPattern
         [MarkedItem]
         public void VistorPattern()
         {
-            BuffetDinner buffetDinner = new BuffetDinner();
+            var buffetDinner = new BuffetDinner();
             buffetDinner.Attach(new Coffee());
             buffetDinner.Attach(new Vegetable());
             buffetDinner.Attach(new Meat());
 
-            VistorA vistorA = new VistorA();
-            VistorB vistorB = new VistorB();
+            var vistorA = new VistorA();
+            var vistorB = new VistorB();
 
             buffetDinner.Accept(vistorA);
             Console.WriteLine("----------------------");
@@ -87,10 +89,10 @@ namespace CSharpNote.Data.DesignPattern
         [MarkedItem]
         public void NullObjectPattern()
         {
-            var repository = new ObjectRespository(new List<ObjectBase> 
+            var repository = new ObjectRespository(new List<ObjectBase>
             {
-                new ObjectA(), 
-                new ObjectB(), 
+                new ObjectA(),
+                new ObjectB(),
                 new ObjectC()
             });
 
@@ -99,10 +101,10 @@ namespace CSharpNote.Data.DesignPattern
             repository.Find("ObjectC").IsNull.ToConsole("ObjectCIsNull:");
             repository.Find("ObjectD").IsNull.ToConsole("ObjectDIsNull:");
 
-            var nullObj = ObjectC.Null;
+            var nullObj = ObjectBase.Null;
             nullObj.IsNull.ToConsole("NullObjectIsNull");
 
-            (ObjectC.Null == ObjectA.Null).ToConsole("NullObject == NullObject");
+            (ObjectBase.Null == ObjectBase.Null).ToConsole("NullObject == NullObject");
         }
 
         [MarkedItem]
@@ -113,7 +115,7 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// 模組化subclass
+        ///     模組化subclass
         /// </summary>
         [MarkedItem]
         public void PipelinePattern()
@@ -123,7 +125,7 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// 合成代替繼承 減少藕合
+        ///     合成代替繼承 減少藕合
         /// </summary>
         [MarkedItem]
         public void BridgePattern()
@@ -133,22 +135,22 @@ namespace CSharpNote.Data.DesignPattern
                 new CircleBridgeShape(new RedBridgeColor()),
                 new CircleBridgeShape(new YellowBridgeColor()),
                 new TriangleBridgeShape(new RedBridgeColor()),
-                new TriangleBridgeShape(new YellowBridgeColor()),
+                new TriangleBridgeShape(new YellowBridgeColor())
             };
             elements.ForEach(element => element.Display());
         }
 
         /// <summary>
-        /// 觀注點切入的設計方式
-        /// 常用於input validation, log等功能
-        /// 可讓程式更符合單一責則的設計原則
+        ///     觀注點切入的設計方式
+        ///     常用於input validation, log等功能
+        ///     可讓程式更符合單一責則的設計原則
         /// </summary>
         [MarkedItem]
         public void AspectOrientProgram()
         {
             AOP.Registry.Join(
-                typeof(Actor).GetConstructors().First(),
-                typeof(Concern).GetConstructors().First()
+                typeof (Actor).GetConstructors().First(),
+                typeof (Concern).GetConstructors().First()
                 );
             var actor = (IActor) AOP.Factory.Create<Actor>("");
 
@@ -157,12 +159,12 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// 實作IClone透過複製來產生實體
+        ///     實作IClone透過複製來產生實體
         /// </summary>
         [MarkedItem]
         public void PrototypePattern()
         {
-            ColorManager colormanager = new ColorManager();
+            var colormanager = new ColorManager();
 
             colormanager["red"] = new Color(255, 0, 0);
             colormanager["green"] = new Color(0, 255, 0);
@@ -176,20 +178,20 @@ namespace CSharpNote.Data.DesignPattern
         [MarkedItem]
         public void CompositePattern()
         {
-            new CompositeA(new List<Implement.CompositePattern.IComponent>
+            new CompositeA(new List<IComponent>
             {
-                new CompositeB(new List<Implement.CompositePattern.IComponent>
+                new CompositeB(new List<IComponent>
                 {
                     new Leaf(),
                     new Leaf(),
                     new Leaf()
                 }),
                 new CompositeB(),
-                new CompositeB(new List<Implement.CompositePattern.IComponent>
+                new CompositeB(new List<IComponent>
                 {
                     new CompositeA(),
                     new CompositeA(),
-                    new CompositeA(new List<Implement.CompositePattern.IComponent>
+                    new CompositeA(new List<IComponent>
                     {
                         new Leaf(),
                         new Leaf(),
@@ -208,15 +210,15 @@ namespace CSharpNote.Data.DesignPattern
             {
                 new Band("AC/DC", BandKind.HardCore, Country.Australia),
                 new Band("Rammstein", BandKind.IndustryMetal, Country.Gereman),
-                new Band("PinkFloyd", BandKind.ClassRock, Country.UK),
-                new Band("TheVerve", BandKind.BritPop, Country.UK),
-                new Band("Nirvana", BandKind.Grunge, Country.UK),
-                new Band("Queen", BandKind.ClassRock, Country.UK),
-                new Band("SexPistals", BandKind.Punk, Country.UK),
+                new Band("PinkFloyd", BandKind.ClassRock, Country.Uk),
+                new Band("TheVerve", BandKind.BritPop, Country.Uk),
+                new Band("Nirvana", BandKind.Grunge, Country.Uk),
+                new Band("Queen", BandKind.ClassRock, Country.Uk),
+                new Band("SexPistals", BandKind.Punk, Country.Uk)
             };
 
             ISpecification<Band> ukExpSpec =
-                new ExpressionSpecification<Band>(band => band.Country == Country.UK);
+                new ExpressionSpecification<Band>(band => band.Country == Country.Uk);
             ISpecification<Band> australiaExpSpec =
                 new ExpressionSpecification<Band>(band => band.Country == Country.Australia);
             ISpecification<Band> germanExpSpec =
@@ -265,9 +267,9 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// DecoratorPattern
-        /// 有70%以上都在讀取
-        /// 讀取 跟 增刪修分開 快取三十秒更新一次
+        ///     DecoratorPattern
+        ///     有70%以上都在讀取
+        ///     讀取 跟 增刪修分開 快取三十秒更新一次
         /// </summary>
         [MarkedItem]
         public void CacheMechanism()
@@ -280,20 +282,20 @@ namespace CSharpNote.Data.DesignPattern
             repository.AddPerson(new Person {FirstName = "d", LastName = "d"});
             repository.GetPeople().ForEach(p => (p.FirstName + p.LastName).ToConsole());
             "============================================================".ToConsole();
-            
+
             //update item
             repository.UpdatePerson("a", new Person {FirstName = "newa", LastName = "newa"});
             repository.GetPeople().ForEach(p => (p.FirstName + p.LastName).ToConsole());
             "============================================================".ToConsole();
-            
+
             //delete item
             repository.DeletePerson("d");
             repository.GetPeople().ForEach(p => (p.FirstName + p.LastName).ToConsole());
         }
 
         /// <summary>
-        /// FecadePattern 用於隱藏子系統的細節
-        /// 但子系統會跟Fecade造成耦合
+        ///     FecadePattern 用於隱藏子系統的細節
+        ///     但子系統會跟Fecade造成耦合
         /// </summary>
         [MarkedItem]
         public void FecadePattern()
@@ -305,7 +307,7 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// 隱藏建立細節減少耦合
+        ///     隱藏建立細節減少耦合
         /// </summary>
         [MarkedItem]
         public void AbstractFactoryPattern()
@@ -321,17 +323,17 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// Intent:
-        /// The intent of this pattern is to use sharing to support a large number of objects 
-        /// that have part of their internal state in common where the other part of state can 
-        /// vary.
+        ///     Intent:
+        ///     The intent of this pattern is to use sharing to support a large number of objects
+        ///     that have part of their internal state in common where the other part of state can
+        ///     vary.
         /// </summary>
         [MarkedItem]
         public void FlyweightPattern()
         {
             var factory = new FlyweightFactory();
             Enumerable.Range(1, 30)
-                .Select(n => factory.Get(n % 3))
+                .Select(n => factory.Get(n%3))
                 .ForEach(obj => obj.Execute());
         }
 
@@ -347,11 +349,11 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// 強大的Pattern 於程式初始時建立BootStraper
-        /// 讓物件都依賴DependencyInjectorContainer
-        /// 之後物件的設計都用依賴注入的方式減少耦合度
-        /// 並且依賴注入的物件都可以借由繼承Interface的方式來產生假物件
-        /// 達到可測式的程式碼的目標
+        ///     強大的Pattern 於程式初始時建立BootStraper
+        ///     讓物件都依賴DependencyInjectorContainer
+        ///     之後物件的設計都用依賴注入的方式減少耦合度
+        ///     並且依賴注入的物件都可以借由繼承Interface的方式來產生假物件
+        ///     達到可測式的程式碼的目標
         /// </summary>
         [MarkedItem]
         public void DependencyInjectionPattern()
@@ -371,9 +373,8 @@ namespace CSharpNote.Data.DesignPattern
             Enumerable.Range(0, 5).ForEach(n => container.Resolve<IInstanceB>().Do());
         }
 
-
         /// <summary>
-        /// 結合TemplatePattern的hook 可充份模組化HandlerClass
+        ///     結合TemplatePattern的hook 可充份模組化HandlerClass
         /// </summary>
         [MarkedItem]
         public void ChainResponsibilityPattern()
@@ -384,7 +385,7 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// convert the interface of a class into another interface
+        ///     convert the interface of a class into another interface
         /// </summary>
         [MarkedItem]
         public void AdapterPattern()
@@ -398,7 +399,7 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// 著重於動態擴充方法功能
+        ///     著重於動態擴充方法功能
         /// </summary>
         [MarkedItem]
         public void DecoratorPattern()
@@ -407,7 +408,7 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// ProxyServer一開始就指定指向哪個RealServer
+        ///     ProxyServer一開始就指定指向哪個RealServer
         /// </summary>
         [MarkedItem]
         public void ProxyPattern()
@@ -415,9 +416,9 @@ namespace CSharpNote.Data.DesignPattern
             new ProxyServer().DoAction().ToConsole();
         }
 
-        /// <summary> 
-        /// 游歷於各系統邊界的Pattern
-        /// 缺點:static難追蹤 難unit test
+        /// <summary>
+        ///     游歷於各系統邊界的Pattern
+        ///     缺點:static難追蹤 難unit test
         /// </summary>
         [MarkedItem]
         public void ServiceLocatorPattern()
@@ -434,7 +435,7 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// 於單執行緒三種都產生單一實體
+        ///     於單執行緒三種都產生單一實體
         /// </summary>
         [MarkedItem]
         public void SingletonPattern()
@@ -455,7 +456,7 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// 於多執行緒的情況SingletonB SingletonC有可能產生多個實體
+        ///     於多執行緒的情況SingletonB SingletonC有可能產生多個實體
         /// </summary>
         [MarkedItem]
         public void SingletonPatternAtMutiThread()
@@ -465,16 +466,12 @@ namespace CSharpNote.Data.DesignPattern
                 var hashcode = func();
                 var list = new List<int>();
                 var threads = Enumerable.Range(0, 50)
-                    .Select(n =>
-                    {
-                        return new Thread(() =>
+                    .Select(
+                        n =>
                         {
-                            Enumerable.Range(0, 20).ForEach(m =>
-                            {
-                                list.Add(func());
-                            });
-                        });
-                    }).ToList();
+                            return new Thread(() => { Enumerable.Range(0, 20).ForEach(m => { list.Add(func()); }); });
+                        })
+                    .ToList();
                 threads.ForEach(thread => thread.Start());
                 SpinWait.SpinUntil(() => !threads.Any(thread => thread.IsAlive), 100);
                 list.All(n => n == hashcode).ToConsole(msg);
@@ -487,7 +484,7 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// 釋放物件時回到物件池提供再使用
+        ///     釋放物件時回到物件池提供再使用
         /// </summary>
         [MarkedItem]
         public void ObjectPoolPattern()
@@ -507,14 +504,12 @@ namespace CSharpNote.Data.DesignPattern
             });
 
             var elements2 = resouce.ToList();
-            elements2.ForEach(element =>
-            {
-                Console.WriteLine("HashCode:{0} TempData:{1}", element.GetHashCode(), element.TempData);
-            });
+            elements2.ForEach(
+                element => { Console.WriteLine("HashCode:{0} TempData:{1}", element.GetHashCode(), element.TempData); });
         }
 
         /// <summary>
-        /// 根據不同狀態改變執行策略
+        ///     根據不同狀態改變執行策略
         /// </summary>
         [MarkedItem]
         public void StrategyPattern()
@@ -534,10 +529,10 @@ namespace CSharpNote.Data.DesignPattern
         {
             var bookStore = new BookStore();
             bookStore.RegistBook(Enumerable.Range(1, 10)
-                .Select(x => 
+                .Select(x =>
                     new Book
-                    { 
-                        Id = x, 
+                    {
+                        Id = x,
                         Descriptioin = x.ToString()
                     }));
 
@@ -550,42 +545,42 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// 獨立Filter的樣式
+        ///     獨立Filter的樣式
         /// </summary>
         [MarkedItem]
         public void FilterPattern()
         {
             var address = new List<Address>
             {
-                new Address{Contry = "Taiwan", City = "kaohsiung"},
-                new Address{Contry = "Japan", City = "Tokyo"},
-                new Address{Contry = "Taiwan", City = "Taipei"},
-                new Address{Contry = "US", City = "NewYork"},
-                new Address{Contry = "UK", City = "Londom"},
+                new Address {Contry = "Taiwan", City = "kaohsiung"},
+                new Address {Contry = "Japan", City = "Tokyo"},
+                new Address {Contry = "Taiwan", City = "Taipei"},
+                new Address {Contry = "US", City = "NewYork"},
+                new Address {Contry = "UK", City = "Londom"}
             };
 
             var filterManger = new FilterManager<Address>();
             foreach (var taiwanAddress in filterManger.ExecuteFilter<AddressTaiwanFilter>(address))
             {
-                Console.WriteLine("Contry:{0} City:{1}", 
-                    taiwanAddress.Contry, 
+                Console.WriteLine("Contry:{0} City:{1}",
+                    taiwanAddress.Contry,
                     taiwanAddress.City);
             }
         }
 
         /// <summary>
-        /// Reference:http://www.robertsindall.co.uk/blog/the-reactor-pattern-using-c-sharp/
+        ///     Reference:http://www.robertsindall.co.uk/blog/the-reactor-pattern-using-c-sharp/
         /// </summary>
         [MarkedItem]
         public void ReactPattern()
         {
-            IEventHandler client1 = new MessageEventHandler(System.Net.IPAddress.Parse("123.123.123.123"), 123);
-            IEventHandler client2 = new MessageEventHandler(System.Net.IPAddress.Parse("234.234.234.234"), 123);
-            IEventHandler client3 = new MessageEventHandler(System.Net.IPAddress.Parse("245.245.245.245"), 123);
+            IEventHandler client1 = new MessageEventHandler(IPAddress.Parse("123.123.123.123"), 123);
+            IEventHandler client2 = new MessageEventHandler(IPAddress.Parse("234.234.234.234"), 123);
+            IEventHandler client3 = new MessageEventHandler(IPAddress.Parse("245.245.245.245"), 123);
 
             ISynchronousEventDemultiplexer synchronousEventDemultiplexer = new SynchronousEventDemultiplexer();
 
-            Reactor dispatcher = new Reactor(synchronousEventDemultiplexer);
+            var dispatcher = new Reactor(synchronousEventDemultiplexer);
 
             dispatcher.RegisterHandle(client1);
             dispatcher.RegisterHandle(client2);
@@ -608,7 +603,7 @@ namespace CSharpNote.Data.DesignPattern
         }
 
         /// <summary>
-        /// 保存狀態
+        ///     保存狀態
         /// </summary>
         [MarkedItem]
         public void MemotoPattern()
@@ -641,7 +636,6 @@ namespace CSharpNote.Data.DesignPattern
                 originator.RestoreMemento(memoto);
                 Console.WriteLine("Atk:{0} Hp:{1} Weapon:{2}", originator.Atk, originator.Hp, originator.Weapon);
             }
-          
         }
 
         [MarkedItem]
@@ -660,8 +654,9 @@ namespace CSharpNote.Data.DesignPattern
                 .Add("CreateOn", DateTime.Now);
 
             var instance = builder.Create();
-            string.Format("{0}{1}{2}{3}", instance.Color, instance.Description, instance.Size, instance.CreateOn).ToConsole();
-            
+            string.Format("{0}{1}{2}{3}", instance.Color, instance.Description, instance.Size, instance.CreateOn)
+                .ToConsole();
+
             Enumerable.Range(1, 100)
                 .Select(x => builder.Create().GetHashCode())
                 .Distinct()
@@ -670,5 +665,3 @@ namespace CSharpNote.Data.DesignPattern
         }
     }
 }
-
-                      

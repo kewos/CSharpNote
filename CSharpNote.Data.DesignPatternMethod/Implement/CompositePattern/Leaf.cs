@@ -6,7 +6,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.CompositePattern
     {
         public void Execute(int depth)
         {
-            GetType().Name.ToConsole(new string('-', depth * 2));
+            GetType().Name.ToConsole(new string('-', depth*2));
         }
     }
 }

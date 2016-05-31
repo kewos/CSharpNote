@@ -6,8 +6,8 @@ namespace CSharpNote.Client
 {
     public class CSharpNotePresenter : ICSharpNotePresenter
     {
-        private readonly ICSharpNoteView cSharpNoteView;
         private readonly ICSharperNoteService cSharperNoteService;
+        private readonly ICSharpNoteView cSharpNoteView;
 
         public CSharpNotePresenter(ICSharpNoteView cSharpNoteView, ICSharperNoteService cSharperNoteService)
         {
@@ -21,6 +21,7 @@ namespace CSharpNote.Client
         }
 
         #region Private Method
+
         private void ShowRepository()
         {
             var resource = cSharperNoteService.GetRepositoryNames();
@@ -39,6 +40,7 @@ namespace CSharpNote.Client
         {
             FastInvokeHelper.Create(repository[index])(repository, null);
         }
+
         #endregion
     }
 }

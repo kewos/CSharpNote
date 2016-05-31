@@ -7,7 +7,7 @@ using CSharpNote.Data.Project.Implement.ORM.TypeConvert;
 namespace CSharpNote.Data.Project.Implement.ORM
 {
     /// <summary>
-    /// 轉型工廠
+    ///     轉型工廠
     /// </summary>
     public class ConvertFactory
     {
@@ -15,21 +15,21 @@ namespace CSharpNote.Data.Project.Implement.ORM
 
         public ConvertFactory()
         {
-            converterDictionary = Assembly.GetAssembly(typeof(IStringConvert<>))
+            converterDictionary = Assembly.GetAssembly(typeof (IStringConvert<>))
                 .GetTypes()
                 .Where(
                     @type =>
-                        @type.IsClass 
+                        @type.IsClass
                         && @type.GetInterfaces().Any(@interface => @interface.IsGenericType))
                 .ToDictionary(
-                    @type => @type.GetInterfaces().First().GenericTypeArguments[0], 
+                    @type => @type.GetInterfaces().First().GenericTypeArguments[0],
                     @type => Activator.CreateInstance(@type));
             //Enum壞壞先寫死
-            converterDictionary.Add(typeof(Enum), new StringToEnum());
+            converterDictionary.Add(typeof (Enum), new StringToEnum());
         }
 
         /// <summary>
-        /// 創造轉型器
+        ///     創造轉型器
         /// </summary>
         public dynamic Create(Type type)
         {
@@ -39,7 +39,7 @@ namespace CSharpNote.Data.Project.Implement.ORM
             }
             if (type.IsEnum)
             {
-                return converterDictionary[typeof(Enum)];
+                return converterDictionary[typeof (Enum)];
             }
             throw new ArgumentException("Convert is not exist");
         }

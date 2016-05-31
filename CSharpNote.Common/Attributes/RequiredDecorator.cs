@@ -5,22 +5,23 @@ namespace CSharpNote.Common.Attributes
     public sealed class RequiredDecorator : IMessageSink
     {
         private readonly IMessageSink nextSink;
+
         public RequiredDecorator(IMessageSink next)
         {
             nextSink = next;
         }
 
         #region Property
+
         public IMessageSink NextSink
         {
-            get
-            {
-                return nextSink;
-            }
+            get { return nextSink; }
         }
+
         #endregion
 
         #region Method
+
         public IMessage SyncProcessMessage(IMessage msg)
         {
             var methodCall = msg as IMethodCallMessage;
@@ -31,6 +32,7 @@ namespace CSharpNote.Common.Attributes
         {
             return null;
         }
+
         #endregion
     }
 }

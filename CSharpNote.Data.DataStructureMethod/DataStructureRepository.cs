@@ -33,31 +33,31 @@ namespace CSharpNote.Data.DataStructure
         public void CircularQueue()
         {
             var circularQueue = new CircularQueue<int>(3).Enqueue(1).Enqueue(2).Enqueue(3);
-            var assert = new List<int> { 1, 2, 3 };
+            var assert = new List<int> {1, 2, 3};
             circularQueue.All((index, element) => element == assert[index]).ToConsole("elements is {1, 2, 3}:");
             (circularQueue.Count == 3).ToConsole("Count is 3:");
 
             "\n".ToConsole();
             var circularQueue1 = new CircularQueue<int>(3).Enqueue(1).Enqueue(2).Enqueue(3).Enqueue(4);
-            var assert1 = new List<int> { 2, 3, 4 };
+            var assert1 = new List<int> {2, 3, 4};
             circularQueue1.All((index, element) => element == assert1[index]).ToConsole("elements is {2, 3, 4}:");
             (circularQueue1.Count == 3).ToConsole("Count is 3:");
 
             "\n".ToConsole();
             var circularQueue2 = new CircularQueue<int>(3).Enqueue(2).Enqueue(3).Enqueue(4);
             (circularQueue2.Dequeue() == 2).ToConsole("element is 2:");
-            var assert2 = new List<int> { 3, 4 };
+            var assert2 = new List<int> {3, 4};
             circularQueue2.All((index, element) => element == assert2[index]).ToConsole("elements is {3, 4}:");
 
             "\n".ToConsole();
             var circularQueue3 = new CircularQueue<int>(3).Enqueue(3).Enqueue(4);
             (circularQueue3.Peek() == 3).ToConsole("element is 3:");
-            var assert3 = new List<int> { 3, 4 };
+            var assert3 = new List<int> {3, 4};
             circularQueue3.All((index, element) => element == assert3[index]).ToConsole("elements is {3, 4}:");
 
             "\n".ToConsole();
             var circularQueue4 = new CircularQueue<int>(3);
-            var assert4 = new List<int> { };
+            var assert4 = new List<int>();
             circularQueue4.All((index, element) => element == assert4[index]).ToConsole("elements is {}:");
 
             "\n".ToConsole();
@@ -75,43 +75,45 @@ namespace CSharpNote.Data.DataStructure
         [MarkedItem]
         public void Deque()
         {
-            var deque = new Deque<int>(Enumerable.Range(5, 2)).EnqueueHead(1).EnqueueHead(2).EnqueueTail(3).EnqueueTail(4);
-            var assert  = new List<int> { 2, 1, 5, 6, 3, 4 };
+            var deque =
+                new Deque<int>(Enumerable.Range(5, 2)).EnqueueHead(1).EnqueueHead(2).EnqueueTail(3).EnqueueTail(4);
+            var assert = new List<int> {2, 1, 5, 6, 3, 4};
             deque.All((index, element) => element == assert[index]).ToConsole("elements is { 2, 1, 5, 6, 3, 4 } :");
-            
+
             "\n".ToConsole();
-            var deque1 = new Deque<int>(Enumerable.Range(5, 2)).EnqueueHead(1).EnqueueHead(2).EnqueueTail(3).EnqueueTail(4);
+            var deque1 =
+                new Deque<int>(Enumerable.Range(5, 2)).EnqueueHead(1).EnqueueHead(2).EnqueueTail(3).EnqueueTail(4);
             (deque1.DequeueHead() == 2).ToConsole("DequeueHead Get Head 2");
-            var assert1 = new List<int> { 1, 5, 6, 3, 4 };
+            var assert1 = new List<int> {1, 5, 6, 3, 4};
             deque1.All((index, element) => element == assert1[index]).ToConsole("elements is { 1, 5, 6, 3, 4 } :");
-            
+
             "\n".ToConsole();
             var deque2 = new Deque<int>(Enumerable.Range(5, 2)).EnqueueHead(1).EnqueueTail(3).EnqueueTail(4);
             (deque2.DequeueTail() == 4).ToConsole("DequeueTail Get Head 4");
-            var assert2 = new List<int> { 1, 5, 6, 3 };
+            var assert2 = new List<int> {1, 5, 6, 3};
             deque2.All((index, element) => element == assert2[index]).ToConsole("elements is { 1, 5, 6, 3 } :");
         }
 
         [MarkedItem]
         public void CircularBuffer()
-        { 
+        {
             var circularBuffer = new CircularBuffer<int>(3);
             circularBuffer.Write(Enumerable.Range(0, 3));
-            var assert = new List<int> { 0, 1, 2 };
+            var assert = new List<int> {0, 1, 2};
             (circularBuffer.Count() == 3).ToConsole("Count is 3:");
             circularBuffer.All((index, element) => assert[index] == element).ToConsole("elements is {0, 1, 2}");
 
             "\n".ToConsole();
             var circularBuffer1 = new CircularBuffer<int>(3);
             circularBuffer1.Write(Enumerable.Range(0, 4));
-            var assert1 = new List<int> { 1, 2, 3 };
+            var assert1 = new List<int> {1, 2, 3};
             (circularBuffer1.Count() == 3).ToConsole("Count is 3:");
             circularBuffer1.All((index, element) => assert1[index] == element).ToConsole("elements is { 1, 2, 3 }");
 
             "\n".ToConsole();
             var circularBuffer2 = new CircularBuffer<int>(3);
             circularBuffer2.Write(Enumerable.Range(0, 3));
-            var assert2 = new List<int> { 1, 2 };
+            var assert2 = new List<int> {1, 2};
             (circularBuffer2.Read() == 0).ToConsole("Read is 0:");
             (circularBuffer2.Count() == 2).ToConsole("Count is 2:");
             circularBuffer2.All((index, element) => assert2[index] == element).ToConsole("elements is {1, 2}");
@@ -122,7 +124,7 @@ namespace CSharpNote.Data.DataStructure
         {
             var buffer = new Buffer<int>(3);
             buffer.Write(Enumerable.Range(0, 3));
-            var assert = new List<int> { 2, 1, 0 };
+            var assert = new List<int> {2, 1, 0};
             (buffer.Count() == 3).ToConsole("Count is 3:");
             buffer.All((index, element) => assert[index] == element).ToConsole("elements is {2, 1, 0}");
 
@@ -177,6 +179,4 @@ namespace CSharpNote.Data.DataStructure
             }
         }
     }
-
-   
 }

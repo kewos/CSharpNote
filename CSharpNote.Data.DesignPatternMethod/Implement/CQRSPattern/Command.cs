@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CSharpNote.Data.DesignPattern.Implement.CQRSPattern
+﻿namespace CSharpNote.Data.DesignPattern.Implement.CQRSPattern
 {
     public interface ICommand
-    { 
+    {
     }
 
-    public class IComment : ICommand
+    public class Comment : ICommand
     {
-        public IComment(int id, string content)
+        public Comment(int id, string content)
         {
-            this.Id = id;
-            this.Content = content;
+            Id = id;
+            Content = content;
         }
 
         public string Content { get; set; }

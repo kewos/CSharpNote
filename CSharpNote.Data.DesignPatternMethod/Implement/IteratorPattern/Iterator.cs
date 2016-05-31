@@ -7,8 +7,8 @@ namespace CSharpNote.Data.DesignPattern.Implement.IteratorPattern
     public class Iterator<TItem> : IIterator<TItem>
     {
         private readonly IEnumerable<TItem> aggregate;
-        private int currentIndex;
         private readonly int max;
+        private int currentIndex;
 
         public Iterator(IEnumerable<TItem> aggregate)
         {
@@ -25,7 +25,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.IteratorPattern
 
         public TItem Next()
         {
-            if (!HasNext()) 
+            if (!HasNext())
             {
                 throw new Exception("NoNext");
             }

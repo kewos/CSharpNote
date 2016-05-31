@@ -5,7 +5,7 @@ namespace CSharpNote.Common.Extensions
     public static class CurryExtensions
     {
         /// <summary>
-        /// f()
+        ///     f()
         /// </summary>
         public static Func<TInput1, TOutput>
             Curry<TInput1, TOutput>
@@ -15,7 +15,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// f()()
+        ///     f()()
         /// </summary>
         public static Func<TInput1, Func<TInput2, TOutput>>
             Curry<TInput1, TInput2, TOutput>
@@ -25,7 +25,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// f()()()
+        ///     f()()()
         /// </summary>
         public static Func<TInput1, Func<TInput2, Func<TInput3, TOutput>>>
             Curry<TInput1, TInput2, TInput3, TOutput>
@@ -35,7 +35,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// f()()()()
+        ///     f()()()()
         /// </summary>
         public static Func<TInput1, Func<TInput2, Func<TInput3, Func<TInput4, TOutput>>>>
             Curry<TInput1, TInput2, TInput3, TInput4, TOutput>

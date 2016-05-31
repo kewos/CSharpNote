@@ -4,10 +4,7 @@
     {
         public string Color
         {
-            get
-            {
-                return GetType().Name;
-            }
+            get { return GetType().Name; }
         }
     }
 
@@ -15,10 +12,7 @@
     {
         public string Color
         {
-            get
-            {
-                return GetType().Name;
-            }
+            get { return GetType().Name; }
         }
     }
 }

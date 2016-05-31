@@ -16,15 +16,15 @@ namespace CSharpNote.Data.DesignPattern.Implement.SingletonPattern
             lock (dictionary)
             {
                 object value;
-                if (dictionary.TryGetValue(typeof(T), out value))
+                if (dictionary.TryGetValue(typeof (T), out value))
                 {
-                    return (T)value;
+                    return (T) value;
                 }
 
                 value = new T();
-                dictionary.Add(typeof(T), value);
+                dictionary.Add(typeof (T), value);
 
-                return (T)value;
+                return (T) value;
             }
         }
     }

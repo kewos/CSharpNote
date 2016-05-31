@@ -10,19 +10,19 @@ namespace CSharpNote.Service.CSharpNoteService
         private readonly IEnumerable<IMethodRepository> methodRepositories;
 
         #region constructor
+
         public CSharperNoteService(IEnumerable<IMethodRepository> methodRepositories)
         {
             this.methodRepositories = methodRepositories.ToList();
         }
+
         #endregion
 
         #region IRepositoryManager member
+
         public int Count
         {
-            get
-            {
-                return methodRepositories.Count();
-            }
+            get { return methodRepositories.Count(); }
         }
 
         public IEnumerable<string> GetRepositoryNames()
@@ -39,6 +39,7 @@ namespace CSharpNote.Service.CSharpNoteService
                 return methodRepositories.Skip(index).FirstOrDefault();
             }
         }
+
         #endregion
     }
 }

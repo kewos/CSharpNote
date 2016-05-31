@@ -2,24 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using CSharpNote.Core.Contracts;
 using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extensions;
+using CSharpNote.Core.Contracts;
 
 namespace CSharpNote.Core.Implements
 {
     public abstract class AbstractRepository : ContextBoundObject, IMethodRepository
     {
-        private IEnumerable<MethodInfo> methodInfos;
         private const string TRIMSTRING = "Repository";
+        private IEnumerable<MethodInfo> methodInfos;
 
-        #region IMethodRepository member
-        public int Count
+        #region private member
+
+        private IEnumerable<MethodInfo> MethodInfos
         {
             get
             {
-                return MethodInfos.Count();
+                return methodInfos ?? (methodInfos = GetType()
+                    .GetMethods(BindingFlags.Public | BindingFlags.Instance)
+                    .Where(method => method.GetCustomAttribute(typeof (MarkedItemAttribute), false) != null)
+                    .OrderBy(method => method.Name));
             }
+        }
+
+        #endregion
+
+        #region IMethodRepository member
+
+        public int Count
+        {
+            get { return MethodInfos.Count(); }
         }
 
         public MethodInfo this[int index]
@@ -39,24 +52,9 @@ namespace CSharpNote.Core.Implements
 
         public string RepositoryName
         {
-            get
-            {
-                return GetType().Name.Except(TRIMSTRING);
-            }
+            get { return GetType().Name.Except(TRIMSTRING); }
         }
-        #endregion
 
-        #region private member
-        private IEnumerable<MethodInfo> MethodInfos
-        {
-            get
-            {
-                return methodInfos ?? (methodInfos = GetType()
-                    .GetMethods(BindingFlags.Public | BindingFlags.Instance)
-                    .Where(method => method.GetCustomAttribute(typeof (MarkedItemAttribute), false) != null)
-                    .OrderBy(method => method.Name));
-            }
-        }
         #endregion
     }
 }

@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharpNote.Data.DesignPattern.Implement.ReactPattern
 {
     public class SynchronousEventDemultiplexer : ISynchronousEventDemultiplexer
     {
-        public IList< TcpListener > Select(ICollection< TcpListener > listeners)
+        public IList<TcpListener> Select(ICollection<TcpListener> listeners)
         {
             var tcpListeners =
-                new List< TcpListener >(from listener in listeners 
-                                      where listener.Pending() 
-                                      select listener);
+                new List<TcpListener>(from listener in listeners
+                    where listener.Pending()
+                    select listener);
             return tcpListeners;
         }
     }

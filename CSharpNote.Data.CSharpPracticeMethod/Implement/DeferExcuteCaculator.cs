@@ -5,8 +5,10 @@ namespace CSharpNote.Data.CSharpPractice.Implement
 {
     public class DeferExcuteCaculator
     {
-        private int value;
-        private List<KeyValuePair<Func<int, int, int>, int>> commands = new List<KeyValuePair<Func<int, int, int>, int>>();
+        private readonly List<KeyValuePair<Func<int, int, int>, int>> commands =
+            new List<KeyValuePair<Func<int, int, int>, int>>();
+
+        private readonly int value;
 
         public DeferExcuteCaculator(int value)
         {

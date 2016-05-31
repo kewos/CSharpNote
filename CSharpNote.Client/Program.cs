@@ -2,12 +2,11 @@
 
 namespace CSharpNote.Client
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             Bootstrap.Config().GetInstance<ICSharpNotePresenter>().Start();
         }
     }
 }
-

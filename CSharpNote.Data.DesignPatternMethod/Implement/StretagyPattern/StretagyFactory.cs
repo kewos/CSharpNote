@@ -7,10 +7,10 @@ namespace CSharpNote.Data.DesignPattern.Implement.StretagyPattern
     {
         private static readonly Dictionary<Type, StrategyBase> strategyPool = new Dictionary<Type, StrategyBase>();
 
-        public static TStrategy Create<TStrategy>() 
+        public static TStrategy Create<TStrategy>()
             where TStrategy : StrategyBase, new()
         {
-            var type = typeof(TStrategy);
+            var type = typeof (TStrategy);
 
             if (!strategyPool.ContainsKey(type))
             {

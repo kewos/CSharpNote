@@ -6,22 +6,22 @@ namespace CSharpNote.Core.Contracts
     public interface IMethodRepository
     {
         /// <summary>
-        /// Method數量
+        ///     Method數量
         /// </summary>
         int Count { get; }
 
         /// <summary>
-        /// RepositoryName
+        ///     RepositoryName
         /// </summary>
         string RepositoryName { get; }
 
         /// <summary>
-        /// indexer
+        ///     indexer
         /// </summary>
         MethodInfo this[int index] { get; }
 
         /// <summary>
-        /// 取得MethodInfoNames
+        ///     取得MethodInfoNames
         /// </summary>
         IEnumerable<string> GetMethodNames();
     }

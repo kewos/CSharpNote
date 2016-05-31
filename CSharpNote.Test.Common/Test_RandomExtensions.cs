@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSharpNote.Common.Test
 {
-    enum TestEnum
+    internal enum TestEnum
     {
         A,
         B,
@@ -14,14 +14,11 @@ namespace CSharpNote.Common.Test
     }
 
     [TestClass]
-    public class Test_RandomExtensions
+    public class TestRandomExtensions
     {
         private Random NewRandom
         {
-            get
-            {
-                return new Random();
-            }
+            get { return new Random(); }
         }
 
         [TestMethod]
@@ -45,8 +42,8 @@ namespace CSharpNote.Common.Test
             var random = NewRandom;
 
             //Act
-            var result = Enumerable.Range(1, 1000).Select(n => random.RandomOne(new string[] {"A", "B", "C"})).Distinct().ToList();
-            var set = new List<string> { "A", "B", "C" };
+            var result = Enumerable.Range(1, 1000).Select(n => random.RandomOne("A", "B", "C")).Distinct().ToList();
+            var set = new List<string> {"A", "B", "C"};
             var actual = result.All(x => set.Contains(x));
 
             //Validation
@@ -61,7 +58,7 @@ namespace CSharpNote.Common.Test
 
             //Act
             var result = Enumerable.Range(1, 100).Select(n => random.NextEnum<TestEnum>()).Distinct().ToList();
-            var set = new List<TestEnum> { TestEnum.A, TestEnum.B, TestEnum.C };
+            var set = new List<TestEnum> {TestEnum.A, TestEnum.B, TestEnum.C};
             var actual = result.All(x => set.Contains(x));
 
             //Validation

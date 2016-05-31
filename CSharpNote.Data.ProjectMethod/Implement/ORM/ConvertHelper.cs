@@ -6,7 +6,7 @@ using CSharpNote.Data.Project.Implement.ORM.TypeConvert;
 namespace CSharpNote.Data.Project.Implement.ORM
 {
     /// <summary>
-    /// 轉型幫手
+    ///     轉型幫手
     /// </summary>
     public class ConvertHelper
     {
@@ -23,7 +23,7 @@ namespace CSharpNote.Data.Project.Implement.ORM
         }
 
         /// <summary>
-        /// Convert to TType
+        ///     Convert to TType
         /// </summary>
         public IEnumerable<TType> Convert<TType>(IEnumerable<Dictionary<string, string>> source)
             where TType : IMappingModel, new()
@@ -37,9 +37,9 @@ namespace CSharpNote.Data.Project.Implement.ORM
                     var type = properties[column.Key].PropertyType;
                     var value = !type.IsEnum
                         ? factory.Create(type).Convert(column.Value)
-                        : typeof(StringToEnum).GetMethod("Convert")
+                        : typeof (StringToEnum).GetMethod("Convert")
                             .MakeGenericMethod(type)
-                            .Invoke(factory.Create(type), new object[] { column.Value });
+                            .Invoke(factory.Create(type), new object[] {column.Value});
 
                     properties[column.Key].SetValue(instance, value);
                 }
@@ -47,21 +47,15 @@ namespace CSharpNote.Data.Project.Implement.ORM
             });
         }
 
-        private static Dictionary<string, PropertyInfo> ToPropertyDictionary<TType>() 
+        private static Dictionary<string, PropertyInfo> ToPropertyDictionary<TType>()
             where TType : IMappingModel, new()
         {
             var target = new TType();
-            return typeof(TType).GetProperties().ToDictionary
-            (
-                property => target.Mapping(property.Name),
-                property => property
-            );
+            return typeof (TType).GetProperties().ToDictionary
+                (
+                    property => target.Mapping(property.Name),
+                    property => property
+                );
         }
     }
 }
-
-
-
-
-
-        

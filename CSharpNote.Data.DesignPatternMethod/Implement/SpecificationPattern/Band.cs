@@ -4,16 +4,16 @@ namespace CSharpNote.Data.DesignPattern.Implement.SpecificationPattern
 {
     public class Band
     {
-        public string BandName { get; set; }
-        public BandKind BandKind { get; set; }
-        public Country Country { get; set; }
-
         public Band(string name, BandKind kind, Country country)
         {
             BandName = name;
             BandKind = kind;
             Country = country;
         }
+
+        public string BandName { get; set; }
+        public BandKind BandKind { get; set; }
+        public Country Country { get; set; }
 
         public void Description()
         {
@@ -33,7 +33,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.SpecificationPattern
 
     public enum Country
     {
-        UK,
+        Uk,
         Gereman,
         Australia
     }

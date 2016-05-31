@@ -4,9 +4,7 @@ using System.Runtime.Remoting.Messaging;
 
 namespace CSharpNote.Data.DesignPattern.Implement
 {
-    
-
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Class)]
     public sealed class MyInterceptorAttribute : ContextAttribute, IContributeObjectSink
     {
         public MyInterceptorAttribute()

@@ -5,9 +5,9 @@ namespace CSharpNote.Data.DesignPattern.Implement.PrototypePattern
     [Serializable]
     public class Color : IColor
     {
-        private readonly int red;
-        private readonly int green;
         private readonly int blue;
+        private readonly int green;
+        private readonly int red;
 
         public Color(int red, int green, int blue)
         {

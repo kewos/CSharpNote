@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using CSharpNote.Common.Extensions;
 
 namespace CSharpNote.Data.Project.Implement.Validation
 {
     /// <summary>
-    /// 驗証規則元件
+    ///     驗証規則元件
     /// </summary>
     public class ValidationSequenceComponent
     {
@@ -15,7 +14,7 @@ namespace CSharpNote.Data.Project.Implement.Validation
             int value;
             var temp = string.Concat(code);
 
-            if (!Int32.TryParse(temp, out value))
+            if (!int.TryParse(temp, out value))
             {
                 return -1;
             }

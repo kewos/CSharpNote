@@ -5,20 +5,20 @@ using System.Linq;
 namespace CSharpNote.Data.Project.Implement.Validation
 {
     /// <summary>
-    /// 驗証規則
+    ///     驗証規則
     /// </summary>
     public class ValidatioinRule
     {
-        private Dictionary<RuleTitle, Func<IEnumerable<char>, bool>> validationTypes;
+        private readonly Dictionary<RuleTitle, Func<IEnumerable<char>, bool>> validationTypes;
 
         public ValidatioinRule()
         {
             validationTypes = new Dictionary<RuleTitle, Func<IEnumerable<char>, bool>>
             {
-                { RuleTitle.English, IsEnglish },
-                { RuleTitle.NotEnglish, IsNotEnglish },
-                { RuleTitle.Number, IsNumber },
-                { RuleTitle.NotNumber, IsNotNumber }
+                {RuleTitle.English, IsEnglish},
+                {RuleTitle.NotEnglish, IsNotEnglish},
+                {RuleTitle.Number, IsNumber},
+                {RuleTitle.NotNumber, IsNotNumber}
             };
         }
 
@@ -34,7 +34,6 @@ namespace CSharpNote.Data.Project.Implement.Validation
 
         private bool IsEnglish(IEnumerable<char> code)
         {
-
             return code.All(@char => (@char >= 65 && @char <= 90) || (@char >= 97 && @char <= 122));
         }
 

@@ -6,7 +6,17 @@ namespace CSharpNote.Data.DataStructure.Implement.Queue
 {
     public class Deque<T> : ICollection<T>
     {
-        private LinkedList<T> linklist;
+        private readonly LinkedList<T> linklist;
+
+        public Deque()
+        {
+            linklist = new LinkedList<T>();
+        }
+
+        public Deque(IEnumerable<T> collection)
+        {
+            linklist = new LinkedList<T>(collection);
+        }
 
         public T Head
         {
@@ -28,21 +38,26 @@ namespace CSharpNote.Data.DataStructure.Implement.Queue
 
         public bool IsEmpty
         {
-            get
-            {
-                return Count == 0;
-            }
+            get { return Count == 0; }
         }
 
-        public Deque()
+        #region IEnumerable<T> Members
+
+        public IEnumerator<T> GetEnumerator()
         {
-            linklist = new LinkedList<T>();
+            return linklist.GetEnumerator();
         }
 
-        public Deque(IEnumerable<T> collection)
+        #endregion
+
+        #region IEnumerable Members
+
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            linklist = new LinkedList<T>(collection);
+            return GetEnumerator();
         }
+
+        #endregion
 
         private void Vaildate()
         {
@@ -131,36 +146,12 @@ namespace CSharpNote.Data.DataStructure.Implement.Queue
 
         public int Count
         {
-            get 
-            { 
-                return linklist.Count; 
-            }
+            get { return linklist.Count; }
         }
 
         public bool IsReadOnly
         {
-            get 
-            { 
-                return false; 
-            }
-        }
-
-        #endregion
-
-        #region IEnumerable<T> Members
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            return linklist.GetEnumerator();
-        }
-
-        #endregion
-
-        #region IEnumerable Members
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
+            get { return false; }
         }
 
         #endregion

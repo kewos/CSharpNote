@@ -11,6 +11,11 @@ namespace CSharpNote.Data.DesignPattern.Implement.ChainResponsibilityPattern
             nextHandler = handler;
         }
 
+        private bool HasNextProcess
+        {
+            get { return (nextHandler != null); }
+        }
+
         public void Execute(IHandlerCommand handlerCommand)
         {
             if (handlerCommand == null)
@@ -28,11 +33,6 @@ namespace CSharpNote.Data.DesignPattern.Implement.ChainResponsibilityPattern
                 throw new ArgumentNullException("NoFindMatchHandler");
 
             nextHandler.Execute(handlerCommand);
-        }
-
-        private bool HasNextProcess
-        {
-            get { return (nextHandler != null); }
         }
 
         protected abstract void DoSometing();

@@ -2,7 +2,7 @@
 
 namespace CSharpNote.Data.DesignPattern.Implement.AdapterPattern
 {
-    public class CatAdaptor: AnimalAdaptorBase<IMachine>
+    public class CatAdaptor : AnimalAdaptorBase<IMachine>
     {
         public CatAdaptor(IMachine element)
             : base(element)

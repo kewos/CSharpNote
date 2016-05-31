@@ -2,7 +2,7 @@
 {
     public class SingletonB
     {
-        private static SingletonB instance = new SingletonB();
+        private static readonly SingletonB instance = new SingletonB();
 
         static SingletonB()
         {

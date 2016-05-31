@@ -1,5 +1,4 @@
-﻿
-namespace CSharpNote.Data.DesignPattern.Implement.IteratorPattern
+﻿namespace CSharpNote.Data.DesignPattern.Implement.IteratorPattern
 {
     public class Book
     {

@@ -5,7 +5,7 @@ namespace CSharpNote.Common.Extensions
     public static class DictionaryExtensions
     {
         /// <summary>
-        /// Key存在於字典取得字典裡的Value不存在取得預設值
+        ///     Key存在於字典取得字典裡的Value不存在取得預設值
         /// </summary>
         public static TValue GetValueOrDefault<TKey, TValue>
             (this IDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue = default(TValue))
@@ -17,7 +17,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// Key不存在則新增
+        ///     Key不存在則新增
         /// </summary>
         public static IDictionary<TKey, TValue> TryAdd<TKey, TValue>
             (this IDictionary<TKey, TValue> dictionary, TKey key, TValue value)
@@ -30,7 +30,7 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// 新增或替換
+        ///     新增或替換
         /// </summary>
         public static IDictionary<TKey, TValue> AddOrReplace<TKey, TValue>
             (this IDictionary<TKey, TValue> dictionary, TKey key, TValue value)

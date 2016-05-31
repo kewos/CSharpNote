@@ -2,23 +2,23 @@
 
 namespace CSharpNote.Data.DataStructure.Implement.LRUCache
 {
-    public class LRUCache<TK, TV>
+    public class LruCache<TK, TV>
     {
+        private readonly Dictionary<TK, LinkedListNode<LruItem<TK, TV>>> cacheMap;
         private readonly int capacity;
-        private readonly Dictionary<TK, LinkedListNode<LRUItem<TK, TV>>> cacheMap;
-        private readonly LinkedList<LRUItem<TK, TV>> lruList;
+        private readonly LinkedList<LruItem<TK, TV>> lruList;
 
-        public LRUCache(int capacity)
+        public LruCache(int capacity)
         {
-            cacheMap = new Dictionary<TK, LinkedListNode<LRUItem<TK, TV>>>();
-            lruList = new LinkedList<LRUItem<TK, TV>>();
+            cacheMap = new Dictionary<TK, LinkedListNode<LruItem<TK, TV>>>();
+            lruList = new LinkedList<LruItem<TK, TV>>();
 
             this.capacity = capacity;
         }
 
         public TV Get(TK key)
         {
-            LinkedListNode<LRUItem<TK, TV>> node;
+            LinkedListNode<LruItem<TK, TV>> node;
             if (cacheMap.TryGetValue(key, out node))
             {
                 var value = node.Value.Value;
@@ -36,8 +36,8 @@ namespace CSharpNote.Data.DataStructure.Implement.LRUCache
                 RemoveFirst();
             }
 
-            var cacheItem = new LRUItem<TK, TV>(key, val);
-            var node = new LinkedListNode<LRUItem<TK, TV>>(cacheItem);
+            var cacheItem = new LruItem<TK, TV>(key, val);
+            var node = new LinkedListNode<LruItem<TK, TV>>(cacheItem);
             lruList.AddLast(node);
             cacheMap.Add(key, node);
         }

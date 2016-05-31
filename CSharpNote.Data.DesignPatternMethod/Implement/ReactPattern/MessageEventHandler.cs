@@ -2,7 +2,6 @@
 using System.Net.Sockets;
 using System.Text;
 
-
 namespace CSharpNote.Data.DesignPattern.Implement.ReactPattern
 {
     public class MessageEventHandler : IEventHandler

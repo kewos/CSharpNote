@@ -5,19 +5,20 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpNote.Common.Test
 {
     [TestClass]
-    public class Test_DictionaryExtensions
+    public class TestDictionaryExtensions
     {
         [TestMethod]
         public void GetValueOrDefault_InputA_OutputA()
         {
             //Arrange
             var dictionary = new Dictionary<string, string>
-                {
-                    {"a", "a"}
-                }; ;
+            {
+                {"a", "a"}
+            };
+            ;
 
             //Act
-            var actual =  dictionary.GetValueOrDefault("a");
+            var actual = dictionary.GetValueOrDefault("a");
 
             //Validation
             var expect = "a";
@@ -29,15 +30,16 @@ namespace CSharpNote.Common.Test
         {
             //Arrange
             var dictionary = new Dictionary<string, string>
-                {
-                    {"a", "a"}
-                }; ;
+            {
+                {"a", "a"}
+            };
+            ;
 
             //Act
             var actual = dictionary.GetValueOrDefault("aaa");
 
             //Validation
-            var expect = (string)null;
+            var expect = (string) null;
             Assert.AreEqual(actual, expect);
         }
 

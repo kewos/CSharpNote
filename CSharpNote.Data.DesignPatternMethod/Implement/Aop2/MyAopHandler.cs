@@ -5,30 +5,28 @@ namespace CSharpNote.Data.DesignPattern.Implement
 {
     public sealed class MyAopHandler : IMessageSink
     {
-        private IMessageSink nextSink;
-        public IMessageSink NextSink
-        {
-            get { return nextSink; }
-        }
         public MyAopHandler(IMessageSink nextSink)
         {
-            this.nextSink = nextSink;
+            NextSink = nextSink;
         }
+
+        public IMessageSink NextSink { get; private set; }
 
         public IMessage SyncProcessMessage(IMessage msg)
         {
             IMessage retMsg = null;
 
-            IMethodCallMessage call = msg as IMethodCallMessage;
+            var call = msg as IMethodCallMessage;
 
-            if (call == null || (Attribute.GetCustomAttribute(call.MethodBase, typeof(MyInterceptorMethodAttribute))) == null)
+            if (call == null ||
+                (Attribute.GetCustomAttribute(call.MethodBase, typeof (MyInterceptorMethodAttribute))) == null)
             {
-                retMsg = nextSink.SyncProcessMessage(msg);
+                retMsg = NextSink.SyncProcessMessage(msg);
             }
             else
             {
                 Console.WriteLine("==============");
-                retMsg = nextSink.SyncProcessMessage(msg);
+                retMsg = NextSink.SyncProcessMessage(msg);
                 Console.WriteLine("==============");
             }
 

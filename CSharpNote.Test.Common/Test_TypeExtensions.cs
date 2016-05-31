@@ -5,31 +5,19 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpNote.Common.Test
 {
     [TestClass]
-    public class Test_TypeExtensions
+    public class TestTypeExtensions
     {
-        public interface ITestObject
-        {
-             
-        }
-
-        public class TestObject : ITestObject
-        {
-            public TestObject(ITestObject obj)
-            {
-            }
-        }
-
         [TestMethod]
         public void GetMatchInterface_Get_ReturnMatchInterfaceType()
         {
             //Arrange
-            var type = typeof(TestObject);
+            var type = typeof (TestObject);
 
             //Act
             var actual = type.GetMatchInterface();
 
             //Validation
-            var expect = typeof(ITestObject);
+            var expect = typeof (ITestObject);
             Assert.AreEqual(expect, actual);
         }
 
@@ -37,7 +25,7 @@ namespace CSharpNote.Common.Test
         public void GetMatchConstructor_Get_ReturnMatchConstructor()
         {
             //Arrange
-            var type = typeof(TestObject);
+            var type = typeof (TestObject);
 
             //Act
             var actual = type.GetMatchConstructor();
@@ -45,6 +33,17 @@ namespace CSharpNote.Common.Test
             //Validation
             var expect = type.GetConstructors().First();
             Assert.AreEqual(expect, actual);
+        }
+
+        public interface ITestObject
+        {
+        }
+
+        public class TestObject : ITestObject
+        {
+            public TestObject(ITestObject obj)
+            {
+            }
         }
     }
 }

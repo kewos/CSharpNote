@@ -9,18 +9,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpNote.Service.Test
 {
     [TestClass]
-    public class Test_RepositoryManager
+    public class TestRepositoryManager
     {
-        private class TestRepository : AbstractRepository
-        {
-        }
-
         private CSharperNoteService TestCSharpService
         {
-            get
-            {
-                return new CSharperNoteService(Enumerable.Range(1, 3).Select(x => new TestRepository()));
-            }
+            get { return new CSharperNoteService(Enumerable.Range(1, 3).Select(x => new TestRepository())); }
         }
 
         [TestMethod]
@@ -33,7 +26,7 @@ namespace CSharpNote.Service.Test
             var actual = repositoryManager.GetRepositoryNames().ToList();
 
             //Validation
-            var expect = new List<string> { "Test", "Test", "Test" };
+            var expect = new List<string> {"Test", "Test", "Test"};
             for (var i = 0; i < expect.Count; i++)
             {
                 Assert.AreEqual(expect[i], actual[i]);
@@ -50,7 +43,7 @@ namespace CSharpNote.Service.Test
             var actual = Enumerable.Range(0, 3).Select(n => repositoryManager[n].RepositoryName).ToList();
 
             //Validation
-            var expect = new List<string> { "Test", "Test", "Test" };
+            var expect = new List<string> {"Test", "Test", "Test"};
             for (var i = 0; i < expect.Count; i++)
             {
                 Assert.AreEqual(expect[i], actual[i]);
@@ -60,10 +53,7 @@ namespace CSharpNote.Service.Test
         [TestMethod]
         public void Indexer_CheckLowerBounded_ThrowException()
         {
-            Action action = () =>
-            {
-                var methodInfo = TestCSharpService[-1];
-            };
+            Action action = () => { var methodInfo = TestCSharpService[-1]; };
 
             action.AssertHandleException<ArgumentException>();
         }
@@ -71,12 +61,13 @@ namespace CSharpNote.Service.Test
         [TestMethod]
         public void Indexer_CheckUpperBounded_ThrowException()
         {
-            Action action = () =>
-            {
-                var methodInfo = TestCSharpService[3];
-            };
+            Action action = () => { var methodInfo = TestCSharpService[3]; };
 
             action.AssertHandleException<ArgumentException>();
+        }
+
+        private class TestRepository : AbstractRepository
+        {
         }
     }
 }

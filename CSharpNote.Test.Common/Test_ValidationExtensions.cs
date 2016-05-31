@@ -6,9 +6,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpNote.Common.Test
 {
     [TestClass]
-    public class Test_ValidationExtensions
+    public class TestValidationExtensions
     {
         #region Test_AssertNotEmpty
+
         [TestMethod]
         public void ValidationNotEmpty_InputStringNull_ThrowException()
         {
@@ -22,9 +23,11 @@ namespace CSharpNote.Common.Test
             Action action = () => "Test".ValidationNotEmpty();
             action.AssertHandleException();
         }
+
         #endregion
 
         #region Test_AssertBetweenRange
+
         [TestMethod]
         public void ValidationBetweenRange_Rang2To5InputLength6String_ThrowException()
         {
@@ -45,9 +48,11 @@ namespace CSharpNote.Common.Test
             Action action = () => "Tes".ValidationBetweenRange(2, 5);
             action.AssertHandleException();
         }
+
         #endregion
 
         #region Test_AssertGreaterThan
+
         [TestMethod]
         public void ValidationGreaterThan_Input1Target1CanEqualTrue_DoNothing()
         {
@@ -68,9 +73,11 @@ namespace CSharpNote.Common.Test
             Action action = () => 2.ValidationGreaterThan(1, false);
             action.AssertHandleException();
         }
+
         #endregion
 
         #region Test_AssertLessThan
+
         [TestMethod]
         public void ValidationLessThan_Input1Target1CanEqualTrue_DoNothing()
         {
@@ -91,9 +98,11 @@ namespace CSharpNote.Common.Test
             Action action = () => 0.ValidationLessThan(1, false);
             action.AssertHandleException();
         }
+
         #endregion
 
         #region Test_AssertLessThan
+
         [TestMethod]
         public void ValidationBetweenRange_Input1Between1To5CanEqualTrue_DoNothing()
         {
@@ -121,9 +130,11 @@ namespace CSharpNote.Common.Test
             Action action = () => 5.ValidationBetweenRange(1, 5, false);
             action.AssertHandleException<ArgumentException>();
         }
+
         #endregion
 
         #region Test ValidationEqualWith
+
         [TestMethod]
         public void ValidationEqualWith_Input1EqualWith1_DoNothing()
         {
@@ -137,21 +148,23 @@ namespace CSharpNote.Common.Test
             Action action = () => 2.ValidationEqualWith(1);
             action.AssertHandleException<ArgumentException>();
         }
+
         #endregion
 
         #region Test ValidationNotEmptyAndNull
+
         [TestMethod]
         public void ValidationEqualWith_InputListHasItem_DoNothing()
         {
             var list = new List<int> {1};
-            Action action = () =>  list.ValidationNotEmptyAndNull();
+            Action action = () => list.ValidationNotEmptyAndNull();
             action.AssertHandleException();
         }
 
         [TestMethod]
         public void ValidationEqualWith_InputEmptyList_ThrowException()
         {
-            var list = new List<int> ();
+            var list = new List<int>();
             Action action = () => list.ValidationNotEmptyAndNull();
             action.AssertHandleException<ArgumentNullException>();
         }
@@ -159,17 +172,19 @@ namespace CSharpNote.Common.Test
         [TestMethod]
         public void ValidationEqualWith_InputNullList_ThrowException()
         {
-            var list = (List<int>)null;
+            var list = (List<int>) null;
             Action action = () => list.ValidationNotEmptyAndNull();
             action.AssertHandleException<ArgumentNullException>();
         }
+
         #endregion
 
         #region Test ValidationEndWith
+
         [TestMethod]
         public void ValidationEndWith_InputTestFormatTest_DoNothing()
         {
-            Action action = () =>  "Test".ValidationEndWith("Test");
+            Action action = () => "Test".ValidationEndWith("Test");
             action.AssertHandleException();
         }
 
@@ -179,9 +194,11 @@ namespace CSharpNote.Common.Test
             Action action = () => "Test".ValidationEndWith("TestT");
             action.AssertHandleException<ArgumentException>();
         }
+
         #endregion
 
         #region Test ValidationStartWith
+
         [TestMethod]
         public void ValidationStartWith_InputTestFormatTest_DoNothing()
         {
@@ -195,6 +212,7 @@ namespace CSharpNote.Common.Test
             Action action = () => "Test".ValidationStartWith("TestT");
             action.AssertHandleException<ArgumentException>();
         }
+
         #endregion
     }
 }

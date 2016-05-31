@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CSharpNote.Data.DesignPattern.Implement.CQRSPattern
+﻿namespace CSharpNote.Data.DesignPattern.Implement.CQRSPattern
 {
     public interface ICommandHandler<TCommand>
         where TCommand : ICommand
@@ -12,11 +6,11 @@ namespace CSharpNote.Data.DesignPattern.Implement.CQRSPattern
         void Handle(TCommand command);
     }
 
-    public class CommandHandler : ICommandHandler<IComment>
+    public class CommandHandler : ICommandHandler<Comment>
     {
         private readonly CheckCommandService commandService;
 
-        public CommandHandler() 
+        public CommandHandler()
             : this(new CheckCommandService())
         {
         }
@@ -26,9 +20,8 @@ namespace CSharpNote.Data.DesignPattern.Implement.CQRSPattern
             this.commandService = commandService;
         }
 
-        public void Handle(IComment command)
+        public void Handle(Comment command)
         {
-            
         }
     }
 }

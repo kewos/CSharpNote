@@ -1,7 +1,7 @@
 ﻿namespace CSharpNote.Data.Project.Implement.ORM.TypeConvert
 {
     /// <summary>
-    /// 字串轉float?
+    ///     字串轉float?
     /// </summary>
     public class StringToFloatNullable : IStringConvert<float?>
     {

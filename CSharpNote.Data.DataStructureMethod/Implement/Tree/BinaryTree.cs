@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace CSharpNote.Data.DataStructure.Implement.Tree
 {
-
     public class BinaryTree<T>
     {
         public TreeNode<T> root;
@@ -15,7 +14,7 @@ namespace CSharpNote.Data.DataStructure.Implement.Tree
         }
 
         /// <summary>
-        /// 中歷
+        ///     中歷
         /// </summary>
         public static void InOrder(TreeNode<T> node)
         {
@@ -30,7 +29,7 @@ namespace CSharpNote.Data.DataStructure.Implement.Tree
         }
 
         /// <summary>
-        /// 前歷
+        ///     前歷
         /// </summary>
         public static void PreOrder(TreeNode<T> node)
         {
@@ -45,7 +44,7 @@ namespace CSharpNote.Data.DataStructure.Implement.Tree
         }
 
         /// <summary>
-        /// 後歷
+        ///     後歷
         /// </summary>
         public static void PostOrder(TreeNode<T> node)
         {
@@ -61,8 +60,8 @@ namespace CSharpNote.Data.DataStructure.Implement.Tree
 
         public static IEnumerable<T> PreOrderWithStack(TreeNode<T> node)
         {
-            Stack<TreeNode<T>> stack = new Stack<TreeNode<T>>();
-            TreeNode<T> temp = node;
+            var stack = new Stack<TreeNode<T>>();
+            var temp = node;
             stack.Push(temp);
 
             while (stack.Count() != 0)

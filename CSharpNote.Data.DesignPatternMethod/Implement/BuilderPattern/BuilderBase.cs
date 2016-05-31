@@ -11,22 +11,13 @@ namespace CSharpNote.Data.DesignPattern.Implement.BuilderPattern
         private readonly IDictionary<string, object> propertyPool;
 
         protected BuilderBase()
-            : this(typeof(T).GetProperties().ToDictionary(p => p.Name, p => default(object)))
+            : this(typeof (T).GetProperties().ToDictionary(p => p.Name, p => default(object)))
         {
         }
 
         protected BuilderBase(IDictionary<string, object> propertyPool)
         {
             this.propertyPool = propertyPool;
-        }
-
-        public virtual BuilderBase<T> Add(string key, object obj)
-        {
-            if (propertyPool.ContainsKey(key))
-            {
-                propertyPool.AddOrReplace(key, obj);
-            }
-            return this;
         }
 
         public virtual T Create()
@@ -37,7 +28,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.BuilderPattern
             }
 
             var instance = Activator.CreateInstance<T>();
-            foreach (var property in typeof(T).GetProperties())
+            foreach (var property in typeof (T).GetProperties())
             {
                 object value;
                 if (propertyPool.TryGetValue(property.Name, out value))
@@ -47,6 +38,15 @@ namespace CSharpNote.Data.DesignPattern.Implement.BuilderPattern
             }
 
             return instance;
+        }
+
+        public virtual BuilderBase<T> Add(string key, object obj)
+        {
+            if (propertyPool.ContainsKey(key))
+            {
+                propertyPool.AddOrReplace(key, obj);
+            }
+            return this;
         }
 
         public bool CanCreate()

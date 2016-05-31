@@ -15,7 +15,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.FilterPattern
         public void AddFilter<TFilter>()
             where TFilter : IFilter<TItem>, new()
         {
-            var type = typeof(TFilter);
+            var type = typeof (TFilter);
 
             if (!filterDic.ContainsKey(type))
             {
@@ -26,7 +26,7 @@ namespace CSharpNote.Data.DesignPattern.Implement.FilterPattern
         public IEnumerable<TItem> ExecuteFilter<TFilter>(IEnumerable<TItem> source)
             where TFilter : IFilter<TItem>, new()
         {
-            var type = typeof(TFilter);
+            var type = typeof (TFilter);
 
             if (!filterDic.ContainsKey(type))
             {

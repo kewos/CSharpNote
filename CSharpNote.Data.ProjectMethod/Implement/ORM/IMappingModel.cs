@@ -19,8 +19,8 @@ namespace CSharpNote.Data.Project.Implement.ORM
 
         public string Mapping(string input)
         {
-            return mappingDictionary.ContainsKey(input) 
-                ? mappingDictionary[input] 
+            return mappingDictionary.ContainsKey(input)
+                ? mappingDictionary[input]
                 : input;
         }
 
