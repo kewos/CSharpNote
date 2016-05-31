@@ -50,14 +50,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Test_DictionaryExtensions.cs" />
-    <Compile Include="Test_RandomExtensions.cs" />
-    <Compile Include="Test_StringExtensions.cs" />
-    <Compile Include="Test_ValidationExtensions.cs" />
-    <Compile Include="Test_ActionExtensions.cs" />
-    <Compile Include="Test_EnumerableExtensions.cs" />
-    <Compile Include="Test_ObjectExtensions.cs" />
-    <Compile Include="Test_TypeExtensions.cs" />
+    <Compile Include="TestDictionaryExtensions.cs" />
+    <Compile Include="TestRandomExtensions.cs" />
+    <Compile Include="TestStringExtensions.cs" />
+    <Compile Include="TestValidationExtensions.cs" />
+    <Compile Include="TestActionExtensions.cs" />
+    <Compile Include="TestEnumerableExtensions.cs" />
+    <Compile Include="TestObjectExtensions.cs" />
+    <Compile Include="TestTypeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
