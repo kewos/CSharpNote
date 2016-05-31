@@ -11,7 +11,6 @@ using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extensions;
 using CSharpNote.Common.Helper;
 using CSharpNote.Core.Implements;
-using CSharpNote.Data.Algorithm.Component;
 
 namespace CSharpNote.Data.Algorithm
 {
@@ -4793,6 +4792,18 @@ namespace CSharpNote.Data.Algorithm
                 }
 
                 return root;
+            }
+        }
+
+        public class TreeNode
+        {
+            public TreeNode left;
+            public TreeNode right;
+            public int val;
+
+            public TreeNode(int x)
+            {
+                val = x;
             }
         }
 
