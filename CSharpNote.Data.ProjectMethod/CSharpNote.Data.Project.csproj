@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implement\DynamicValidationHelper.cs" />
+    <Compile Include="Implement\TestResultData.cs" />
+    <Compile Include="Implement\TestOrm.cs" />
     <Compile Include="ProjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implement\ORM\Attribute\DBColumnAttribute.cs" />

@@ -39,10 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IExecute.cs" />
     <Compile Include="Contracts\IMethodRepository.cs" />
     <Compile Include="Contracts\ICSharpNotePresenter.cs" />
     <Compile Include="Contracts\ICSharperNoteService.cs" />
     <Compile Include="Contracts\ICSharpNoteView.cs" />
+    <Compile Include="Implements\AbstractModule.cs" />
     <Compile Include="Implements\AbstractRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

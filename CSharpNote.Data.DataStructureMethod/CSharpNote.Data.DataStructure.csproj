@@ -43,6 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataStructureRepository.cs" />
+    <Compile Include="Implement\TestCircularQueue.cs" />
+    <Compile Include="Implement\TestDeque.cs" />
+    <Compile Include="Implement\TestCircularBuffer.cs" />
+    <Compile Include="Implement\TestBuffer.cs" />
+    <Compile Include="Implement\TestBinaryTree.cs" />
+    <Compile Include="Implement\TestHashTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Implement\Buffer\Buffer.cs" />
     <Compile Include="Implement\Buffer\CircularBuffer.cs" />

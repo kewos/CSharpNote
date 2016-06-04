@@ -1,10 +1,31 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 using System.Runtime.Remoting.Proxies;
+using CSharpNote.Common.Attributes;
+using CSharpNote.Core.Implements;
 
 namespace CSharpNote.Data.CSharpPractice.Implement
 {
+    public class TestRealProxy : AbstractExecuteModule
+    {
+        [MarkedItem]
+        public override void Execute()
+        {
+            var baby = LoggingProxy.Wrap(new Baby());
+            Console.WriteLine("Name = {0}", baby.Name);
+
+            try
+            {
+                baby.Sleep();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception = {0}", e.Message);
+            }
+        }
+    }
+
     internal class Baby : MarshalByRefObject
     {
         public string Name
@@ -61,7 +82,7 @@ namespace CSharpNote.Data.CSharpPractice.Implement
         public static T Wrap<T>(T target)
             where T : MarshalByRefObject
         {
-            return (T) new LoggingProxy(target).GetTransparentProxy();
+            return (T)new LoggingProxy(target).GetTransparentProxy();
         }
     }
 }

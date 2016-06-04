@@ -1,5 +1,4 @@
 ﻿using CSharpNote.Common.Extensions;
-using CSharpNote.Common.Helper;
 using CSharpNote.Core.Contracts;
 
 namespace CSharpNote.Client
@@ -38,7 +37,7 @@ namespace CSharpNote.Client
 
         private void InvokeMethodInfo(int index, IMethodRepository repository)
         {
-            FastInvokeHelper.Create(repository[index])(repository, null);
+            repository[index].Execute();
         }
 
         #endregion

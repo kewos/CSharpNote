@@ -39,7 +39,7 @@ namespace CSharpNote.Common.Attributes
 
         #endregion
 
-        #region Method
+        #region public Method
 
         public IMessage SyncProcessMessage(IMessage msg)
         {

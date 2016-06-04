@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using CSharpNote.Common.Attributes;
 using CSharpNote.Common.Extensions;
 using CSharpNote.Core.Contracts;
 
@@ -11,50 +10,60 @@ namespace CSharpNote.Core.Implements
     public abstract class AbstractRepository : ContextBoundObject, IMethodRepository
     {
         private const string TRIMSTRING = "Repository";
-        private IEnumerable<MethodInfo> methodInfos;
+        private List<TypeInfo> methodInfos;
+        private readonly Dictionary<int, AbstractExecuteModule> entitiyDictionary = new Dictionary<int, AbstractExecuteModule>(); 
 
         #region private member
-
-        private IEnumerable<MethodInfo> MethodInfos
+        private IEnumerable<TypeInfo> MethodInfos
         {
             get
             {
-                return methodInfos ?? (methodInfos = GetType()
-                    .GetMethods(BindingFlags.Public | BindingFlags.Instance)
-                    .Where(method => method.GetCustomAttribute(typeof (MarkedItemAttribute), false) != null)
-                    .OrderBy(method => method.Name));
+                return methodInfos ?? 
+                    (methodInfos = Assembly.GetAssembly(GetType())
+                    .DefinedTypes
+                    .Where(type => typeof(AbstractExecuteModule).IsAssignableFrom(type))
+                    .ToList());
             }
         }
-
         #endregion
 
         #region IMethodRepository member
-
         public int Count
         {
-            get { return MethodInfos.Count(); }
+            get 
+            { 
+                return MethodInfos.Count(); 
+            }
         }
 
-        public MethodInfo this[int index]
+        public AbstractExecuteModule this[int index]
         {
             get
             {
-                index.ValidationBetweenRange(0, Count - 1);
+                if (!entitiyDictionary.ContainsKey(index))
+                {
+                    index.ValidationBetweenRange(0, Count - 1);
+                    var item = MethodInfos.Skip(index).FirstOrDefault();
 
-                return MethodInfos.Skip(index).FirstOrDefault();
+                    entitiyDictionary.Add(index, Activator.CreateInstance(item) as AbstractExecuteModule);
+                }
+
+                return entitiyDictionary[index];
             }
         }
 
         public IEnumerable<string> GetMethodNames()
         {
-            return MethodInfos.Select(methodInfo => methodInfo.Name);
+            return MethodInfos.Select(item => item.Name);
         }
 
         public string RepositoryName
         {
-            get { return GetType().Name.Except(TRIMSTRING); }
+            get
+            {
+                return GetType().Name.Except(TRIMSTRING);
+            }
         }
-
         #endregion
     }
 }

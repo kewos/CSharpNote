@@ -27,12 +27,10 @@ using CSharpNote.Common.Extensions;
 using CSharpNote.Common.Helper;
 using CSharpNote.Common.Utility;
 using CSharpNote.Core.Implements;
-using CSharpNote.Data.CSharpPractice.Implement;
 using Microsoft.CSharp;
 
 namespace CSharpNote.Data.CSharpPractice
 {
-    [MarkedRepositoryAttribue]
     public class CSharpPracticeRepository : AbstractRepository
     {
         private const string SALT = "S9@)#IK9FI09";
@@ -53,13 +51,6 @@ namespace CSharpNote.Data.CSharpPractice
             };
         }
 
-        [MarkedItem]
-        public void CountIntLength()
-        {
-            //數字長度
-            var i = 165446546;
-            Console.WriteLine("int i = 165446546 長度為{0}", Convert.ToString(i).Count());
-        }
 
         [MarkedItem]
         public void AndOperator()
@@ -702,52 +693,11 @@ namespace CSharpNote.Data.CSharpPractice
             Console.WriteLine("where{0}, findall{1}", sw.ElapsedMilliseconds, sw1.ElapsedMilliseconds);
         }
 
-        [MarkedItem]
-        public void YieldPratice()
-        {
-            var pipe = new ChatPipeLine();
-            pipe.Collect(true, true);
-            pipe.Collect(true, true);
-            pipe.Collect(true, true);
-            pipe.Collect(true, true);
-            pipe.ReleaseAll();
-        }
+        
 
-        [MarkedItem]
-        public void ExplicitImplicitMethod()
-        {
-            //隱含轉換
-            TypeConvert obj1 = "test1";
-            Console.WriteLine(obj1.ToString());
+        
 
-            //明確轉換
-            var sb = new StringBuilder("test2");
-            var obj2 = (TypeConvert) sb;
-
-            //隱含轉換
-            if (obj2)
-            {
-                Console.WriteLine(obj2.ToString());
-            }
-
-            Console.Read();
-        }
-
-        [MarkedItem]
-        public void RealProxy()
-        {
-            var baby = LoggingProxy.Wrap(new Baby());
-            Console.WriteLine("Name = {0}", baby.Name);
-
-            try
-            {
-                baby.Sleep();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception = {0}", e.Message);
-            }
-        }
+        
 
         [MarkedItem]
         public void AwaitPratice()
@@ -1128,11 +1078,7 @@ namespace CSharpNote.Data.CSharpPractice
             }
         }
 
-        [MarkedItem]
-        public void DeferExcute()
-        {
-            new DeferExcuteCaculator(10).Add(1).Add(1).Add(1).Sub(5).Sub(5).Invoke().ToConsole();
-        }
+        
 
         /// <summary>
         ///     1.Parameter
@@ -1390,26 +1336,7 @@ namespace CSharpNote.Data.CSharpPractice
         {
         }
 
-        /// <summary>
-        ///     大於85000bytes的物件建立時分配於LOH(large object heap)
-        ///     LOH在建立的時候就屬於G2，只有在處理G2的回收時，才會處理LOH物件，並且不會壓縮空間
-        ///     當配置一個大物件時會優先在LOH的底部進行配置 如果空間不足會向程式請求更多的空間 若其餘空間也不足時
-        ///     才會考慮去使用之前被回收對象使用的空間
-        ///     85k|16mb|85k
-        ///     85k|16mb|85k|16mb+1|85k
-        ///     <- GC.Collect
-        ///         85 k|    |85 k|      |85 k
-        ///     <- allocation 16 mb + 2 throw MemoryOutException
-        /// </summary>
-        [MarkedItem("https://www.simple-talk.com/dotnet/.net-framework/the-dangers-of-the-large-object-heap/")]
-        public void TheDangersOfTheLargeObjectHeap()
-        {
-            var handler = new LargeObjectHeapHandler();
-            handler.Fill(true, true, false);
-            //handler.Fill(true, true, true);
-            //handler.Fill(false, true, false);
-            //handler.Fill(true, false, false);
-        }
+        
 
         /// <summary>
         ///     Conclusion

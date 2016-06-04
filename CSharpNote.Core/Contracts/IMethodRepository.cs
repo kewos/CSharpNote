@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Reflection;
+using CSharpNote.Core.Implements;
 
 namespace CSharpNote.Core.Contracts
 {
@@ -18,7 +18,7 @@ namespace CSharpNote.Core.Contracts
         /// <summary>
         ///     indexer
         /// </summary>
-        MethodInfo this[int index] { get; }
+        AbstractExecuteModule this[int index] { get; }
 
         /// <summary>
         ///     取得MethodInfoNames

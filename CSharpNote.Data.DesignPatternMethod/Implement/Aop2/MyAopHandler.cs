@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Remoting.Messaging;
 
-namespace CSharpNote.Data.DesignPattern.Implement
+namespace CSharpNote.Data.DesignPattern.Implement.Aop2
 {
     public sealed class MyAopHandler : IMessageSink
     {

@@ -1,8 +1,24 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using CSharpNote.Common.Attributes;
+using CSharpNote.Core.Implements;
 
 namespace CSharpNote.Data.CSharpPractice.Implement
 {
+    public class YieldPratice : AbstractExecuteModule
+    {
+        [MarkedItem]
+        public override void Execute()
+        {
+            var pipe = new ChatPipeLine();
+            pipe.Collect(true, true);
+            pipe.Collect(true, true);
+            pipe.Collect(true, true);
+            pipe.Collect(true, true);
+            pipe.ReleaseAll();
+        }
+    }
+
     public class ChatPipeLine
     {
         private IChatSomething curent;
@@ -54,7 +70,6 @@ namespace CSharpNote.Data.CSharpPractice.Implement
         public abstract void Speak(string name);
         public IChatSomething Next { get; set; }
     }
-
 
     public class SayHello : BasicChat
     {

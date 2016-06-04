@@ -41,11 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CSharpPracticeRepository.cs" />
-    <Compile Include="Implement\LargeObjectHeapHandler.cs" />
-    <Compile Include="Implement\DeferExcuteCaculator.cs" />
-    <Compile Include="Implement\RealProxy.cs" />
-    <Compile Include="Implement\TypeConvert.cs" />
+    <Compile Include="Implement\TestRealProxy.cs" />
+    <Compile Include="Implement\ExplicitImplicitMethod.cs" />
     <Compile Include="Implement\YieldPratice.cs" />
+    <Compile Include="Implement\TheDangersOfTheLargeObjectHeap.cs" />
+    <Compile Include="Implement\DeferExcute.cs" />
+    <Compile Include="Implement\z.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
