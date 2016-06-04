@@ -10,7 +10,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
         /// <summary>
         ///     著重於動態擴充方法功能
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             new DecoratorB(new DecoratorA(new ConcreteComponentA())).Operation().ToConsole();

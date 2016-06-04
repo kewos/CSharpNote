@@ -8,7 +8,7 @@ namespace CSharpNote.Data.CSharpPractice.Implement
 {
     public class DeferExcute : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             new DeferExcuteCaculator(10)

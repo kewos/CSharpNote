@@ -8,7 +8,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class RepeatedDnaSequences : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var dna = "AAAAACCCCCAAAAACCCCCAAAAAGGGTTT";

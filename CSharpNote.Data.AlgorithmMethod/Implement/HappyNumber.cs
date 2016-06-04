@@ -8,7 +8,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class HappyNumber : AbstractExecuteModule
     {
-        [MarkedItem("https://leetcode.com/problems/happy-number/")]
+        [AopTarget("https://leetcode.com/problems/happy-number/")]
         public override void Execute()
         {
             IsHappy(7).ToConsole();
@@ -27,7 +27,7 @@ namespace CSharpNote.Data.Algorithm.Implement
             var hashSet = new HashSet<int>();
             while (true)
             {
-                number = number.DecomposeNoSignDigit().Sum(digit => digit * digit);
+                number = number.DecomposeNoSignDigit().Sum(digit => digit*digit);
                 if (number == 1)
                     return true;
 

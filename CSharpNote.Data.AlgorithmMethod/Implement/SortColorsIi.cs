@@ -15,10 +15,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //Could you come up with an one-pass algorithm using only constant space?
     public class SortColorsIi : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/sort-colors/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/sort-colors/")]
         public override void Execute()
         {
-            var colors = new List<int> { 1, 1, 2, 1, 0, 1, 2, 1, 0, 1, 1, 2 };
+            var colors = new List<int> {1, 1, 2, 1, 0, 1, 2, 1, 0, 1, 1, 2};
             int blue = -1, white = -1, red = -1;
             for (var i = 0; i < colors.Count; i++)
             {

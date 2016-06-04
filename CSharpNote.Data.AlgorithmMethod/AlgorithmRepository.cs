@@ -3,6 +3,6 @@
 namespace CSharpNote.Data.Algorithm
 {
     public class AlgorithmRepository : AbstractRepository
-    { 
+    {
     }
 }

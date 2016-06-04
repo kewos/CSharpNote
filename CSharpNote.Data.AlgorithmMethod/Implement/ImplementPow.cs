@@ -6,7 +6,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class ImplementPow : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/search-a-2d-matrix/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/search-a-2d-matrix/")]
         public override void Execute()
         {
             Console.WriteLine(GetImplementPow(3, 3));
@@ -20,11 +20,11 @@ namespace CSharpNote.Data.Algorithm.Implement
             if (y == 1)
                 return x;
 
-            var temp = GetImplementPow(x, y / 2);
-            if (y % 2 == 0)
-                return temp * temp;
+            var temp = GetImplementPow(x, y/2);
+            if (y%2 == 0)
+                return temp*temp;
 
-            return x * temp * temp;
+            return x*temp*temp;
         }
     }
 }

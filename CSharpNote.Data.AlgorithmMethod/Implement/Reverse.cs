@@ -8,7 +8,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class Reverse : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             GetReverse(1534236469).ToConsole();
@@ -26,7 +26,7 @@ namespace CSharpNote.Data.Algorithm.Implement
             {
                 checked
                 {
-                    return sign * Convert.ToInt32(tempString);
+                    return sign*Convert.ToInt32(tempString);
                 }
             }
             catch (Exception e)

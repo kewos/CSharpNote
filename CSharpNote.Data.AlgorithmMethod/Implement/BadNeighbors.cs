@@ -8,19 +8,19 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class BadNeighbors : AbstractExecuteModule
     {
-        [MarkedItem(@"http://community.topcoder.com/tc?module=ProblemDetail&rd=5009&pm=2402")]
+        [AopTarget(@"http://community.topcoder.com/tc?module=ProblemDetail&rd=5009&pm=2402")]
         public override void Execute()
         {
-            var donations = new List<int> { 10, 3, 2, 5, 7, 8 };
+            var donations = new List<int> {10, 3, 2, 5, 7, 8};
             Console.WriteLine(MaxDonations(donations));
 
-            var donations1 = new List<int> { 11, 15 };
+            var donations1 = new List<int> {11, 15};
             Console.WriteLine(MaxDonations(donations1));
 
-            var donations2 = new List<int> { 7, 7, 7, 7, 7, 7, 7 };
+            var donations2 = new List<int> {7, 7, 7, 7, 7, 7, 7};
             Console.WriteLine(MaxDonations(donations2));
 
-            var donations3 = new List<int> { 1, 2, 3, 4, 5, 1, 2, 3, 4, 5 };
+            var donations3 = new List<int> {1, 2, 3, 4, 5, 1, 2, 3, 4, 5};
             Console.WriteLine(MaxDonations(donations3));
 
             var donations4 = new List<int>

@@ -8,7 +8,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class MinWindow : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var s = "abeceeeeeea";
@@ -54,7 +54,7 @@ namespace CSharpNote.Data.Algorithm.Implement
                 //³Ì¤pªºindex
                 firstIndex = dictionary
                     .Select(item => item.Value.Peek())
-                    .Concat(new[] { s.Length })
+                    .Concat(new[] {s.Length})
                     .Min();
 
                 var len = index - firstIndex + 1;

@@ -10,12 +10,12 @@ namespace CSharpNote.Data.DataStructure.Implement
 {
     public class TestBuffer : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var buffer = new Buffer<int>(3);
             buffer.Write(Enumerable.Range(0, 3));
-            var assert = new List<int> { 2, 1, 0 };
+            var assert = new List<int> {2, 1, 0};
             (buffer.Count() == 3).ToConsole("Count is 3:");
             buffer.All((index, element) => assert[index] == element).ToConsole("elements is {2, 1, 0}");
 

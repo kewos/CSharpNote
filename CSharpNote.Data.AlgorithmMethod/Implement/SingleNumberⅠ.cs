@@ -7,10 +7,10 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class SingleNumber¢¹ : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
-            var nums = new[] { 1, 1, 2, 2, 10, 5, 10, 3, 3, 4, 4 };
+            var nums = new[] {1, 1, 2, 2, 10, 5, 10, 3, 3, 4, 4};
 
             GetSingleNumber¢¹(nums).ToConsole();
         }

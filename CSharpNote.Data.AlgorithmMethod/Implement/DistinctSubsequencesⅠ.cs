@@ -7,7 +7,8 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class DistinctSubsequences¢¹ : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/discuss/2143/any-better-solution-that-takes-less-than-space-while-in-time")]
+        [AopTarget(@"https://oj.leetcode.com/discuss/2143/any-better-solution-that-takes-less-than-space-while-in-time")
+        ]
         public override void Execute()
         {
             var s = "aaa";

@@ -59,7 +59,7 @@ namespace CSharpNote.Core.Test
             var actual = repository.GetMethodNames().ToList();
 
             //Validation
-            var expect = new List<string> { "Test1", "Test2", "Test3" };
+            var expect = new List<string> {"Test1", "Test2", "Test3"};
             Assert.IsTrue(actual.SequenceEqual(expect));
         }
 
@@ -79,26 +79,26 @@ namespace CSharpNote.Core.Test
             action.AssertHandleException<ArgumentException>();
         }
 
-        [MarkedRepositoryAttribue]
+        [AopClassAttribue]
         private class testRepository : AbstractRepository
         {
-            [MarkedItem]
+            [AopTarget]
             public void Test1()
             {
             }
 
-            [MarkedItem]
+            [AopTarget]
             public void Test2()
             {
             }
 
-            [MarkedItem]
+            [AopTarget]
             public void Test3()
             {
             }
         }
 
-        [MarkedRepositoryAttribue]
+        [AopClassAttribue]
         private class testRepositories : AbstractRepository
         {
         }

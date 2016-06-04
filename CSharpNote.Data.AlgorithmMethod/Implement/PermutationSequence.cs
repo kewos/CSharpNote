@@ -8,7 +8,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class PermutationSequence : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/permutation-sequence/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/permutation-sequence/")]
         public override void Execute()
         {
             GetPermutationSequence(3).DumpMany();
@@ -17,8 +17,8 @@ namespace CSharpNote.Data.Algorithm.Implement
         private List<List<int>> GetPermutationSequence(int n)
         {
             var containElement = Enumerable.Range(1, n).ToList();
-            var sets = containElement.Select(elements => new List<int> { elements }).ToList();
-            containElement.Select(elements => new List<int> { elements });
+            var sets = containElement.Select(elements => new List<int> {elements}).ToList();
+            containElement.Select(elements => new List<int> {elements});
             for (var i = 1; i < n; i++)
             {
                 var temp = new List<List<int>>();

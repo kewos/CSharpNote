@@ -10,7 +10,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     //"((()))", "(()())", "(())()", "()(())", "()()()"
     public class GenerateParentheses : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/generate-parentheses/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/generate-parentheses/")]
         public override void Execute()
         {
             GetGenerateParenthesesⅰ(6).Dump();
@@ -35,7 +35,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 
         private List<string> GetGenerateParenthesesⅰ(int n)
         {
-            var set = new List<string> { "()" };
+            var set = new List<string> {"()"};
             var tempSet = new List<string>();
             for (var i = 1; i < n; i++)
             {

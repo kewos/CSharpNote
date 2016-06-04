@@ -8,10 +8,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //Write a function to find the longest common prefix string amongst an array of strings.
     public class LongestCommonPrefix : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/longest-common-prefix/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/longest-common-prefix/")]
         public override void Execute()
         {
-            var items = new string[] { };
+            var items = new string[] {};
 
             DoLongestCommonPrefix(items).ToConsole();
         }

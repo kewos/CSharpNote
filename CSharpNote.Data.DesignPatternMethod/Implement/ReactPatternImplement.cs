@@ -10,7 +10,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
         /// <summary>
         ///     Reference:http://www.robertsindall.co.uk/blog/the-reactor-pattern-using-c-sharp/
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             IEventHandler client1 = new MessageEventHandler(IPAddress.Parse("123.123.123.123"), 123);

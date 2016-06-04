@@ -18,7 +18,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     //Note: It is intended for the problem statement to be ambiguous. You should gather all requirements up front before implementing one.
     public class ValidNumber : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             IsNumberic("0");

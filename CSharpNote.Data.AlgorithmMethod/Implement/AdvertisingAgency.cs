@@ -7,16 +7,16 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class AdvertisingAgency : AbstractExecuteModule
     {
-        [MarkedItem(@"http://community.topcoder.com/stat?c=problem_statement&pm=7558")]
+        [AopTarget(@"http://community.topcoder.com/stat?c=problem_statement&pm=7558")]
         public override void Execute()
         {
-            var input1 = new List<int> { 1, 2, 3 };
+            var input1 = new List<int> {1, 2, 3};
             Console.WriteLine(NumberOfRejections(input1));
 
-            var input2 = new List<int> { 1, 1, 1 };
+            var input2 = new List<int> {1, 1, 1};
             Console.WriteLine(NumberOfRejections(input2));
 
-            var input3 = new List<int> { 1, 2, 1, 2 };
+            var input3 = new List<int> {1, 2, 1, 2};
             Console.WriteLine(NumberOfRejections(input3));
         }
 

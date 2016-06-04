@@ -12,10 +12,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //Your algorithm should run in O(n) time and uses constant space.
     public class FirstMissingPositive : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/first-missing-positive/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/first-missing-positive/")]
         public override void Execute()
         {
-            GetFirstMissingPositive(new[] { 4, 3, 4, 1, 1, 4, 1, 4 }).ToConsole();
+            GetFirstMissingPositive(new[] {4, 3, 4, 1, 1, 4, 1, 4}).ToConsole();
         }
 
         public int GetFirstMissingPositive(int[] nums)

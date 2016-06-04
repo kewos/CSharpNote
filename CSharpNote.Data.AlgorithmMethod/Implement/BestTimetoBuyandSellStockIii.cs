@@ -8,7 +8,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class BestTimetoBuyandSellStockIii : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             //https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
@@ -16,7 +16,7 @@ namespace CSharpNote.Data.Algorithm.Implement
             //Design an algorithm to find the maximum profit. You may complete at most two transactions.
             //Note:
             //You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
-            var prices = new List<int> { 10, 5, 8, 1, 5, 3, 9, 4, 2, 6, 5 };
+            var prices = new List<int> {10, 5, 8, 1, 5, 3, 9, 4, 2, 6, 5};
             var set = new List<List<int>>();
             var p = 0;
             for (var i = 0; i < prices.Count() - 1; i++)
@@ -24,7 +24,7 @@ namespace CSharpNote.Data.Algorithm.Implement
                 if (prices[i + 1] < prices[i])
                 {
                     if (i != p)
-                        set.Add(new List<int> { p, i });
+                        set.Add(new List<int> {p, i});
 
                     p = i + 1;
                 }
@@ -33,7 +33,7 @@ namespace CSharpNote.Data.Algorithm.Implement
                     continue;
 
                 if (i != p)
-                    set.Add(new List<int> { p, i + 1 });
+                    set.Add(new List<int> {p, i + 1});
             }
 
             var maxProfitOfTwoTransaction =

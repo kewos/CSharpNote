@@ -17,10 +17,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     /// </summary>
     public class ThreeSum : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
-            GetThreeSum(new[] { -2, 0, 1, 1, 2 }).DumpMany();
+            GetThreeSum(new[] {-2, 0, 1, 1, 2}).DumpMany();
         }
 
         private List<List<int>> GetThreeSum(int[] nums)
@@ -39,7 +39,7 @@ namespace CSharpNote.Data.Algorithm.Implement
                     var sum = nums[index1] + nums[index2] + nums[index3];
                     if (sum == 0)
                     {
-                        result.Add(new SumItem { nums[index1], nums[index2], nums[index3] });
+                        result.Add(new SumItem {nums[index1], nums[index2], nums[index3]});
                         index2++;
                         index3--;
                     }
@@ -71,7 +71,7 @@ namespace CSharpNote.Data.Algorithm.Implement
                         var sum = nums[index1] + nums[index2] + nums[index3] + nums[index4];
                         if (sum == target)
                         {
-                            result.Add(new SumItem { nums[index1], nums[index2], nums[index3], nums[index4] });
+                            result.Add(new SumItem {nums[index1], nums[index2], nums[index3], nums[index4]});
                             index3++;
                             index4--;
                         }
@@ -92,7 +92,7 @@ namespace CSharpNote.Data.Algorithm.Implement
             {
                 unchecked
                 {
-                    return this.Aggregate(19, (current, item) => current * 31 + item.GetHashCode());
+                    return this.Aggregate(19, (current, item) => current*31 + item.GetHashCode());
                 }
             }
 

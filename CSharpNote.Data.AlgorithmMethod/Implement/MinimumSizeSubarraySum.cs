@@ -7,10 +7,10 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class MinimumSizeSubarraySum : AbstractExecuteModule
     {
-        [MarkedItem("https://leetcode.com/problems/minimum-size-subarray-sum/")]
+        [AopTarget("https://leetcode.com/problems/minimum-size-subarray-sum/")]
         public override void Execute()
         {
-            var elements = new[] { 2, 3, 1, 2, 4, 3 };
+            var elements = new[] {2, 3, 1, 2, 4, 3};
             var solution = 7;
 
             GetMinimumSizeSubarraySum(solution, elements).ToConsole();

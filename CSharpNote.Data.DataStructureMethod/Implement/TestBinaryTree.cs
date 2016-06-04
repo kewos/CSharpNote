@@ -7,7 +7,7 @@ namespace CSharpNote.Data.DataStructure.Implement
 {
     public class TestBinaryTree : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var n7 = new TreeNode<int>(7);

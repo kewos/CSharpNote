@@ -7,7 +7,7 @@ namespace CSharpNote.Data.DataStructure.Implement.Sort
     {
         public ComparisonComparer(Comparison<T> comparsion)
         {
-            this.Comparsion = comparsion;
+            Comparsion = comparsion;
         }
 
         public Comparison<T> Comparsion { get; set; }

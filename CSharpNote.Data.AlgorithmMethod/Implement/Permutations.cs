@@ -12,7 +12,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     //[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1]
     public class Permutations : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/permutations/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/permutations/")]
         public override void Execute()
         {
             var elements = Enumerable.Range(1, 7).ToList();
@@ -24,7 +24,7 @@ namespace CSharpNote.Data.Algorithm.Implement
         {
             var subSets = new List<List<int>>();
             if (level == 0)
-                return new List<List<int>> { sub };
+                return new List<List<int>> {sub};
 
             if (sub == null)
                 sub = new List<int>();

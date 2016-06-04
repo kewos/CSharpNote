@@ -8,7 +8,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
 {
     public class SpecificationPatternImplement : AbstractExecuteModule
     {
-        [MarkedItem(
+        [AopTarget(
             "http://www.codeproject.com/Articles/670115/Specification-pattern-in-Csharp",
             "http://en.wikipedia.org/wiki/Specification_pattern#mediaviewer/File:Specification_UML_v2.png")]
         public override void Execute()

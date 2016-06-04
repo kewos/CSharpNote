@@ -15,9 +15,7 @@
         }
 
         public T Value { get; private set; }
-
         public TreeNode<T> Left { get; private set; }
-
         public TreeNode<T> Right { get; private set; }
     }
 }

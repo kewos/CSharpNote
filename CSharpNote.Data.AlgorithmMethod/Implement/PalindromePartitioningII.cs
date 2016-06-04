@@ -7,7 +7,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class PalindromePartitioningII : AbstractExecuteModule
     {
-        [MarkedItem("https://oj.leetcode.com/problems/palindrome-partitioning-ii/")]
+        [AopTarget("https://oj.leetcode.com/problems/palindrome-partitioning-ii/")]
         public override void Execute()
         {
             GetPalindromePartitioningII("aaabaaacc").Dump();

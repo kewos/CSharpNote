@@ -14,10 +14,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     /// </summary>
     public class CombinationSum2 : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
-            var result = GetCombinationSum2(new[] { 1, 1 }, 1);
+            var result = GetCombinationSum2(new[] {1, 1}, 1);
             result.DumpMany();
         }
 

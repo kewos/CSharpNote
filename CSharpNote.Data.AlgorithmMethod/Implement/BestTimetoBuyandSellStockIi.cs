@@ -13,10 +13,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
     public class BestTimetoBuyandSellStockIi : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
-            var prices = new List<int> { 10, 5, 8, 1, 5, 3, 9, 4, 2, 6, 7 };
+            var prices = new List<int> {10, 5, 8, 1, 5, 3, 9, 4, 2, 6, 7};
             var totalProfit = 0;
             for (var i = 0; i < prices.Count() - 1; i++)
             {

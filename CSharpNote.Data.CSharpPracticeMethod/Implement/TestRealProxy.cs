@@ -9,7 +9,7 @@ namespace CSharpNote.Data.CSharpPractice.Implement
 {
     public class TestRealProxy : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var baby = LoggingProxy.Wrap(new Baby());
@@ -82,7 +82,7 @@ namespace CSharpNote.Data.CSharpPractice.Implement
         public static T Wrap<T>(T target)
             where T : MarshalByRefObject
         {
-            return (T)new LoggingProxy(target).GetTransparentProxy();
+            return (T) new LoggingProxy(target).GetTransparentProxy();
         }
     }
 }

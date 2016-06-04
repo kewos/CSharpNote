@@ -7,7 +7,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class ContainsNearbyDuplicate : AbstractExecuteModule
     {
-        [MarkedItem("https://leetcode.com/problems/contains-duplicate-ii/")]
+        [AopTarget("https://leetcode.com/problems/contains-duplicate-ii/")]
         public override void Execute()
         {
         }
@@ -23,7 +23,7 @@ namespace CSharpNote.Data.Algorithm.Implement
                 var num = nums[index];
                 if (!dic.ContainsKey(num))
                 {
-                    dic.Add(num, new HashSet<int> { index });
+                    dic.Add(num, new HashSet<int> {index});
                     continue;
                 }
 

@@ -16,18 +16,18 @@ namespace CSharpNote.Common.Extensions
         }
 
         /// <summary>
-        /// 取得因子
+        ///     取得因子
         /// </summary>
         /// <param name="number">需取得因子數字</param>
         /// <returns>全部因子</returns>
         public static List<int> Factor(this int number)
         {
             var factors = new List<int>();
-            foreach (var factor in Enumerable.Range(1, (int)Math.Floor(Math.Sqrt(number))).Where(x => number % x == 0))
+            foreach (var factor in Enumerable.Range(1, (int) Math.Floor(Math.Sqrt(number))).Where(x => number%x == 0))
             {
                 factors.Add(factor);
-                if (!factors.Contains(number / factor))
-                    factors.Add(number / factor);
+                if (!factors.Contains(number/factor))
+                    factors.Add(number/factor);
             }
 
             return factors;
@@ -52,6 +52,6 @@ namespace CSharpNote.Common.Extensions
                 return true;
 
             return number.PrimesWithinRange().Contains(number);
-        } 
+        }
     }
 }

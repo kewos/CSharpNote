@@ -7,7 +7,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class LengthOfLastWord1 : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             GetLengthOfLastWord("abc abca abc").ToConsole();

@@ -11,7 +11,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
         /// <summary>
         ///     獨立Filter的樣式
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var address = new List<Address>

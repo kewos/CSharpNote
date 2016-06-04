@@ -9,7 +9,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
         /// <summary>
         ///     實作IClone透過複製來產生實體
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var colormanager = new ColorManager();

@@ -7,7 +7,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
 {
     public class LazyInitialImplement : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             GroupItem.GetByName("A").ToConsole();

@@ -16,7 +16,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     //This is because the new interval [4,9] overlaps with [3,5],[6,7],[8,10].
     public class InsertInterval : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var intSet = new List<List<int>>
@@ -27,7 +27,7 @@ namespace CSharpNote.Data.Algorithm.Implement
                 new List<int> {8, 10},
                 new List<int> {12, 16}
             };
-            var newInterval = new List<int> { 1, 100 };
+            var newInterval = new List<int> {1, 100};
 
             Insert(intSet, newInterval).ForEach(set => Console.WriteLine("[{0},{1}]", set[0], set[1]));
         }
@@ -38,7 +38,7 @@ namespace CSharpNote.Data.Algorithm.Implement
             var list = intSet.Where(set => !(interval[0] < set[0] && interval[1] > set[1]));
             var start = list.Where(set => interval[0] <= set[1] && interval[1] >= set[1]).Min(set => set[0]);
             var end = list.Where(set => interval[1] >= set[0] && interval[0] <= set[0]).Max(set => set[1]);
-            var newInterval = new List<int> { start, end };
+            var newInterval = new List<int> {start, end};
             var need = list.Where(set => set[1] <= interval[0] || set[0] >= interval[1]).ToList();
 
             need.Add(newInterval);

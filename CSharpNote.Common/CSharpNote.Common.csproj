@@ -52,8 +52,8 @@
     <Compile Include="Attributes\TimeExecuteDecorator.cs" />
     <Compile Include="Attributes\RequiredAttribute.cs" />
     <Compile Include="Extensions\AssertExtensions.cs" />
-    <Compile Include="Attributes\MarkedRepositoryAttribue.cs" />
-    <Compile Include="Attributes\MarkedItemAttribute.cs" />
+    <Compile Include="Attributes\AopClassAttribue.cs" />
+    <Compile Include="Attributes\AopTargetAttribute.cs" />
     <Compile Include="Extensions\ActionExtensions.cs" />
     <Compile Include="Extensions\ArrayExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />

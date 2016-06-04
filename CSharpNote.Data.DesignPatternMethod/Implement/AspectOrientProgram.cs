@@ -13,14 +13,14 @@ namespace CSharpNote.Data.DesignPattern.Implement
         ///     常用於input validation, log等功能
         ///     可讓程式更符合單一責則的設計原則
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             AOP.Registry.Join(
-                typeof(Actor).GetConstructors().First(),
-                typeof(Concern).GetConstructors().First()
+                typeof (Actor).GetConstructors().First(),
+                typeof (Concern).GetConstructors().First()
                 );
-            var actor = (IActor)AOP.Factory.Create<Actor>("");
+            var actor = (IActor) AOP.Factory.Create<Actor>("");
 
             Console.WriteLine(actor.Name);
             Console.WriteLine(new Actor("adabcbc").Name);

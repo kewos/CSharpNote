@@ -7,17 +7,17 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class ArrayListAllSubSet : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
-            var set = new List<int> { 1, 5, 9, 100, 4, 99, 88 };
+            var set = new List<int> {1, 5, 9, 100, 4, 99, 88};
             GetArrayListAllSubSet(set).DumpMany();
         }
 
         private List<List<int>> GetArrayListAllSubSet(List<int> set, List<int> subset = null, int index = 0)
         {
             if (index >= set.Count)
-                return new List<List<int>> { subset };
+                return new List<List<int>> {subset};
 
             var newset1 = new List<int>();
             var newset2 = new List<int>();

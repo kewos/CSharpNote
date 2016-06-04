@@ -9,7 +9,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     //https://leetcode.com/problems/number-of-1-bits/
     public class HammingWeight : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             GetHammingWeight(1).ToConsole();

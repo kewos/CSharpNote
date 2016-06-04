@@ -8,11 +8,11 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class SummaryRanges : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             //https://leetcode.com/problems/summary-ranges/
-            var nums = new[] { 0, 1, 2, 4, 5, 7 };
+            var nums = new[] {0, 1, 2, 4, 5, 7};
 
             GetSummaryRanges(nums).Dump();
         }

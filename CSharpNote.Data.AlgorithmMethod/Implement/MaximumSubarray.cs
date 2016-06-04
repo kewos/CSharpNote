@@ -10,10 +10,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //the contiguous subarray [4,−1,2,1] has the largest sum = 6.
     public class MaximumSubarray : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/maximum-subarray/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/maximum-subarray/")]
         public override void Execute()
         {
-            var array = new List<int> { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+            var array = new List<int> {-2, 1, -3, 4, -1, 2, 1, -5, 4};
 
             Console.WriteLine(GetMaximumSubarray(array));
         }

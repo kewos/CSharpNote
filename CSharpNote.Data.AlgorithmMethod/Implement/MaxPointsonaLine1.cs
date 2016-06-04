@@ -11,7 +11,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     //MaxPoints(points).ToConsole();
     public class MaxPointsonaLine1 : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var points = new[]
@@ -32,7 +32,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 
         private int MaxPoints(Point[] points)
         {
-            var pointCountGroup = points.GroupBy(p => new { p.x, p.y }).ToDictionary(g =>
+            var pointCountGroup = points.GroupBy(p => new {p.x, p.y}).ToDictionary(g =>
                 new Point
                 {
                     x = g.Key.x,
@@ -54,7 +54,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 
                     var slope = CaculateSlopeA(p1, p2);
                     if (!slopePointGroup.ContainsKey(slope))
-                        slopePointGroup.Add(slope, new List<Point> { p1 });
+                        slopePointGroup.Add(slope, new List<Point> {p1});
 
                     if (!slopePointGroup[slope].Contains(p2))
                         slopePointGroup[slope].Add(p2);
@@ -74,7 +74,7 @@ namespace CSharpNote.Data.Algorithm.Implement
             if (point1.x == point2.x)
                 return float.MaxValue;
 
-            return (point2.y - point1.y) / (point2.x - point1.x);
+            return (point2.y - point1.y)/(point2.x - point1.x);
         }
 
         private class Point

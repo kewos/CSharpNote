@@ -8,7 +8,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
 {
     public class NullObjectPatternImplement : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var repository = new ObjectRespository(new List<ObjectBase>

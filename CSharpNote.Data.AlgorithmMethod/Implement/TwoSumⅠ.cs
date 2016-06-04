@@ -14,10 +14,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     /// </summary>
     public class TwoSum¢¹ : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
-            GetTwoSum¢¹(new[] { 3, 2, 4 }, 6).Dump();
+            GetTwoSum¢¹(new[] {3, 2, 4}, 6).Dump();
         }
 
         private int[] GetTwoSum¢¹(int[] nums, int target)
@@ -28,7 +28,7 @@ namespace CSharpNote.Data.Algorithm.Implement
             {
                 var num = nums[i];
                 if (dictionary.ContainsKey(num))
-                    return new[] { dictionary[num] + 1, i + 1 };
+                    return new[] {dictionary[num] + 1, i + 1};
 
                 dictionary[target - num] = i;
             }

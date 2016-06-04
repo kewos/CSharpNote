@@ -15,7 +15,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
         ///     並且依賴注入的物件都可以借由繼承Interface的方式來產生假物件
         ///     達到可測式的程式碼的目標
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var container = DependecyConainer.Instance;

@@ -14,12 +14,12 @@ namespace CSharpNote.Data.DesignPattern.Implement
         ///     that have part of their internal state in common where the other part of state can
         ///     vary.
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var factory = new FlyweightFactory();
             Enumerable.Range(1, 30)
-                .Select(n => factory.Get(n % 3))
+                .Select(n => factory.Get(n%3))
                 .ForEach(obj => obj.Execute());
         }
     }

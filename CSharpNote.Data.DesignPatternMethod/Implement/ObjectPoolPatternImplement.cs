@@ -11,7 +11,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
         /// <summary>
         ///     釋放物件時回到物件池提供再使用
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var resouce = Enumerable.Range(1, 10).Select(n =>

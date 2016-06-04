@@ -8,7 +8,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
 {
     public class StatetPatternImplement : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var context = new Context(new StateA());

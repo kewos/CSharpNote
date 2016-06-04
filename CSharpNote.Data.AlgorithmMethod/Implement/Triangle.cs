@@ -20,11 +20,9 @@ namespace CSharpNote.Data.Algorithm.Implement
     //Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.
     public class Triangle : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
-            
-
             var triangle = new List<List<int>>
             {
                 new List<int> {2},
@@ -41,7 +39,7 @@ namespace CSharpNote.Data.Algorithm.Implement
         private List<List<int>> GetMinValueByTrianglePath(List<List<int>> triangle, int level, int index)
         {
             if (level + 1 >= triangle.Count)
-                return new List<List<int>> { new List<int> { triangle[level][index] } };
+                return new List<List<int>> {new List<int> {triangle[level][index]}};
 
             var leftValue = GetMinValueByTrianglePath(triangle, level + 1, index);
             var righttValue = GetMinValueByTrianglePath(triangle, level + 1, index + 1);

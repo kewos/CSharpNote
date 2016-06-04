@@ -10,7 +10,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     //The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
     public class MinimumDepthOfBinaryTree : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             Console.WriteLine(GetMinimumDepthOfBinaryTree(GetRootOfTree()));
@@ -18,12 +18,12 @@ namespace CSharpNote.Data.Algorithm.Implement
 
         private Node GetRootOfTree()
         {
-            var root = new Node { Key = 1 };
-            var node2 = new Node { Key = 2 };
-            var node3 = new Node { Key = 3 };
-            var node4 = new Node { Key = 4 };
-            var node5 = new Node { Key = 5 };
-            var node6 = new Node { Key = 6 };
+            var root = new Node {Key = 1};
+            var node2 = new Node {Key = 2};
+            var node3 = new Node {Key = 3};
+            var node4 = new Node {Key = 4};
+            var node5 = new Node {Key = 5};
+            var node6 = new Node {Key = 6};
             root.Left = node2;
             root.Right = node5;
             node2.Right = node4;

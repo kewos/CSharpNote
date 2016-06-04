@@ -6,7 +6,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class InterleavingString : AbstractExecuteModule
     {
-        [MarkedItem("https://oj.leetcode.com/problems/interleaving-string/")]
+        [AopTarget("https://oj.leetcode.com/problems/interleaving-string/")]
         public override void Execute()
         {
             var s1 = "a";

@@ -7,10 +7,10 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class RemoveDuplicatesFromSortedListii : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list-ii/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list-ii/")]
         public override void Execute()
         {
-            var list = new List<int> { 1, 1, 1, 1, 2, 5, 6, 9, 88, 88, 99, 99, 99, 100 };
+            var list = new List<int> {1, 1, 1, 1, 2, 5, 6, 9, 88, 88, 99, 99, 99, 100};
 
             GetRemoveDuplicatesFromSortedListii(list).Dump();
         }

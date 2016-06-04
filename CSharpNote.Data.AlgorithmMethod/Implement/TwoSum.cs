@@ -13,10 +13,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //Output: index1=1, index2=2
     public class TwoSum : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
-            var input = new List<int> { 2, 7, 2, 11, 15 };
+            var input = new List<int> {2, 7, 2, 11, 15};
             var target = 9;
 
             FindMatchTargetIndex(input, target).DumpMany();
@@ -31,7 +31,7 @@ namespace CSharpNote.Data.Algorithm.Implement
             {
                 target -= numberList[index + range];
                 if (target == 0)
-                    sets.Add(new List<int> { index, index + range });
+                    sets.Add(new List<int> {index, index + range});
 
                 if (target > 0)
                     range++;

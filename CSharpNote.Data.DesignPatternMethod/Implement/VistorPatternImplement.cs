@@ -7,7 +7,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
 {
     public class VistorPatternImplement : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var buffetDinner = new BuffetDinner();

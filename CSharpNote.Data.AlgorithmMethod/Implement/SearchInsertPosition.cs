@@ -15,10 +15,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //[1,3,5,6], 0 → 0
     public class SearchInsertPosition : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/search-insert-position/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/search-insert-position/")]
         public override void Execute()
         {
-            var testArray = new List<int> { 1, 3, 5, 6 };
+            var testArray = new List<int> {1, 3, 5, 6};
 
             Console.WriteLine(GetSearchInsertPositionⅰ(testArray, 5));
         }
@@ -28,7 +28,7 @@ namespace CSharpNote.Data.Algorithm.Implement
             var n = 0;
             while (n < array.Count())
             {
-                if (target <= array[n]) 
+                if (target <= array[n])
                     return n;
 
                 n++;
@@ -50,7 +50,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 
             while (low < height)
             {
-                var mid = low + (height - low) / 2;
+                var mid = low + (height - low)/2;
                 if (target > array[mid])
                     low = mid + 1;
                 else if (target < array[mid])

@@ -28,7 +28,7 @@ namespace CSharpNote.Common.Attributes
 
         #region Private method
 
-        private IMessage CaculateExecuteTime(IMessage msg, MarkedItemAttribute info)
+        private IMessage CaculateExecuteTime(IMessage msg, AopTargetAttribute info)
         {
             Console.Clear();
             using (new TimeMeasurer())
@@ -45,7 +45,7 @@ namespace CSharpNote.Common.Attributes
         {
             var methodCall = msg as IMethodCallMessage;
             var info =
-                Attribute.GetCustomAttribute(methodCall.MethodBase, typeof (MarkedItemAttribute)) as MarkedItemAttribute;
+                Attribute.GetCustomAttribute(methodCall.MethodBase, typeof (AopTargetAttribute)) as AopTargetAttribute;
 
             return (info == null)
                 ? NextSink.SyncProcessMessage(msg)

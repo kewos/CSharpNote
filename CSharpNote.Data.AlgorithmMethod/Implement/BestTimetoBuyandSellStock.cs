@@ -11,10 +11,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.
     public class BestTimetoBuyandSellStock : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
-            var price = new List<int> { 2, 1 };
+            var price = new List<int> {2, 1};
 
             Console.WriteLine(GetBestTimeToBuyAndSell(price));
         }
@@ -26,7 +26,7 @@ namespace CSharpNote.Data.Algorithm.Implement
                 || prices.Any(p => p < 0))
                 return 0;
 
-            var min = new List<int> { 0 };
+            var min = new List<int> {0};
             var maxBenifit = 0;
             for (var index = 1; index < prices.Count(); index++)
             {

@@ -10,7 +10,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
         /// <summary>
         ///     合成代替繼承 減少藕合
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var elements = new List<IBridgeShape>

@@ -7,7 +7,7 @@ namespace CSharpNote.Data.CSharpPractice.Implement
 {
     public class ExplicitImplicitMethod : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             //隱含轉換
@@ -16,7 +16,7 @@ namespace CSharpNote.Data.CSharpPractice.Implement
 
             //明確轉換
             var sb = new StringBuilder("test2");
-            var obj2 = (TypeConvert)sb;
+            var obj2 = (TypeConvert) sb;
 
             //隱含轉換
             if (obj2)

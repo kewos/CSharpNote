@@ -11,11 +11,11 @@ namespace CSharpNote.Data.Algorithm.Implement
     //The digits are stored such that the most significant digit is at the head of the list.
     public class PlusOne : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/plus-one/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/plus-one/")]
         public override void Execute()
         {
-            var num1 = new List<int> { 9, 2, 5 };
-            var num2 = new List<int> { 3, 2, 5 };
+            var num1 = new List<int> {9, 2, 5};
+            var num2 = new List<int> {3, 2, 5};
 
             GetPlusOne(num1, num2).Dump();
         }
@@ -35,8 +35,8 @@ namespace CSharpNote.Data.Algorithm.Implement
                 if (i < num2.Count)
                     current += num2[num2.Count - 1 - i];
 
-                nextPlus = current / 10;
-                sum.Push(current % 10);
+                nextPlus = current/10;
+                sum.Push(current%10);
             }
 
             if (nextPlus != 0)

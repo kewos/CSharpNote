@@ -9,7 +9,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class DungeonGame : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/dungeon-game/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/dungeon-game/")]
         public override void Execute()
         {
             var rm = new Random();

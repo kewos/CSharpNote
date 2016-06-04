@@ -6,7 +6,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class CountDigitOne : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             GetCountDigitOne(10).ToConsole();
@@ -22,10 +22,10 @@ namespace CSharpNote.Data.Algorithm.Implement
             long ones = 0;
             for (long m = 1; m <= n; m *= 10)
             {
-                ones += (n / m + 8) / 10 * m + (n / m % 10 == 1 ? n % m + 1 : 0);
+                ones += (n/m + 8)/10*m + (n/m%10 == 1 ? n%m + 1 : 0);
             }
 
-            return (int)ones;
+            return (int) ones;
         }
     }
 }

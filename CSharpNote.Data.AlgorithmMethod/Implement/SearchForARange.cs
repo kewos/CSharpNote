@@ -13,10 +13,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //return [3, 4].
     public class SearchForARange : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/search-for-a-range/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/search-for-a-range/")]
         public override void Execute()
         {
-            var search = new List<int> { 5, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 10, 10 };
+            var search = new List<int> {5, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 10, 10};
             var target = 8;
 
             GetSearchForARange(search, target).Dump();
@@ -25,7 +25,7 @@ namespace CSharpNote.Data.Algorithm.Implement
         private List<int> GetSearchForARange(List<int> search, int target)
         {
             var index = SearchIndex(search, target, 0, search.Count - 1);
-            var result = new List<int> { index, index };
+            var result = new List<int> {index, index};
 
             if (index == -1) return result;
 
@@ -52,7 +52,7 @@ namespace CSharpNote.Data.Algorithm.Implement
         {
             while (start <= end)
             {
-                var middle = start + (end - start) / 2;
+                var middle = start + (end - start)/2;
                 if (search[middle] > target)
                     end = middle - 1;
 

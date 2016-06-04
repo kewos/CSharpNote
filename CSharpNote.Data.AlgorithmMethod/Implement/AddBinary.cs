@@ -13,7 +13,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     /// </summary>
     public class AddBinary : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             GetAddBinary("11", "1").ToConsole();

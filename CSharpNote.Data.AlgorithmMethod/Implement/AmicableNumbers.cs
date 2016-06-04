@@ -8,7 +8,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class AmicableNumbers : AbstractExecuteModule
     {
-        [MarkedItem(@"https://projecteuler.net/problem=21")]
+        [AopTarget(@"https://projecteuler.net/problem=21")]
         public override void Execute()
         {
             var max = 10000;

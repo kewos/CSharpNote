@@ -8,7 +8,7 @@ namespace CSharpNote.Data.DataStructure.Implement
 {
     public class TestHashTable : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var hashTable = new HashTable<int, int>();

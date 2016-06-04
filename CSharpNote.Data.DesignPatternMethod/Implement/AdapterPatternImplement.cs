@@ -10,7 +10,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
         /// <summary>
         ///     convert the interface of a class into another interface
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             new List<IAnimal>

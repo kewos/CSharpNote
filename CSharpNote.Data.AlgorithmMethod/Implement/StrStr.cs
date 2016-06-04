@@ -11,7 +11,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     /// </summary>
     public class StrStr : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var haystack = "mississippi";

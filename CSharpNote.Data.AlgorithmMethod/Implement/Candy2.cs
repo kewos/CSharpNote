@@ -8,10 +8,10 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class Candy2 : AbstractExecuteModule
     {
-        [MarkedItem("https://leetcode.com/problems/candy/")]
+        [AopTarget("https://leetcode.com/problems/candy/")]
         public override void Execute()
         {
-            var ratings = new[] { 2, 1, 9, 2, 3, 34, 1 };
+            var ratings = new[] {2, 1, 9, 2, 3, 34, 1};
 
             GetCandy2(ratings).ToConsole();
         }

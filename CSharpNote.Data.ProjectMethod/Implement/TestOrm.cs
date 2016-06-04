@@ -10,7 +10,7 @@ namespace CSharpNote.Data.Project.Implement
 {
     public class TestOrm : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var data = new List<Dictionary<string, string>>

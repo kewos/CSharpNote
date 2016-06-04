@@ -11,7 +11,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
         ///     游歷於各系統邊界的Pattern
         ///     缺點:static難追蹤 難unit test
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var serviceLocator = ServiceLocator.Instance;

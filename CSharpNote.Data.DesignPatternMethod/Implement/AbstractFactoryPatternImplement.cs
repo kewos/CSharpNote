@@ -9,7 +9,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
         /// <summary>
         ///     隱藏建立細節減少耦合
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var windowsFactory = new WindowsFactory();

@@ -7,7 +7,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class MinDistance : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var word1 = "aaaaa";

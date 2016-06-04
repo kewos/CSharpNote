@@ -14,7 +14,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     //Given numerator = 2, denominator = 3, return "0.(6)".
     public class FractionToRecurringDecimal : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/fraction-to-recurring-decimal/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/fraction-to-recurring-decimal/")]
         public override void Execute()
         {
             Console.WriteLine(GetFractionToRecurringDecimal(1, 2));
@@ -35,8 +35,8 @@ namespace CSharpNote.Data.Algorithm.Implement
             numerator = Math.Abs(numerator);
             denominator = Math.Abs(denominator);
 
-            result.Append(numerator / denominator);
-            if (numerator % denominator == 0)
+            result.Append(numerator/denominator);
+            if (numerator%denominator == 0)
                 return result.ToString();
 
             result.Append(".");
@@ -51,7 +51,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 
                 dic.Add(numerator, result.Length);
                 numerator *= 10;
-                result.Append(numerator / denominator);
+                result.Append(numerator/denominator);
             }
 
             return result.ToString();

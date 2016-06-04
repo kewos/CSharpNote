@@ -12,7 +12,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     //Could you optimize your algorithm to use only O(k) extra space?
     public class PascalsTriangleII : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/pascals-triangle-ii/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/pascals-triangle-ii/")]
         public override void Execute()
         {
             GetPascalsTriangleII(3).Dump();
@@ -20,7 +20,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 
         private List<int> GetPascalsTriangleII(int k)
         {
-            var space = new List<int> { 1 };
+            var space = new List<int> {1};
             var index = 0;
             while (index < k)
             {

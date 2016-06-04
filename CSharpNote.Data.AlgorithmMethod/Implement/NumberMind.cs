@@ -9,7 +9,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class NumberMind : AbstractExecuteModule
     {
-        [MarkedItem(@"https://projecteuler.net/problem=185")]
+        [AopTarget(@"https://projecteuler.net/problem=185")]
         public override void Execute()
         {
             var dictionary = new Dictionary<int, int>
@@ -27,8 +27,8 @@ namespace CSharpNote.Data.Algorithm.Implement
 
         private int GetNumberMind(int digit, Dictionary<int, int> dictionary)
         {
-            var elements = Enumerable.Range((int)Math.Pow(10, digit - 1),
-                (int)Math.Pow(10, digit) - (int)Math.Pow(10, digit - 1));
+            var elements = Enumerable.Range((int) Math.Pow(10, digit - 1),
+                (int) Math.Pow(10, digit) - (int) Math.Pow(10, digit - 1));
 
             return elements.FirstOrDefault(element =>
                 dictionary.All((key, keypair) =>

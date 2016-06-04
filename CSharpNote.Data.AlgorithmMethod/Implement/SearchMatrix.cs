@@ -12,7 +12,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     /// </summary>
     public class SearchMatrix : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var matrix = new[,]
@@ -48,7 +48,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 
             while (left <= right)
             {
-                var middle = (right + left) / 2;
+                var middle = (right + left)/2;
 
                 if (matrix[x, middle] == target)
                     return true;

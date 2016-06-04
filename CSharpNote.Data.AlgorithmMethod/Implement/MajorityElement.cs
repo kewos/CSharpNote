@@ -10,10 +10,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //You may assume that the array is non-empty and the majority element always exist in the array.
     public class MajorityElement : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/majority-element/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/majority-element/")]
         public override void Execute()
         {
-            var elements = new List<int> { 1, 3, 1, 1, 5, 1, 9, 1, 1, 7, 1 };
+            var elements = new List<int> {1, 3, 1, 1, 5, 1, 9, 1, 1, 7, 1};
 
             GetMajorityElement(elements).ToConsole();
         }

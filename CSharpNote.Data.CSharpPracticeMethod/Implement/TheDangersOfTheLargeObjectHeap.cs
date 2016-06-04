@@ -18,7 +18,7 @@ namespace CSharpNote.Data.CSharpPractice.Implement
     /// </summary>
     public class TheDangersOfTheLargeObjectHeap : AbstractExecuteModule
     {
-        [MarkedItem("https://www.simple-talk.com/dotnet/.net-framework/the-dangers-of-the-large-object-heap/")]
+        [AopTarget("https://www.simple-talk.com/dotnet/.net-framework/the-dangers-of-the-large-object-heap/")]
         public override void Execute()
         {
             var handler = new LargeObjectHeapHandler();
@@ -60,7 +60,7 @@ namespace CSharpNote.Data.CSharpPractice.Implement
                 while (true)
                 {
                     // Write out some status information
-                    if ((count % 1000) == 0)
+                    if ((count%1000) == 0)
                     {
                         Console.CursorLeft = 0;
                         Console.Write(new string(' ', 20));
@@ -89,7 +89,7 @@ namespace CSharpNote.Data.CSharpPractice.Implement
             {
                 bigBlock = null;
                 GC.Collect();
-                Console.WriteLine("{1}Mb allocated", (count * blockSize) / (1024 * 1024));
+                Console.WriteLine("{1}Mb allocated", (count*blockSize)/(1024*1024));
             }
         }
     }

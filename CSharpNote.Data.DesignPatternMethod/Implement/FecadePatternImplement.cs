@@ -11,7 +11,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
         ///     FecadePattern 用於隱藏子系統的細節
         ///     但子系統會跟Fecade造成耦合
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var fecade = new Fecade();

@@ -9,7 +9,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class BestTimeToBuyAndSellStockIv : AbstractExecuteModule
     {
-        [MarkedItem("https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/")]
+        [AopTarget("https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/")]
         public override void Execute()
         {
             var random = new Random();

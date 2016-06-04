@@ -16,7 +16,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     {
         public override void Execute()
         {
-            var colors = new List<int> { 1, 100, 2, 1, 1, 4, 1, 4, 1, 5, 1, 2 };
+            var colors = new List<int> {1, 100, 2, 1, 1, 4, 1, 4, 1, 5, 1, 2};
             var postion = 0;
             while (postion < colors.Count - 1)
             {

@@ -6,7 +6,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
 {
     public class CommandPatternImplement : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var receiver = new Receiver(20, 10);

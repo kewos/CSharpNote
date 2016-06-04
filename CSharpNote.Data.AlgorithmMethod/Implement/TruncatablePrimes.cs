@@ -9,7 +9,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class TruncatablePrimes : AbstractExecuteModule
     {
-        [MarkedItem(@"https://projecteuler.net/problem=37")]
+        [AopTarget(@"https://projecteuler.net/problem=37")]
         public override void Execute()
         {
             var valid = 3797;

@@ -7,7 +7,7 @@ namespace CSharpNote.Data.CSharpPractice.Implement
 {
     public class YieldPratice : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var pipe = new ChatPipeLine();

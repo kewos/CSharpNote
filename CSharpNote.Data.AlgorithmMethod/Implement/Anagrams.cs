@@ -10,10 +10,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //Note: All inputs will be in lower-case.
     public class Anagrams : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
-            var strs = new List<string> { "dog", "god", "cab", "bac", "zdz", "aac" };
+            var strs = new List<string> {"dog", "god", "cab", "bac", "zdz", "aac"};
             strs.Where(n =>
             {
                 return strs.Any(m =>

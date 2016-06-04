@@ -7,7 +7,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
 {
     public class CompositePatternImplement : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             new CompositeA(new List<IComponent>

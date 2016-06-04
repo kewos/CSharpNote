@@ -8,7 +8,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class IsUgly : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             DoIsUgly(10).ToConsole();
@@ -21,14 +21,14 @@ namespace CSharpNote.Data.Algorithm.Implement
             if (num < 7)
                 return true;
 
-            var factors = new List<int> { 2, 3, 5 };
+            var factors = new List<int> {2, 3, 5};
             var index = 0;
             while (num >= 7)
             {
                 if (index == factors.Count)
                     return false;
 
-                if (num % factors[index] == 0)
+                if (num%factors[index] == 0)
                 {
                     num /= factors[index];
                     continue;

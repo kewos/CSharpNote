@@ -10,30 +10,33 @@ namespace CSharpNote.Core.Implements
     public abstract class AbstractRepository : ContextBoundObject, IMethodRepository
     {
         private const string TRIMSTRING = "Repository";
+
+        private readonly Dictionary<int, AbstractExecuteModule> entitiyDictionary =
+            new Dictionary<int, AbstractExecuteModule>();
+
         private List<TypeInfo> methodInfos;
-        private readonly Dictionary<int, AbstractExecuteModule> entitiyDictionary = new Dictionary<int, AbstractExecuteModule>(); 
 
         #region private member
+
         private IEnumerable<TypeInfo> MethodInfos
         {
             get
             {
-                return methodInfos ?? 
-                    (methodInfos = Assembly.GetAssembly(GetType())
-                    .DefinedTypes
-                    .Where(type => typeof(AbstractExecuteModule).IsAssignableFrom(type))
-                    .ToList());
+                return methodInfos ??
+                       (methodInfos = Assembly.GetAssembly(GetType())
+                           .DefinedTypes
+                           .Where(type => typeof (AbstractExecuteModule).IsAssignableFrom(type))
+                           .ToList());
             }
         }
+
         #endregion
 
         #region IMethodRepository member
+
         public int Count
         {
-            get 
-            { 
-                return MethodInfos.Count(); 
-            }
+            get { return MethodInfos.Count(); }
         }
 
         public AbstractExecuteModule this[int index]
@@ -59,11 +62,9 @@ namespace CSharpNote.Core.Implements
 
         public string RepositoryName
         {
-            get
-            {
-                return GetType().Name.Except(TRIMSTRING);
-            }
+            get { return GetType().Name.Except(TRIMSTRING); }
         }
+
         #endregion
     }
 }

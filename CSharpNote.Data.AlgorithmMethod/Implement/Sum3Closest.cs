@@ -10,10 +10,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
     public class Sum3Closest : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/3sum-closest/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/3sum-closest/")]
         public override void Execute()
         {
-            var set = new[] { 1, 2, 5, 7, -4, -4, 10, 9, 7 };
+            var set = new[] {1, 2, 5, 7, -4, -4, 10, 9, 7};
 
             Console.WriteLine(GetCloseSet(set, -10));
         }

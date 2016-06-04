@@ -9,7 +9,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class QSort : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var random = new Random();

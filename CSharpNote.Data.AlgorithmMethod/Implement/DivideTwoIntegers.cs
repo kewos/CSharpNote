@@ -6,7 +6,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class DivideTwoIntegers : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/divide-two-integers/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/divide-two-integers/")]
         public override void Execute()
         {
             //Divide two integers without using multiplication, division and mod operator.
@@ -29,7 +29,7 @@ namespace CSharpNote.Data.Algorithm.Implement
                 sum++;
             }
 
-            return sum * state;
+            return sum*state;
         }
     }
 }

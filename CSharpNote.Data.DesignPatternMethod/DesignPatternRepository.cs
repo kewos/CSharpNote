@@ -3,6 +3,6 @@
 namespace CSharpNote.Data.DesignPattern
 {
     public class DesignPatternRepository : AbstractRepository
-    {   
+    {
     }
 }

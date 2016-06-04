@@ -7,10 +7,10 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class MaximumSubarray¢¹ : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/maximum-subarray/", true)]
+        [AopTarget(@"https://oj.leetcode.com/problems/maximum-subarray/", true)]
         public override void Execute()
         {
-            var array = new List<int> { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+            var array = new List<int> {-2, 1, -3, 4, -1, 2, 1, -5, 4};
 
             Console.WriteLine(GetMaximumSubarray¢¹(array));
         }

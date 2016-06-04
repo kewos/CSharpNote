@@ -9,7 +9,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class RotateArray : AbstractExecuteModule
     {
-        [MarkedItem("https://oj.leetcode.com/problems/rotate-array/")]
+        [AopTarget("https://oj.leetcode.com/problems/rotate-array/")]
         public override void Execute()
         {
             var elements = Enumerable.Range(1, 7).ToArray();
@@ -29,7 +29,7 @@ namespace CSharpNote.Data.Algorithm.Implement
                 throw new Exception("invalid paramater positon");
 
             var length = array.Length;
-            position = position % length + 1;
+            position = position%length + 1;
 
             if (position == 0)
                 return array;
@@ -37,7 +37,7 @@ namespace CSharpNote.Data.Algorithm.Implement
             var newArray = new int[length];
             for (var i = 0; i < length; i++)
             {
-                newArray[i] = array[(position + i) % length];
+                newArray[i] = array[(position + i)%length];
             }
 
             return newArray;
@@ -53,7 +53,7 @@ namespace CSharpNote.Data.Algorithm.Implement
             if (position == 0)
                 return array;
 
-            return Enumerable.Range(1, length).Select(n => array[(n + position) % length]).ToArray();
+            return Enumerable.Range(1, length).Select(n => array[(n + position)%length]).ToArray();
         }
 
         private int[] RotateArrayⅲ(int[] array, int position)
@@ -62,7 +62,7 @@ namespace CSharpNote.Data.Algorithm.Implement
                 throw new Exception("invalid paramater positon");
 
             var length = array.Length;
-            var moveDistance = length - (position % length);
+            var moveDistance = length - (position%length);
 
             if (position == 0)
                 return array;

@@ -8,7 +8,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
 {
     public class IteratorPatternImplement : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var bookStore = new BookStore();

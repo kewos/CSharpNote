@@ -7,7 +7,7 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class FindKthLargest : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var nums = Enumerable.Range(1, 1).Shuffle().ToArray();

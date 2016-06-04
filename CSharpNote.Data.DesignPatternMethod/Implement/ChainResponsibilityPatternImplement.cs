@@ -9,11 +9,11 @@ namespace CSharpNote.Data.DesignPattern.Implement
         /// <summary>
         ///     結合TemplatePattern的hook 可充份模組化HandlerClass
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var handler = new HandlerA();
-            var handlerCommand = new HandlerCommand(typeof(HandlerD));
+            var handlerCommand = new HandlerCommand(typeof (HandlerD));
             handler.Execute(handlerCommand);
         }
     }

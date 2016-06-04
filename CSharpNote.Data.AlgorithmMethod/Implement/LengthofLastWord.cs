@@ -13,7 +13,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     //return 5.
     public class LengthofLastWord : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/longest-common-prefix/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/longest-common-prefix/")]
         public override void Execute()
         {
             Console.WriteLine(GetLastWordLength("Hello World"));

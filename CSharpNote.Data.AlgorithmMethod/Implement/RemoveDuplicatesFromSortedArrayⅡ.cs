@@ -13,10 +13,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //Your function should return length = 5, and A is now [1,1,2,2,3].
     public class RemoveDuplicatesFromSortedArray¢º : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-array-ii/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-array-ii/")]
         public override void Execute()
         {
-            var elements = new List<int> { 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 3 };
+            var elements = new List<int> {1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 3};
 
             Console.WriteLine(GetRemoveDuplicatesFromSortedArray¢º(elements));
         }

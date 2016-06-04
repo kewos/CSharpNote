@@ -5,10 +5,9 @@ namespace CSharpNote.Data.RefactoringToPattern
 {
     public class RefactoringToPatternRepository : AbstractRepository
     {
-        [MarkedItem]
+        [AopTarget]
         public void StateMachine()
         {
-            
         }
     }
 }

@@ -11,7 +11,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
         /// <summary>
         ///     根據不同狀態改變執行策略
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var strategyA = StrategyFactory.Create<StrategyA>();

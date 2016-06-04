@@ -8,7 +8,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     //Compute and return the square root of x.
     public class ImplementSqrt : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/sqrtx/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/sqrtx/")]
         public override void Execute()
         {
             Console.WriteLine(GetSqrt(15));
@@ -21,7 +21,7 @@ namespace CSharpNote.Data.Algorithm.Implement
             while (bit > 0)
             {
                 ans |= bit;
-                if (ans * ans > x)
+                if (ans*ans > x)
                 {
                     ans ^= bit;
                 }

@@ -12,11 +12,10 @@ namespace CSharpNote.Data.Algorithm.Implement
     //Given 1->1->2->3->3, return 1->2->3.
     public class RemoveDuplicatesfromSortedList : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list/")]
         public override void Execute()
         {
-            
-            var array = new List<int> { 1, 1, 2, 3, 3 };
+            var array = new List<int> {1, 1, 2, 3, 3};
             GetRemoveDuplicatesfromSortedList(array);
             array.Dump();
         }

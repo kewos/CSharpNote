@@ -13,16 +13,16 @@ namespace CSharpNote.Data.Algorithm.Implement
     //return 10.
     public class LargestRectangleinHistogram : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/largest-rectangle-in-histogram/")]
+        [AopTarget(@"https://oj.leetcode.com/problems/largest-rectangle-in-histogram/")]
         public override void Execute()
         {
-            var set = new List<int> { 2, 1, 5, 6, 2, 3 };
+            var set = new List<int> {2, 1, 5, 6, 2, 3};
             var max = 0;
             for (var x = 0; x < set.Count() - 1; x++)
             {
                 for (var y = x; y < set.Count(); y++)
                 {
-                    var area = Math.Min(set[x], set[y]) * (y - x);
+                    var area = Math.Min(set[x], set[y])*(y - x);
                     max = Math.Max(max, area);
                 }
             }

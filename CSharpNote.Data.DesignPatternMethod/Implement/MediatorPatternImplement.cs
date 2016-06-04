@@ -8,10 +8,10 @@ namespace CSharpNote.Data.DesignPattern.Implement
 {
     public class MediatorPatternImplement : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
-            Func<int, string> convertToString = number => ((char)(65 + number)).ToString();
+            Func<int, string> convertToString = number => ((char) (65 + number)).ToString();
             var players = Enumerable.Range(0, 5)
                 .Select(n => new GamePlayer(convertToString(n)))
                 .ToList<IGamePlayer>();

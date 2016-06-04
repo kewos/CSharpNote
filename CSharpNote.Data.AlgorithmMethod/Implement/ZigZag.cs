@@ -8,12 +8,12 @@ namespace CSharpNote.Data.Algorithm.Implement
 {
     public class ZigZag : AbstractExecuteModule
     {
-        [MarkedItem(@"http://community.topcoder.com/tc?module=ProblemDetail&rd=4493&pm=1259")]
+        [AopTarget(@"http://community.topcoder.com/tc?module=ProblemDetail&rd=4493&pm=1259")]
         public override void Execute()
         {
             //var zigZagSequence = new List<int> { 1, 7, 4, 9, 2, 5 };
             //Console.WriteLine(LongestZigZag(zigZagSequence));
-            var zigZagSequence1 = new List<int> { 1, 17, 5, 10, 13, 15, 10, 5, 16, 8 };
+            var zigZagSequence1 = new List<int> {1, 17, 5, 10, 13, 15, 10, 5, 16, 8};
             Console.WriteLine(LongestZigZag(zigZagSequence1));
             //var zigZagSequence2 = new List<int> { 44 };
             //Console.WriteLine(LongestZigZag(zigZagSequence2));

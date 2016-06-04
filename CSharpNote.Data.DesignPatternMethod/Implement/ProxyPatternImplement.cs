@@ -10,7 +10,7 @@ namespace CSharpNote.Data.DesignPattern.Implement
         /// <summary>
         ///     ProxyServer一開始就指定指向哪個RealServer
         /// </summary>
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             new ProxyServer().DoAction().ToConsole();

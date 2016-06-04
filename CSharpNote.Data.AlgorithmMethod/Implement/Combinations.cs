@@ -11,7 +11,7 @@ namespace CSharpNote.Data.Algorithm.Implement
     //if n = 4 and k = 2, a solution is
     public class Combinations : AbstractExecuteModule
     {
-        [MarkedItem(@"https://oj.leetcode.com/problems/combinations/", true)]
+        [AopTarget(@"https://oj.leetcode.com/problems/combinations/", true)]
         public override void Execute()
         {
             var set = new List<List<int>>();

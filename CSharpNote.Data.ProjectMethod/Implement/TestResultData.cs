@@ -6,7 +6,7 @@ namespace CSharpNote.Data.Project.Implement
 {
     public class TestResultData : AbstractExecuteModule
     {
-        [MarkedItem]
+        [AopTarget]
         public override void Execute()
         {
             var data1 = new ResultData.ResultData(new Exception("Test"), "");
