@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CSharpPracticeRepository.cs" />
+    <Compile Include="Implement\ExceptionPerformance.cs" />
+    <Compile Include="Implement\TryCatchPerformance.cs" />
     <Compile Include="Implement\LinqGroupBy.cs" />
     <Compile Include="Implement\TestRealProxy.cs" />
     <Compile Include="Implement\ExplicitImplicitMethod.cs" />

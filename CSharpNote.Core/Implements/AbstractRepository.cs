@@ -26,6 +26,7 @@ namespace CSharpNote.Core.Implements
                        (methodInfos = Assembly.GetAssembly(GetType())
                            .DefinedTypes
                            .Where(type => typeof (AbstractExecuteModule).IsAssignableFrom(type))
+                           .OrderBy(type => type.Name)
                            .ToList());
             }
         }
